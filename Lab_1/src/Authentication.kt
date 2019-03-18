@@ -15,7 +15,7 @@ class Authentication(private val email: String, private val password: String, pr
             throw Exception("Cannot get to login page")
     }
 
-    private fun login(){
+    public fun login(){
 
         val emailInput = driver.findElement(By.id("signup_determine_email"))
         val forwardBtn = driver.findElement(By.id("signup_forms_submit"))
@@ -35,7 +35,7 @@ class Authentication(private val email: String, private val password: String, pr
         loginBtn.click()
     }
 
-    private fun logout(){
+    public fun logout(){
         val accountBtn = driver.findElement(By.xpath("//button[@title='Учетная запись']"))
         accountBtn.click()
 
