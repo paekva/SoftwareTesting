@@ -15,41 +15,26 @@
       <file leaf-file-name="Authentication.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Authentication.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="27" column="117" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="27" selection-end-column="117" />
+            <state relative-caret-position="-171">
+              <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding>
                 <element signature="e#0#185#0" expanded="true" />
-                <element signature="n#!!block;n#logout#0;n#!!block;n#Authentication#0" />
                 <element signature="n#!!block;n#testLogout#0;n#!!block;n#Authentication#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Post.kt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Post.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Post.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="271">
+              <caret line="64" column="53" lean-forward="true" selection-start-line="64" selection-start-column="53" selection-end-line="64" selection-end-column="53" />
               <folding>
                 <element signature="e#0#271#0" expanded="true" />
                 <element signature="n#!!block;n#testPostStructute#0;n#!!block;n#Post#0" />
                 <element signature="n#!!block;n#testAuthorPostInfo#0;n#!!block;n#Post#0" />
-                <element signature="n#!!block;n#testPhotoZoom#0;n#!!block;n#Post#0" />
-                <element signature="n#!!block;n#testTags#0;n#!!block;n#Post#0" />
                 <element signature="n#!!block;n#testFooterBtns#0;n#!!block;n#Post#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AccountPage.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/AccountPage.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#84#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,11 +43,8 @@
       <file leaf-file-name="Main.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#76#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -80,12 +62,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Authentication.kt" />
-        <option value="$PROJECT_DIR$/src/Main.kt" />
-        <option value="$PROJECT_DIR$/src/Post.kt" />
         <option value="$PROJECT_DIR$/src/ShareTab.kt" />
         <option value="$PROJECT_DIR$/src/ReplayPopover.kt" />
         <option value="$PROJECT_DIR$/src/ReblogTab.kt" />
         <option value="$PROJECT_DIR$/src/AccountPage.kt" />
+        <option value="$PROJECT_DIR$/src/Main.kt" />
+        <option value="$PROJECT_DIR$/src/Post.kt" />
       </list>
     </option>
   </component>
@@ -235,16 +217,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552845362015</updated>
-      <workItem from="1552845366717" duration="11937000" />
+      <workItem from="1552845366717" duration="21521000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11937000" />
+    <option name="totallyTimeSpent" value="21521000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -254,8 +235,8 @@
       <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.53960395" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32838285" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2640264" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32838285" />
       <window_info id="Designer" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12859304" />
       <window_info anchor="right" id="Database" />
@@ -280,32 +261,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Authentication.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="27" column="117" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="27" selection-end-column="117" />
-          <folding>
-            <element signature="e#0#185#0" expanded="true" />
-            <element signature="n#!!block;n#logout#0;n#!!block;n#Authentication#0" />
-            <element signature="n#!!block;n#testLogout#0;n#!!block;n#Authentication#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ReplayPopover.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -336,27 +295,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Post.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#271#0" expanded="true" />
-            <element signature="n#!!block;n#testPostStructute#0;n#!!block;n#Post#0" />
-            <element signature="n#!!block;n#testAuthorPostInfo#0;n#!!block;n#Post#0" />
-            <element signature="n#!!block;n#testPhotoZoom#0;n#!!block;n#Post#0" />
-            <element signature="n#!!block;n#testTags#0;n#!!block;n#Post#0" />
-            <element signature="n#!!block;n#testFooterBtns#0;n#!!block;n#Post#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AccountPage.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding>
             <element signature="e#0#84#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Authentication.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-171">
+          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#185#0" expanded="true" />
+            <element signature="n#!!block;n#testLogout#0;n#!!block;n#Authentication#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Post.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="64" column="53" lean-forward="true" selection-start-line="64" selection-start-column="53" selection-end-line="64" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#271#0" expanded="true" />
+            <element signature="n#!!block;n#testPostStructute#0;n#!!block;n#Post#0" />
+            <element signature="n#!!block;n#testAuthorPostInfo#0;n#!!block;n#Post#0" />
+            <element signature="n#!!block;n#testFooterBtns#0;n#!!block;n#Post#0" />
           </folding>
         </state>
       </provider>

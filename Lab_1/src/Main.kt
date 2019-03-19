@@ -1,5 +1,3 @@
-import org.openqa.selenium.By
-import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 
 fun main(args: Array<String>){
@@ -8,11 +6,7 @@ fun main(args: Array<String>){
     val baseUrl = "https://www.tumblr.com/"
     driver.get(baseUrl)
 
-    val url = "https://www.tumblr.com/explore/trending"
-    driver.get(url)
-
-    val post = driver.findElement(By.xpath("//article[starts-with(@className,'is_photo post_tumblelog')]")) // TODO: check xpath
-    testPost(post, driver)
+    testPost(driver)
 
     driver.quit()
 }
@@ -23,7 +17,7 @@ fun testAuthentication(driver: ChromeDriver){
     authTest.testLogout()
 }
 
-fun testPost(post: WebElement, driver: ChromeDriver){
-    val postTest = Post(post, driver)
+fun testPost(driver: ChromeDriver){
+    val postTest = Post(driver)
     postTest.test()
 }
