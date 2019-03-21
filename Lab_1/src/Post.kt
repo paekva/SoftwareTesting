@@ -30,11 +30,12 @@ class Post(val driver: ChromeDriver){
             val postContainer = driver.findElement(By.className("posts-holder"))
             val post = postContainer.findElement(By.xpath("//ancestor::article"))
 
-            testPostStructure(post)
-            testAuthorPostInfo(post)
-            testPhotoZoom(post)
-            testTags(post)
+            println("Performing post tests:")
+            // testPostStructure(post)
+            // testAuthorPostInfo(post)
+            // testTags(post)
             testFooter(post)
+            // testPhotoZoom(post)
         }
         catch (e: NoSuchElementException){
             println("No post is available, cannot perform hole set of tests")
@@ -47,14 +48,15 @@ class Post(val driver: ChromeDriver){
     private fun testPostStructure(post: WebElement){
         try
         {
-        val wait = WebDriverWait(driver, 5)
-        wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post_header")))
-        wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post_content")))
-        wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post_tags")))
-        wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post_footer")))
+            val wait = WebDriverWait(driver, 5)
+            wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post_header")))
+            wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post_content")))
+            wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post_tags")))
+            wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post_footer")))
+            println("Post structure test was successful")
         }
         catch(e: NoSuchElementException){
-            println("Invalid post structure")
+            println("Post structure test has failed")
         }
     }
 
@@ -72,11 +74,11 @@ class Post(val driver: ChromeDriver){
 
             val header = driver.findElement(By.className("l-header"))
             header.click()
+            println("Author popup structure test was successful")
         }
         catch(e: NoSuchElementException){
-            println("Invalid author popup structure")
+            println("Author popup structure test has failed")
         }
-
     }
 
     private fun testPhotoZoom(post: WebElement){
@@ -87,12 +89,12 @@ class Post(val driver: ChromeDriver){
             wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.id("tumblr_lightbox_center_image")))
 
             img.findElement(By.xpath("//following::input[1]")).click()
+
+            println("Photo zoom test was successful")
         }
         catch(e:Exception){
-            println("Post test: photo zoom test has failed")
+            println("Photo zoom test has failed")
         }
-        println("Post test: photo zoom test was successful")
-
     }
 
     private fun testTags(post: WebElement){
@@ -107,32 +109,33 @@ class Post(val driver: ChromeDriver){
                 if (idx == 0) "$acc$it" else  "$acc+$it" }
             tag.click()
 
-            if(driver.currentUrl !== url){
-                println(url)
-                throw Exception("Hash tag check test failed")
-            }
+            val wait = WebDriverWait(driver, 5)
+            wait.until(ExpectedConditions.urlToBe(url))
 
             driver.get(postUrl)
+            println("Hash tag test was successful")
         }
         catch(e:Exception){
-            println("Post test: hash tag test has failed")
+            println("Hash tag test has failed")
         }
-        println("Post test: hash tag test was successful")
     }
 
     private fun testFooter(post: WebElement){
         try{
-            val notesBlock = post.findElement(By.className("post_notes"))
-            val controlsBlock = post.findElement(By.className("post_controls"))
+            val footer = post.findElement(By.className("post_footer"))
+            val notesBlock = footer.findElement(By.className("post_notes"))
+            val controlsBlock = footer.findElement(By.className("post_controls"))
+
             testNotesPopUp(notesBlock)
 
-            val controlsTest = PostControls(controlsBlock)
+            val controlsTest = PostControls(controlsBlock, driver)
             controlsTest.test()
+
+            println("Footer test was successful")
         }
         catch(e:Exception){
-            println("Post test: footer test has failed")
+            println("Footer test has failed")
         }
-        println("Post test: footer test was successful")
     }
 
     private fun testNotesPopUp(notesBlock: WebElement){
@@ -149,11 +152,11 @@ class Post(val driver: ChromeDriver){
 
             popUp.findElement(By.className("main-container"))
             popUp.findElement(By.className("footer-container"))
+            println("Pop up notes test was successful")
         }
         catch(e:Exception){
-            println("Post footer: pop up notes test has failed")
+            println("Pop up notes test has failed")
         }
-        println("Post footer: pop up notes test was successful")
     }
 
     private fun afterTest(){
