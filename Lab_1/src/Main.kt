@@ -6,14 +6,15 @@ fun main(args: Array<String>){
     val baseUrl = "https://www.tumblr.com/"
     driver.get(baseUrl)
 
-    testPost(driver)
+    testAuthentication(driver)
+    // testPost(driver)
 
     driver.quit()
 }
 
 fun testAuthentication(driver: ChromeDriver){
-    var authTest = Authentication("paekva@yandex.ru", "rfnz98grf", driver)
-    authTest.testLogin()
+    var authTest = Authentication(driver)
+    authTest.testAuthentication()
     authTest.testLogout()
 }
 

@@ -4,19 +4,20 @@ import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
-class Authentication(private val email: String, private val password: String, private val driver: ChromeDriver){
+class Authentication(private val driver: ChromeDriver){
 
     private fun beforeLoginTest() {
+        val mainPageUrl = "https://www.tumblr.com/"
+        driver.get(mainPageUrl)
+
         driver.findElement(By.id("signup_login_button")).click()
 
         val loginPageUrl = "https://www.tumblr.com/login"
-
         if ( driver.currentUrl != loginPageUrl )
             throw Exception("Cannot get to login page")
     }
 
-    public fun login(){
-
+    fun login(email: String, password: String){
         val emailInput = driver.findElement(By.id("signup_determine_email"))
         val forwardBtn = driver.findElement(By.id("signup_forms_submit"))
         emailInput.clear()
@@ -35,7 +36,7 @@ class Authentication(private val email: String, private val password: String, pr
         loginBtn.click()
     }
 
-    public fun logout(){
+    fun logout(){
         val accountBtn = driver.findElement(By.xpath("//button[@title='Учетная запись']"))
         accountBtn.click()
 
@@ -48,25 +49,76 @@ class Authentication(private val email: String, private val password: String, pr
         okBtn.click()
     }
 
-    fun testLogin(){
-        beforeLoginTest()
-
-        login()
-
-        val authUserPageUrl = "https://www.tumblr.com/dashboard"
-        if(driver.currentUrl != authUserPageUrl)
-            throw Exception("Login test failed")
-
-        println("Login test complited successfully")
+    fun testAuthentication(){
+        testCorrectCredentials()
+        logout()
+        testWrongCredentials()
     }
 
     fun testLogout(){
-        logout()
+        try {
+            val mainPageUrl = "https://www.tumblr.com/login"
+            logout()
 
-        val mainPageUrl = "https://www.tumblr.com/login"
-        if(driver.currentUrl != mainPageUrl)
-            throw Exception("Logout test failed")
+            if (driver.currentUrl != mainPageUrl)
+                throw Exception("Logout test failed")
 
-        println("Logout test complited successfully")
+            println("Logout test is successful")
+        }
+        catch(e: Exception){
+            println(e.message)
+        }
+    }
+
+    private fun testCorrectCredentials(){
+        beforeLoginTest()
+
+        try {
+            login("paekva@yandex.ru", "rfnz98grf")
+
+            val authUserPageUrl = "https://www.tumblr.com/dashboard"
+            if (driver.currentUrl != authUserPageUrl)
+                throw Exception("Login test failed")
+
+            println("Login test is successful")
+        }
+        catch(e: Exception){
+            println(e.message)
+        }
+    }
+    private fun testWrongCredentials(){
+        beforeLoginTest()
+
+        try {
+            val wait = WebDriverWait(driver, 5)
+
+            try {
+                val unregistredEmail = "wrong@Email.Input"
+                login(unregistredEmail, "rfnz98grf")
+            }
+            catch (e: Exception){
+                wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("error")))
+            }
+
+            try {
+                val incorrectEmail = "wrongEmailInput"
+                login(incorrectEmail, "rfnz98grf")
+            }
+            catch (e: Exception){
+                wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("error")))
+            }
+
+            try {
+                val incorrectPassword = "incorrectPassword"
+                login("paekva@yandex.ru", incorrectPassword)
+            }
+            catch (e: Exception){
+                wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("error")))
+            }
+
+        }
+        catch(e: Exception){
+            println("Test for Validation of Login fields has failed")
+        }
     }
 }

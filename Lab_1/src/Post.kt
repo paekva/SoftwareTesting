@@ -5,13 +5,13 @@ import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
-class Post(val driver: ChromeDriver){
-    private val auth = Authentication("paekva@yandex.ru", "rfnz98grf", driver)
+class Post(private val driver: ChromeDriver){
+    private val auth = Authentication(driver)
 
     private fun beforeTest(){
         val loginUrl = "https://www.tumblr.com/login"
         driver.get(loginUrl)
-        auth.login()
+        auth.login("paekva@yandex.ru", "rfnz98grf")
     }
 
     fun test(){
@@ -122,6 +122,7 @@ class Post(val driver: ChromeDriver){
 
     private fun testFooter(post: WebElement){
         try{
+            println("Performing footer test ... ")
             val footer = post.findElement(By.className("post_footer"))
             val notesBlock = footer.findElement(By.className("post_notes"))
             val controlsBlock = footer.findElement(By.className("post_controls"))
@@ -131,7 +132,6 @@ class Post(val driver: ChromeDriver){
             val controlsTest = PostControls(controlsBlock, driver)
             controlsTest.test()
 
-            println("Footer test was successful")
         }
         catch(e:Exception){
             println("Footer test has failed")
@@ -140,13 +140,18 @@ class Post(val driver: ChromeDriver){
 
     private fun testNotesPopUp(notesBlock: WebElement){
         try{
-            val notesCount = notesBlock.findElement(By.tagName("span")).getAttribute("title")
+            val notesCount = notesBlock.findElement(By.tagName("span")).getAttribute("data-count")
             notesBlock.click()
 
-            val popUp = driver.findElementByClassName("post-activity can-reply")
-            val notesCountMsg = popUp.findElement(By.className("primary-message")).text
+            val wait = WebDriverWait(driver, 10)
+            val popUp = wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post-activity-popover")))
+
+            var notesCountMsg = popUp.findElement(By.className("primary-message")).text
+            notesCountMsg = notesCountMsg.replace("[^0-9]", "")
 
             if(notesCount !== notesCountMsg){
+                println(notesCount)
+                println(notesCountMsg)
                 throw Exception("Notes count in title and in notes section in post are different")
             }
 
@@ -155,7 +160,7 @@ class Post(val driver: ChromeDriver){
             println("Pop up notes test was successful")
         }
         catch(e:Exception){
-            println("Pop up notes test has failed")
+            println("Pop up notes test has failed: ${e.message}")
         }
     }
 
