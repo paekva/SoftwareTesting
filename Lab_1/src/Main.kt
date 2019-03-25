@@ -1,3 +1,4 @@
+import PostTests.PostTest
 import org.openqa.selenium.chrome.ChromeDriver
 
 fun main(args: Array<String>){
@@ -6,8 +7,9 @@ fun main(args: Array<String>){
     val baseUrl = "https://www.tumblr.com/"
     driver.get(baseUrl)
 
-    testAuthentication(driver)
-    // testPost(driver)
+    // testAuthentication(driver)
+    testPost(driver)
+    // testRegistration(driver)
 
     driver.quit()
 }
@@ -18,7 +20,13 @@ fun testAuthentication(driver: ChromeDriver){
     authTest.testLogout()
 }
 
+fun testRegistration(driver: ChromeDriver){
+    var regTest = Registration(driver)
+    regTest.testRegistration()
+    regTest.testAccountDelete()
+}
+
 fun testPost(driver: ChromeDriver){
-    val postTest = Post(driver)
+    val postTest = PostTest(driver)
     postTest.test()
 }

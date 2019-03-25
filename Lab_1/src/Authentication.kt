@@ -86,14 +86,15 @@ class Authentication(private val driver: ChromeDriver){
             println(e.message)
         }
     }
-    private fun testWrongCredentials(){
-        beforeLoginTest()
 
+    private fun testWrongCredentials(){
         try {
             val wait = WebDriverWait(driver, 5)
 
             try {
                 val unregistredEmail = "wrong@Email.Input"
+                beforeLoginTest()
+
                 login(unregistredEmail, "rfnz98grf")
             }
             catch (e: Exception){
@@ -102,19 +103,23 @@ class Authentication(private val driver: ChromeDriver){
 
             try {
                 val incorrectEmail = "wrongEmailInput"
+                beforeLoginTest()
+
                 login(incorrectEmail, "rfnz98grf")
             }
             catch (e: Exception){
                 wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("error")))
             }
 
-            try {
-                val incorrectPassword = "incorrectPassword"
-                login("paekva@yandex.ru", incorrectPassword)
-            }
-            catch (e: Exception){
-                wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("error")))
-            }
+            val incorrectPassword = "incorrectPassword"
+            beforeLoginTest()
+
+            login("paekva@yandex.ru", incorrectPassword)
+
+            if(driver.currentUrl != "https://www.tumblr.com/login")
+                throw Exception()
+
+            // wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("error")))
 
         }
         catch(e: Exception){
