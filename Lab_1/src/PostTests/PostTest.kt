@@ -12,49 +12,19 @@ import java.util.concurrent.TimeUnit
 class PostTest(private val driver: ChromeDriver){
     private val auth = Authentication(driver)
 
-    private fun beforeTest(){
+    fun beforeTest(){
         val loginUrl = "https://www.tumblr.com/login"
         driver.get(loginUrl)
         auth.login("paekva@yandex.ru", "rfnz98grf")
     }
 
-    fun test(){
-        try {
-            beforeTest()
-        }
-        catch(e: Exception){
-            println("Some LOGIN problem. Check network connection or site availability")
-            return
-        }
-
-        val url = "https://www.tumblr.com/explore/trending"
-        driver.get(url)
-
-        try {
-            val postContainer = driver.findElement(By.className("posts-holder"))
-
-            println("Performing post tests:")
-            // testPostStructure(postContainer)
-            // testAuthorPostInfo(postContainer)
-            testPhotoZoom(postContainer)
-            testTags(postContainer)
-            testFooter(postContainer)
-        }
-        catch (e: NoSuchElementException){
-            println("No post is available, cannot perform hole set of tests")
-            return
-        }
-
-        afterTest()
-    }
-
-    private fun testPostStructure(postContainer: WebElement){
+    fun testPostStructure(postContainer: WebElement){
         try
         {
-            val post = postContainer.findElement(By.xpath("//ancestor::article"))
+            val postElement = postContainer.findElement(By.xpath("//ancestor::article"))
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
 
-            val newPost = Post(post, driver)
+            val post = Post(postElement, driver)
 
             println("PostTest structure test was successful")
         }
@@ -63,7 +33,7 @@ class PostTest(private val driver: ChromeDriver){
         }
     }
 
-    private fun testAuthorPostInfo(postContainer: WebElement){
+    fun testAuthorPostInfo(postContainer: WebElement){
         try{
             val postElement = postContainer.findElement(By.xpath("//ancestor::article"))
             val post = Post(postElement, driver)
@@ -83,12 +53,10 @@ class PostTest(private val driver: ChromeDriver){
         }
     }
 
-    private fun testPhotoZoom(postContainer: WebElement){
+    fun testPhotoZoom(postContainer: WebElement){
         try {
-            val postElement = postContainer.findElement(By.xpath("//ancestor::article[@class='is_photo']"))
-            println("hello")
+            val postElement = postContainer.findElement(By.xpath("//article[contains(@class,\"is_photo\")]"))
             val post = Post(postElement, driver)
-            println(postElement)
 
             post.zoomInContent()
 
@@ -103,7 +71,7 @@ class PostTest(private val driver: ChromeDriver){
         }
     }
 
-    private fun testTags(postContainer: WebElement){
+    fun testTags(postContainer: WebElement){
         try {
             val postElement = postContainer.findElement(By.xpath("//ancestor::article"))
             val post = Post(postElement, driver)
@@ -120,28 +88,23 @@ class PostTest(private val driver: ChromeDriver){
             val wait = WebDriverWait(driver, 10)
             wait.until(ExpectedConditions.urlToBe(url))
 
-            println(tag.text)
-
             driver.get("https://www.tumblr.com/explore/trending")
             println("Hash tag test was successful")
         }
         catch(e:Exception){
-            println("Hash tag test has failed")
+            println("Hash tag test has failed: ${e.message}")
         }
     }
 
-    private fun testFooter(postContainer: WebElement){
+    fun testFooter(postContainer: WebElement){
         try{
             println("Performing footer test ... ")
             val postElement = postContainer.findElement(By.xpath("//ancestor::article"))
-            // val footer = post.findElement(By.className("post_footer"))
-            // val notesBlock = footer.findElement(By.className("post_notes"))
-
             val post = Post(postElement, driver)
-            post.openSharePopup()
-            post.openReplyPopup()
 
-            // testNotesPopUp(notesBlock)
+            testNotesSection(post)
+            testReplyPopup(post)
+            // post.openSharePopup()
 
             println("Footer test was successful")
         }
@@ -150,50 +113,60 @@ class PostTest(private val driver: ChromeDriver){
         }
     }
 
-    private fun testNotesPopUp(notesBlock: WebElement){
+    private fun testNotesSection(post: Post){
         try{
-            val notesCount = notesBlock.findElement(By.tagName("span")).getAttribute("data-count")
-            notesBlock.click()
+            post.notes.click()
 
-            val wait = WebDriverWait(driver, 10)
-            val popUp = wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post-activity-popover")))
+            val notesPopOver = driver.findElement(By.className("post-activity-popover"))
+            testReplyPopupStructure(notesPopOver)
 
-            var notesCountMsg = popUp.findElement(By.className("primary-message")).text
-            notesCountMsg = notesCountMsg.replace("[^0-9]", "")
-
-            if(notesCount !== notesCountMsg){
-                println(notesCount)
-                println(notesCountMsg)
-                throw Exception("Notes count in title and in notes section in post are different")
-            }
-
-            popUp.findElement(By.className("main-container"))
-            popUp.findElement(By.className("footer-container"))
-            println("Pop up notes test was successful")
-        }
-        catch(e:Exception){
-            println("Pop up notes test has failed: ${e.message}")
-        }
-    }
-
-    private fun afterTest(){
-        auth.logout()
-    }
-
-    fun postcontrolstest(controlsBlock: WebElement){
-        try{
-            println("Performing footer controls tests...")
-            val shareBtn = controlsBlock.findElement(By.className("share"))
-            shareBtnTest(shareBtn)
-
-            val replyBtn = controlsBlock.findElement(By.className("reply"))
-            val reblogBtn = controlsBlock.findElement(By.className("reblog"))
-            val likeBtn = controlsBlock.findElement(By.className("like"))
-
+            post.closePopup()
+            println("Notes test was successful")
         }
         catch(e: Exception){
-            println("Footer controls test has failed")
+            println("Notes test has failed")
         }
+    }
+
+    private fun testReplyPopup(post: Post){
+        try{
+            post.openReplyPopup()
+            val replyPopup = post.replyPopup
+
+            if(replyPopup == null) throw Exception("Unable to perform test without reply popup")
+
+            testReplyPopupStructure(replyPopup)
+
+            post.closePopup()
+            println("Reply pop up test was successful")
+        }
+        catch(e:Exception){
+            println("Reply pop up test has failed: ${e.message}")
+        }
+    }
+
+    private fun testReplyPopupStructure(replyPopup: WebElement){
+        val notesCount = replyPopup.findElement(By.tagName("span")).getAttribute("data-count")
+        replyPopup.click()
+
+        val wait = WebDriverWait(driver, 10)
+        val popUp = wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post-activity-popover")))
+
+        var notesCountMsg = popUp.findElement(By.className("primary-message")).text
+        notesCountMsg = notesCountMsg.replace("[^0-9]", "")
+
+        if(notesCount !== notesCountMsg){
+            println(notesCount)
+            println(notesCountMsg)
+            throw Exception("Notes count in title and in notes section in post are different")
+        }
+
+        popUp.findElement(By.className("main-container"))
+        popUp.findElement(By.className("footer-container"))
+    }
+
+    fun afterTest(){
+        auth.logout()
     }
 
     private fun shareBtnTest(shareBtn: WebElement){

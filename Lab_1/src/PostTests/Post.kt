@@ -13,6 +13,7 @@ class Post(private val post: WebElement, private val driver: ChromeDriver){
     private var author: WebElement
     private var content: WebElement
     var tags: List<WebElement>
+    var notes: WebElement
     private var controls: PostControls
 
     var authorPopup: WebElement?
@@ -24,6 +25,7 @@ class Post(private val post: WebElement, private val driver: ChromeDriver){
         author = post.findElement(By.className("tumblelog_info"))
         content = post.findElement(By.className("post_content"))
         tags = post.findElements(By.className("post_tag"))
+        notes = post.findElement(By.className("post_notes"))
 
         val controlsBlock = post.findElement(By.className("post_controls"))
         controls = PostControls(controlsBlock, driver)
@@ -73,4 +75,9 @@ class Post(private val post: WebElement, private val driver: ChromeDriver){
 
         replyPopup = driver.findElementByClassName("popover")
     }
+
+    fun closePopup(){
+        author.click()
+    }
+
 }
