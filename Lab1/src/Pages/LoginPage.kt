@@ -4,6 +4,8 @@ import Utils.*
 import org.openqa.selenium.WebDriver
 
 class LoginPage(private val driver: WebDriver){
+
+
     fun loginSuccess(user: UserCredentials): HomePage {
         login(user)
         return HomePage(driver)
