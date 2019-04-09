@@ -5,8 +5,7 @@ fun main(){
     System.setProperty("webdriver.chrome.driver", "E:/chromedriver.exe")
     val driver = ChromeDriver()
 
-    val login = LoginTest(driver)
-
+    /*val login = LoginTest(driver)
     try{
         login.loginWithCorrectCredentials()
         /*login.loginWithIncorrectEmailCredentials()
@@ -14,5 +13,15 @@ fun main(){
     }
     catch(e: Exception){
         println(e.message)
+    }*/
+
+    val dashboardTest = DashboardTest(driver)
+    try{
+        dashboardTest.postTest()
     }
+    catch(e: Exception){
+        println(e.message)
+    }
+
+    driver.close()
 }

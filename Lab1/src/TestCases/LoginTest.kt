@@ -1,5 +1,6 @@
 package TestCases
 
+import Pages.HomePage
 import Pages.LoginPage
 import Utils.*
 import org.openqa.selenium.WebDriver
@@ -15,12 +16,14 @@ class LoginTest(private val driver: WebDriver){
         userCredentials = UserCredentialsFactory()
     }
 
-    fun loginWithCorrectCredentials(){
+    fun loginWithCorrectCredentials(): HomePage{
         val user = userCredentials.getCorrectCredentials()
-        val result = loginPage.loginSuccess(user)
+        loginPage.login(user)
 
-        /*if(!result.getUrl().contains("dashboard"))
-            throw Exception("TEST: Login with correct credentials - FAILED")*/
+        if(!driver.currentUrl.contains("dashboard"))
+            throw Exception("TEST: Login with correct credentials - FAILED")
+
+        return HomePage(driver)
     }
 
     /*fun loginWithIncorrectEmailCredentials(){
