@@ -1,3 +1,5 @@
+package PageTests
+
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
@@ -54,7 +56,7 @@ class Registration(private val driver: ChromeDriver){
 
         try {
             registr("ekavadipa@gmail.com", "1q2w3e4r5", "Kate")
-            println("Registration test is successful")
+            println("PageTests.Registration test is successful")
         }
         catch(e: Exception){
             println(e.message)
@@ -77,10 +79,10 @@ class Registration(private val driver: ChromeDriver){
             val wait = WebDriverWait(driver, 5)
             wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("error")))
 
-            println("Test for Validation of Registration fields is successful")
+            println("Test for Validation of PageTests.Registration fields is successful")
         }
         catch(e: Exception){
-            println("Test for Validation of Registration fields has failed")
+            println("Test for Validation of PageTests.Registration fields has failed")
         }
     }
 }

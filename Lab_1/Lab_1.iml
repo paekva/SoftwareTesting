@@ -11,7 +11,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/selenium-server-standalone-3.141.59.jar!/" />
+          <root url="jar://E:/selenium-server-standalone-3.141.59.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -1,25 +1,46 @@
+import PageTests.LoginPageTest
+import PageTests.NavigationTest
+import PageTests.Registration
 import PostTests.PostTest
 import org.openqa.selenium.By
 import org.openqa.selenium.chrome.ChromeDriver
 
+
 fun main(args: Array<String>){
     System.setProperty("webdriver.chrome.driver", "E:/chromedriver.exe")
     val driver = ChromeDriver()
-    val baseUrl = "https://www.tumblr.com/"
-    driver.get(baseUrl)
 
-    // testAuthentication(driver)
-    testPost(driver)
-    // navigationTest(driver)
-    // testRegistration(driver)
+    try {
+        registerUserTest(driver)
+        println("Register test was successful")
+    }
+    catch (e: Exception){
+        println("Register test has failed: ${e.message}")
+    }
 
     driver.quit()
 }
 
+fun registerUserTest(driver: ChromeDriver) {
+    driver.get("http://tumblr.com/register")
+    val userFactory = UserFactory()
+    var user = userFactory.createUserWithInvalidPassword()
+
+    val registrationPage = RegistrationPage(driver)
+    registrationPage
+            .registerUserError(user)
+            .checkErrorMessage("Пароль не может быть короче 8 символов.")
+
+    user = userFactory.createValidUser()
+
+    registrationPage
+            .registerUserSuccess(user)
+}
+
 fun testAuthentication(driver: ChromeDriver){
-    var authTest = Authentication(driver)
+    var authTest = LoginPageTest(driver)
     authTest.testAuthentication()
-    authTest.testLogout()
+    // authTest.testLogout()
 }
 
 fun testRegistration(driver: ChromeDriver){

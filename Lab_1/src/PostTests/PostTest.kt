@@ -1,16 +1,15 @@
 package PostTests
 
-import Authentication
+import PageTests.Login
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 import java.util.concurrent.TimeUnit
 
 class PostTest(private val driver: ChromeDriver){
-    private val auth = Authentication(driver)
+    private val auth = Login(driver)
 
     fun beforeTest(){
         val loginUrl = "https://www.tumblr.com/login"
