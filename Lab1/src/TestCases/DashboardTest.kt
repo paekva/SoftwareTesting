@@ -8,16 +8,19 @@ class DashboardTest(private val driver: WebDriver){
 
     init{
         val login = LoginTest(driver)
-        login.loginWithCorrectCredentials()
-
-        driver.get("http://tumblr.com/dashboard")
-        homePage = HomePage(driver)
-
-        println('1')
+        homePage = login.loginWithCorrectCredentials()
+        println("finish login")
     }
 
     fun postTest(){
-        val postTest = PostTest(driver, homePage.posts!![0])
-        postTest.testAuthorPostInfo()
+        val postTest = PostTest(driver, homePage.posts[0])
+
+        postTest.testSharePopup()
+        println("in the start")
+        postTest.testReplyPopup()
+        println("in the middle")
+        // postTest.testReblogPopup()
+        println("settings started")
+        postTest.testSettingsPopup()
     }
 }
