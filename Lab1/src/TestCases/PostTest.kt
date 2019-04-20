@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
-class PostTest(private val driver: WebDriver, private val post: UserPost){
+class PostTest(private val driver: WebDriver, private val post: RebloggedPost){
 
     fun testSharePopup(){
         try{
@@ -60,18 +60,43 @@ class PostTest(private val driver: WebDriver, private val post: UserPost){
     }
 
     fun testSettingsPopup(){
-        post.openSettingsPopup()
+        try{
+            post.openSettingsPopup()
 
-        val settingsPopup = post.settingsPopup
-        settingsPopup?: throw Exception("Unable to perform test without settings popup")
+            val settingsPopup = post.settingsPopup
+            println("setting popup")
+            println(settingsPopup)
 
-        val center = driver.findElement(By.className("v-center-outer"))
+            settingsPopup?: throw Exception("Unable to perform test without settings popup")
 
-        settingsPopup.changeBtn!!.click()
-        settingsPopup.changePopup?: throw Exception("Test settings popup failed")
-        settingsPopup.changePopup!!.closePopup()
+            val center = driver.findElement(By.className("v-center-outer"))
 
-        center.click()
+            settingsPopup.openChangePopup()
+            settingsPopup.changePopup?: throw Exception("Test settings popup failed")
+            settingsPopup.changePopup!!.closePopup()
+
+            center.click()
+        }
+        catch(e:Exception){
+            println("Reblog pop up test has failed: ${e.message}")
+        }
+
+    }
+
+    fun testUserPopup(){
+        try{
+            post.openReblogInfoHeaderPopup()
+            var userPopup = post.userInfoPopup
+            userPopup?: throw Exception("Unable to perform test without user popup")
+
+            post.openReblogInfoFooterPopup()
+
+            userPopup = post.userInfoPopup
+            userPopup?: throw Exception("Unable to perform test without user popup")
+        }
+        catch(e:Exception){
+            println("Reblog pop up test has failed: ${e.message}")
+        }
     }
 
     private fun checkFieldsAndBtnsInSharePopup(sharePopup: SharePopup){

@@ -1,31 +1,48 @@
 package Pages
 
-import Elements.Header
-import Elements.UserPost
-import Elements.UserList
+import Elements.*
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
 
 
+class HomePage(val driver: WebDriver) {
 
-class HomePage(driver: WebDriver) {
-
-    private var header: Header? = null
-    var posts: ArrayList<UserPost> = arrayListOf()
+    var header: Header? = null
+    var posts: ArrayList<RebloggedPost> = arrayListOf()
     private var createPostPanel: List<WebElement>? = null
-    private val userRecommendations: UserList? = null
+    var userRecommendations: UserList? = null
 
     init{
         header = Header(driver)
 
-        val postElement = driver.findElement(By.className("post"))
+        val userListContainer = driver.findElement(By.className("user_list"))
+        userRecommendations = UserList(driver, userListContainer)
+
+        val postElement = driver.findElement(By.className("is_reblog"))
 
         val js = driver as JavascriptExecutor
         js.executeScript("arguments[0].scrollIntoView();", postElement)
 
-        posts.add(UserPost(driver, postElement))
+        posts.add(RebloggedPost(driver, postElement))
+    }
 
+    fun openUserPopupFromRecommendedList(user: WebElement) : OtherUserPopup{
+        val hover = Actions(driver)
+        hover.moveToElement(user).build().perform()
+
+        val popup = waitForPopupToAppear("popover")
+
+        return OtherUserPopup(popup, driver)
+    }
+
+    private fun waitForPopupToAppear(popover: String): WebElement{
+        val wait = WebDriverWait(driver, 30)
+        val popup = wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className(popover)))
+        return popup
     }
 }

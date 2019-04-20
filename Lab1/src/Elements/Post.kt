@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
-open class Post(private val driver: WebDriver, private val postElement: WebElement){
+abstract class Post(private val driver: WebDriver, private val postElement: WebElement){
 
     var postContent: WebElement? = null
     var shareBtn: WebElement? = null

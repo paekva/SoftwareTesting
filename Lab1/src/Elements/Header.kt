@@ -1,5 +1,6 @@
 package Elements
 
+import Pages.HomePage
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -35,6 +36,24 @@ class Header(private val driver: WebDriver){
 
     init {
         PageFactory.initElements(driver, this)
+    }
+
+    fun goToDashboard(): HomePage {
+        homeBtn!!.click()
+
+        return HomePage(driver)
+    }
+
+    fun goToExplore(): HomePage {
+        discoverBtn!!.click()
+
+        return HomePage(driver)
+    }
+
+    fun goToInbox(): HomePage {
+        inboxBtn!!.click()
+
+        return HomePage(driver)
     }
 
     fun openMessagingPopup() : MessagingPopup{

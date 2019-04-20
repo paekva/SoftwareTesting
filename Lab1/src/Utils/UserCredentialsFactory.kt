@@ -1,17 +1,36 @@
 package Utils
 
 class UserCredentialsFactory {
-    fun getCorrectCredentials(): UserCredentials {
-        return UserCredentials("paekva@yandex.ru", "rfnz98grf", "Kate")
+    fun getCorrectEmail(): String {
+        return "paekva@yandex.ru"
     }
 
-    /*fun getWrongEmailCredentials(): UserCredentials {
-        return UserCredentials()
+    fun getUnregisteredEmail(): String {
+        return "someEmail@yandex.ru"
     }
 
-    fun getWrongPasswordCredentials(): UserCredentials {
-        return UserCredentials()
-    }*/
+    fun getIncorrectFormatEmail(): String {
+        return "paekvayandexru"
+    }
 
+    fun getCorrectPassword(): String {
+        return "rfnz98grf"
+    }
+
+    fun getIncorrectPassword(): String {
+        return "12345"
+    }
+
+    fun getCorrectName(): String {
+        return "12Hjrf9"
+    }
+
+    fun getUsedByOtheUserName(): String {
+        return "Kate"
+    }
+
+    fun getEmptyString(): String {
+        return ""
+    }
 }
 
