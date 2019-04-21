@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait
 
 class HomePage(val driver: WebDriver) {
 
-    var header: Header? = null
+    /*var header: Header? = null
     var posts: ArrayList<RebloggedPost> = arrayListOf()
     private var createPostPanel: List<WebElement>? = null
     var userRecommendations: UserList? = null
@@ -44,5 +44,5 @@ class HomePage(val driver: WebDriver) {
         val wait = WebDriverWait(driver, 30)
         val popup = wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className(popover)))
         return popup
-    }
+    }*/
 }

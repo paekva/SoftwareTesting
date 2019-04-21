@@ -18,14 +18,6 @@ class LoginTest(private val driver: WebDriver){
         driver.get("http://tumblr.com/login")
     }
 
-    private fun printSuccessMsg(msg: String){
-        println("\u001B[32m $msg was SUCCESSFUL \u001B[0m")
-    }
-
-    private fun printErrorMsg(msg: String){
-        println("\u001B[35m $msg \u001B[0m")
-    }
-
     // #1.1
     fun loginWithCorrectCredentials(){
         try{
@@ -39,7 +31,7 @@ class LoginTest(private val driver: WebDriver){
             printSuccessMsg("loginWithCorrectCredentials")
         }
         catch(e: Exception){
-            printErrorMsg("loginWithCorrectCredentials FAILED due to ${e.message}")
+            printErrorMsg("loginWithCorrectCredentials", e.message)
         }
     }
 
@@ -56,7 +48,7 @@ class LoginTest(private val driver: WebDriver){
             printSuccessMsg("loginWithUnregisteredEmail")
         }
         catch (e: Exception){
-            printErrorMsg("loginWithUnregisteredEmail FAILED due to ${e.message}")
+            printErrorMsg("loginWithUnregisteredEmail", e.message)
         }
     }
 
@@ -74,7 +66,7 @@ class LoginTest(private val driver: WebDriver){
             printSuccessMsg("loginWithIncorrectFormatOfEmail")
         }
         catch(e: Exception){
-            printErrorMsg("loginWithIncorrectFormatOfEmail FAILED due to ${e.message}")
+            printErrorMsg("loginWithIncorrectFormatOfEmail", e.message)
         }
     }
 
@@ -92,7 +84,7 @@ class LoginTest(private val driver: WebDriver){
             printSuccessMsg("loginWithEmptyEmail")
         }
         catch(e: Exception){
-            printErrorMsg("loginWithEmptyEmail FAILED due to ${e.message}")
+            printErrorMsg("loginWithEmptyEmail", e.message)
         }
     }
 
@@ -112,7 +104,7 @@ class LoginTest(private val driver: WebDriver){
             printSuccessMsg("loginWithIncorrectPassword")
         }
         catch (e: Exception){
-            printErrorMsg("loginWithIncorrectPassword FAILED due to ${e.message}")
+            printErrorMsg("loginWithIncorrectPassword", e.message)
         }
     }
 
@@ -132,7 +124,7 @@ class LoginTest(private val driver: WebDriver){
             printSuccessMsg("loginWithEmptyPassword")
         }
         catch(e: Exception){
-            printErrorMsg("loginWithEmptyPassword FAILED due to ${e.message}")
+            printErrorMsg("loginWithEmptyPassword", e.message)
         }
     }
 }

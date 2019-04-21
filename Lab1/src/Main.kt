@@ -1,14 +1,17 @@
 import Pages.HomePage
+import Pages.LoginPage
 import TestCases.*
+import Utils.UserCredentialsFactory
 import org.openqa.selenium.chrome.ChromeDriver
 
 fun main(){
     System.setProperty("webdriver.chrome.driver", "E:/chromedriver.exe")
     val driver = ChromeDriver()
 
-    loginTests(driver)
-    // headerTests(driver)
-    println()
+    println("\u001B[36m TESTS HAD STARTED \u001B[0m")
+    // loginTests(driver)
+    headerTests(driver)
+    println("\u001B[36m TESTS HAD FINISHED \u001B[0m")
 
     /*val regist = RegistTest(driver)
     try{
@@ -41,13 +44,23 @@ fun loginTests(driver: ChromeDriver) {
     loginTest.loginWithCorrectCredentials()
 }
 
-/*
+
 fun headerTests(driver: ChromeDriver) {
+    val user = UserCredentialsFactory()
+    driver.get("http://tumblr.com/login")
+    val login = LoginPage(driver)
+        .fillInEmail(user.getCorrectEmail())
+        .fillInPassword(user.getCorrectPassword())
+        .login()
+
     val headerTest = HeaderMenuTest(driver)
-    headerTest.dashboardButtonTest()
     headerTest.exploreButtonTest()
     headerTest.inboxButtonTest()
+    headerTest.dashboardButtonTest()
     headerTest.messageButtonTest()
     headerTest.activityButtonTest()
     headerTest.accountButtonTest()
-}*/
+    headerTest.logoButtonTest()
+    headerTest.searchFieldTest()
+    headerTest.createPostButtonTest()
+}

@@ -1,31 +1,22 @@
 package TestCases
 
 import Elements.*
+import Utils.printErrorMsg
+import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver
 
 class HeaderMenuTest(private val driver: WebDriver){
 
-    private val header: Header
-    init{
-        getToStartPage()
-        header = Header(driver)
-    }
-
-    private fun getToStartPage(){
-        driver.get("http://tumblr.com/dashboard")
-    }
+    private val header: Header = Header(driver)
 
     // #3.1
     fun dashboardButtonTest(){
         try{
             header.goToDashboard()
-            if(driver.currentUrl != "http://tumblr.com/dashboard")
-                throw Exception("wrong page opened")
-
-            println("dashboardButton was SUCCESSFUL")
+            printSuccessMsg("dashboardButton")
         }
         catch (e: Exception){
-            println("dashboardButtonTest FAILED due to ${e.message}")
+            printErrorMsg("dashboardButtonTest", "cannot find dashboard page")
         }
     }
 
@@ -33,13 +24,10 @@ class HeaderMenuTest(private val driver: WebDriver){
     fun exploreButtonTest(){
         try{
             header.goToExplore()
-            if(driver.currentUrl != "http://tumblr.com/explore")
-                throw Exception("wrong page opened")
-
-            println("exploreButtonTest was SUCCESSFUL")
+            printSuccessMsg("exploreButtonTest")
         }
         catch (e: Exception){
-            println("exploreButtonTest FAILED due to ${e.message}")
+            printErrorMsg("exploreButtonTest", "cannot find explore page")
         }
     }
 
@@ -47,13 +35,10 @@ class HeaderMenuTest(private val driver: WebDriver){
     fun inboxButtonTest(){
         try{
             header.goToInbox()
-            if(driver.currentUrl != "http://tumblr.com/inbox")
-                throw Exception("wrong page opened")
-
-            println("inboxButtonTest was SUCCESSFUL")
+            printSuccessMsg("inboxButtonTest")
         }
         catch (e: Exception){
-            println("inboxButtonTest FAILED due to ${e.message}")
+            printErrorMsg("inboxButtonTest", "cannot find inbox page")
         }
     }
 
@@ -61,12 +46,12 @@ class HeaderMenuTest(private val driver: WebDriver){
     fun messageButtonTest(){
         try{
             header.openMessagingPopup()
-            header.closePopup()
+            header.closeMessagingPopup()
 
-            println("messageButtonTest was SUCCESSFUL")
+            printSuccessMsg("messageButtonTest")
         }
         catch (e: Exception){
-            println("messageButtonTest FAILED due to ${e.message}")
+            printErrorMsg("messageButtonTest", e.message)
         }
     }
 
@@ -74,12 +59,12 @@ class HeaderMenuTest(private val driver: WebDriver){
     fun activityButtonTest(){
         try{
             header.openActivityPopup()
-            header.closePopup()
+            header.closeActivityPopup()
 
-            println("activityButtonTest was SUCCESSFUL")
+            printSuccessMsg("activityButtonTest")
         }
         catch (e: Exception){
-            println("activityButtonTest FAILED due to ${e.message}")
+            printErrorMsg("activityButtonTest", e.message)
         }
     }
 
@@ -87,12 +72,62 @@ class HeaderMenuTest(private val driver: WebDriver){
     fun accountButtonTest(){
         try{
             header.openAccountPopup()
-            header.closePopup()
+            header.closeAccountPopup()
 
-            println("accountButtonTest was SUCCESSFUL")
+            printSuccessMsg("accountButtonTest")
         }
         catch (e: Exception){
-            println("accountButtonTest FAILED due to ${e.message}")
+            printErrorMsg("accountButtonTest", e.message)
+        }
+    }
+
+    // #3.7
+    fun createPostButtonTest(){
+        try{
+            header.openCreatePostPopup()
+            header.closeCreatePostPopup()
+
+            printSuccessMsg("createPostButtonTest")
+        }
+        catch (e: Exception){
+            printErrorMsg("createPostButtonTest", e.message)
+        }
+    }
+
+    // #3.8
+    fun searchFieldTest(){
+        try{
+            val searchText = "searchText"
+            val resultPopup = header.fillInSearchField(searchText)
+
+            if(resultPopup == null)
+                throw Exception("no search popup")
+
+            header.search()
+
+            if(driver.currentUrl != "https://www.tumblr.com/search/$searchText")
+                throw Exception("no search result page")
+
+            printSuccessMsg("searchFieldTest")
+        }
+        catch (e: Exception){
+            printErrorMsg("searchFieldTest", e.message)
+        }
+    }
+
+    // #3.8
+    fun logoButtonTest(){
+        try{
+            header.goToDashboardByLogo()
+
+            println(driver.currentUrl)
+            if(driver.currentUrl != "https://www.tumblr.com/dashboard")
+                throw Exception("wrong page opened")
+
+            printSuccessMsg("logoButtonTest")
+        }
+        catch (e: Exception){
+            printErrorMsg("logoButtonTest", e.message)
         }
     }
 }

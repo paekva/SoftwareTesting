@@ -1,9 +1,13 @@
 package Elements
 
+import Pages.ExplorePage
 import Pages.HomePage
+import Pages.InboxPage
 import org.openqa.selenium.By
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -31,11 +35,33 @@ class Header(private val driver: WebDriver){
     @FindBy(xpath = "//*[@id=\"account_button\"]/button")
     private val accountBtn: WebElement? = null
 
-    @FindBy(xpath = "//*[@id='dashboard_index']/div[2]/div/button")
-    private val dashbord: WebElement? = null
+    @FindBy(xpath="//button[@title='Создать пост']")
+    private val createPostBtn: WebElement? = null
+
+    @FindBy(xpath = "//a[@aria-label='Tumblr']")
+    private val logo: WebElement? = null
 
     init {
         PageFactory.initElements(driver, this)
+    }
+
+    fun search(){
+        search!!.sendKeys(Keys.ENTER)
+    }
+
+    fun fillInSearchField(searchText: String): SearchPopup? {
+        search!!.clear()
+        search.sendKeys(searchText)
+
+        waitForPopupToAppear()
+
+        return SearchPopup(driver)
+    }
+
+    fun goToDashboardByLogo(): HomePage {
+        logo!!.click()
+
+        return HomePage(driver)
     }
 
     fun goToDashboard(): HomePage {
@@ -44,16 +70,16 @@ class Header(private val driver: WebDriver){
         return HomePage(driver)
     }
 
-    fun goToExplore(): HomePage {
+    fun goToExplore(): ExplorePage {
         discoverBtn!!.click()
 
-        return HomePage(driver)
+        return ExplorePage(driver)
     }
 
-    fun goToInbox(): HomePage {
+    fun goToInbox(): InboxPage {
         inboxBtn!!.click()
 
-        return HomePage(driver)
+        return InboxPage(driver)
     }
 
     fun openMessagingPopup() : MessagingPopup{
@@ -80,11 +106,36 @@ class Header(private val driver: WebDriver){
         return AccountPopup(driver)
     }
 
-    fun closePopup(){}
+    fun openCreatePostPopup() : CreatePostPopup{
+        createPostBtn!!.click()
+
+        return CreatePostPopup(driver)
+    }
+
+    fun closeMessagingPopup(): Header{
+        messagingBtn!!.click()
+        return this
+    }
+
+    fun closeActivityPopup(): Header{
+        activityBtn!!.click()
+        return this
+    }
+
+    fun closeAccountPopup(): Header{
+        accountBtn!!.click()
+        return this
+    }
+
+    fun closeCreatePostPopup(): Header{
+        driver.get("https://www.tumblr.com/dashboard")
+
+        return this
+    }
 
     private fun waitForPopupToAppear(){
         val wait = WebDriverWait(driver, 10)
-        wait.until<WebElement>(ExpectedConditions.elementToBeClickable(By.className("popover")))
+        wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("popover_inner")))
     }
 
 }
