@@ -12,15 +12,15 @@ import org.openqa.selenium.support.ui.WebDriverWait
 
 class HomePage(val driver: WebDriver) {
 
-    /*var header: Header? = null
-    var posts: ArrayList<RebloggedPost> = arrayListOf()
+    var header: Header? = null
+    /*var posts: ArrayList<RebloggedPost> = arrayListOf()
     private var createPostPanel: List<WebElement>? = null
-    var userRecommendations: UserList? = null
+    var userRecommendations: UserList? = null*/
 
     init{
         header = Header(driver)
 
-        val userListContainer = driver.findElement(By.className("user_list"))
+        /*val userListContainer = driver.findElement(By.className("user_list"))
         userRecommendations = UserList(driver, userListContainer)
 
         val postElement = driver.findElement(By.className("is_reblog"))
@@ -28,10 +28,10 @@ class HomePage(val driver: WebDriver) {
         val js = driver as JavascriptExecutor
         js.executeScript("arguments[0].scrollIntoView();", postElement)
 
-        posts.add(RebloggedPost(driver, postElement))
+        posts.add(RebloggedPost(driver, postElement))*/
     }
 
-    fun openUserPopupFromRecommendedList(user: WebElement) : OtherUserPopup{
+    /*fun openUserPopupFromRecommendedList(user: WebElement) : OtherUserPopup{
         val hover = Actions(driver)
         hover.moveToElement(user).build().perform()
 

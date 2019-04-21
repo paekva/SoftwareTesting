@@ -1,3 +1,4 @@
+import Elements.Header
 import Pages.HomePage
 import Pages.LoginPage
 import TestCases.*
@@ -10,7 +11,8 @@ fun main(){
 
     println("\u001B[36m TESTS HAD STARTED \u001B[0m")
     // loginTests(driver)
-    headerTests(driver)
+    // headerTests(driver)
+    createPostTests(driver)
     println("\u001B[36m TESTS HAD FINISHED \u001B[0m")
 
     /*val regist = RegistTest(driver)
@@ -32,6 +34,14 @@ fun main(){
     driver.close()
 }
 
+fun preTestLogin(driver: ChromeDriver): HomePage {
+    val user = UserCredentialsFactory()
+    driver.get("http://tumblr.com/login")
+    return LoginPage(driver)
+        .fillInEmail(user.getCorrectEmail())
+        .fillInPassword(user.getCorrectPassword())
+        .login()
+}
 
 fun loginTests(driver: ChromeDriver) {
     val loginTest = LoginTest(driver)
@@ -44,14 +54,8 @@ fun loginTests(driver: ChromeDriver) {
     loginTest.loginWithCorrectCredentials()
 }
 
-
 fun headerTests(driver: ChromeDriver) {
-    val user = UserCredentialsFactory()
-    driver.get("http://tumblr.com/login")
-    val login = LoginPage(driver)
-        .fillInEmail(user.getCorrectEmail())
-        .fillInPassword(user.getCorrectPassword())
-        .login()
+    preTestLogin(driver)
 
     val headerTest = HeaderMenuTest(driver)
     headerTest.exploreButtonTest()
@@ -63,4 +67,32 @@ fun headerTests(driver: ChromeDriver) {
     headerTest.logoButtonTest()
     headerTest.searchFieldTest()
     headerTest.createPostButtonTest()
+}
+
+
+fun createPostTests(driver: ChromeDriver) {
+    val home = preTestLogin(driver)
+    val header = home.header
+    val createPost = CreatePostTest(driver)
+
+    header!!.openCreatePostPopup()
+    createPost.textPostOptionTest()
+
+    header.openCreatePostPopup()
+    createPost.photoPostOptionTest()
+
+    header.openCreatePostPopup()
+    createPost.quotePostOptionTest()
+
+    header.openCreatePostPopup()
+    createPost.chatPostOptionTest()
+
+    header.openCreatePostPopup()
+    createPost.linkPostOptionTest()
+
+    header.openCreatePostPopup()
+    createPost.audioPostOptionTest()
+
+    header.openCreatePostPopup()
+    createPost.videoPostOptionTest()
 }
