@@ -1,85 +1,60 @@
 package Elements
 
+import Elements.popups.ReblogPopup
+import Elements.popups.ReplyPopup
+import Elements.popups.SharePopup
 import org.openqa.selenium.By
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
-abstract class Post(private val driver: WebDriver, private val postElement: WebElement){
+abstract class Post(private val driver: WebDriver){
 
-    var postContent: WebElement? = null
+    @FindBy(xpath="//*[contains(@class,'is_reblog')]/div/div[4]/div[2]/div/div[1]")
     var shareBtn: WebElement? = null
+
+    @FindBy(xpath="//*[contains(@class,'is_reblog')]/div/div[4]/div[2]/div/div[2]")
     var replyBtn: WebElement? = null
+
+    @FindBy(xpath="//*[contains(@class,'is_reblog')]/div/div[4]/div[2]/div/a")
     var reblogBtn: WebElement? = null
 
-    var zoomedContent: WebElement? = null
-    var sharePopup: SharePopup? = null
-    var replyPopup: ReplyPopup? = null
-    var reblogPopup: ReblogPopup? = null
-
-    /*var author: WebElement? = null
-    var content: WebElement? = null
-    var tags: List<WebElement>? = null
-    var notes: WebElement? = null
-     var controls: PostControls? = null
-
-    var zoomedContent: WebElement? = null
-    var authorPopup: AuthorPopup? = null*/
-
-    init{
-        postContent = postElement.findElement(By.tagName("img"))
-        shareBtn = postElement.findElement(By.xpath("//*/div[2]/div[3]/div[2]/div/div[1]"))
-        replyBtn = postElement.findElement(By.xpath("//*/div[2]/div[3]/div[2]/div/div[2]"))
-        reblogBtn = postElement.findElement(By.xpath("//*/div[2]/div[3]/div[2]/div/a"))
-    }
-
-    fun openSharePopup(){
+    fun openSharePopup(): SharePopup {
         shareBtn!!.click()
 
         val popup = waitForPopupToAppear("popover--messaging-share-post")
 
-        sharePopup = SharePopup(popup, driver)
-
+        return SharePopup(driver)
     }
 
-    fun openReplyPopup(){
+    fun openReplyPopup(): ReplyPopup {
         replyBtn!!.click()
 
         val popup = waitForPopupToAppear("post-activity-popover")
 
-        replyPopup = ReplyPopup(popup, driver)
+        return ReplyPopup(popup, driver)
     }
 
-    fun openReblogPopup(){
+    fun openReblogPopup(): ReblogPopup {
         reblogBtn!!.click()
 
         val popup = waitForPopupToAppear("post-form")
 
-        reblogPopup = ReblogPopup(popup, driver)
+        return ReblogPopup(popup, driver)
     }
 
-    protected fun waitForPopupToAppear(popover: String): WebElement{
+    fun closePopup(){
+        val action = Actions(driver)
+        action.sendKeys(Keys.ESCAPE).perform()
+    }
+
+    private fun waitForPopupToAppear(popover: String): WebElement{
         val wait = WebDriverWait(driver, 30)
         val popup = wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className(popover)))
         return popup
     }
 }
-
-/*fun openAuthorPopup(){
-       val hover = Actions(driver)
-       hover.moveToElement(author).build().perform()
-
-       waitForPopupToAppear()
-
-       authorPopup = AuthorPopup()
-   }*/
-/*fun zoomInContent(){
-    postContent!!.click()
-
-    zoomedContent = driver.findElementById("tumblr_lightbox_center_image")
-}
-
-fun zoomOutContent(){
-    driver.findElementById("tumblr_lightbox_center_image").click()
-}*/

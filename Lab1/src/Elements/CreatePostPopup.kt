@@ -1,5 +1,6 @@
 package Elements
 
+import Elements.popups.OptionPopup
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -35,49 +36,49 @@ class CreatePostPopup(private val driver: WebDriver){
         PageFactory.initElements(driver, this)
     }
 
-    fun createTextPost(): OptionPopup{
+    fun createTextPost(): OptionPopup {
         textOption!!.click()
         waitForPopupToAppear()
 
         return OptionPopup(driver)
     }
 
-    fun createPhotoPost(): OptionPopup{
+    fun createPhotoPost(): OptionPopup {
         photoOption!!.click()
         waitForPopupToAppear()
 
         return OptionPopup(driver)
     }
 
-    fun createQuotePost(): OptionPopup{
+    fun createQuotePost(): OptionPopup {
         quoteOption!!.click()
         waitForPopupToAppear()
 
         return OptionPopup(driver)
     }
 
-    fun createLinkPost(): OptionPopup{
+    fun createLinkPost(): OptionPopup {
         linkOption!!.click()
         waitForPopupToAppear()
 
         return OptionPopup(driver)
     }
 
-    fun createChatPost(): OptionPopup{
+    fun createChatPost(): OptionPopup {
         chatOption!!.click()
         waitForPopupToAppear()
 
         return OptionPopup(driver)
     }
 
-    fun createAudioPost(): OptionPopup{
+    fun createAudioPost(): OptionPopup {
         audioOption!!.click()
         waitForPopupToAppear()
 
         return OptionPopup(driver)
     }
 
-    fun createVideoPost(): OptionPopup{
+    fun createVideoPost(): OptionPopup {
         videoOption!!.click()
         waitForPopupToAppear()
 

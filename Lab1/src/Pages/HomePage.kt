@@ -12,14 +12,14 @@ import org.openqa.selenium.support.ui.WebDriverWait
 
 class HomePage(val driver: WebDriver) {
 
-    var header: Header? = null
-    /*var posts: ArrayList<RebloggedPost> = arrayListOf()
+    var header: Header = Header(driver)
+   //  var myPost: Post = Post(driver)
+    var rebloggedPost: RebloggedPost? = RebloggedPost(driver)
+
     private var createPostPanel: List<WebElement>? = null
-    var userRecommendations: UserList? = null*/
+    var userRecommendations: UserList? = null
 
     init{
-        header = Header(driver)
-
         /*val userListContainer = driver.findElement(By.className("user_list"))
         userRecommendations = UserList(driver, userListContainer)
 

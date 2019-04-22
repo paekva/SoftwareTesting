@@ -1,5 +1,9 @@
 package Elements
 
+import Elements.popups.AccountPopup
+import Elements.popups.ActivityPopup
+import Elements.popups.MessagingPopup
+import Elements.popups.SearchPopup
 import Pages.ExplorePage
 import Pages.HomePage
 import Pages.InboxPage
@@ -7,7 +11,6 @@ import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
-import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -82,7 +85,7 @@ class Header(private val driver: WebDriver){
         return InboxPage(driver)
     }
 
-    fun openMessagingPopup() : MessagingPopup{
+    fun openMessagingPopup() : MessagingPopup {
         messagingBtn!!.click()
 
         waitForPopupToAppear()
@@ -90,7 +93,7 @@ class Header(private val driver: WebDriver){
         return MessagingPopup(driver)
     }
 
-    fun openActivityPopup() : ActivityPopup{
+    fun openActivityPopup() : ActivityPopup {
         activityBtn!!.click()
 
         waitForPopupToAppear()
@@ -98,7 +101,7 @@ class Header(private val driver: WebDriver){
         return ActivityPopup(driver)
     }
 
-    fun openAccountPopup() : AccountPopup{
+    fun openAccountPopup() : AccountPopup {
         accountBtn!!.click()
 
         waitForPopupToAppear()

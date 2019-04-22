@@ -12,7 +12,8 @@ fun main(){
     println("\u001B[36m TESTS HAD STARTED \u001B[0m")
     // loginTests(driver)
     // headerTests(driver)
-    createPostTests(driver)
+    postTests(driver)
+    // createPostTests(driver)
     println("\u001B[36m TESTS HAD FINISHED \u001B[0m")
 
     /*val regist = RegistTest(driver)
@@ -69,6 +70,12 @@ fun headerTests(driver: ChromeDriver) {
     headerTest.createPostButtonTest()
 }
 
+fun postTests(driver: ChromeDriver){
+    preTestLogin(driver)
+
+    val postTest = PostTest(driver)
+    postTest.executeAllTests()
+}
 
 fun createPostTests(driver: ChromeDriver) {
     val home = preTestLogin(driver)

@@ -4,10 +4,15 @@ import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.support.PageFactory
 
-class RebloggedPost(private val driver: WebDriver, private val postElement: WebElement): Post(driver, postElement){
+class RebloggedPost(private val driver: WebDriver): Post(driver){
 
-    var settingsBtn: WebElement? = null
+    init{
+        PageFactory.initElements(driver, this)
+    }
+
+    /*var settingsBtn: WebElement? = null
     var userInfoBtnHeader: WebElement? = null
     var userInfoBtnFooter: WebElement? = null
     var authorInfoBtn: WebElement? = null
@@ -51,5 +56,5 @@ class RebloggedPost(private val driver: WebDriver, private val postElement: WebE
         val popup = waitForPopupToAppear("tumblelog_popover")
 
         userInfoPopup = ThisUserPopup(popup, driver)
-    }
+    }*/
 }
