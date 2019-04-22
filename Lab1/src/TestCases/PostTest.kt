@@ -9,9 +9,9 @@ class PostTest(private val driver: WebDriver){
     private var homePage: HomePage = HomePage(driver)
 
     fun executeAllTests(){
-        testSharePopup()
+        // testSharePopup()
         // testReblogPopup()
-        // testReplyPopup()
+        testReplyPopup()
     }
 
     // #4.1
@@ -36,16 +36,20 @@ class PostTest(private val driver: WebDriver){
             post.closePopup()
 
             post.openSharePopup()
+            shareTests.testShareByEmail_IncorrectEmail()
+            post.closePopup()
+
+            post.openSharePopup()
             shareTests.testShareByEmail_CorrectInput()
             post.closePopup()
 
-            post.openSharePopup()
+            post!!.openSharePopup()
             shareTests.testShareComplain()
             post.closePopup()
 
-            post.openSharePopup()
+            /*post.openSharePopup()
             shareTests.testShareByPermLink()
-            post.closePopup()
+            post.closePopup()*/
 
             printSuccessMsg("testSharePopup")
         }
@@ -54,11 +58,20 @@ class PostTest(private val driver: WebDriver){
         }
     }
 
-
     // #4.3
-    fun testReplyPopup(){
+    private fun testReplyPopup(){
         try{
-            homePage.rebloggedPost!!.openReplyPopup()
+            val post = homePage.rebloggedPost
+            val replay = ReplayPopupTest(driver)
+
+            post!!.openReplyPopup()
+            replay.testEmptyInput()
+            post.closePopup()
+
+            post!!.openReplyPopup()
+            replay.testCorrectInput()
+            post.closePopup()
+
             printSuccessMsg("testReplyPopup")
         }
         catch(e:Exception){
@@ -67,7 +80,7 @@ class PostTest(private val driver: WebDriver){
     }
 
     // #4.4
-    fun testReblogPopup(){
+    private fun testReblogPopup(){
         try{
             homePage.rebloggedPost!!.openReblogPopup()
             printSuccessMsg("testReblogPopup")

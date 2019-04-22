@@ -36,7 +36,7 @@ abstract class Post(private val driver: WebDriver){
 
         val popup = waitForPopupToAppear("post-activity-popover")
 
-        return ReplyPopup(popup, driver)
+        return ReplyPopup(driver)
     }
 
     fun openReblogPopup(): ReblogPopup {

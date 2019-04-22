@@ -63,6 +63,25 @@ class SharePopupTest(private val driver: WebDriver){
     }
 
     // #4.2.5
+    fun testShareByEmail_IncorrectEmail(){
+        try{
+            val email = popup.useEmail()
+            email!!.fillInEmail("paekvayandexru")
+            email.fillInMsg("Hello!")
+
+            if(email.isSubmitEnabled())
+                throw Exception("submit btn supposed to be unabled")
+
+            popup.returnFromEmail()
+
+            printSuccessMsg("testShareByEmail_CorrectInput")
+        }
+        catch(e:Exception){
+            printErrorMsg("testShareByEmail_CorrectInput",e.message)
+        }
+    }
+
+    // #4.2.6
     fun testShareByEmail_CorrectInput(){
         try{
             val email = popup.useEmail()
