@@ -11,22 +11,24 @@ import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.JavascriptExecutor
+
+
 
 abstract class Post(private val driver: WebDriver){
 
-    @FindBy(xpath="//*[contains(@class,'is_reblog')]/div/div[4]/div[2]/div/div[1]")
+    @FindBy(xpath="//*[contains(@class,'post')]/div/div[4]/div[2]/div/div[1]")
     var shareBtn: WebElement? = null
 
-    @FindBy(xpath="//*[contains(@class,'is_reblog')]/div/div[4]/div[2]/div/div[2]")
+    @FindBy(xpath="//*[contains(@class,'post')]/div/div[4]/div[2]/div/div[2]")
     var replyBtn: WebElement? = null
 
-    @FindBy(xpath="//*[contains(@class,'is_reblog')]/div/div[4]/div[2]/div/a")
+    @FindBy(xpath="//*[contains(@class,'post')]/div/div[4]/div[2]/div/a")
     var reblogBtn: WebElement? = null
 
     fun openSharePopup(): SharePopup {
         shareBtn!!.click()
-
-        val popup = waitForPopupToAppear("popover--messaging-share-post")
+        waitForPopupToAppear("popover--messaging-share-post")
 
         return SharePopup(driver)
     }
@@ -34,7 +36,7 @@ abstract class Post(private val driver: WebDriver){
     fun openReplyPopup(): ReplyPopup {
         replyBtn!!.click()
 
-        val popup = waitForPopupToAppear("post-activity-popover")
+        waitForPopupToAppear("post-activity-popover")
 
         return ReplyPopup(driver)
     }
@@ -42,9 +44,9 @@ abstract class Post(private val driver: WebDriver){
     fun openReblogPopup(): ReblogPopup {
         reblogBtn!!.click()
 
-        val popup = waitForPopupToAppear("post-form")
+        waitForPopupToAppear("post-form")
 
-        return ReblogPopup(popup, driver)
+        return ReblogPopup(driver)
     }
 
     fun closePopup(){

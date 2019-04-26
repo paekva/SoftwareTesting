@@ -120,7 +120,6 @@ class HeaderMenuTest(private val driver: WebDriver){
         try{
             header.goToDashboardByLogo()
 
-            println(driver.currentUrl)
             if(driver.currentUrl != "https://www.tumblr.com/dashboard")
                 throw Exception("wrong page opened")
 

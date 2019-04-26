@@ -1,9 +1,6 @@
 package Elements.popups
 
-import org.openqa.selenium.By
-import org.openqa.selenium.Keys
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
+import org.openqa.selenium.*
 import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
@@ -43,6 +40,9 @@ class SharePopup(private val driver: WebDriver) {
 
     fun returnFromPermLink(){
         driver.switchTo().window(driver.windowHandles.last())
+
+        val action = Actions(driver)
+        action.sendKeys(Keys.ESCAPE).perform()
     }
 
     fun useCopyPermLink(){
@@ -79,6 +79,12 @@ class SharePopup(private val driver: WebDriver) {
     fun returnFromAbuse(){
         val action = Actions(driver)
         action.sendKeys(Keys.ESCAPE).perform()
+    }
+
+    fun horizontalScroll(){
+        val jse = driver as JavascriptExecutor
+        val about = driver.findElement(By.xpath("//*[@data-subview='networkView[]']"))
+        jse.executeScript("arguments[0].scrollIntoView();", about)
     }
 
 }

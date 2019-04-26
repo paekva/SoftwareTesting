@@ -103,7 +103,7 @@ class SharePopupTest(private val driver: WebDriver){
     // #4.2.7
     fun testShareComplain(){
         try{
-            popup!!.useAbuse()
+            popup.useAbuse()
             popup.returnFromAbuse()
             printSuccessMsg("testShareComplain")
         }

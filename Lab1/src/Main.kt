@@ -1,52 +1,29 @@
-import Elements.Header
 import Pages.HomePage
 import Pages.LoginPage
 import TestCases.*
 import Utils.UserCredentialsFactory
+import Utils.printInfoMsg
 import org.openqa.selenium.chrome.ChromeDriver
 
 fun main(){
-    System.setProperty("webdriver.chrome.driver", "E:/chromedriver.exe")
     val driver = ChromeDriver()
+    printInfoMsg("Test execution has STARTED")
 
-    println("\u001B[36m TESTS HAD STARTED \u001B[0m")
     // loginTests(driver)
     // headerTests(driver)
-    postTests(driver)
-    // createPostTests(driver)
-    println("\u001B[36m TESTS HAD FINISHED \u001B[0m")
+    messagesPopupTest(driver)
+    // postTests(driver)
+    // createPostMenuTests(driver)
+    // registrarionTests(driver)
 
-    /*val regist = RegistTest(driver)
-    try{
-        regist.registWithEmptyFields()
-    }
-    catch(e: Exception){
-        println(e.message)
-    }*/
-
-    /*val dashboardTest = HomePageTest(driver)
-    try{
-        // dashboardTest.postTest()
-    }
-    catch(e: Exception){
-        println(e.message)
-    }*/
-
+    printInfoMsg("Test execution has FINISHED")
     driver.close()
-}
-
-fun preTestLogin(driver: ChromeDriver): HomePage {
-    val user = UserCredentialsFactory()
-    driver.get("http://tumblr.com/login")
-    return LoginPage(driver)
-        .fillInEmail(user.getCorrectEmail())
-        .fillInPassword(user.getCorrectPassword())
-        .login()
 }
 
 fun loginTests(driver: ChromeDriver) {
     val loginTest = LoginTest(driver)
-
+    
+    printInfoMsg("\tLOGIN tests")
     loginTest.loginWithIncorrectFormatOfEmail()
     loginTest.loginWithUnregisteredEmail()
     loginTest.loginWithEmptyEmail()
@@ -55,9 +32,14 @@ fun loginTests(driver: ChromeDriver) {
     loginTest.loginWithCorrectCredentials()
 }
 
+fun registrarionTests(driver: ChromeDriver) {
+    printInfoMsg("\tREGISTRATION tests")
+}
+
 fun headerTests(driver: ChromeDriver) {
     preTestLogin(driver)
 
+    printInfoMsg("\tHEADER tests")
     val headerTest = HeaderMenuTest(driver)
     headerTest.exploreButtonTest()
     headerTest.inboxButtonTest()
@@ -73,16 +55,18 @@ fun headerTests(driver: ChromeDriver) {
 fun postTests(driver: ChromeDriver){
     preTestLogin(driver)
 
+    printInfoMsg("\tPOST tests")
     val postTest = PostTest(driver)
     postTest.executeAllTests()
 }
 
-fun createPostTests(driver: ChromeDriver) {
+fun createPostMenuTests(driver: ChromeDriver) {
     val home = preTestLogin(driver)
     val header = home.header
     val createPost = CreatePostTest(driver)
 
-    header!!.openCreatePostPopup()
+    printInfoMsg("\tCREATE POST MENU tests")
+    header.openCreatePostPopup()
     createPost.textPostOptionTest()
 
     header.openCreatePostPopup()
@@ -102,4 +86,24 @@ fun createPostTests(driver: ChromeDriver) {
 
     header.openCreatePostPopup()
     createPost.videoPostOptionTest()
+}
+
+// TODO: FIX - DO NOT WORK CORRECTLY
+fun messagesPopupTest(driver: ChromeDriver){
+    preTestLogin(driver)
+    val messagesTest = MessagingPopupTests(driver)
+
+    printInfoMsg("MESSAGES tests")
+    messagesTest.cancelMessageTest()
+    messagesTest.offeredRecipientMessageTest()
+    messagesTest.searchedRecipientMessageTest()
+}
+
+private fun preTestLogin(driver: ChromeDriver): HomePage {
+    val user = UserCredentialsFactory()
+    driver.get("http://tumblr.com/login")
+    return LoginPage(driver)
+        .fillInEmail(user.getCorrectEmail())
+        .fillInPassword(user.getCorrectPassword())
+        .login()
 }

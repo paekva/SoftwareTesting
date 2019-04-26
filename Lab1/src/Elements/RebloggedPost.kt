@@ -1,60 +1,58 @@
 package Elements
 
-import org.openqa.selenium.By
+import Elements.popups.AuthorPopup
+import Elements.popups.OtherUserPopup
+import Elements.popups.SettingsPopup
+import Elements.popups.ThisUserPopup
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 
 class RebloggedPost(private val driver: WebDriver): Post(driver){
+
+    @FindBy(xpath = "//*[contains(@class,'is_reblog')]/div/div[4]/div[2]/div/div[3]")
+    private var settingsBtn: WebElement? = null
+
+    @FindBy(xpath = "//*[contains(@class,'post_header')]/div/a[2]")
+    private var author: WebElement? = null
+
+    @FindBy(xpath = "//*[contains(@class,'post_header')]/div/a[1]")
+    private var user: WebElement? = null
 
     init{
         PageFactory.initElements(driver, this)
     }
 
-    /*var settingsBtn: WebElement? = null
-    var userInfoBtnHeader: WebElement? = null
-    var userInfoBtnFooter: WebElement? = null
-    var authorInfoBtn: WebElement? = null
-
-    var settingsPopup: SettingsPopup? = null
-    var userInfoPopup: ThisUserPopup? = null
-    var authorInfoPopup: OtherUserPopup? = null
-
-    init{
-        println("in userpost class")
-        settingsBtn = postElement.findElement(By.xpath("//div[@title=\"Параметры поста\"]"))
-        userInfoBtnHeader = postElement.findElement(By.xpath("//div[2]/div[1]/div/a[1]"))
-        userInfoBtnFooter = postElement.findElement(By.xpath("//div[2]/div[2]/div/div[2]/div[1]/a[1]"))
-        authorInfoBtn = postElement.findElement(By.xpath("//div[2]/div[1]/div/a[2]"))
-    }
-
-    fun openSettingsPopup(){
+    fun openSettingsPopup(): SettingsPopup {
         settingsBtn!!.click()
 
-        val popup = waitForPopupToAppear("popover")
-
-        println("found one")
-        settingsPopup = SettingsPopup(popup, driver)
+        return SettingsPopup(driver)
     }
 
-    fun openReblogInfoHeaderPopup(){
-        val hover = Actions(driver)
-        hover.moveToElement(userInfoBtnHeader).build().perform()
+    fun openUserPopup(): ThisUserPopup {
+        // user!!.click()
+        val action = Actions(driver)
+        action.moveToElement(user).build().perform()
 
-        println("header overed")
-        val popup = waitForPopupToAppear("popover")
-
-        userInfoPopup = ThisUserPopup(popup, driver)
+        return ThisUserPopup(driver)
     }
 
-    fun openReblogInfoFooterPopup(){
-        val hover = Actions(driver)
-        hover.moveToElement(userInfoBtnFooter).build().perform()
+    fun openAuthorPopup(): OtherUserPopup {
+        // author!!.click()
 
-        println("footer overed")
-        val popup = waitForPopupToAppear("tumblelog_popover")
+        val action = Actions(driver)
+        action.moveToElement(author).build().perform()
 
-        userInfoPopup = ThisUserPopup(popup, driver)
-    }*/
+        return OtherUserPopup(driver)
+    }
+
+    fun openUserProfile() {
+        user!!.click()
+    }
+
+    fun openAuthorProfile() {
+        author!!.click()
+    }
 }

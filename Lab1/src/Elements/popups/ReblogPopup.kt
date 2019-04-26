@@ -3,39 +3,88 @@ package Elements.popups
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
-class ReblogPopup(private val popupElement: WebElement, private val driver: WebDriver){
+import org.openqa.selenium.support.FindBy
+import org.openqa.selenium.support.PageFactory
 
+class ReblogPopup(private val driver: WebDriver){
+
+    @FindBy(xpath = "//*[contains(@class, 'control left')]/div/button")
+    private var leftControl: WebElement? = null
+
+    @FindBy(xpath = "//*[contains(@class, 'popover--tumblelog-select-dropdown')]")
+    private var popMenu: WebElement? = null
+
+    @FindBy(xpath = "//*[contains(@class, 'post-settings')]")
+    private var settingsBtn: WebElement? = null
+
+    @FindBy(xpath = "//*[contains(@class, 'post-form--footer')]")
     private var closeBtn: WebElement? = null
-    var leftControl: WebElement? = null
-    var rightControl: WebElement? = null
-    var reblogTrial: WebElement? = null
-    var textField: WebElement? = null
+
+    @FindBy(xpath = "//*[@aria-label='Подпись']")
+    private var textFormatField: WebElement? = null
+
+    @FindBy(xpath = "//*[@aria-label='HTML-содержимое']")
+    private var htmlFormatField: WebElement? = null
+
+    @FindBy(xpath = "//*[contains(@class, 'create_post_button')]")
     private var reblogBtn: WebElement? = null
-    var dropdownBtn: WebElement? = null
-    private var footer: WebElement? = null
+
+    @FindBy(xpath = "//*[contains(@class, 'dropdown-area')]")
+    private var reblogDropdownBtn: WebElement? = null
+
 
     init{
-        println("creating reblog 1")
-        leftControl = popupElement.findElement(By.className("tumblelog-select"))
-        println("creating reblog 2")
-        rightControl = popupElement.findElement(By.className("post-settings"))
-        println("creating reblog 3")
-        reblogTrial = popupElement.findElement(By.className("control-reblog-trail"))
-        println("creating reblog 4")
-        textField = popupElement.findElement(By.className("editor"))
-        println("creating reblog 5")
-        footer = popupElement.findElement(By.className("post-form--footer"))
-        println("creating reblog 6")
-        closeBtn = popupElement.findElement(By.className("tx-button"))
-        println("creating reblog 7")
-        reblogBtn = popupElement.findElement(By.className("create_post_button"))
-        println("creating reblog 8")
-        dropdownBtn = popupElement.findElement(By.className("dropdown-area"))
+        PageFactory.initElements(driver, this)
+    }
+
+    fun fillInMsgField(msg: String) {
+        textFormatField!!.sendKeys(msg)
+    }
+
+    fun getTextFormatField(): WebElement?{
+        return textFormatField
+    }
+
+    fun getHtmlFormatField(): WebElement?{
+        return htmlFormatField
     }
 
     fun closePopup(){
         closeBtn!!.click()
+    }
 
-        driver.findElement(By.className("btn_1")).click()
+    fun reblog(){
+        reblogBtn!!.click()
+    }
+
+    fun openSettings(): ReblogSettingsPopup{
+        settingsBtn!!.click()
+
+        return ReblogSettingsPopup(driver)
+    }
+
+    fun closeSettings() {
+        settingsBtn!!.click()
+    }
+
+    fun openDropdown(): ReblogDropdownPopup{
+        reblogDropdownBtn!!.click()
+
+        return ReblogDropdownPopup(driver)
+    }
+
+    fun closeDropdown(){
+        reblogDropdownBtn!!.click()
+    }
+
+    fun openAuthorLabel(): WebElement? {
+        leftControl!!.click()
+        driver.findElement(By.xpath("//*[contains(@class,'popover--tumblelog-select-dropdown')]")).click()
+
+        return popMenu
+    }
+
+    fun closeAuthorLabel(){
+        leftControl!!.click()
     }
 }

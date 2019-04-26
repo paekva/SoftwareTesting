@@ -15,57 +15,82 @@
       <file leaf-file-name="PostTest.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestCases/PostTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-391">
-              <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+            <state relative-caret-position="102">
+              <caret line="54" column="25" lean-forward="true" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
               <folding>
-                <element signature="e#772#1798#0" />
+                <element signature="e#19#133#0" expanded="true" />
+                <element signature="n#!!block;n#testReplyPopup#0;n#!!block;n#PostTest#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReplayPopupTest.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TestCases/ReplayPopupTest.kt">
+      <file leaf-file-name="Main.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-212">
-              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="117">
+              <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
               <folding>
-                <element signature="e#19#89#0" expanded="true" />
+                <element signature="e#0#172#0" expanded="true" />
+                <element signature="n#!!block;n#loginTests#0" />
+                <element signature="n#!!block;n#loginTests#1" />
+                <element signature="n#!!block;n#createPostTests#0" />
+                <element signature="n#!!block;n#preTestLogin#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReplyPopup.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Elements/popups/ReplyPopup.kt">
+      <file leaf-file-name="MessagingPopupTests.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TestCases/MessagingPopupTests.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="918">
+              <caret line="60" column="48" lean-forward="true" selection-start-line="60" selection-start-column="48" selection-end-line="60" selection-end-column="48" />
               <folding>
-                <element signature="e#25#188#0" expanded="true" />
+                <element signature="e#19#107#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SharePopupTest.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TestCases/SharePopupTest.kt">
+      <file leaf-file-name="Header.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Elements/Header.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+            <state relative-caret-position="153">
+              <caret line="54" column="61" lean-forward="true" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
+              <folding>
+                <element signature="n#!!block;n#openActivityPopup#0;n#!!block;n#Header#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RebloggedPost.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Elements/RebloggedPost.kt">
+      <file leaf-file-name="DialogPopup.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Elements/popups/DialogPopup.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="11" selection-end-column="46" />
+            <state relative-caret-position="239">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
               <folding>
-                <element signature="e#18#217#0" expanded="true" />
-                <element signature="e#293#1814#0" />
+                <element signature="e#25#220#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HeaderMenuTest.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TestCases/HeaderMenuTest.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1547">
+              <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -85,23 +110,21 @@
       <find>registerError</find>
       <find>loginPage</find>
       <find>perform</find>
+      <find>createPostTests</find>
+      <find>Keys</find>
     </findStrings>
     <replaceStrings>
       <replace>errorMsg</replace>
       <replace>header</replace>
+      <replace>createPostMenuTests</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/.gitignore" />
-        <option value="$PROJECT_DIR$/src/Utils/UserCredentials.kt" />
-        <option value="$PROJECT_DIR$/src/Elements/ActivityPopup.kt" />
-        <option value="$PROJECT_DIR$/src/Elements/MessagingPopup.kt" />
         <option value="$PROJECT_DIR$/src/Elements/AccountPopup.kt" />
         <option value="$PROJECT_DIR$/src/Elements/ReplyPopup.kt" />
         <option value="$PROJECT_DIR$/src/Elements/ReblogPopup.kt" />
-        <option value="$PROJECT_DIR$/src/Elements/UserPost.kt" />
         <option value="$PROJECT_DIR$/src/Elements/ThisUserPopup.kt" />
         <option value="$PROJECT_DIR$/src/Elements/AuthorPopup.kt" />
         <option value="$PROJECT_DIR$/src/Elements/UserList.kt" />
@@ -113,29 +136,43 @@
         <option value="$PROJECT_DIR$/src/TestCases/DashboardTest.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/LoginTest.kt" />
         <option value="$PROJECT_DIR$/src/Pages/LoginPage.kt" />
-        <option value="$PROJECT_DIR$/src/Utils/utilFunctions.kt" />
         <option value="$PROJECT_DIR$/src/Elements/SearchPopup.kt" />
         <option value="$PROJECT_DIR$/src/Pages/ExplorePage.kt" />
         <option value="$PROJECT_DIR$/src/Pages/InboxPage.kt" />
-        <option value="$PROJECT_DIR$/src/TestCases/HeaderMenuTest.kt" />
         <option value="$PROJECT_DIR$/src/Elements/Header.kt" />
         <option value="$PROJECT_DIR$/src/Elements/CreatePostOptionPopup.kt" />
         <option value="$PROJECT_DIR$/src/Elements/OptionPopup.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/CreatePostTest.kt" />
         <option value="$PROJECT_DIR$/src/Elements/CreatePostPopup.kt" />
-        <option value="$PROJECT_DIR$/src/Pages/HomePage.kt" />
-        <option value="$PROJECT_DIR$/src/Elements/RebloggedPost.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/HomePageTest.kt" />
-        <option value="$PROJECT_DIR$/src/Main.kt" />
         <option value="$PROJECT_DIR$/src/Elements/SharePopup.kt" />
         <option value="$PROJECT_DIR$/src/Elements/popups/AccountPopup.kt" />
         <option value="$PROJECT_DIR$/src/Elements/popups/EmailPopup.kt" />
+        <option value="$PROJECT_DIR$/src/TestCases/ReplayPopupTest.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/popups/ReplyPopup.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/popups/ReblogDropdownPopup.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/popups/ReblogSettingsPopup.kt" />
+        <option value="$PROJECT_DIR$/src/TestCases/ReblogPopupTest.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/popups/ReblogPopup.kt" />
+        <option value="$PROJECT_DIR$/src/Pages/HomePage.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/Post.kt" />
         <option value="$PROJECT_DIR$/src/Elements/popups/SharePopup.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/SharePopupTest.kt" />
-        <option value="$PROJECT_DIR$/src/TestCases/ReplayPopupTest.kt" />
-        <option value="$PROJECT_DIR$/src/Elements/Post.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/popups/AuthorPopup.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/popups/OtherUserPopup.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/popups/ThisUserPopup.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/RebloggedPost.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/popups/SettingsPopup.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/UserPost.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/PostTest.kt" />
-        <option value="$PROJECT_DIR$/src/Elements/popups/ReplyPopup.kt" />
+        <option value="$PROJECT_DIR$/src/TestCases/HeaderMenuTest.kt" />
+        <option value="$PROJECT_DIR$/src/Utils/utilFunctions.kt" />
+        <option value="$PROJECT_DIR$/src/TestCases/MessagingPopupTests.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/popups/MessagingPopup.kt" />
+        <option value="$PROJECT_DIR$/src/Main.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/UserFullProfile.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/popups/DialogPopup.kt" />
+        <option value="$PROJECT_DIR$/src/.gitignore" />
       </list>
     </option>
   </component>
@@ -145,13 +182,19 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="652" />
+    <option name="width" value="805" />
     <option name="height" value="728" />
   </component>
   <component name="ProjectView">
@@ -159,7 +202,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -182,31 +224,13 @@
               <item name="Lab1" type="b2602c69:ProjectViewProjectNode" />
               <item name="Lab1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Elements" type="462c0819:PsiDirectoryNode" />
-              <item name="popups" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Lab1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Lab1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="TestCases" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Lab1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -313,12 +337,15 @@
       <updated>1554832913183</updated>
       <workItem from="1554832918939" duration="33650000" />
       <workItem from="1555489224437" duration="1509000" />
-      <workItem from="1555745772793" duration="46814000" />
+      <workItem from="1555745772793" duration="57350000" />
+      <workItem from="1556087854717" duration="8118000" />
+      <workItem from="1556102601128" duration="3189000" />
+      <workItem from="1556249362087" duration="7969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81973000" />
+    <option name="totallyTimeSpent" value="111785000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -331,19 +358,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32838285" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32838285" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32673267" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50075644" side_tool="true" weight="0.36138615" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="3" weight="0.32980332" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.330033" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49924356" visible="true" weight="0.26072606" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49924356" visible="true" weight="0.26567656" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15960665" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22314675" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -359,15 +387,15 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.5214521" />
       <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.13313162" />
       <window_info id="Structure" order="4" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="4" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" order="11" weight="0.32838285" />
-      <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info id="Designer" order="0" />
       <window_info id="UI Designer" order="1" />
       <window_info anchor="bottom" id="Find" order="6" />
@@ -375,7 +403,7 @@
       <window_info anchor="right" id="Palette&#9;" order="2" />
       <window_info anchor="bottom" id="Terminal" order="2" sideWeight="0.49924356" weight="0.68976897" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.50075644" side_tool="true" weight="0.36138615" />
-      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="5" />
@@ -392,33 +420,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#147#0" expanded="true" />
-            <element signature="e#569#716#0" />
-            <element signature="e#741#894#0" />
-            <element signature="n#!!block;n#preTestLogin#0" />
-            <element signature="n#!!block;n#loginTests#0" />
-            <element signature="n#!!block;n#headerTests#0" />
-            <element signature="n#!!block;n#createPostTests#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestCases/LoginTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="58" lean-forward="true" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
-          <folding>
-            <element signature="e#19#93#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -433,9 +442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="e#19#77#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -443,9 +449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
-          <folding>
-            <element signature="e#15#340#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -454,10 +457,8 @@
         <state relative-caret-position="1037">
           <caret line="61" column="27" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
           <folding>
-            <element signature="n#!!block;n#testSharePopup#0;n#!!block;n#PostTest#0" />
+            <element signature="e#19#133#0" expanded="true" />
             <element signature="n#!!block;n#testReplyPopup#0;n#!!block;n#PostTest#0" />
-            <element signature="n#!!block;n#testReblogPopup#0;n#!!block;n#PostTest#0" />
-            <element signature="n#!!block;n#testSettingsPopup#0;n#!!block;n#PostTest#0" />
           </folding>
         </state>
       </provider>
@@ -466,9 +467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="23" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="23" />
-          <folding>
-            <element signature="e#18#231#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -477,7 +475,9 @@
         <state relative-caret-position="867">
           <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
           <folding>
-            <element signature="n#!!block;n#waitForPopupToAppear#0;n#!!block;n#Post#0" />
+            <element signature="e#18#502#0" expanded="true" />
+            <element signature="n#!!block;n#openReplyPopup#0;n#!!block;n#Post#0" />
+            <element signature="n#!!block;n#closePopup#0;n#!!block;n#Post#0" />
           </folding>
         </state>
       </provider>
@@ -486,16 +486,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
-          <folding>
-            <element signature="e#18#170#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -506,34 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/popups/MessagingPopup.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="50" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/popups/ReblogPopup.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/popups/AuthorPopup.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/popups/ThisUserPopup.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Elements/UserList.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -541,37 +503,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/popups/SettingsPopup.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="23" />
-          <folding>
-            <element signature="e#18#231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/popups/OtherUserPopup.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utils/UserCredentials.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utils/UserCredentials.kt" />
     <entry file="file://$PROJECT_DIR$/src/TestCases/RegistTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
-          <folding>
-            <element signature="e#19#294#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -579,9 +515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
-          <folding>
-            <element signature="e#15#317#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -599,13 +532,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utils/utilFunctions.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pages/ExplorePage.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -617,16 +543,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/Header.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="19" selection-end-column="49" />
-          <folding>
-            <element signature="n#!!block;n#openActivityPopup#0;n#!!block;n#Header#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -644,9 +560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="119" column="5" lean-forward="true" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
-          <folding>
-            <element signature="e#19#195#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -654,9 +567,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="55" lean-forward="true" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
-          <folding>
-            <element signature="e#18#320#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -667,16 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestCases/LoginTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-          <folding>
-            <element signature="e#19#93#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestCases/HomePageTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -684,121 +584,243 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestCases/HeaderMenuTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="75" column="16" selection-start-line="75" selection-start-column="16" selection-end-line="75" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#147#0" expanded="true" />
-            <element signature="e#569#716#0" />
-            <element signature="e#741#894#0" />
-            <element signature="n#!!block;n#preTestLogin#0" />
-            <element signature="n#!!block;n#loginTests#0" />
-            <element signature="n#!!block;n#headerTests#0" />
-            <element signature="n#!!block;n#createPostTests#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/popups/AccountPopup.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Elements/popups/EmailPopup.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="17" column="56" lean-forward="true" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/ReplyPopup.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
           <folding>
             <element signature="e#25#188#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/HomePage.kt">
+    <entry file="file://$PROJECT_DIR$/src/TestCases/ReplayPopupTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        <state relative-caret-position="119">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/ReblogDropdownPopup.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/ReblogSettingsPopup.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/ReblogPopup.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="40" column="39" lean-forward="true" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
           <folding>
-            <element signature="e#15#340#0" expanded="true" />
+            <element signature="e#25#218#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/popups/SharePopup.kt">
+    <entry file="file://$PROJECT_DIR$/src/TestCases/ReblogPopupTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="35" column="9" lean-forward="true" selection-start-line="35" selection-start-column="9" selection-end-line="36" selection-end-column="46" />
-          <folding>
-            <element signature="e#18#211#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/RebloggedPost.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="11" selection-end-column="46" />
-          <folding>
-            <element signature="e#18#217#0" expanded="true" />
-            <element signature="e#293#1814#0" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="68" column="13" lean-forward="true" selection-start-line="68" selection-start-column="13" selection-end-line="72" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Elements/Post.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="73">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
           <folding>
-            <element signature="n#!!block;n#waitForPopupToAppear#0;n#!!block;n#Post#0" />
+            <element signature="e#18#502#0" expanded="true" />
+            <element signature="n#!!block;n#openReplyPopup#0;n#!!block;n#Post#0" />
+            <element signature="n#!!block;n#closePopup#0;n#!!block;n#Post#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/ThisUserPopup.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/OtherUserPopup.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/AuthorPopup.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/AccountPopup.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/SettingsPopup.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="31" column="27" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/HomePage.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/UserPost.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+          <folding>
+            <element signature="e#18#218#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TestCases/SharePopupTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        <state relative-caret-position="303">
+          <caret line="104" column="12" selection-start-line="104" selection-start-column="12" selection-end-line="104" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestCases/ReplayPopupTest.kt">
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/SharePopup.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-212">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        <state relative-caret-position="17">
+          <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestCases/LoginTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="100" column="29" lean-forward="true" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestCases/HeaderMenuTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1547">
+          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utils/utilFunctions.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/MessagingPopup.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
           <folding>
-            <element signature="e#19#89#0" expanded="true" />
+            <element signature="e#25#320#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/Header.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="54" column="61" lean-forward="true" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
+          <folding>
+            <element signature="n#!!block;n#openActivityPopup#0;n#!!block;n#Header#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#172#0" expanded="true" />
+            <element signature="n#!!block;n#loginTests#0" />
+            <element signature="n#!!block;n#loginTests#1" />
+            <element signature="n#!!block;n#createPostTests#0" />
+            <element signature="n#!!block;n#preTestLogin#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TestCases/PostTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        <state relative-caret-position="102">
+          <caret line="54" column="25" lean-forward="true" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
           <folding>
-            <element signature="e#772#1798#0" />
+            <element signature="e#19#133#0" expanded="true" />
+            <element signature="n#!!block;n#testReplyPopup#0;n#!!block;n#PostTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/popups/ReplyPopup.kt">
+    <entry file="file://$PROJECT_DIR$/src/Elements/UserFullProfile.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="68">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/RebloggedPost.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestCases/MessagingPopupTests.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="60" column="48" lean-forward="true" selection-start-line="60" selection-start-column="48" selection-end-line="60" selection-end-column="48" />
           <folding>
-            <element signature="e#25#188#0" expanded="true" />
+            <element signature="e#19#107#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/DialogPopup.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#25#220#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
         </state>
       </provider>
     </entry>
