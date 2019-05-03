@@ -19,7 +19,7 @@ class DialogPopup(private val driver: WebDriver) {
     @FindBy(xpath = "//*[@class='popover--conversation-popover']/div/div[1]/div/div[2]/div[2]/a[2]")
     private val minimizeBtn: WebElement? = null
 
-    @FindBy(xpath = "//*[@class='popover--conversation-popover']/div/div[1]/div[1]/div[2]/div[2]/a[3]")
+    @FindBy(xpath = "//*[@class='popover--conversation-popover']/div/div[1]/div/div[2]/div[2]/a[3]")
     private val closeBtn: WebElement? = null
 
     @FindBy(xpath = "//*[@class='popover--conversation-popover']/div/div[1]/div[4]/div[2]/div[1]/button[1]")
@@ -33,6 +33,9 @@ class DialogPopup(private val driver: WebDriver) {
 
     @FindBy(xpath = "//*[@class='popover--conversation-popover']/div/div[1]/div[4]/div[2]/div[2]/button")
     private val sendBtn: WebElement? = null
+
+    @FindBy(xpath = "//a[@class='conversation-minimized']")
+    private val minimizedConversation: WebElement? = null
 
     init {
         PageFactory.initElements(driver, this)
@@ -69,6 +72,21 @@ class DialogPopup(private val driver: WebDriver) {
     fun attachSticker(){
         attachSticker!!.click()
     }
+
+    fun minimizeDialog() : DialogPopup{
+        minimizeBtn!!.click()
+        return this
+    }
+
+    fun maximizeDialog(): DialogPopup{
+        minimizedConversation!!.click()
+        return this
+    }
+
+    fun openSettings(){
+        moreActionsBtn!!.click()
+    }
+
     fun closePopup(){
         closeBtn!!.click()
     }

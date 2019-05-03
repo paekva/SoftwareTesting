@@ -1,7 +1,9 @@
 package TestCases
 
 import Elements.CreatePostPopup
+import Elements.Header
 import Utils.printErrorMsg
+import Utils.printInfoMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
@@ -10,9 +12,31 @@ import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
-class CreatePostTest(private val driver: WebDriver) {
+class CreatePostTest(private val driver: WebDriver, private val header: Header, private val popup: CreatePostPopup) {
 
-    private val popup: CreatePostPopup = CreatePostPopup(driver)
+    fun runAllTests(){
+        printInfoMsg("\tCREATE POST MENU tests")
+
+        textPostOptionTest()
+
+        header.openCreatePostPopup()
+        photoPostOptionTest()
+
+        header.openCreatePostPopup()
+        quotePostOptionTest()
+
+        header.openCreatePostPopup()
+        chatPostOptionTest()
+
+        header.openCreatePostPopup()
+        linkPostOptionTest()
+
+        header.openCreatePostPopup()
+        audioPostOptionTest()
+
+        header.openCreatePostPopup()
+        videoPostOptionTest()
+    }
 
     // #5.1
     fun textPostOptionTest(){
@@ -120,7 +144,7 @@ class CreatePostTest(private val driver: WebDriver) {
     }
 
     private fun waitForCloseOfPopovers(){
-        val wait = WebDriverWait(driver, 30)
+        val wait = WebDriverWait(driver, 40)
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"home_button\"]/a")))
     }
 

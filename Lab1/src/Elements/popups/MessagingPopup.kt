@@ -10,19 +10,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
 class MessagingPopup(private val driver: WebDriver) {
-    @FindBy(xpath = "//*[@class='messaging-inbox']/div[1]/div[2]/a[1][text()='Новое сообщение']")
+    @FindBy(xpath = "//*[@class='messaging-inbox']/div[1]/div[2]/a[text()='Новое сообщение']")
     private val newMsgBtn: WebElement? = null
 
-    @FindBy(xpath = "//*[@class='messaging-inbox']/div[1]/div[2]/a[1][text()='Отмена']")
+    @FindBy(xpath = "//*[@class='messaging-inbox']/div[1]/div[2]/a[text()='Отмена']")
     private val cancelNewMsgBtn: WebElement? = null
 
     @FindBy(xpath = "//*[@class='messaging-inbox']/div[2]/div[1]/label/span[2]/input")
     private val recipientSearchField: WebElement? = null
 
-    @FindBy(xpath = "//*[@class='inbox-recipients' and @data-subview='searchResultView']/div[1]/div[1]/div[1]/a[1]")
+    @FindBy(xpath = "//*[@data-subview='searchResultView']/div/div[1]/div[1]/a")
     private val searchResultRecipient: WebElement? = null
 
-    @FindBy(xpath = "//*[@class='inbox-recipients' and @data-subview='favoritesView']/div[1]/div[1]/div[@class='inbox-recipient']/a[1]")
+    @FindBy(xpath = "//*[@data-subview='favoritesView']/div/div[1]/div[1]/a/div/h4")
     private val offeredRecipient: WebElement? = null
 
     init {
@@ -49,17 +49,12 @@ class MessagingPopup(private val driver: WebDriver) {
     }
 
     fun chooseFoundRecipient() : DialogPopup {
-        println("chooseFoundRecipient")
-        println(searchResultRecipient)
         searchResultRecipient!!.click()
         return DialogPopup(driver)
     }
 
     fun chooseOfferedRecipient() : DialogPopup {
-        println("chooseOfferedRecipient")
-        println(offeredRecipient)
         offeredRecipient!!.click()
-        println(offeredRecipient)
         return DialogPopup(driver)
     }
 

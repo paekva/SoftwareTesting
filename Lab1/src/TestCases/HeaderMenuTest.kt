@@ -2,6 +2,7 @@ package TestCases
 
 import Elements.*
 import Utils.printErrorMsg
+import Utils.printInfoMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver
 
@@ -9,10 +10,38 @@ class HeaderMenuTest(private val driver: WebDriver){
 
     private val header: Header = Header(driver)
 
+    fun runAllTests(){
+        beforeTests()
+
+        createPostButtonTest()
+        /*accountButtonTest()
+        activityButtonTest()
+        messageButtonTest()
+        inboxButtonTest()
+        exploreButtonTest()
+        dashboardButtonTest()
+        searchFieldTest()
+        logoButtonTest()*/
+
+        afterTests()
+    }
+
+    private fun beforeTests(){
+        driver.get("https://www.tumblr.com")
+        printInfoMsg("\tHEADER tests")
+    }
+
+    private fun afterTests(){
+        driver.get("https://www.tumblr.com")
+    }
+
     // #3.1
-    fun dashboardButtonTest(){
+    private fun dashboardButtonTest(){
         try{
-            header.goToDashboard()
+            val homePage = header.goToDashboard()
+            val homePageTest = HomePageTest(driver, homePage)
+            homePageTest.runAllTests()
+
             printSuccessMsg("dashboardButton")
         }
         catch (e: Exception){
@@ -21,9 +50,12 @@ class HeaderMenuTest(private val driver: WebDriver){
     }
 
     // #3.2
-    fun exploreButtonTest(){
+    private fun exploreButtonTest(){
         try{
-            header.goToExplore()
+            val explorePage = header.goToExplore()
+            val explorePageTest = ExplorePageTest(driver, explorePage)
+            explorePageTest.runAllTests()
+
             printSuccessMsg("exploreButtonTest")
         }
         catch (e: Exception){
@@ -32,7 +64,7 @@ class HeaderMenuTest(private val driver: WebDriver){
     }
 
     // #3.3
-    fun inboxButtonTest(){
+    private fun inboxButtonTest(){
         try{
             header.goToInbox()
             printSuccessMsg("inboxButtonTest")
@@ -43,7 +75,7 @@ class HeaderMenuTest(private val driver: WebDriver){
     }
 
     // #3.4
-    fun messageButtonTest(){
+    private fun messageButtonTest(){
         try{
             header.openMessagingPopup()
             header.closeMessagingPopup()
@@ -56,7 +88,7 @@ class HeaderMenuTest(private val driver: WebDriver){
     }
 
     // #3.5
-    fun activityButtonTest(){
+    private fun activityButtonTest(){
         try{
             header.openActivityPopup()
             header.closeActivityPopup()
@@ -82,10 +114,11 @@ class HeaderMenuTest(private val driver: WebDriver){
     }
 
     // #3.7
-    fun createPostButtonTest(){
+    private fun createPostButtonTest(){
         try{
-            header.openCreatePostPopup()
-            header.closeCreatePostPopup()
+            val createPostPopup = header.openCreatePostPopup()
+            val createPost = CreatePostTest(driver, header, createPostPopup)
+            createPost.runAllTests()
 
             printSuccessMsg("createPostButtonTest")
         }
@@ -95,7 +128,7 @@ class HeaderMenuTest(private val driver: WebDriver){
     }
 
     // #3.8
-    fun searchFieldTest(){
+    private fun searchFieldTest(){
         try{
             val searchText = "searchText"
             val resultPopup = header.fillInSearchField(searchText)
@@ -116,7 +149,7 @@ class HeaderMenuTest(private val driver: WebDriver){
     }
 
     // #3.8
-    fun logoButtonTest(){
+    private fun logoButtonTest(){
         try{
             header.goToDashboardByLogo()
 

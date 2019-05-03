@@ -10,11 +10,18 @@ fun main(){
     printInfoMsg("Test execution has STARTED")
 
     // loginTests(driver)
-    // headerTests(driver)
-    messagesPopupTest(driver)
-    // postTests(driver)
-    // createPostMenuTests(driver)
     // registrarionTests(driver)
+
+    preTestLogin(driver)
+    headerTests(driver)
+    // footerTests(driver)
+
+    // postTests(driver)
+    // messagesPopupTest(driver)
+    // dialogPopupTest(driver)
+    // createPostMenuTests(driver)
+
+    activityPopupTest(driver)
 
     printInfoMsg("Test execution has FINISHED")
     driver.close()
@@ -37,66 +44,48 @@ fun registrarionTests(driver: ChromeDriver) {
 }
 
 fun headerTests(driver: ChromeDriver) {
-    preTestLogin(driver)
-
-    printInfoMsg("\tHEADER tests")
     val headerTest = HeaderMenuTest(driver)
-    headerTest.exploreButtonTest()
-    headerTest.inboxButtonTest()
-    headerTest.dashboardButtonTest()
-    headerTest.messageButtonTest()
-    headerTest.activityButtonTest()
-    headerTest.accountButtonTest()
-    headerTest.logoButtonTest()
-    headerTest.searchFieldTest()
-    headerTest.createPostButtonTest()
+    headerTest.runAllTests()
 }
 
-fun postTests(driver: ChromeDriver){
-    preTestLogin(driver)
-
-    printInfoMsg("\tPOST tests")
-    val postTest = PostTest(driver)
-    postTest.executeAllTests()
+fun footerTests(driver: ChromeDriver){
+    val footerTest = FooterMenuTest(driver)
+    footerTest.runAllTests()
 }
 
-fun createPostMenuTests(driver: ChromeDriver) {
-    val home = preTestLogin(driver)
-    val header = home.header
-    val createPost = CreatePostTest(driver)
 
-    printInfoMsg("\tCREATE POST MENU tests")
-    header.openCreatePostPopup()
-    createPost.textPostOptionTest()
-
-    header.openCreatePostPopup()
-    createPost.photoPostOptionTest()
-
-    header.openCreatePostPopup()
-    createPost.quotePostOptionTest()
-
-    header.openCreatePostPopup()
-    createPost.chatPostOptionTest()
-
-    header.openCreatePostPopup()
-    createPost.linkPostOptionTest()
-
-    header.openCreatePostPopup()
-    createPost.audioPostOptionTest()
-
-    header.openCreatePostPopup()
-    createPost.videoPostOptionTest()
-}
-
-// TODO: FIX - DO NOT WORK CORRECTLY
+// TODO: finish
 fun messagesPopupTest(driver: ChromeDriver){
     preTestLogin(driver)
     val messagesTest = MessagingPopupTests(driver)
 
     printInfoMsg("MESSAGES tests")
     messagesTest.cancelMessageTest()
-    messagesTest.offeredRecipientMessageTest()
     messagesTest.searchedRecipientMessageTest()
+    // messagesTest.offeredRecipientMessageTest()
+}
+
+// TODO: finish
+fun dialogPopupTest(driver: ChromeDriver){
+    preTestLogin(driver)
+    val dialog = DialogPopupTests(driver)
+
+    printInfoMsg("DIALOG tests")
+    dialog.authorProfileTest()
+    dialog.minimizeDialogTest()
+    dialog.emptyInputTest()
+    dialog.correctInputTest()
+    dialog.sendGifTest()
+    dialog.sendStickerTest()
+    dialog.cancelOfSendStickerTest()
+}
+
+fun activityPopupTest(driver: ChromeDriver){
+    try{
+    }
+    catch(e: Exception){
+        println(e.message)
+    }
 }
 
 private fun preTestLogin(driver: ChromeDriver): HomePage {

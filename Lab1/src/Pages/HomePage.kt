@@ -7,8 +7,6 @@ import org.openqa.selenium.WebElement
 
 
 class HomePage(val driver: WebDriver) {
-
-    var header: Header = Header(driver)
     var rebloggedPost: RebloggedPost? = RebloggedPost(driver)
     var recommendedPost: UserPost? = UserPost(driver)
 
@@ -16,19 +14,4 @@ class HomePage(val driver: WebDriver) {
     var userRecommendations: UserList? = null
 
     init{   }
-
-    /*fun openUserPopupFromRecommendedList(user: WebElement) : OtherUserPopup{
-        val hover = Actions(driver)
-        hover.moveToElement(user).build().perform()
-
-        val popup = waitForPopupToAppear("popover")
-
-        return OtherUserPopup(popup, driver)
-    }
-
-    private fun waitForPopupToAppear(popover: String): WebElement{
-        val wait = WebDriverWait(driver, 30)
-        val popup = wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className(popover)))
-        return popup
-    }*/
 }

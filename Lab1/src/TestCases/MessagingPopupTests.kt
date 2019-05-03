@@ -1,37 +1,35 @@
 package TestCases
 
 import Elements.Header
+import Utils.printErrorMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver
 
 
 class MessagingPopupTests(private val driver: WebDriver){
 
+    private val header = Header(driver)
     // #
     fun searchedRecipientMessageTest(){
         try{
-            val header = Header(driver)
-
             val popup = header.openMessagingPopup()
 
             val result = popup
                 .writeNewMsg()
-                .findRecipient("Someone")
+                .findRecipient("Another search")
                 .chooseFoundRecipient()
 
             result.closePopup()
             printSuccessMsg("searchedRecipientMessageTest")
         }
         catch(e: Exception){
-            printSuccessMsg("searchedRecipientMessageTest")
+            printErrorMsg("searchedRecipientMessageTest", e.message)
         }
     }
 
     // #
     fun offeredRecipientMessageTest(){
         try{
-            val header = Header(driver)
-
             val popup = header.openMessagingPopup()
             val result = popup.chooseOfferedRecipient()
 
@@ -39,26 +37,24 @@ class MessagingPopupTests(private val driver: WebDriver){
             printSuccessMsg("offeredRecipientMessageTest")
         }
         catch(e: Exception){
-            printSuccessMsg("offeredRecipientMessageTest")
+            printErrorMsg("offeredRecipientMessageTest", e.message)
         }
     }
 
     // #
     fun cancelMessageTest(){
         try{
-            val header = Header(driver)
-
             val popup = header.openMessagingPopup()
 
             popup.writeNewMsg()
-                .findRecipient("I am about to cancel this")
+                .findRecipient("Search")
                 .cancelNewMsg()
                 .closePopup()
 
             printSuccessMsg("cancelMessageTest")
         }
         catch(e: Exception){
-            printSuccessMsg("cancelMessageTest")
+            printErrorMsg("cancelMessageTest", e.message)
         }
     }
 }
