@@ -1,15 +1,37 @@
 package TestCases
 
+import Elements.Post
 import Elements.popups.SharePopup
 import Utils.printErrorMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver
 
-class SharePopupTest(private val driver: WebDriver){
-    private var popup: SharePopup = SharePopup(driver)
+class SharePopupTest(private val driver: WebDriver, private var post: Post, private var popup: SharePopup){
+
+    fun runAllTests(){
+        testShareByCopyPermLink()
+        post.closePopup()
+
+        post.openSharePopup()
+        testShareByEmbed()
+        post.closePopup()
+
+        post.openSharePopup()
+        testShareByEmail_EmptyInput()
+        testShareByEmail_IncorrectEmail()
+        testShareByEmail_CorrectInput()
+        post.closePopup()
+
+        post.openSharePopup()
+        testShareComplain()
+        post.closePopup()
+
+        post.openSharePopup()
+        testShareByPermLink()
+    }
 
     // #4.2.1
-    fun testShareByPermLink(){
+    private fun testShareByPermLink(){
         try{
             popup.usePermLink()
             popup.returnFromPermLink()
@@ -21,7 +43,7 @@ class SharePopupTest(private val driver: WebDriver){
     }
 
     // #4.2.2
-    fun testShareByCopyPermLink(){
+    private fun testShareByCopyPermLink(){
         try{
             popup.useCopyPermLink()
             popup.returnFromCopyPermLink()
@@ -33,7 +55,7 @@ class SharePopupTest(private val driver: WebDriver){
     }
 
     // #4.2.3
-    fun testShareByEmbed(){
+    private fun testShareByEmbed(){
         try{
             popup.useEmbed()
             popup.returnFromEmbed()
@@ -45,7 +67,7 @@ class SharePopupTest(private val driver: WebDriver){
     }
 
     // #4.2.4
-    fun testShareByEmail_EmptyInput(){
+    private fun testShareByEmail_EmptyInput(){
         try{
             val email = popup!!.useEmail()
             email!!.fillInEmail("")
@@ -63,7 +85,7 @@ class SharePopupTest(private val driver: WebDriver){
     }
 
     // #4.2.5
-    fun testShareByEmail_IncorrectEmail(){
+    private fun testShareByEmail_IncorrectEmail(){
         try{
             val email = popup.useEmail()
             email!!.fillInEmail("paekvayandexru")
@@ -82,7 +104,7 @@ class SharePopupTest(private val driver: WebDriver){
     }
 
     // #4.2.6
-    fun testShareByEmail_CorrectInput(){
+    private fun testShareByEmail_CorrectInput(){
         try{
             val email = popup.useEmail()
             email!!.fillInEmail("paekva@yandex.ru")
@@ -101,7 +123,7 @@ class SharePopupTest(private val driver: WebDriver){
     }
 
     // #4.2.7
-    fun testShareComplain(){
+    private fun testShareComplain(){
         try{
             popup.useAbuse()
             popup.returnFromAbuse()

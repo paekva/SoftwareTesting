@@ -16,7 +16,7 @@ fun main(){
     headerTests(driver)
     footerTests(driver)
 
-    dialogPopupTest(driver)
+    // dialogPopupTest(driver)
 
     printInfoMsg("Test execution has FINISHED")
     driver.close()

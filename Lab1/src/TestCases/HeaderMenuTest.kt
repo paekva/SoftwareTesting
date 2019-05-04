@@ -20,8 +20,8 @@ class HeaderMenuTest(private val driver: WebDriver){
         inboxButtonTest()
         exploreButtonTest()*/
         dashboardButtonTest()
-        searchFieldTest()
-        logoButtonTest()
+        // searchFieldTest()
+        // logoButtonTest()
 
         afterTests()
     }

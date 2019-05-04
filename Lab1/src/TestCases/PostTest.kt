@@ -1,6 +1,5 @@
 package TestCases
 
-import Elements.Post
 import Pages.HomePage
 import Utils.printErrorMsg
 import Utils.printSuccessMsg
@@ -9,12 +8,17 @@ import org.openqa.selenium.WebDriver
 class PostTest(private val driver: WebDriver, private var homePage: HomePage){
 
     fun runCurrentUserPostTests(){
-    }
-
-    fun runReblogPostTests(){
+        testSharePopup()
+        testReplyPopup()
+        testReblogPopup()
+        testSettingsChangeBtn()
     }
 
     fun runOtherUserPostTests(){
+        testSharePopup()
+        testReplyPopup()
+        testReblogPopup()
+        testLikeBtn()
     }
 
     // #4.1.1
@@ -77,29 +81,9 @@ class PostTest(private val driver: WebDriver, private var homePage: HomePage){
     private fun testSharePopup(){
         try{
             val post = homePage.rebloggedPost
-            val shareTests = SharePopupTest(driver)
-
-            post!!.openSharePopup()
-            shareTests.testShareByCopyPermLink()
-            post.closePopup()
-
-            post.openSharePopup()
-            shareTests.testShareByEmbed()
-            post.closePopup()
-
-            post.openSharePopup()
-            shareTests.testShareByEmail_EmptyInput()
-            shareTests.testShareByEmail_IncorrectEmail()
-            shareTests.testShareByEmail_CorrectInput()
-            post.closePopup()
-
-            /*post.openSharePopup()
-            shareTests.testShareComplain()
-            post.closePopup()
-
-            post.openSharePopup()
-            shareTests.testShareByPermLink()
-            post.closePopup()*/
+            val popup = post!!.openSharePopup()
+            val shareTests = SharePopupTest(driver, post, popup)
+            shareTests.runAllTests()
 
             printSuccessMsg("testSharePopup")
         }
@@ -132,7 +116,6 @@ class PostTest(private val driver: WebDriver, private var homePage: HomePage){
     // #4.4
     private fun testReblogPopup(){
         try{
-            println()
             val post = homePage.rebloggedPost
             val replay = ReblogPopupTest(driver)
 
@@ -143,9 +126,9 @@ class PostTest(private val driver: WebDriver, private var homePage: HomePage){
             replay.testReblogPublicationSettings()
             replay.testReblogCancel()
             // replay.testReblogSubmit()
+            post.closePopup()
 
             printSuccessMsg("testReblogPopup")
-            println()
         }
         catch(e:Exception){
             printErrorMsg("testReblogPopup",e.message)
@@ -180,8 +163,6 @@ class PostTest(private val driver: WebDriver, private var homePage: HomePage){
             val settings = post!!.openSettingsPopup()
             val reblogPopup = settings.openChangePopup()
 
-            if(reblogPopup == null)
-                throw Exception("no reblog popup after click change btn")
             post.closePopup()
 
             val settings_delete = post.openSettingsPopup()

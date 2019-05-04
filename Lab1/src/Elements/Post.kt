@@ -1,8 +1,6 @@
 package Elements
 
-import Elements.popups.ReblogPopup
-import Elements.popups.ReplyPopup
-import Elements.popups.SharePopup
+import Elements.popups.*
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
@@ -13,18 +11,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.JavascriptExecutor
 
-
-
 abstract class Post(private val driver: WebDriver){
-
-    @FindBy(xpath="//*[contains(@class,'post')]/div/div[4]/div[2]/div/div[1]")
-    var shareBtn: WebElement? = null
-
-    @FindBy(xpath="//*[contains(@class,'post')]/div/div[4]/div[2]/div/div[2]")
-    var replyBtn: WebElement? = null
-
-    @FindBy(xpath="//*[contains(@class,'post')]/div/div[4]/div[2]/div/a")
-    var reblogBtn: WebElement? = null
+    abstract var shareBtn: WebElement?
+    abstract var replyBtn: WebElement?
+    abstract var reblogBtn: WebElement?
 
     fun openSharePopup(): SharePopup {
         shareBtn!!.click()
@@ -54,7 +44,7 @@ abstract class Post(private val driver: WebDriver){
         action.sendKeys(Keys.ESCAPE).perform()
     }
 
-    private fun waitForPopupToAppear(popover: String): WebElement{
+    fun waitForPopupToAppear(popover: String): WebElement{
         val wait = WebDriverWait(driver, 30)
         val popup = wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className(popover)))
         return popup
