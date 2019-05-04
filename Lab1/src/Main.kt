@@ -14,14 +14,9 @@ fun main(){
 
     preTestLogin(driver)
     headerTests(driver)
-    // footerTests(driver)
+    footerTests(driver)
 
-    // postTests(driver)
-    // messagesPopupTest(driver)
-    // dialogPopupTest(driver)
-    // createPostMenuTests(driver)
-
-    activityPopupTest(driver)
+    dialogPopupTest(driver)
 
     printInfoMsg("Test execution has FINISHED")
     driver.close()
@@ -53,18 +48,6 @@ fun footerTests(driver: ChromeDriver){
     footerTest.runAllTests()
 }
 
-
-// TODO: finish
-fun messagesPopupTest(driver: ChromeDriver){
-    preTestLogin(driver)
-    val messagesTest = MessagingPopupTests(driver)
-
-    printInfoMsg("MESSAGES tests")
-    messagesTest.cancelMessageTest()
-    messagesTest.searchedRecipientMessageTest()
-    // messagesTest.offeredRecipientMessageTest()
-}
-
 // TODO: finish
 fun dialogPopupTest(driver: ChromeDriver){
     preTestLogin(driver)
@@ -78,14 +61,6 @@ fun dialogPopupTest(driver: ChromeDriver){
     dialog.sendGifTest()
     dialog.sendStickerTest()
     dialog.cancelOfSendStickerTest()
-}
-
-fun activityPopupTest(driver: ChromeDriver){
-    try{
-    }
-    catch(e: Exception){
-        println(e.message)
-    }
 }
 
 private fun preTestLogin(driver: ChromeDriver): HomePage {

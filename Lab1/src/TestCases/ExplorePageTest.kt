@@ -22,7 +22,7 @@ class ExplorePageTest(private val driver: WebDriver, private val explorePage: Ex
 
     private fun beforeTests(){
         driver.get("https://www.tumblr.com")
-        printInfoMsg("\tHOME PAGE tests")
+        printInfoMsg("\tEXPLORE PAGE tests")
     }
 
     private fun afterTests(){

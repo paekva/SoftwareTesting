@@ -1,5 +1,6 @@
 package Elements.popups
 
+import Elements.UserFullProfile
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -12,7 +13,7 @@ class ActivityPopup(private val driver: WebDriver) {
     @FindBy(xpath="//*[contains(@class,'popover--activity-popover')]/div/div/div[2]/div/a")
     private val seeAllBtn: WebElement? = null
 
-    @FindBy(xpath="//*[contains(@class,'popover--activity-popover')]/div/div/div[2]/div/div/ul/li[2]")
+    @FindBy(xpath="//*[contains(@class,'popover--activity-popover')]/div/div/div[2]/div/div/div/ul/li[2]/a")
     private val activityResult: WebElement? = null
 
     init {
@@ -23,9 +24,9 @@ class ActivityPopup(private val driver: WebDriver) {
         seeAllBtn!!.click()
     }
 
-    fun seeOneResult() : AccountPopup{
+    fun seeOneResult() : UserFullProfile{
         activityResult!!.click()
-        return AccountPopup(driver)
+        return UserFullProfile(driver)
     }
 
     fun closePopup(){

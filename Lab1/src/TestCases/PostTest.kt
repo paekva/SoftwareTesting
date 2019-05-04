@@ -1,23 +1,20 @@
 package TestCases
 
+import Elements.Post
 import Pages.HomePage
 import Utils.printErrorMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver
 
-class PostTest(private val driver: WebDriver){
-    private var homePage: HomePage = HomePage(driver)
+class PostTest(private val driver: WebDriver, private var homePage: HomePage){
 
-    fun executeAllTests(){
-        testAuthorPopup()
-        testUserPopup()
-        testAuthorProfile()
-        testUserProfile()
-        testSharePopup()
-        testReplyPopup()
-        testReblogPopup()
-        testSettingsChangeBtn()
-        testLikeBtn()
+    fun runCurrentUserPostTests(){
+    }
+
+    fun runReblogPostTests(){
+    }
+
+    fun runOtherUserPostTests(){
     }
 
     // #4.1.1

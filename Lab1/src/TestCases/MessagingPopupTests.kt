@@ -1,25 +1,33 @@
 package TestCases
 
 import Elements.Header
+import Elements.popups.MessagingPopup
 import Utils.printErrorMsg
+import Utils.printInfoMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver
 
 
-class MessagingPopupTests(private val driver: WebDriver){
+class MessagingPopupTests(private val driver: WebDriver, private val header: Header, private val popup: MessagingPopup){
 
-    private val header = Header(driver)
+    fun runAllTests(){
+        printInfoMsg("MESSAGES tests")
+        cancelMessageTest()
+        searchedRecipientMessageTest()
+        offeredRecipientMessageTest()
+    }
+
     // #
-    fun searchedRecipientMessageTest(){
+    private fun searchedRecipientMessageTest(){
         try{
-            val popup = header.openMessagingPopup()
-
             val result = popup
                 .writeNewMsg()
                 .findRecipient("Another search")
                 .chooseFoundRecipient()
 
             result.closePopup()
+
+            header.openMessagingPopup()
             printSuccessMsg("searchedRecipientMessageTest")
         }
         catch(e: Exception){
@@ -28,12 +36,13 @@ class MessagingPopupTests(private val driver: WebDriver){
     }
 
     // #
-    fun offeredRecipientMessageTest(){
+    private fun offeredRecipientMessageTest(){
         try{
-            val popup = header.openMessagingPopup()
             val result = popup.chooseOfferedRecipient()
 
             result.closePopup()
+
+            header.openMessagingPopup()
             printSuccessMsg("offeredRecipientMessageTest")
         }
         catch(e: Exception){
@@ -42,15 +51,15 @@ class MessagingPopupTests(private val driver: WebDriver){
     }
 
     // #
-    fun cancelMessageTest(){
+    private fun cancelMessageTest(){
         try{
-            val popup = header.openMessagingPopup()
-
-            popup.writeNewMsg()
+            popup
+                .writeNewMsg()
                 .findRecipient("Search")
                 .cancelNewMsg()
                 .closePopup()
 
+            header.openMessagingPopup()
             printSuccessMsg("cancelMessageTest")
         }
         catch(e: Exception){

@@ -13,15 +13,15 @@ class HeaderMenuTest(private val driver: WebDriver){
     fun runAllTests(){
         beforeTests()
 
-        createPostButtonTest()
-        /*accountButtonTest()
-        activityButtonTest()
+        /*createPostButtonTest()
+        accountButtonTest()
+        activityButtonTest() //TODO: check
         messageButtonTest()
         inboxButtonTest()
-        exploreButtonTest()
+        exploreButtonTest()*/
         dashboardButtonTest()
         searchFieldTest()
-        logoButtonTest()*/
+        logoButtonTest()
 
         afterTests()
     }
@@ -77,7 +77,9 @@ class HeaderMenuTest(private val driver: WebDriver){
     // #3.4
     private fun messageButtonTest(){
         try{
-            header.openMessagingPopup()
+            val messagePopup = header.openMessagingPopup()
+            val messagesTest = MessagingPopupTests(driver, header, messagePopup)
+            messagesTest.runAllTests()
             header.closeMessagingPopup()
 
             printSuccessMsg("messageButtonTest")
@@ -90,7 +92,9 @@ class HeaderMenuTest(private val driver: WebDriver){
     // #3.5
     private fun activityButtonTest(){
         try{
-            header.openActivityPopup()
+            val activityPopup = header.openActivityPopup()
+            val accountPopupTest = ActivityPopupTest(driver, header, activityPopup)
+            accountPopupTest.runAllTests()
             header.closeActivityPopup()
 
             printSuccessMsg("activityButtonTest")
@@ -101,9 +105,12 @@ class HeaderMenuTest(private val driver: WebDriver){
     }
 
     // #3.6
-    fun accountButtonTest(){
+    private fun accountButtonTest(){
         try{
-            header.openAccountPopup()
+            val accountPopup = header.openAccountPopup()
+            val accountPopupTest = AccountPopupTest(driver, header, accountPopup)
+            accountPopupTest.runAllTests()
+
             header.closeAccountPopup()
 
             printSuccessMsg("accountButtonTest")
@@ -119,6 +126,7 @@ class HeaderMenuTest(private val driver: WebDriver){
             val createPostPopup = header.openCreatePostPopup()
             val createPost = CreatePostTest(driver, header, createPostPopup)
             createPost.runAllTests()
+            header.closeCreatePostPopup()
 
             printSuccessMsg("createPostButtonTest")
         }

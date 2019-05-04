@@ -18,32 +18,21 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
         printInfoMsg("\tCREATE POST MENU tests")
 
         textPostOptionTest()
-
-        header.openCreatePostPopup()
         photoPostOptionTest()
-
-        header.openCreatePostPopup()
         quotePostOptionTest()
-
-        header.openCreatePostPopup()
         chatPostOptionTest()
-
-        header.openCreatePostPopup()
         linkPostOptionTest()
-
-        header.openCreatePostPopup()
         audioPostOptionTest()
-
-        header.openCreatePostPopup()
         videoPostOptionTest()
     }
 
     // #5.1
-    fun textPostOptionTest(){
+    private fun textPostOptionTest(){
         try{
             val result = popup.createTextPost()
             result.closePopup()
             waitForCloseOfPopovers()
+            header.openCreatePostPopup()
 
             printSuccessMsg("textPostOptionTest")
         }
@@ -54,11 +43,12 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
     }
 
     // #5.2
-    fun photoPostOptionTest(){
+    private fun photoPostOptionTest(){
         try{
             val result = popup.createPhotoPost()
             result.closePopup()
             waitForCloseOfPopovers()
+            header.openCreatePostPopup()
 
             printSuccessMsg("photoPostOptionTest")
         }
@@ -69,11 +59,12 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
     }
 
     // #5.3
-    fun quotePostOptionTest(){
+    private fun quotePostOptionTest(){
         try{
             val result = popup.createQuotePost()
             result.closePopup()
             waitForCloseOfPopovers()
+            header.openCreatePostPopup()
 
             printSuccessMsg("quotePostOptionTest")
         }
@@ -84,11 +75,12 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
     }
 
     // #5.4
-    fun linkPostOptionTest(){
+    private fun linkPostOptionTest(){
         try{
             val result = popup.createLinkPost()
             result.closePopup()
             waitForCloseOfPopovers()
+            header.openCreatePostPopup()
 
             printSuccessMsg("linkPostOptionTest")
         }
@@ -99,11 +91,12 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
     }
 
     // #5.5
-    fun chatPostOptionTest(){
+    private fun chatPostOptionTest(){
         try{
             val result = popup.createChatPost()
             result.closePopup()
             waitForCloseOfPopovers()
+            header.openCreatePostPopup()
 
             printSuccessMsg("chatPostOptionTest")
         }
@@ -114,11 +107,12 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
     }
 
     // #5.6
-    fun audioPostOptionTest(){
+    private fun audioPostOptionTest(){
         try{
             val result = popup.createAudioPost()
             result.closePopup()
             waitForCloseOfPopovers()
+            header.openCreatePostPopup()
 
             printSuccessMsg("audioPostOptionTest")
         }
@@ -129,11 +123,12 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
     }
 
     // #5.7
-    fun videoPostOptionTest(){
+    private fun videoPostOptionTest(){
         try{
             val result = popup.createVideoPost()
             result.closePopup()
             waitForCloseOfPopovers()
+            header.openCreatePostPopup()
 
             printSuccessMsg("videoPostOptionTest")
         }
@@ -144,8 +139,8 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
     }
 
     private fun waitForCloseOfPopovers(){
-        val wait = WebDriverWait(driver, 40)
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"home_button\"]/a")))
+        val wait = WebDriverWait(driver, 60)
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@title='Создать пост']")))
     }
 
     private fun closeCreatePostMenu(){
