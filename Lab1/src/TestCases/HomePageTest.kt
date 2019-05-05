@@ -11,8 +11,7 @@ class HomePageTest(private val driver: WebDriver, private val homePage: HomePage
     fun runAllTests(){
         printInfoMsg("\tHOME PAGE tests")
 
-        // currentUserPostTest()
-        // otherUserPostTest()
+        currentUserPostTest()
         recommendedUserTest()
         radarPostTest()
 
@@ -21,14 +20,8 @@ class HomePageTest(private val driver: WebDriver, private val homePage: HomePage
 
     private fun currentUserPostTest(){
         printInfoMsg("\tCURRENT USER POST tests")
-        val postTest = PostTest(driver, homePage)
-        postTest.runCurrentUserPostTests()
-    }
-
-    private fun otherUserPostTest(){
-        printInfoMsg("\tOTHER USER POST tests")
-        val postTest = PostTest(driver, homePage)
-        postTest.runOtherUserPostTests()
+        // val postTest = PostTest(driver, homePage)
+        // postTest.runCurrentUserPostTests()
     }
 
     private fun radarPostTest(){

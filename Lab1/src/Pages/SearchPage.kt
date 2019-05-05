@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory
 
 class SearchPage(private val driver: WebDriver){
 
-    @FindBy(xpath="//*[contains(@class, 'search_results_container']/div/h1")
+    @FindBy(xpath="//*[contains(@class, 'search_results_container')]/div/h1")
     private val searchResultHeader: WebElement? = null
 
     init{
@@ -15,6 +15,6 @@ class SearchPage(private val driver: WebDriver){
     }
 
     fun getSearchResultHeader(): String{
-        return searchResultHeader!!.text
+        return searchResultHeader!!.text.toUpperCase()
     }
 }

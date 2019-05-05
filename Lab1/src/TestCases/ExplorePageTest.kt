@@ -11,9 +11,22 @@ class ExplorePageTest(private val driver: WebDriver, private val explorePage: Ex
     fun runAllTests(){
         printInfoMsg("\tEXPLORE PAGE tests")
 
-        filterMenuTest()
-        popularBlogsTest()
+        /*filterMenuTest()
         popularRequestsTest()
+        popularBlogsTest()*/
+        recommendedPostTest()
+    }
+
+    private fun recommendedPostTest(){
+        try{
+            printInfoMsg("\tRECOMMENDED POST tests")
+            val postTest = PostTest(driver, explorePage.recommendedPost!!)
+            postTest.runOtherUserPostTests()
+            printSuccessMsg("recommendedPostTest")
+        }
+        catch(e: Exception){
+            printErrorMsg("recommendedPostTest", e.message)
+        }
     }
 
     private fun filterMenuTest(){
@@ -21,9 +34,6 @@ class ExplorePageTest(private val driver: WebDriver, private val explorePage: Ex
 
         explorePage.openRecommendedBtn()
         checkUrl("recommended-for-you", "recommendedTest")
-
-        explorePage.openPopularBtn()
-        checkUrl("trending", "popularTest")
 
         explorePage.openChoiceBtn()
         checkUrl("staff-picks", "choiceTest")
@@ -51,6 +61,9 @@ class ExplorePageTest(private val driver: WebDriver, private val explorePage: Ex
 
         explorePage.openQuestionBtn()
         checkUrl("asks", "questionTest")
+
+        explorePage.openPopularBtn()
+        checkUrl("trending", "popularTest")
     }
 
     private fun checkUrl(url: String, testName: String){
@@ -71,9 +84,6 @@ class ExplorePageTest(private val driver: WebDriver, private val explorePage: Ex
             usersList.openRecommendedUserProfile(usersList.thirdRecommendedUser!!)
             usersList.closeUserPopover(explorePage.similarBlogsListHeader,usersList.thirdRecommendedUser!!)
 
-            usersList.subscribeToRecommendedUser()
-            usersList.closeUserPopover(explorePage.similarBlogsListHeader,usersList.thirdRecommendedUser!!)
-
             printSuccessMsg("popularBlogsTest")
         }
         catch(e: Exception){
@@ -81,6 +91,19 @@ class ExplorePageTest(private val driver: WebDriver, private val explorePage: Ex
         }
     }
 
+    private fun popularRequestsTest(){
+        try{
+            val searchPage = explorePage.discoverTagSearch()
 
-    private fun popularRequestsTest(){}
+            if(searchPage.getSearchResultHeader() != explorePage.discoverTagText())
+                throw Exception("supposed to be a search result page")
+
+            driver.navigate().back()
+
+            printSuccessMsg("popularRequestsTest")
+        }
+        catch(e: Exception){
+            printErrorMsg("popularRequestsTest", e.message)
+        }
+    }
 }

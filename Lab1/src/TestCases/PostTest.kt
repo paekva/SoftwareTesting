@@ -1,87 +1,31 @@
 package TestCases
 
+import Elements.Post
+import Elements.UserPost
 import Pages.HomePage
 import Utils.printErrorMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver
 
-class PostTest(private val driver: WebDriver, private var homePage: HomePage){
+class PostTest(private val driver: WebDriver, private val post: Post){
 
     fun runCurrentUserPostTests(){
-        // testSharePopup()
-        // testReplyPopup()
+        testSharePopup()
+        testReplyPopup()
         testReblogPopup()
-        testSettingsChangeBtn()
+        // testSettingsChangeBtn()
     }
 
     fun runOtherUserPostTests(){
         testSharePopup()
-        testReplyPopup()
+        testLikeBtn(post as UserPost)
         testReblogPopup()
-        testLikeBtn()
-    }
-
-    // #4.1.1
-    private fun testAuthorPopup(){
-        try{
-            val post = homePage.rebloggedPost
-            post!!.openAuthorPopup()
-            post.closePopup()
-
-            printSuccessMsg("testAuthorPopup")
-        }
-        catch(e:Exception){
-            printErrorMsg("testAuthorPopup",e.message)
-        }
-    }
-
-    // #4.1.2
-    private fun testUserPopup(){
-        try{
-            val post = homePage.rebloggedPost
-            post!!.openUserPopup()
-            post.closePopup()
-
-            printSuccessMsg("testUserPopup")
-        }
-        catch(e:Exception){
-            printErrorMsg("testUserPopup",e.message)
-        }
-    }
-
-    // #4.1.3
-    private fun testAuthorProfile(){
-        try{
-            val post = homePage.rebloggedPost
-            post!!.openAuthorProfile()
-            post.closePopup()
-
-            printSuccessMsg("testAuthorProfile")
-        }
-        catch(e:Exception){
-            printErrorMsg("testAuthorProfile",e.message)
-        }
-    }
-
-    // #4.1.4
-    private fun testUserProfile(){
-        try{
-            val post = homePage.rebloggedPost
-            post!!.openUserProfile()
-            post.closePopup()
-
-            printSuccessMsg("testUserProfile")
-        }
-        catch(e:Exception){
-            printErrorMsg("testUserProfile",e.message)
-        }
     }
 
     // #4.2
     private fun testSharePopup(){
         try{
-            val post = homePage.rebloggedPost
-            val popup = post!!.openSharePopup()
+            val popup = post.openSharePopup()
             val shareTests = SharePopupTest(driver, post, popup)
             shareTests.runAllTests()
 
@@ -95,14 +39,13 @@ class PostTest(private val driver: WebDriver, private var homePage: HomePage){
     // #4.3
     private fun testReplyPopup(){
         try{
-            val post = homePage.rebloggedPost
             val replay = ReplayPopupTest(driver)
 
-            post!!.openReplyPopup()
+            post.openReplyPopup()
             replay.testEmptyInput()
             post.closePopup()
 
-            post!!.openReplyPopup()
+            post.openReplyPopup()
             replay.testCorrectInput()
             post.closePopup()
 
@@ -116,10 +59,9 @@ class PostTest(private val driver: WebDriver, private var homePage: HomePage){
     // #4.4
     private fun testReblogPopup(){
         try{
-            val post = homePage.rebloggedPost
             val replay = ReblogPopupTest(driver)
 
-            post!!.openReblogPopup()
+            post.openReblogPopup()
             replay.testAuthorLabel()
             replay.testChangeFieldToHTMLFormat()
             replay.testChangeFieldToTextFormat()
@@ -135,17 +77,14 @@ class PostTest(private val driver: WebDriver, private var homePage: HomePage){
         }
     }
 
-    // #4.4
-    private fun testLikeBtn(){
+    // #4.5
+    private fun testLikeBtn(post: UserPost){
         try{
-            val post = homePage.recommendedPost
-            println(post)
-
-            post!!.likePost()
+            post.likePost()
             if(!post.isPostLiked())
                 throw Exception("post should be liked")
 
-            post!!.likePost()
+            post.likePost()
             if(post.isPostLiked())
                 throw Exception("post should not be liked")
 
@@ -156,10 +95,67 @@ class PostTest(private val driver: WebDriver, private var homePage: HomePage){
         }
     }
 
+    /*
+    // #4.1.1
+    private fun testAuthorPopup(){
+        try{
+            val post = homePage.currentUserPost
+            post!!.openAuthorPopup()
+            post.closePopup()
+
+            printSuccessMsg("testAuthorPopup")
+        }
+        catch(e:Exception){
+            printErrorMsg("testAuthorPopup",e.message)
+        }
+    }
+
+    // #4.1.2
+    private fun testUserPopup(){
+        try{
+            val post = homePage.currentUserPost
+            post!!.openUserPopup()
+            post.closePopup()
+
+            printSuccessMsg("testUserPopup")
+        }
+        catch(e:Exception){
+            printErrorMsg("testUserPopup",e.message)
+        }
+    }
+
+    // #4.1.3
+    private fun testAuthorProfile(){
+        try{
+            val post = homePage.currentUserPost
+            post!!.openAuthorProfile()
+            post.closePopup()
+
+            printSuccessMsg("testAuthorProfile")
+        }
+        catch(e:Exception){
+            printErrorMsg("testAuthorProfile",e.message)
+        }
+    }
+
+    // #4.1.4
+    private fun testUserProfile(){
+        try{
+            val post = homePage.currentUserPost
+            post!!.openUserProfile()
+            post.closePopup()
+
+            printSuccessMsg("testUserProfile")
+        }
+        catch(e:Exception){
+            printErrorMsg("testUserProfile",e.message)
+        }
+    }
+
     // #4.4
     private fun testSettingsChangeBtn(){
         try{
-            val post = homePage.rebloggedPost
+            val post = homePage.currentUserPost
             val settings = post!!.openSettingsPopup()
             val reblogPopup = settings.openChangePopup()
 
@@ -175,4 +171,5 @@ class PostTest(private val driver: WebDriver, private var homePage: HomePage){
             printErrorMsg("testSettingsBtn", e.message)
         }
     }
+    */
 }

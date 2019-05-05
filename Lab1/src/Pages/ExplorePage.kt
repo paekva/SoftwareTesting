@@ -1,8 +1,8 @@
 package Pages
 
-import Elements.RebloggedPost
 import Elements.UserPost
 import Elements.UsersList
+import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
@@ -10,9 +10,11 @@ import org.openqa.selenium.support.PageFactory
 
 class ExplorePage(val driver: WebDriver) {
 
+    var recommendedPost: UserPost? = null
+
     var similarBlogsList: UsersList? = null
 
-    @FindBy(xpath="//*[contains(@class,'follow_list')]/h1")
+    @FindBy(xpath="//*[contains(@class,'discover-tumblelogs')]/h1")
     var similarBlogsListHeader: WebElement? = null
 
     @FindBy(xpath="//*[contains(@class,'discover-controls-wrapper')]/div/div/a[1]")
@@ -51,8 +53,11 @@ class ExplorePage(val driver: WebDriver) {
     @FindBy(xpath="//*[contains(@class,'discover-tags')]/ol/li[1]/a")
     private var discoverTag: WebElement? = null
 
+    private var discoverTagText: String? = ""
+
     init{
         similarBlogsList = UsersList(driver)
+        recommendedPost = UserPost(driver)
         PageFactory.initElements(driver, this)
     }
 
@@ -100,8 +105,13 @@ class ExplorePage(val driver: WebDriver) {
         questionBtn!!.click()
     }
 
-    fun popularTagSearch() : SearchPage{
+    fun discoverTagSearch() : SearchPage{
+        discoverTagText = driver.findElement(By.xpath("//*[contains(@class,'discover-tags')]/ol/li[1]/a/span")).text
         discoverTag!!.click()
         return SearchPage(driver)
+    }
+
+    fun discoverTagText() : String{
+        return discoverTagText!!.toUpperCase()
     }
 }

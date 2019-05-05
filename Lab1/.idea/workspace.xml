@@ -15,10 +15,9 @@
       <file leaf-file-name="HeaderMenuTest.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestCases/HeaderMenuTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-931">
-              <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+            <state relative-caret-position="168">
+              <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
               <folding>
-                <element signature="n#!!block;n#afterTests#0;n#!!block;n#HeaderMenuTest#0" />
                 <element signature="n#!!block;n#inboxButtonTest#0;n#!!block;n#HeaderMenuTest#0" />
                 <element signature="n#!!block;n#messageButtonTest#0;n#!!block;n#HeaderMenuTest#0" />
                 <element signature="n#!!block;n#activityButtonTest#0;n#!!block;n#HeaderMenuTest#0" />
@@ -28,37 +27,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchPage.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Pages/SearchPage.kt">
+      <file leaf-file-name="Header.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Elements/Header.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+            <state relative-caret-position="187">
+              <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
               <folding>
-                <element signature="e#15#93#0" expanded="true" />
+                <element signature="n#!!block;n#openActivityPopup#0;n#!!block;n#Header#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExplorePageTest.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TestCases/ExplorePageTest.kt">
+      <file leaf-file-name="HomePageTest.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TestCases/HomePageTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="74" column="63" lean-forward="true" selection-start-line="74" selection-start-column="63" selection-end-line="74" selection-end-column="63" />
+            <state relative-caret-position="86">
+              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
               <folding>
-                <element signature="n#!!block;n#filterMenuTest#0;n#!!block;n#ExplorePageTest#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExplorePage.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pages/ExplorePage.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="106" selection-start-line="106" selection-end-line="106" />
-              <folding>
-                <element signature="e#15#315#0" expanded="true" />
+                <element signature="n#!!block;n#exploreRecommendedTest#0;n#!!block;n#HomePageTest#0" />
               </folding>
             </state>
           </provider>
@@ -67,8 +54,8 @@
       <file leaf-file-name="Main.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="9" column="46" lean-forward="true" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+            <state relative-caret-position="116">
+              <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
               <folding>
                 <element signature="e#0#172#0" expanded="true" />
                 <element signature="n#!!block;n#loginTests#0" />
@@ -80,26 +67,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomePage.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pages/HomePage.kt">
+      <file leaf-file-name="ExplorePageTest.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TestCases/ExplorePageTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+            <state relative-caret-position="216">
+              <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
               <folding>
-                <element signature="e#15#391#0" expanded="true" />
+                <element signature="n#!!block;n#filterMenuTest#0;n#!!block;n#ExplorePageTest#0" />
+                <element signature="n#!!block;n#checkUrl#0;n#!!block;n#ExplorePageTest#0" />
+                <element signature="n#!!block;n#popularBlogsTest#0;n#!!block;n#ExplorePageTest#0" />
+                <element signature="n#!!block;n#popularRequestsTest#0;n#!!block;n#ExplorePageTest#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UsersList.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Elements/UsersList.kt">
+      <file leaf-file-name="PostTest.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TestCases/PostTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="51" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="51" />
+            <state relative-caret-position="161">
+              <caret line="83" column="28" selection-start-line="83" selection-start-column="28" selection-end-line="83" selection-end-column="28" />
               <folding>
-                <element signature="e#18#401#0" expanded="true" />
+                <element signature="e#19#154#0" expanded="true" />
+                <element signature="n#!!block;n#testReplyPopup#0;n#!!block;n#PostTest#0" />
+                <element signature="n#!!block;n#testReblogPopup#0;n#!!block;n#PostTest#0" />
+                <element signature="n#!!block;n#testSettingsChangeBtn#0;n#!!block;n#PostTest#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Post.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Elements/Post.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="99">
+              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserPost.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Elements/UserPost.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExplorePage.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pages/ExplorePage.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-510">
+              <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -133,6 +153,7 @@
       <find>openMarkedPosts</find>
       <find>openAppearanceSettings</find>
       <find>wait</find>
+      <find>popover--messaging-share-post</find>
     </findStrings>
     <replaceStrings>
       <replace>errorMsg</replace>
@@ -153,7 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Pages/RegisterPage.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/DashboardTest.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/LoginTest.kt" />
         <option value="$PROJECT_DIR$/src/Elements/SearchPopup.kt" />
@@ -185,25 +205,26 @@
         <option value="$PROJECT_DIR$/src/TestCases/ActivityPopupTest.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/MessagingPopupTests.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/AccountPopupTest.kt" />
-        <option value="$PROJECT_DIR$/src/Main.kt" />
         <option value="$PROJECT_DIR$/src/Elements/RebloggedPost.kt" />
         <option value="$PROJECT_DIR$/src/Elements/Post.kt" />
-        <option value="$PROJECT_DIR$/src/Elements/UserPost.kt" />
-        <option value="$PROJECT_DIR$/src/TestCases/SharePopupTest.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/ReblogPopupTest.kt" />
-        <option value="$PROJECT_DIR$/src/TestCases/PostTest.kt" />
         <option value="$PROJECT_DIR$/src/Elements/popups/ReblogPopup.kt" />
         <option value="$PROJECT_DIR$/src/Pages/LoginPage.kt" />
         <option value="$PROJECT_DIR$/src/Elements/UserFullProfile.kt" />
         <option value="$PROJECT_DIR$/src/Elements/popups/OtherUserPopup.kt" />
-        <option value="$PROJECT_DIR$/src/TestCases/HeaderMenuTest.kt" />
         <option value="$PROJECT_DIR$/src/Elements/RecommendedUsersList.kt" />
-        <option value="$PROJECT_DIR$/src/Pages/HomePage.kt" />
         <option value="$PROJECT_DIR$/src/Elements/UsersList.kt" />
+        <option value="$PROJECT_DIR$/src/Pages/SearchPage.kt" />
+        <option value="$PROJECT_DIR$/src/Pages/ExplorePage.kt" />
+        <option value="$PROJECT_DIR$/src/Pages/HomePage.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/CurrentUserPost.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/HomePageTest.kt" />
         <option value="$PROJECT_DIR$/src/TestCases/ExplorePageTest.kt" />
-        <option value="$PROJECT_DIR$/src/Pages/ExplorePage.kt" />
-        <option value="$PROJECT_DIR$/src/Pages/SearchPage.kt" />
+        <option value="$PROJECT_DIR$/src/Main.kt" />
+        <option value="$PROJECT_DIR$/src/TestCases/HeaderMenuTest.kt" />
+        <option value="$PROJECT_DIR$/src/Elements/UserPost.kt" />
+        <option value="$PROJECT_DIR$/src/TestCases/PostTest.kt" />
+        <option value="$PROJECT_DIR$/src/TestCases/SharePopupTest.kt" />
       </list>
     </option>
   </component>
@@ -250,13 +271,6 @@
               <item name="Lab1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Elements" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Lab1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Elements" type="462c0819:PsiDirectoryNode" />
-              <item name="popups" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Lab1" type="b2602c69:ProjectViewProjectNode" />
@@ -390,12 +404,12 @@
       <workItem from="1556886940739" duration="2040000" />
       <workItem from="1556905082398" duration="12329000" />
       <workItem from="1556998141175" duration="8255000" />
-      <workItem from="1557047553517" duration="14709000" />
+      <workItem from="1557047553517" duration="20180000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164156000" />
+    <option name="totallyTimeSpent" value="169627000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -418,10 +432,10 @@
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.32980332" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.13036303" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49924356" weight="0.120462045" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15016502" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49924356" weight="0.16336633" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.115733735" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.115733735" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -470,7 +484,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="16" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -573,13 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/popups/SharePopup.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestCases/LoginTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -612,6 +619,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#19#134#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -657,16 +667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/Header.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="34" column="52" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="52" />
-          <folding>
-            <element signature="n#!!block;n#openActivityPopup#0;n#!!block;n#Header#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestCases/MessagingPopupTests.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -678,20 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/UserPost.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestCases/SharePopupTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="26" column="25" lean-forward="true" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -709,45 +695,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/Post.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/RebloggedPost.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="54" lean-forward="true" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Elements/popups/AuthorPopup.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestCases/PostTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-          <folding>
-            <element signature="e#19#133#0" expanded="true" />
-            <element signature="n#!!block;n#testUserProfile#0;n#!!block;n#PostTest#0" />
-            <element signature="n#!!block;n#testReplyPopup#0;n#!!block;n#PostTest#0" />
-            <element signature="n#!!block;n#testLikeBtn#0;n#!!block;n#PostTest#0" />
-            <element signature="n#!!block;n#testSettingsChangeBtn#0;n#!!block;n#PostTest#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/LoginPage.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
@@ -782,10 +733,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/UsersList.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+          <folding>
+            <element signature="e#18#401#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/SearchPage.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="67" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="67" />
+          <folding>
+            <element signature="e#15#178#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/CurrentUserPost.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/HomePage.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-205">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#15#391#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/LoginPage.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestCases/HeaderMenuTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+          <folding>
+            <element signature="n#!!block;n#inboxButtonTest#0;n#!!block;n#HeaderMenuTest#0" />
+            <element signature="n#!!block;n#messageButtonTest#0;n#!!block;n#HeaderMenuTest#0" />
+            <element signature="n#!!block;n#activityButtonTest#0;n#!!block;n#HeaderMenuTest#0" />
+            <element signature="n#!!block;n#logoButtonTest#0;n#!!block;n#HeaderMenuTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/ExplorePage.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-510">
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="9" column="46" lean-forward="true" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+        <state relative-caret-position="116">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding>
             <element signature="e#0#172#0" expanded="true" />
             <element signature="n#!!block;n#loginTests#0" />
@@ -796,79 +811,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/HomePage.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
-          <folding>
-            <element signature="e#15#391#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Elements/UsersList.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <element signature="e#18#401#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestCases/HomePageTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="72" selection-end-column="9" />
+        <state relative-caret-position="86">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
           <folding>
-            <element signature="n#!!block;n#currentUserPostTest#0;n#!!block;n#HomePageTest#0" />
-            <element signature="n#!!block;n#otherUserPostTest#0;n#!!block;n#HomePageTest#0" />
             <element signature="n#!!block;n#exploreRecommendedTest#0;n#!!block;n#HomePageTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/Header.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+          <folding>
+            <element signature="n#!!block;n#openActivityPopup#0;n#!!block;n#Header#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TestCases/ExplorePageTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="74" column="63" lean-forward="true" selection-start-line="74" selection-start-column="63" selection-end-line="74" selection-end-column="63" />
+        <state relative-caret-position="216">
+          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
           <folding>
             <element signature="n#!!block;n#filterMenuTest#0;n#!!block;n#ExplorePageTest#0" />
+            <element signature="n#!!block;n#checkUrl#0;n#!!block;n#ExplorePageTest#0" />
+            <element signature="n#!!block;n#popularBlogsTest#0;n#!!block;n#ExplorePageTest#0" />
+            <element signature="n#!!block;n#popularRequestsTest#0;n#!!block;n#ExplorePageTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/ExplorePage.kt">
+    <entry file="file://$PROJECT_DIR$/src/Elements/popups/SharePopup.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        <state relative-caret-position="109">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Elements/Post.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestCases/SharePopupTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1522">
+          <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestCases/PostTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="83" column="28" selection-start-line="83" selection-start-column="28" selection-end-line="83" selection-end-column="28" />
           <folding>
-            <element signature="e#15#315#0" expanded="true" />
+            <element signature="e#19#154#0" expanded="true" />
+            <element signature="n#!!block;n#testReplyPopup#0;n#!!block;n#PostTest#0" />
+            <element signature="n#!!block;n#testReblogPopup#0;n#!!block;n#PostTest#0" />
+            <element signature="n#!!block;n#testSettingsChangeBtn#0;n#!!block;n#PostTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestCases/HeaderMenuTest.kt">
+    <entry file="file://$PROJECT_DIR$/src/Elements/UserPost.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-931">
-          <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-          <folding>
-            <element signature="n#!!block;n#afterTests#0;n#!!block;n#HeaderMenuTest#0" />
-            <element signature="n#!!block;n#inboxButtonTest#0;n#!!block;n#HeaderMenuTest#0" />
-            <element signature="n#!!block;n#messageButtonTest#0;n#!!block;n#HeaderMenuTest#0" />
-            <element signature="n#!!block;n#activityButtonTest#0;n#!!block;n#HeaderMenuTest#0" />
-            <element signature="n#!!block;n#logoButtonTest#0;n#!!block;n#HeaderMenuTest#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/SearchPage.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding>
-            <element signature="e#15#93#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="337">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
         </state>
       </provider>
     </entry>

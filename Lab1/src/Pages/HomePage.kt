@@ -7,13 +7,10 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
-import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.ui.WebDriverWait
 
 
 class HomePage(val driver: WebDriver) {
-    var rebloggedPost: RebloggedPost? = null
-    var recommendedPost: UserPost? = null
+    var currentUserPost: CurrentUserPost? = null
     var recommendedUserList: UsersList? = null
 
     private var createPostPanel: List<WebElement>? = null
@@ -31,8 +28,7 @@ class HomePage(val driver: WebDriver) {
     var radarPostContent: WebElement? = null
 
     init{
-        rebloggedPost = RebloggedPost(driver)
-        recommendedPost = UserPost(driver)
+        currentUserPost = CurrentUserPost(driver)
         recommendedUserList = UsersList(driver)
 
         PageFactory.initElements(driver, this)

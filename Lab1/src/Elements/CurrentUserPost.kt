@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 
-class RebloggedPost(private val driver: WebDriver): Post(driver){
+class CurrentUserPost(private val driver: WebDriver): Post(driver){
 
     @FindBy(xpath="//*[contains(@class,'is_mine')]/div/div[4]/div[2]/div/div[1]")
     override var shareBtn: WebElement? = null

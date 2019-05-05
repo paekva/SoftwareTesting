@@ -11,7 +11,7 @@ class HeaderMenuTest(private val driver: WebDriver){
     private val header: Header = Header(driver)
 
     fun runAllTests(){
-        beforeTests()
+        printInfoMsg("\tHEADER tests")
 
         /*createPostButtonTest()
         accountButtonTest()
@@ -23,16 +23,6 @@ class HeaderMenuTest(private val driver: WebDriver){
         // searchFieldTest()
         // logoButtonTest()
 
-        afterTests()
-    }
-
-    private fun beforeTests(){
-        driver.get("https://www.tumblr.com")
-        printInfoMsg("\tHEADER tests")
-    }
-
-    private fun afterTests(){
-        driver.get("https://www.tumblr.com")
     }
 
     // #3.1

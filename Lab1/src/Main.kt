@@ -13,6 +13,7 @@ fun main(){
     // registrarionTests(driver)
 
     preTestLogin(driver)
+    println("1")
     headerTests(driver)
     footerTests(driver)
 
