@@ -1,7 +1,7 @@
-package Pages
+package pages
 
-import Elements.*
-import Elements.popups.OtherUserPopup
+import elements.*
+import elements.popups.OtherUserPopup
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
@@ -9,11 +9,9 @@ import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 
 
-class HomePage(val driver: WebDriver) {
+class HomePage(val driver: WebDriver) : IPage{
     var currentUserPost: CurrentUserPost? = null
     var recommendedUserList: UsersList? = null
-
-    private var createPostPanel: List<WebElement>? = null
 
     @FindBy(xpath="//*[contains(@class,'recommended_tumblelogs')]/li[1]")
     var recommendationsListHeader: WebElement? = null

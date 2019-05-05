@@ -1,6 +1,6 @@
-package TestCases
+package testCases
 
-import Elements.Header
+import elements.Header
 import Utils.printErrorMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver

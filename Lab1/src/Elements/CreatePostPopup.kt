@@ -1,6 +1,7 @@
-package Elements
+package elements
 
-import Elements.popups.OptionPopup
+import elements.popups.OptionPopup
+import Utils.pressEscKey
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -88,5 +89,9 @@ class CreatePostPopup(private val driver: WebDriver){
     private fun waitForPopupToAppear(){
         val wait = WebDriverWait(driver, 30)
         wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post-container")))
+    }
+
+    fun close(){
+        pressEscKey(driver)
     }
 }

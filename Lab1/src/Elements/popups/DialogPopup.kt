@@ -1,6 +1,6 @@
-package Elements.popups
+package elements.popups
 
-import Elements.UserFullProfile
+import elements.UserFullProfile
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy

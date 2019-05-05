@@ -1,4 +1,4 @@
-package TestCases
+package testCases
 
 import Utils.printInfoMsg
 import org.openqa.selenium.WebDriver

@@ -1,6 +1,6 @@
-package TestCases
+package testCases
 
-import Elements.*
+import elements.*
 import Utils.printErrorMsg
 import Utils.printInfoMsg
 import Utils.printSuccessMsg
@@ -13,25 +13,23 @@ class HeaderMenuTest(private val driver: WebDriver){
     fun runAllTests(){
         printInfoMsg("\tHEADER tests")
 
-        /*createPostButtonTest()
+        // createPostButtonTest()
         accountButtonTest()
         activityButtonTest() //TODO: check
         messageButtonTest()
-        inboxButtonTest()*/
+        inboxButtonTest()
         exploreButtonTest()
-        // dashboardButtonTest()
-        // searchFieldTest()
-        // logoButtonTest()
-
+        dashboardButtonTest()
+        searchFieldTest()
+        logoButtonTest()
     }
 
     // #3.1
     private fun dashboardButtonTest(){
         try{
-            val homePage = header.goToDashboard()
+            val homePage = header.goToHomePage()
             val homePageTest = HomePageTest(driver, homePage)
             homePageTest.runAllTests()
-
             printSuccessMsg("dashboardButton")
         }
         catch (e: Exception){
@@ -42,7 +40,7 @@ class HeaderMenuTest(private val driver: WebDriver){
     // #3.2
     private fun exploreButtonTest(){
         try{
-            val explorePage = header.goToExplore()
+            val explorePage = header.goToExplorePage()
             val explorePageTest = ExplorePageTest(driver, explorePage)
             explorePageTest.runAllTests()
 
@@ -56,7 +54,7 @@ class HeaderMenuTest(private val driver: WebDriver){
     // #3.3
     private fun inboxButtonTest(){
         try{
-            header.goToInbox()
+            header.goToInboxPage()
             printSuccessMsg("inboxButtonTest")
         }
         catch (e: Exception){
@@ -70,7 +68,7 @@ class HeaderMenuTest(private val driver: WebDriver){
             val messagePopup = header.openMessagingPopup()
             val messagesTest = MessagingPopupTests(driver, header, messagePopup)
             messagesTest.runAllTests()
-            header.closeMessagingPopup()
+            messagePopup.close()
 
             printSuccessMsg("messageButtonTest")
         }
@@ -85,7 +83,7 @@ class HeaderMenuTest(private val driver: WebDriver){
             val activityPopup = header.openActivityPopup()
             val accountPopupTest = ActivityPopupTest(driver, header, activityPopup)
             accountPopupTest.runAllTests()
-            header.closeActivityPopup()
+            activityPopup.close()
 
             printSuccessMsg("activityButtonTest")
         }
@@ -100,8 +98,7 @@ class HeaderMenuTest(private val driver: WebDriver){
             val accountPopup = header.openAccountPopup()
             val accountPopupTest = AccountPopupTest(driver, header, accountPopup)
             accountPopupTest.runAllTests()
-
-            header.closeAccountPopup()
+            accountPopup.close()
 
             printSuccessMsg("accountButtonTest")
         }
@@ -116,7 +113,7 @@ class HeaderMenuTest(private val driver: WebDriver){
             val createPostPopup = header.openCreatePostPopup()
             val createPost = CreatePostTest(driver, header, createPostPopup)
             createPost.runAllTests()
-            header.closeCreatePostPopup()
+            createPostPopup.close()
 
             printSuccessMsg("createPostButtonTest")
         }
@@ -149,7 +146,7 @@ class HeaderMenuTest(private val driver: WebDriver){
     // #3.8
     private fun logoButtonTest(){
         try{
-            header.goToDashboardByLogo()
+            header.goToHomePageByLogo()
 
             if(driver.currentUrl != "https://www.tumblr.com/dashboard")
                 throw Exception("wrong page opened")

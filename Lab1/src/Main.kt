@@ -1,6 +1,6 @@
-import Pages.HomePage
-import Pages.LoginPage
-import TestCases.*
+import pages.HomePage
+import pages.LoginPage
+import testCases.*
 import Utils.UserCredentialsFactory
 import Utils.printInfoMsg
 import org.openqa.selenium.chrome.ChromeDriver

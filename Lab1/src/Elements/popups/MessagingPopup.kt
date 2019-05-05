@@ -1,9 +1,8 @@
-package Elements.popups
+package elements.popups
 
-import org.openqa.selenium.Keys
+import Utils.pressEscKey
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
-import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -27,6 +26,9 @@ class MessagingPopup(private val driver: WebDriver) {
 
     init {
         PageFactory.initElements(driver, this)
+
+        val wait = WebDriverWait(driver, 10)
+        wait.until<WebElement>(ExpectedConditions.elementToBeClickable(newMsgBtn))
     }
 
     fun writeNewMsg() : MessagingPopup{
@@ -58,8 +60,7 @@ class MessagingPopup(private val driver: WebDriver) {
         return DialogPopup(driver)
     }
 
-    fun closePopup(){
-        val action = Actions(driver)
-        action.sendKeys(Keys.ESCAPE).perform()
+    fun close(){
+        pressEscKey(driver)
     }
 }

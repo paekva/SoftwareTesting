@@ -1,14 +1,14 @@
-package Pages
+package pages
 
-import Elements.UserPost
-import Elements.UsersList
+import elements.UserPost
+import elements.UsersList
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 
-class ExplorePage(val driver: WebDriver) {
+class ExplorePage(val driver: WebDriver) : IPage{
 
     var recommendedPost: UserPost? = null
 

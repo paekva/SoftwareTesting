@@ -1,4 +1,4 @@
-package Elements.popups
+package elements.popups
 
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
@@ -10,10 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait
 
 class SettingsPopup(private val driver: WebDriver){
 
-    @FindBy(xpath = "//*[contains(@class,'is_reblog')]/div/div[4]/div[2]/div/div[3]/div/ul/li[1]/a")
+    @FindBy(xpath = "//*[contains(@class,'is_mine')]/div/div[4]/div[2]/div/div[3]/div/ul/li[1]/a")
     private var changeBtn: WebElement? = null
 
-    @FindBy(xpath = "//*[contains(@class,'is_reblog')]/div/div[4]/div[2]/div/div[3]/div/ul/li[2]/div")
+    @FindBy(xpath = "//*[contains(@class,'is_mine')]/div/div[4]/div[2]/div/div[3]/div/ul/li[2]/div")
     private var deleteBtn: WebElement? = null
 
     init{

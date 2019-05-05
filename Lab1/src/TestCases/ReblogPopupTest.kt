@@ -1,6 +1,6 @@
-package TestCases
+package testCases
 
-import Elements.popups.ReblogPopup
+import elements.popups.ReblogPopup
 import Utils.printErrorMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver

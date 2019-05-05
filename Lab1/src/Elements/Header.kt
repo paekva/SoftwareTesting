@@ -1,41 +1,39 @@
-package Elements
+package elements
 
-import Elements.popups.AccountPopup
-import Elements.popups.ActivityPopup
-import Elements.popups.MessagingPopup
-import Elements.popups.SearchPopup
-import Pages.ExplorePage
-import Pages.HomePage
-import Pages.InboxPage
-import org.openqa.selenium.By
+import elements.popups.AccountPopup
+import elements.popups.ActivityPopup
+import elements.popups.MessagingPopup
+import elements.popups.SearchPopup
+import Utils.waitForPresence
+import pages.ExplorePage
+import pages.HomePage
+import pages.InboxPage
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
-import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.ui.WebDriverWait
 
 class Header(private val driver: WebDriver){
     @FindBy(id = "search_query")
     private val search: WebElement? = null
 
-    @FindBy(xpath = "//*[@id=\"home_button\"]/a")
+    @FindBy(xpath = "//*[@id='home_button']/a")
     private val homeBtn: WebElement? = null
 
-    @FindBy(xpath = "//*[@id=\"discover_button\"]/a")
+    @FindBy(xpath = "//*[@id='discover_button']/a")
     private val discoverBtn: WebElement? = null
 
-    @FindBy(xpath = "//*[@id=\"inbox_button\"]/a")
+    @FindBy(xpath = "//*[@id='inbox_button']/a")
     private val inboxBtn: WebElement? = null
 
-    @FindBy(xpath = "//*[@id=\"messaging_button\"]/button")
+    @FindBy(xpath = "//*[@id='messaging_button']/button")
     private val messagingBtn: WebElement? = null
 
-    @FindBy(xpath = "//*[@id=\"activity_button\"]/a")
+    @FindBy(xpath = "//*[@id='activity_button']/a")
     private val activityBtn: WebElement? = null
 
-    @FindBy(xpath = "//*[@id=\"account_button\"]/button")
+    @FindBy(xpath = "//*[@id='account_button']/button")
     private val accountBtn: WebElement? = null
 
     @FindBy(xpath="//button[@title='Создать пост']")
@@ -44,9 +42,7 @@ class Header(private val driver: WebDriver){
     @FindBy(xpath = "//a[@aria-label='Tumblr']")
     private val logo: WebElement? = null
 
-    init {
-        PageFactory.initElements(driver, this)
-    }
+    init { PageFactory.initElements(driver, this) }
 
     fun search(){
         search!!.sendKeys(Keys.ENTER)
@@ -61,25 +57,25 @@ class Header(private val driver: WebDriver){
         return SearchPopup(driver)
     }
 
-    fun goToDashboardByLogo(): HomePage {
+    fun goToHomePageByLogo(): HomePage {
         logo!!.click()
 
         return HomePage(driver)
     }
 
-    fun goToDashboard(): HomePage {
+    fun goToHomePage(): HomePage {
         homeBtn!!.click()
 
         return HomePage(driver)
     }
 
-    fun goToExplore(): ExplorePage {
+    fun goToExplorePage(): ExplorePage {
         discoverBtn!!.click()
 
         return ExplorePage(driver)
     }
 
-    fun goToInbox(): InboxPage {
+    fun goToInboxPage(): InboxPage {
         inboxBtn!!.click()
 
         return InboxPage(driver)
@@ -115,30 +111,7 @@ class Header(private val driver: WebDriver){
         return CreatePostPopup(driver)
     }
 
-    fun closeMessagingPopup(): Header{
-        messagingBtn!!.click()
-        return this
-    }
-
-    fun closeActivityPopup(): Header{
-        activityBtn!!.click()
-        return this
-    }
-
-    fun closeAccountPopup(): Header{
-        accountBtn!!.click()
-        return this
-    }
-
-    fun closeCreatePostPopup(): Header{
-        driver.get("https://www.tumblr.com/dashboard")
-
-        return this
-    }
-
     private fun waitForPopupToAppear(){
-        val wait = WebDriverWait(driver, 10)
-        wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("popover_inner")))
+        waitForPresence(driver, 15, "popover_inner")
     }
-
 }

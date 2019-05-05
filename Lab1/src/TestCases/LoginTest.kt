@@ -1,6 +1,6 @@
-package TestCases
+package testCases
 
-import Pages.LoginPage
+import pages.LoginPage
 import Utils.*
 import org.openqa.selenium.WebDriver
 

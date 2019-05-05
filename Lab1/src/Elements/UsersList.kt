@@ -1,7 +1,7 @@
-package Elements
+package elements
 
-import Elements.popups.OtherUserPopup
-import Pages.ExplorePage
+import elements.popups.OtherUserPopup
+import pages.ExplorePage
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions

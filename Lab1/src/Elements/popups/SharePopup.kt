@@ -1,7 +1,7 @@
-package Elements.popups
+package elements.popups
 
+import Utils.pressEscKey
 import org.openqa.selenium.*
-import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 
@@ -41,8 +41,7 @@ class SharePopup(private val driver: WebDriver) {
     fun returnFromPermLink(){
         driver.switchTo().window(driver.windowHandles.last())
 
-        val action = Actions(driver)
-        action.sendKeys(Keys.ESCAPE).perform()
+        pressEscKey(driver)
     }
 
     fun useCopyPermLink(){
@@ -77,8 +76,7 @@ class SharePopup(private val driver: WebDriver) {
     }
 
     fun returnFromAbuse(){
-        val action = Actions(driver)
-        action.sendKeys(Keys.ESCAPE).perform()
+        pressEscKey(driver)
     }
 
     fun horizontalScroll(){

@@ -1,6 +1,6 @@
-package TestCases
+package testCases
 
-import Pages.ExplorePage
+import pages.ExplorePage
 import Utils.printErrorMsg
 import Utils.printInfoMsg
 import Utils.printSuccessMsg

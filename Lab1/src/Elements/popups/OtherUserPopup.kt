@@ -1,32 +1,64 @@
-package Elements.popups
+package elements.popups
 
-import org.openqa.selenium.By
-import org.openqa.selenium.Keys
+import Utils.pressEscKey
+import Utils.waitForPresence
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
-import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
-import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.ui.WebDriverWait
 
-class OtherUserPopup(private val driver: WebDriver): AuthorPopup(driver){
+class OtherUserPopup(private val driver: WebDriver){
+
+    @FindBy(xpath="//*[contains(@class,'tumblelog_popover')]/div/div/div[1]/div[2]/div/ul/li[1]/a")
+    var userSettingsAsk: WebElement? = null
+
+    @FindBy(xpath="//*[contains(@class,'tumblelog_popover')]/div/div/div[1]/div[2]/div/ul/li[2]/a")
+    var userSettingsSendMsg: WebElement? = null
+
+    @FindBy(xpath="//*[contains(@class,'tumblelog_popover')]/div/div/div[1]/div[2]/div/ul/li[3]/a")
+    var userSettingsArchive: WebElement? = null
+
+    @FindBy(xpath="//*[contains(@class,'tumblelog_popover')]/div/div/div[1]/div[2]/div/ul/li[4]/a")
+    var userSettingsReport: WebElement? = null
+
+    @FindBy(xpath="//*[contains(@class,'tumblelog_popover')]/div/div/div[1]/div[2]/div/ul/li[5]/a")
+    var userSettingsBlock: WebElement? = null
 
     @FindBy(xpath="//*[contains(@class,'tumblelog_popover')]/div/div/div[1]/div[1]/div[1]/div[2]/div[2]/a")
-    var userAccountBtn: WebElement? = null
+    var userSettingsBtn: WebElement? = null
 
     @FindBy(xpath="//*[contains(@class,'tumblelog_popover')]/div/div/div[1]/div[1]/div[1]/div[2]/div[2]/button")
     var followBtn: WebElement? = null
 
+    @FindBy(xpath="//*[contains(@class,'tumblelog_popover')]/div/div/div[1]/div[1]/div[1]/div[2]/div[2]/button")
+    var userProfile: WebElement? = null
+
     init{
         PageFactory.initElements(driver, this)
 
-        val wait = WebDriverWait(driver, 20)
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@class,'tumblelog_popover')]")))
+        waitForPresence(driver, 20, "tumblelog_popover")
+    }
+
+    fun follow(){
+        followBtn!!.click()
+    }
+
+    fun askUser(){
+        userSettingsBtn!!.click()
+        userSettingsAsk!!.click()
+    }
+
+    fun sendMsgToUser() : DialogPopup{
+        userSettingsBtn!!.click()
+        userSettingsSendMsg!!.click()
+        return DialogPopup(driver)
+    }
+
+    fun isFollowed(): Boolean{
+        return followBtn!!.text == "Unfollow"
     }
 
     fun closePopup(){
-        val action = Actions(driver)
-        action.sendKeys(Keys.ESCAPE).perform()
+        pressEscKey(driver)
     }
 }

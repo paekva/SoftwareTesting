@@ -1,14 +1,13 @@
-package TestCases
+package testCases
 
-import Elements.CreatePostPopup
-import Elements.Header
+import elements.CreatePostPopup
+import elements.Header
+import Utils.pressEscKey
 import Utils.printErrorMsg
 import Utils.printInfoMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.By
-import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
-import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
@@ -144,7 +143,6 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
     }
 
     private fun closeCreatePostMenu(){
-        val action = Actions(driver)
-        action.sendKeys(Keys.ESCAPE).perform()
+        pressEscKey(driver)
     }
 }

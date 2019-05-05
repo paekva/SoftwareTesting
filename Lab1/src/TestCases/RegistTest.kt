@@ -1,8 +1,7 @@
-package TestCases
+package testCases
 
-import Pages.RegisterPage
+import pages.RegisterPage
 import Utils.UserCredentialsFactory
-import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 
 class RegistTest(private val driver: WebDriver){

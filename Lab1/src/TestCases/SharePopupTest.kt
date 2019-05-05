@@ -1,7 +1,7 @@
-package TestCases
+package testCases
 
-import Elements.Post
-import Elements.popups.SharePopup
+import elements.Post
+import elements.popups.SharePopup
 import Utils.printErrorMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver

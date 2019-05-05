@@ -1,10 +1,12 @@
-package Elements.popups
+package elements.popups
 
-import Elements.UserFullProfile
+import Utils.pressEscKey
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
 
 class AccountPopup(private val driver: WebDriver) {
 
@@ -37,6 +39,9 @@ class AccountPopup(private val driver: WebDriver) {
 
     init{
         PageFactory.initElements(driver, this)
+
+        val wait = WebDriverWait(driver, 10)
+        wait.until<WebElement>(ExpectedConditions.elementToBeClickable(likes))
     }
 
     fun openLikesList() {
@@ -73,5 +78,9 @@ class AccountPopup(private val driver: WebDriver) {
 
     fun openAppearanceSettings() {
         appearanceSettings!!.click()
+    }
+
+    fun close(){
+        pressEscKey(driver)
     }
 }

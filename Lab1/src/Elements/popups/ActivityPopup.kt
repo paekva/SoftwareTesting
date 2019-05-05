@@ -1,12 +1,13 @@
-package Elements.popups
+package elements.popups
 
-import Elements.UserFullProfile
-import org.openqa.selenium.Keys
+import elements.UserFullProfile
+import Utils.pressEscKey
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
-import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
 
 class ActivityPopup(private val driver: WebDriver) {
 
@@ -18,6 +19,9 @@ class ActivityPopup(private val driver: WebDriver) {
 
     init {
         PageFactory.initElements(driver, this)
+
+        val wait = WebDriverWait(driver, 10)
+        wait.until<WebElement>(ExpectedConditions.elementToBeClickable(seeAllBtn))
     }
 
     fun seeAllResults() {
@@ -29,8 +33,7 @@ class ActivityPopup(private val driver: WebDriver) {
         return UserFullProfile(driver)
     }
 
-    fun closePopup(){
-        val action = Actions(driver)
-        action.sendKeys(Keys.ESCAPE).perform()
+    fun close(){
+        pressEscKey(driver)
     }
 }

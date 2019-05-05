@@ -1,7 +1,8 @@
-package TestCases
+package testCases
 
-import Elements.Header
-import Elements.popups.AccountPopup
+import elements.CurrentUserPost
+import elements.Header
+import elements.popups.AccountPopup
 import Utils.printErrorMsg
 import Utils.printInfoMsg
 import Utils.printSuccessMsg
@@ -101,11 +102,20 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
             if(driver.currentUrl != "https://www.tumblr.com/blog/katerinpaivol")
                 throw Exception("incorrect url - supposed to be on posts page")
 
+            currentUserPostTest()
+
             printSuccessMsg("postsListTest")
         }
         catch (e: Exception){
             printErrorMsg("postsListTest", e.message)
         }
+    }
+
+    private fun currentUserPostTest(){
+        printInfoMsg("\tCURRENT USER POST tests")
+
+        val postTest = PostTest(driver, CurrentUserPost(driver))
+        postTest.runCurrentUserPostTests()
     }
 
     private fun readersListTest() {

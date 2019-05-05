@@ -1,8 +1,7 @@
-package TestCases
+package testCases
 
-import Elements.Header
-import Elements.popups.AccountPopup
-import Elements.popups.ActivityPopup
+import elements.Header
+import elements.popups.ActivityPopup
 import Utils.printErrorMsg
 import Utils.printInfoMsg
 import Utils.printSuccessMsg

@@ -1,4 +1,4 @@
-package Elements.popups
+package elements.popups
 
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
@@ -54,7 +54,6 @@ class ReblogPopup(private val driver: WebDriver){
 
         val tmp = driver.findElement(By.xpath("//*[@id='dialog_0']/div/div/div[2]/button"))
         tmp!!.click()
-
     }
 
     fun reblog(){

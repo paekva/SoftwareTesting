@@ -1,8 +1,8 @@
-package TestCases
+package testCases
 
-import Elements.Post
-import Elements.UserPost
-import Pages.HomePage
+import elements.CurrentUserPost
+import elements.Post
+import elements.UserPost
 import Utils.printErrorMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver
@@ -12,14 +12,14 @@ class PostTest(private val driver: WebDriver, private val post: Post){
     fun runCurrentUserPostTests(){
         testSharePopup()
         testReplyPopup()
-        testReblogPopup()
-        // testSettingsChangeBtn()
+        //testReblogPopup()
+        testSettingsChangeBtn(post as CurrentUserPost)
     }
 
     fun runOtherUserPostTests(){
         testSharePopup()
         testLikeBtn(post as UserPost)
-        testReblogPopup()
+        //testReblogPopup()
     }
 
     // #4.2
@@ -66,9 +66,9 @@ class PostTest(private val driver: WebDriver, private val post: Post){
             replay.testChangeFieldToHTMLFormat()
             replay.testChangeFieldToTextFormat()
             replay.testReblogPublicationSettings()
-            replay.testReblogCancel()
+            // replay.testReblogCancel()
             // replay.testReblogSubmit()
-            // post.closePopup()
+            post.closePopup()
 
             printSuccessMsg("testReblogPopup")
         }
@@ -92,6 +92,25 @@ class PostTest(private val driver: WebDriver, private val post: Post){
         }
         catch(e:Exception){
             printErrorMsg("testLikeBtn", e.message)
+        }
+    }
+
+    // #4.6
+    private fun testSettingsChangeBtn(post: CurrentUserPost){
+        try{
+            val settings = post.openSettingsPopup()
+            val reblogPopup = settings.openChangePopup()
+
+            post.closePopup()
+
+            val settings_delete = post.openSettingsPopup()
+            settings_delete.delete()
+            post.closePopup()
+
+            printSuccessMsg("testSettingsBtn")
+        }
+        catch(e:Exception){
+            printErrorMsg("testSettingsBtn", e.message)
         }
     }
 
@@ -152,24 +171,5 @@ class PostTest(private val driver: WebDriver, private val post: Post){
         }
     }
 
-    // #4.4
-    private fun testSettingsChangeBtn(){
-        try{
-            val post = homePage.currentUserPost
-            val settings = post!!.openSettingsPopup()
-            val reblogPopup = settings.openChangePopup()
-
-            post.closePopup()
-
-            val settings_delete = post.openSettingsPopup()
-            settings_delete.delete()
-            post.closePopup()
-
-            printSuccessMsg("testSettingsBtn")
-        }
-        catch(e:Exception){
-            printErrorMsg("testSettingsBtn", e.message)
-        }
-    }
     */
 }

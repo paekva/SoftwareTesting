@@ -1,4 +1,4 @@
-package Elements.popups
+package elements.popups
 
 import org.openqa.selenium.WebDriver
 

@@ -1,7 +1,7 @@
-package TestCases
+package testCases
 
-import Elements.Header
-import Elements.popups.MessagingPopup
+import elements.Header
+import elements.popups.MessagingPopup
 import Utils.printErrorMsg
 import Utils.printInfoMsg
 import Utils.printSuccessMsg
