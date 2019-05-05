@@ -18,14 +18,11 @@ class CurrentUserPost(private val driver: WebDriver): Post(driver){
     @FindBy(xpath="//*[contains(@class,'is_mine')]/div[2]/div[3]/div[2]/div/a")
     override var reblogBtn: WebElement? = null
 
+    @FindBy(xpath = "//*[contains(@class,'is_mine')]/div[2]/div[1]/div/a")
+    override var author: WebElement? = null
+
     @FindBy(xpath = "//*[contains(@class,'is_mine')]/div[2]/div[3]/div[2]/div/div[3]")
     private var settingsBtn: WebElement? = null
-
-    @FindBy(xpath = "//*[contains(@class,'post_header')]/div/a[2]")
-    private var author: WebElement? = null
-
-    @FindBy(xpath = "//*[contains(@class,'post_header')]/div/a[1]")
-    private var user: WebElement? = null
 
     init{ PageFactory.initElements(driver, this) }
 
@@ -35,25 +32,8 @@ class CurrentUserPost(private val driver: WebDriver): Post(driver){
         return SettingsPopup(driver)
     }
 
-    fun openUserPopup(): CurrentUserPopup {
-        val action = Actions(driver)
-        action.moveToElement(user).build().perform()
-
-        return CurrentUserPopup(driver)
-    }
-
-    fun openAuthorPopup(): OtherUserPopup {
-        val action = Actions(driver)
-        action.moveToElement(author).build().perform()
-
-        return OtherUserPopup(driver)
-    }
-
-    fun openUserProfile() {
-        user!!.click()
-    }
-
-    fun openAuthorProfile() {
-        author!!.click()
+    fun closeSettingsPopup() : CurrentUserPost{
+        settingsBtn!!.click()
+        return this
     }
 }

@@ -4,17 +4,16 @@ import pages.HomePage
 import Utils.printErrorMsg
 import Utils.printInfoMsg
 import Utils.printSuccessMsg
+import Utils.waitForURLChange
 import org.openqa.selenium.WebDriver
 
 class HomePageTest(private val driver: WebDriver, private val homePage: HomePage){
 
     fun runAllTests(){
-        printInfoMsg("\tHOME PAGE tests")
-
+        printInfoMsg("HOME PAGE tests")
         recommendedUserTest()
         radarPostTest()
-
-        printInfoMsg("\tHOME PAGE tests FINISHED")
+        printInfoMsg("HOME PAGE tests FINISHED")
     }
 
     private fun radarPostTest(){
@@ -22,40 +21,42 @@ class HomePageTest(private val driver: WebDriver, private val homePage: HomePage
         try{
             val userPopup = homePage.openRadarPostUserProfile()
             userPopup.closePopup()
-            printSuccessMsg("openRadarPostUserProfile")
+            printSuccessMsg("\topenRadarPostUserProfile")
 
             val userProfile = homePage.chooseRadarPost()
             userProfile.closePopup()
-            printSuccessMsg("chooseRadarPost")
+            printSuccessMsg("\tchooseRadarPost")
         }
         catch(e: Exception){
             printErrorMsg("radarPostTest", e.message)
         }
+        printInfoMsg("\tRADAR POST tests FINISHED")
     }
 
     private fun recommendedUserTest() {
         printInfoMsg("\tRECOMMENDED USER tests")
-
         openRecommendedUserProfileTest()
         exploreRecommendedTest()
+        printInfoMsg("\tRECOMMENDED USER tests FINISHED")
     }
 
     private fun openRecommendedUserProfileTest(){
         try{
             val usersList = homePage.recommendedUserList
-            usersList!!.openRecommendedUserProfile(usersList.firstRecommendedUser!!)
+
+            /*usersList!!.openRecommendedUserProfile(usersList.firstRecommendedUser!!)
             usersList.closeUserPopover(homePage.recommendationsListHeader,usersList.thirdRecommendedUser!!)
 
             usersList.openRecommendedUserProfile(usersList.secondRecommendedUser!!)
-            usersList.closeUserPopover(homePage.recommendationsListHeader,usersList.thirdRecommendedUser!!)
+            usersList.closeUserPopover(homePage.recommendationsListHeader,usersList.thirdRecommendedUser!!)*/
 
-            usersList.openRecommendedUserProfile(usersList.thirdRecommendedUser!!)
+            usersList!!.openRecommendedUserProfile(usersList.thirdRecommendedUser!!)
             usersList.closeUserPopover(homePage.recommendationsListHeader,usersList.thirdRecommendedUser!!)
 
             usersList.subscribeToRecommendedUser()
             usersList.closeUserPopover(homePage.recommendationsListHeader,usersList.thirdRecommendedUser!!)
 
-            printSuccessMsg("openRecommendedUserProfileTest")
+            printSuccessMsg("\topenRecommendedUserProfileTest")
         }
         catch(e: Exception){
             printErrorMsg("openRecommendedUserProfileTest", e.message)
@@ -65,14 +66,12 @@ class HomePageTest(private val driver: WebDriver, private val homePage: HomePage
     private fun exploreRecommendedTest(){
         try{
             homePage.recommendedUserList!!.exploreTumblr()
-            if(driver.currentUrl != "https://www.tumblr.com/explore/trending"){
-                throw Exception("incorrect url")
-            }
+            waitForURLChange(driver, 10,"https://www.tumblr.com/explore/trending")
             driver.navigate().back()
-            printSuccessMsg("exploreRecommendedTest")
+            printSuccessMsg("\texploreRecommendedTest")
         }
         catch(e: Exception){
-            printErrorMsg("exploreRecommendedTest", e.message)
+            printErrorMsg("exploreRecommendedTest", "incorrect url")
         }
     }
 

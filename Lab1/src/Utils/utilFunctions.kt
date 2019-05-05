@@ -17,7 +17,7 @@ fun printErrorMsg(testName: String, msg: String?){
 }
 
 fun printInfoMsg(msg: String?){
-    println("\u001B[36m $msg  \u001B[0m \n")
+    println("\u001B[36m $msg  \u001B[0m")
 }
 
 fun pressEscKey(driver: WebDriver){
@@ -33,4 +33,9 @@ fun waitForPresence(driver: WebDriver, time: Long, element: String){
 fun waitToBeClickable(driver: WebDriver, time: Long, element: String){
     val wait = WebDriverWait(driver, time)
     wait.until<WebElement>(ExpectedConditions.elementToBeClickable(By.className(element)))
+}
+
+fun waitForURLChange(driver: WebDriver, time: Long, url: String){
+    val wait = WebDriverWait(driver, time)
+    wait.until(ExpectedConditions.urlToBe(url))
 }

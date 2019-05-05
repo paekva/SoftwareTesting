@@ -3,13 +3,21 @@ package testCases
 import elements.popups.ReplyPopup
 import Utils.printErrorMsg
 import Utils.printSuccessMsg
+import elements.Post
 import org.openqa.selenium.WebDriver
 
-class ReplayPopupTest(private val driver: WebDriver){
-    private var popup: ReplyPopup = ReplyPopup(driver)
+class ReplayPopupTest(private val driver: WebDriver, private var post: Post, private var popup: ReplyPopup){
+
+    fun runAllTests(){
+        testEmptyInput()
+        post.closePopup()
+
+        post.openReplyPopup()
+        testCorrectInput()
+    }
 
     // #4.3.1
-    fun testEmptyInput(){
+    private fun testEmptyInput(){
         try{
             popup.fillTestField("")
 
@@ -24,7 +32,7 @@ class ReplayPopupTest(private val driver: WebDriver){
     }
 
     // #4.3.2
-    fun testCorrectInput(){
+    private fun testCorrectInput(){
         try{
             popup.fillTestField("Hello!")
 

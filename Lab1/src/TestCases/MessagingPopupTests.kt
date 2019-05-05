@@ -57,7 +57,7 @@ class MessagingPopupTests(private val driver: WebDriver, private val header: Hea
                 .writeNewMsg()
                 .findRecipient("Search")
                 .cancelNewMsg()
-                .closePopup()
+                .close()
 
             header.openMessagingPopup()
             printSuccessMsg("cancelMessageTest")

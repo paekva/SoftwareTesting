@@ -3,7 +3,6 @@ package elements
 import elements.popups.AccountPopup
 import elements.popups.ActivityPopup
 import elements.popups.MessagingPopup
-import elements.popups.SearchPopup
 import Utils.waitForPresence
 import pages.ExplorePage
 import pages.HomePage
@@ -48,13 +47,12 @@ class Header(private val driver: WebDriver){
         search!!.sendKeys(Keys.ENTER)
     }
 
-    fun fillInSearchField(searchText: String): SearchPopup? {
+    fun fillInSearchField(searchText: String) : Header {
         search!!.clear()
         search.sendKeys(searchText)
 
         waitForPopupToAppear()
-
-        return SearchPopup(driver)
+        return this
     }
 
     fun goToHomePageByLogo(): HomePage {

@@ -6,6 +6,7 @@ import elements.popups.AccountPopup
 import Utils.printErrorMsg
 import Utils.printInfoMsg
 import Utils.printSuccessMsg
+import Utils.waitForURLChange
 import org.openqa.selenium.WebDriver
 
 class AccountPopupTest(private val driver: WebDriver, private val header: Header, private val popup: AccountPopup){
@@ -42,72 +43,64 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
     private fun likesListTest() {
         try{
             popup.openLikesList()
-
-            if(driver.currentUrl != "https://www.tumblr.com/likes")
-                throw Exception("incorrect url - supposed to be on likes page")
-            
+            waitForURLChange(driver, 20,  "https://www.tumblr.com/likes")
             printSuccessMsg("likesListTest")
         }
         catch (e: Exception){
-            printErrorMsg("likesListTest", e.message)
+            printErrorMsg("likesListTest", "incorrect url - supposed to be on likes page")
         }
     }
 
     private fun settingsTest() {
         try{
             popup.openSettings()
-
-            if(driver.currentUrl != "https://www.tumblr.com/settings/account")
-                throw Exception("incorrect url - supposed to be on settings page")
-
+            waitForURLChange(driver, 20,  "https://www.tumblr.com/settings/account")
+            footerTests()
             printSuccessMsg("settingsTest")
         }
         catch (e: Exception){
-            printErrorMsg("settingsTest", e.message)
+            printErrorMsg("settingsTest", "incorrect url - supposed to be on settings page")
         }
+    }
+
+    private fun footerTests(){
+        val footerTest = FooterMenuTest(driver)
+        footerTest.runAllTests()
     }
 
     private fun referenceTest() {
         try{
             popup.openReference()
-
-            if(driver.currentUrl != "https://tumblr.zendesk.com/hc/ru")
-                throw Exception("incorrect url - supposed to be on reference page")
-
-            driver.get("https://www.tumblr.com/dashboard")
+            waitForURLChange(driver, 20,  "https://tumblr.zendesk.com/hc/ru")
+            driver.navigate().back()
             printSuccessMsg("referenceTest")
         }
         catch (e: Exception){
-            printErrorMsg("referenceTest", e.message)
+            printErrorMsg("referenceTest", "incorrect url - supposed to be on reference page")
         }
     }
 
     private fun usersProfileTest() {
         try{
             popup.openUsersProfile()
-            if(driver.currentUrl != "https://www.tumblr.com/blog/katerinpaivol")
-                throw Exception("incorrect url - supposed to be on user page")
-
+            waitForURLChange(driver, 20,  "https://www.tumblr.com/blog/katerinpaivol")
             printSuccessMsg("usersProfileTest")
         }
         catch (e: Exception){
-            printErrorMsg("usersProfileTest", e.message)
+            printErrorMsg("usersProfileTest", "incorrect url - supposed to be on user page")
         }
     }
 
     private fun postsListTest() {
         try{
             popup.openPostsList()
-
-            if(driver.currentUrl != "https://www.tumblr.com/blog/katerinpaivol")
-                throw Exception("incorrect url - supposed to be on posts page")
-
+            waitForURLChange(driver, 20,  "https://www.tumblr.com/blog/katerinpaivol")
             currentUserPostTest()
 
             printSuccessMsg("postsListTest")
         }
         catch (e: Exception){
-            printErrorMsg("postsListTest", e.message)
+            printErrorMsg("postsListTest", "incorrect url - supposed to be on posts page")
         }
     }
 
@@ -121,56 +114,44 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
     private fun readersListTest() {
         try{
             popup.openReadersList()
-
-            if(driver.currentUrl != "https://www.tumblr.com/blog/katerinpaivol/followers")
-                throw Exception("incorrect url - supposed to be on readers page")
-
+            waitForURLChange(driver, 20,  "https://www.tumblr.com/blog/katerinpaivol/followers")
             printSuccessMsg("readersListTest")
         }
         catch (e: Exception){
-            printErrorMsg("readersListTest", e.message)
+            printErrorMsg("readersListTest", "incorrect url - supposed to be on readers page")
         }
     }
 
     private fun activityTest() {
         try{
             popup.openActivity()
-
-            if(driver.currentUrl != "https://www.tumblr.com/blog/katerinpaivol/activity")
-                throw Exception("incorrect url - supposed to be on activity page")
-
+            waitForURLChange(driver, 20, "https://www.tumblr.com/blog/katerinpaivol/activity")
             printSuccessMsg("activityTest")
         }
         catch (e: Exception){
-            printErrorMsg("activityTest", e.message)
+            printErrorMsg("activityTest", "incorrect url - supposed to be on activity page")
         }
     }
 
     private fun markedPostsTest() {
         try{
             popup.openMarkedPosts()
-
-            if(driver.currentUrl != "https://www.tumblr.com/blog/katerinpaivol/review")
-                throw Exception("incorrect url - supposed to be on review page")
-
+            waitForURLChange(driver, 20, "https://www.tumblr.com/blog/katerinpaivol/review")
             printSuccessMsg("markedPostsTest")
         }
         catch (e: Exception){
-            printErrorMsg("markedPostsTest", e.message)
+            printErrorMsg("markedPostsTest", "incorrect url - supposed to be on review page")
         }
     }
 
     private fun appearanceSettingsTest() {
         try{
             popup.openAppearanceSettings()
-
-            if(driver.currentUrl != "https://www.tumblr.com/settings/blog/katerinpaivol")
-                throw Exception("incorrect url - supposed to be on appearance settings page")
-
+            waitForURLChange(driver, 20,"https://www.tumblr.com/settings/blog/katerinpaivol")
             printSuccessMsg("appearanceSettingsTest")
         }
         catch (e: Exception){
-            printErrorMsg("appearanceSettingsTest", e.message)
+            printErrorMsg("appearanceSettingsTest", "wrong page is opened")
         }
     }
 }

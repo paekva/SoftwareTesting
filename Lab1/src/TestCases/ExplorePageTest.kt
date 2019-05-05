@@ -9,24 +9,19 @@ import org.openqa.selenium.WebDriver
 class ExplorePageTest(private val driver: WebDriver, private val explorePage: ExplorePage){
 
     fun runAllTests(){
-        printInfoMsg("\tEXPLORE PAGE tests")
-
-        /*filterMenuTest()
+        printInfoMsg("EXPLORE PAGE tests")
         popularRequestsTest()
-        popularBlogsTest()*/
+        popularBlogsTest()
+        filterMenuTest()
         recommendedPostTest()
+        printInfoMsg("EXPLORE PAGE tests FINISHED")
     }
 
     private fun recommendedPostTest(){
-        try{
-            printInfoMsg("\tRECOMMENDED POST tests")
-            val postTest = PostTest(driver, explorePage.recommendedPost!!)
-            postTest.runOtherUserPostTests()
-            printSuccessMsg("recommendedPostTest")
-        }
-        catch(e: Exception){
-            printErrorMsg("recommendedPostTest", e.message)
-        }
+        printInfoMsg("\tRECOMMENDED POST tests")
+        PostTest(driver, explorePage.recommendedPost!!)
+            .runOtherUserPostTests()
+        printInfoMsg("\tRECOMMENDED POST tests FINISHED")
     }
 
     private fun filterMenuTest(){
@@ -64,6 +59,8 @@ class ExplorePageTest(private val driver: WebDriver, private val explorePage: Ex
 
         explorePage.openPopularBtn()
         checkUrl("trending", "popularTest")
+
+        printInfoMsg("\tFILTER MENU tests FINISHED")
     }
 
     private fun checkUrl(url: String, testName: String){

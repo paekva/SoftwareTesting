@@ -13,9 +13,7 @@ fun main(){
     // registrarionTests(driver)
 
     preTestLogin(driver)
-    println("1")
     headerTests(driver)
-    footerTests(driver)
 
     // dialogPopupTest(driver)
 
@@ -42,11 +40,6 @@ fun registrarionTests(driver: ChromeDriver) {
 fun headerTests(driver: ChromeDriver) {
     val headerTest = HeaderMenuTest(driver)
     headerTest.runAllTests()
-}
-
-fun footerTests(driver: ChromeDriver){
-    val footerTest = FooterMenuTest(driver)
-    footerTest.runAllTests()
 }
 
 // TODO: finish

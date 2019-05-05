@@ -35,8 +35,7 @@ class OtherUserPopup(private val driver: WebDriver){
 
     init{
         PageFactory.initElements(driver, this)
-
-        waitForPresence(driver, 20, "tumblelog_popover")
+        waitForPresence(driver, 40, "tumblelog_popover")
     }
 
     fun follow(){

@@ -5,6 +5,7 @@ import Utils.pressEscKey
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
@@ -12,6 +13,7 @@ abstract class Post(private val driver: WebDriver){
     abstract var shareBtn: WebElement?
     abstract var replyBtn: WebElement?
     abstract var reblogBtn: WebElement?
+    abstract var author: WebElement?
 
     fun openSharePopup(): SharePopup {
         shareBtn!!.click()
@@ -36,11 +38,23 @@ abstract class Post(private val driver: WebDriver){
         return ReblogPopup(driver)
     }
 
+    fun openAuthorPopup(): OtherUserPopup {
+        val action = Actions(driver)
+        action.moveToElement(author).build().perform()
+        return OtherUserPopup(driver)
+    }
+
+    fun openAuthorProfile() : UserFullProfile {
+        author!!.click()
+        return UserFullProfile(driver)
+    }
+
+
     fun closePopup(){
         pressEscKey(driver)
     }
 
-    fun waitForPopupToAppear(popover: String): WebElement{
+    private fun waitForPopupToAppear(popover: String): WebElement{
 
         val wait = WebDriverWait(driver, 30)
         val popup = wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className(popover)))

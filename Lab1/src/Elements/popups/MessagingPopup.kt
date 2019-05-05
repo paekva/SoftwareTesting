@@ -27,7 +27,7 @@ class MessagingPopup(private val driver: WebDriver) {
     init {
         PageFactory.initElements(driver, this)
 
-        val wait = WebDriverWait(driver, 10)
+        val wait = WebDriverWait(driver, 20)
         wait.until<WebElement>(ExpectedConditions.elementToBeClickable(newMsgBtn))
     }
 

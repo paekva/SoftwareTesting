@@ -16,11 +16,11 @@ class SharePopupTest(private val driver: WebDriver, private var post: Post, priv
         testShareByEmbed()
         post.closePopup()
 
-        post.openSharePopup()
-        // testShareByEmail_EmptyInput()
+        /*post.openSharePopup()
+        testShareByEmail_EmptyInput()
         testShareByEmail_IncorrectEmail()
         testShareByEmail_CorrectInput()
-        post.closePopup()
+        post.closePopup()*/
 
         post.openSharePopup()
         testShareComplain()

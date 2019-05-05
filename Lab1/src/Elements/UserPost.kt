@@ -15,6 +15,9 @@ class UserPost(private val driver: WebDriver): Post(driver){
     @FindBy(xpath="//*[contains(@class,'not_mine')]/div/div[2]/div/a")
     override var reblogBtn: WebElement? = null
 
+    @FindBy(xpath = "//*[contains(@class,'not_mine')]/header/div")
+    override var author: WebElement? = null
+
     @FindBy(xpath="//*[contains(@class,'not_mine')]/div/div[2]/div/div[3]")
     private var likeBtn: WebElement? = null
 

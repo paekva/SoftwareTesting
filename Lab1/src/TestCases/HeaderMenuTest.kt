@@ -11,26 +11,26 @@ class HeaderMenuTest(private val driver: WebDriver){
     private val header: Header = Header(driver)
 
     fun runAllTests(){
-        printInfoMsg("\tHEADER tests")
+        printInfoMsg("HEADER tests\n")
 
-        // createPostButtonTest()
+        createPostButtonTest()
         accountButtonTest()
-        activityButtonTest() //TODO: check
+        // activityButtonTest() //TODO: not open as I don't have relevant data in account
         messageButtonTest()
         inboxButtonTest()
         exploreButtonTest()
         dashboardButtonTest()
         searchFieldTest()
         logoButtonTest()
+
+        printInfoMsg("\nHEADER tests FINISHED")
     }
 
     // #3.1
     private fun dashboardButtonTest(){
         try{
             val homePage = header.goToHomePage()
-            val homePageTest = HomePageTest(driver, homePage)
-            homePageTest.runAllTests()
-            printSuccessMsg("dashboardButton")
+            HomePageTest(driver, homePage).runAllTests()
         }
         catch (e: Exception){
             printErrorMsg("dashboardButtonTest", "cannot find dashboard page")
@@ -41,10 +41,7 @@ class HeaderMenuTest(private val driver: WebDriver){
     private fun exploreButtonTest(){
         try{
             val explorePage = header.goToExplorePage()
-            val explorePageTest = ExplorePageTest(driver, explorePage)
-            explorePageTest.runAllTests()
-
-            printSuccessMsg("exploreButtonTest")
+            ExplorePageTest(driver, explorePage).runAllTests()
         }
         catch (e: Exception){
             printErrorMsg("exploreButtonTest", "cannot find explore page")
@@ -55,10 +52,14 @@ class HeaderMenuTest(private val driver: WebDriver){
     private fun inboxButtonTest(){
         try{
             header.goToInboxPage()
+
+            if(driver.currentUrl != "https://www.tumblr.com/inbox")
+                throw Exception("wrong page opened")
+
             printSuccessMsg("inboxButtonTest")
         }
         catch (e: Exception){
-            printErrorMsg("inboxButtonTest", "cannot find inbox page")
+            printErrorMsg("inboxButtonTest", e.message)
         }
     }
 
@@ -66,10 +67,10 @@ class HeaderMenuTest(private val driver: WebDriver){
     private fun messageButtonTest(){
         try{
             val messagePopup = header.openMessagingPopup()
-            val messagesTest = MessagingPopupTests(driver, header, messagePopup)
-            messagesTest.runAllTests()
-            messagePopup.close()
+            MessagingPopupTests(driver, header, messagePopup)
+                .runAllTests()
 
+            messagePopup.close()
             printSuccessMsg("messageButtonTest")
         }
         catch (e: Exception){
@@ -81,10 +82,12 @@ class HeaderMenuTest(private val driver: WebDriver){
     private fun activityButtonTest(){
         try{
             val activityPopup = header.openActivityPopup()
-            val accountPopupTest = ActivityPopupTest(driver, header, activityPopup)
-            accountPopupTest.runAllTests()
-            activityPopup.close()
 
+            println("here")
+            ActivityPopupTest(driver, header, activityPopup)
+                .runAllTests()
+
+            activityPopup.close()
             printSuccessMsg("activityButtonTest")
         }
         catch (e: Exception){
@@ -96,10 +99,10 @@ class HeaderMenuTest(private val driver: WebDriver){
     private fun accountButtonTest(){
         try{
             val accountPopup = header.openAccountPopup()
-            val accountPopupTest = AccountPopupTest(driver, header, accountPopup)
-            accountPopupTest.runAllTests()
-            accountPopup.close()
+            AccountPopupTest(driver, header, accountPopup)
+                .runAllTests()
 
+            accountPopup.close()
             printSuccessMsg("accountButtonTest")
         }
         catch (e: Exception){
@@ -111,8 +114,10 @@ class HeaderMenuTest(private val driver: WebDriver){
     private fun createPostButtonTest(){
         try{
             val createPostPopup = header.openCreatePostPopup()
-            val createPost = CreatePostTest(driver, header, createPostPopup)
-            createPost.runAllTests()
+
+            CreatePostTest(driver, header, createPostPopup)
+                .runAllTests()
+
             createPostPopup.close()
 
             printSuccessMsg("createPostButtonTest")
@@ -126,12 +131,9 @@ class HeaderMenuTest(private val driver: WebDriver){
     private fun searchFieldTest(){
         try{
             val searchText = "searchText"
-            val resultPopup = header.fillInSearchField(searchText)
-
-            if(resultPopup == null)
-                throw Exception("no search popup")
-
-            header.search()
+            header
+                .fillInSearchField(searchText)
+                .search()
 
             if(driver.currentUrl != "https://www.tumblr.com/search/$searchText")
                 throw Exception("no search result page")
