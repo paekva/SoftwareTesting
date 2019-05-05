@@ -17,9 +17,9 @@ class HeaderMenuTest(private val driver: WebDriver){
         accountButtonTest()
         activityButtonTest() //TODO: check
         messageButtonTest()
-        inboxButtonTest()
-        exploreButtonTest()*/
-        dashboardButtonTest()
+        inboxButtonTest()*/
+        exploreButtonTest()
+        // dashboardButtonTest()
         // searchFieldTest()
         // logoButtonTest()
 

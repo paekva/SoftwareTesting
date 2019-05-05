@@ -21,6 +21,7 @@ class UserPost(private val driver: WebDriver): Post(driver){
 
     init{
         PageFactory.initElements(driver, this)
+        println(replyBtn)
     }
 
     fun likePost() {

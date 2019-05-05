@@ -1,15 +1,11 @@
 package Elements
 
 import Elements.popups.*
-import org.openqa.selenium.By
-import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
-import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.ui.WebDriverWait
 
 class RebloggedPost(private val driver: WebDriver): Post(driver){
 
@@ -42,7 +38,6 @@ class RebloggedPost(private val driver: WebDriver): Post(driver){
     }
 
     fun openUserPopup(): ThisUserPopup {
-        // user!!.click()
         val action = Actions(driver)
         action.moveToElement(user).build().perform()
 
@@ -50,8 +45,6 @@ class RebloggedPost(private val driver: WebDriver): Post(driver){
     }
 
     fun openAuthorPopup(): OtherUserPopup {
-        // author!!.click()
-
         val action = Actions(driver)
         action.moveToElement(author).build().perform()
 

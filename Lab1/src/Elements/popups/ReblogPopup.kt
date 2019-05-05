@@ -51,6 +51,10 @@ class ReblogPopup(private val driver: WebDriver){
 
     fun closePopup(){
         closeBtn!!.click()
+
+        val tmp = driver.findElement(By.xpath("//*[@id='dialog_0']/div/div/div[2]/button"))
+        tmp!!.click()
+
     }
 
     fun reblog(){

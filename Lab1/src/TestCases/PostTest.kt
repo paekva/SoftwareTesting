@@ -8,8 +8,8 @@ import org.openqa.selenium.WebDriver
 class PostTest(private val driver: WebDriver, private var homePage: HomePage){
 
     fun runCurrentUserPostTests(){
-        testSharePopup()
-        testReplyPopup()
+        // testSharePopup()
+        // testReplyPopup()
         testReblogPopup()
         testSettingsChangeBtn()
     }
@@ -126,7 +126,7 @@ class PostTest(private val driver: WebDriver, private var homePage: HomePage){
             replay.testReblogPublicationSettings()
             replay.testReblogCancel()
             // replay.testReblogSubmit()
-            post.closePopup()
+            // post.closePopup()
 
             printSuccessMsg("testReblogPopup")
         }

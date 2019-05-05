@@ -43,7 +43,8 @@ class LoginPage(private val driver: WebDriver){
         val wait = WebDriverWait(driver, 5)
         wait.until<WebElement>(ExpectedConditions.elementToBeClickable(loginWithPswrdBtn)).click()
 
-        password!!.clear()
+        val waitField = WebDriverWait(driver, 5)
+        waitField.until<WebElement>(ExpectedConditions.elementToBeClickable(password)).clear()
         password!!.sendKeys(userPassword)
 
         return this

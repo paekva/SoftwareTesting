@@ -4,6 +4,8 @@ import Elements.popups.ReblogPopup
 import Utils.printErrorMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
 
 class ReblogPopupTest(private val driver: WebDriver){
     private var popup: ReblogPopup = ReblogPopup(driver)
@@ -59,6 +61,11 @@ class ReblogPopupTest(private val driver: WebDriver){
         try{
             popup.fillInMsgField("Message")
             popup.closePopup()
+
+            val wait = WebDriverWait(driver, 30)
+            wait.until(ExpectedConditions.alertIsPresent())
+            driver.switchTo().alert().accept()
+
             printSuccessMsg("testReblogCancel")
         }
         catch(e:Exception){

@@ -26,8 +26,8 @@ class SharePopupTest(private val driver: WebDriver, private var post: Post, priv
         testShareComplain()
         post.closePopup()
 
-        post.openSharePopup()
-        testShareByPermLink()
+        /*post.openSharePopup()
+        testShareByPermLink()*/
     }
 
     // #4.2.1
