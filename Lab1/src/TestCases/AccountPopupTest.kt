@@ -12,8 +12,10 @@ import org.openqa.selenium.WebDriver
 class AccountPopupTest(private val driver: WebDriver, private val header: Header, private val popup: AccountPopup){
 
     fun runAllTests(){
-        printInfoMsg("ACCOUNT POPUP TEST")
-        likesListTest()
+        /*likesListTest()
+
+        header.openAccountPopup()
+        followListTest()
 
         header.openAccountPopup()
         settingsTest()
@@ -30,7 +32,7 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
         header.openAccountPopup()
         readersListTest()
 
-        header.openAccountPopup()
+        header.openAccountPopup()*/
         activityTest()
 
         header.openAccountPopup()
@@ -38,6 +40,7 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
 
         header.openAccountPopup()
         appearanceSettingsTest()
+
     }
 
     private fun likesListTest() {
@@ -48,6 +51,18 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
         }
         catch (e: Exception){
             printErrorMsg("likesListTest", "incorrect url - supposed to be on likes page")
+        }
+    }
+
+    private fun followListTest() {
+        try{
+            popup.openFollowList()
+            waitForURLChange(driver, 20,  "https://www.tumblr.com/following")
+            footerTests()
+            printSuccessMsg("followListTest")
+        }
+        catch (e: Exception){
+            printErrorMsg("followListTest", "incorrect url - supposed to be on settings page")
         }
     }
 
@@ -105,7 +120,7 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
     }
 
     private fun currentUserPostTest(){
-        printInfoMsg("\tCURRENT USER POST tests")
+        printInfoMsg("CURRENT USER POST tests")
 
         val postTest = PostTest(driver, CurrentUserPost(driver))
         postTest.runCurrentUserPostTests()

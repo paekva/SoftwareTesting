@@ -18,14 +18,14 @@ class ExplorePageTest(private val driver: WebDriver, private val explorePage: Ex
     }
 
     private fun recommendedPostTest(){
-        printInfoMsg("\tRECOMMENDED POST tests")
+        /*printInfoMsg("RECOMMENDED POST tests")
         PostTest(driver, explorePage.recommendedPost!!)
             .runOtherUserPostTests()
-        printInfoMsg("\tRECOMMENDED POST tests FINISHED")
+        printInfoMsg("RECOMMENDED POST tests FINISHED")*/
     }
 
     private fun filterMenuTest(){
-        printInfoMsg("\tFILTER MENU tests")
+        printInfoMsg("FILTER MENU tests")
 
         explorePage.openRecommendedBtn()
         checkUrl("recommended-for-you", "recommendedTest")
@@ -60,7 +60,7 @@ class ExplorePageTest(private val driver: WebDriver, private val explorePage: Ex
         explorePage.openPopularBtn()
         checkUrl("trending", "popularTest")
 
-        printInfoMsg("\tFILTER MENU tests FINISHED")
+        printInfoMsg("FILTER MENU tests FINISHED")
     }
 
     private fun checkUrl(url: String, testName: String){

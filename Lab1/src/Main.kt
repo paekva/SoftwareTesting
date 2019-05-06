@@ -10,10 +10,10 @@ fun main(){
     printInfoMsg("Test execution has STARTED")
 
     // loginTests(driver)
-    // registrarionTests(driver)
+    registrationTests(driver)
 
-    preTestLogin(driver)
-    headerTests(driver)
+    // preTestLogin(driver)
+    // headerTests(driver)
 
     // dialogPopupTest(driver)
 
@@ -24,7 +24,7 @@ fun main(){
 fun loginTests(driver: ChromeDriver) {
     val loginTest = LoginTest(driver)
     
-    printInfoMsg("\tLOGIN tests")
+    printInfoMsg("LOGIN tests")
     loginTest.loginWithIncorrectFormatOfEmail()
     loginTest.loginWithUnregisteredEmail()
     loginTest.loginWithEmptyEmail()
@@ -33,8 +33,8 @@ fun loginTests(driver: ChromeDriver) {
     loginTest.loginWithCorrectCredentials()
 }
 
-fun registrarionTests(driver: ChromeDriver) {
-    printInfoMsg("\tREGISTRATION tests")
+fun registrationTests(driver: ChromeDriver) {
+    RegistTest(driver).runAllTests()
 }
 
 fun headerTests(driver: ChromeDriver) {

@@ -13,15 +13,15 @@ class HeaderMenuTest(private val driver: WebDriver){
     fun runAllTests(){
         printInfoMsg("HEADER tests\n")
 
-        createPostButtonTest()
+        // createPostButtonTest()
         accountButtonTest()
-        // activityButtonTest() //TODO: not open as I don't have relevant data in account
-        messageButtonTest()
-        inboxButtonTest()
-        exploreButtonTest()
-        dashboardButtonTest()
-        searchFieldTest()
-        logoButtonTest()
+        // activityButtonTest()
+        // messageButtonTest()
+        // inboxButtonTest()
+        // exploreButtonTest()
+        // dashboardButtonTest()
+        // searchFieldTest()
+        // logoButtonTest()
 
         printInfoMsg("\nHEADER tests FINISHED")
     }
@@ -83,9 +83,9 @@ class HeaderMenuTest(private val driver: WebDriver){
         try{
             val activityPopup = header.openActivityPopup()
 
-            println("here")
+            /* TODO: not open as I don't have relevant data in account
             ActivityPopupTest(driver, header, activityPopup)
-                .runAllTests()
+                .runAllTests()*/
 
             activityPopup.close()
             printSuccessMsg("activityButtonTest")
@@ -98,12 +98,13 @@ class HeaderMenuTest(private val driver: WebDriver){
     // #3.6
     private fun accountButtonTest(){
         try{
+            printInfoMsg("ACCOUNT POPUP TEST")
             val accountPopup = header.openAccountPopup()
             AccountPopupTest(driver, header, accountPopup)
                 .runAllTests()
 
             accountPopup.close()
-            printSuccessMsg("accountButtonTest")
+            printInfoMsg("ACCOUNT POPUP TEST FINISHED")
         }
         catch (e: Exception){
             printErrorMsg("accountButtonTest", e.message)
@@ -113,14 +114,14 @@ class HeaderMenuTest(private val driver: WebDriver){
     // #3.7
     private fun createPostButtonTest(){
         try{
+            printInfoMsg("CREATE POST POPUP TEST")
             val createPostPopup = header.openCreatePostPopup()
 
             CreatePostTest(driver, header, createPostPopup)
                 .runAllTests()
 
             createPostPopup.close()
-
-            printSuccessMsg("createPostButtonTest")
+            printInfoMsg("CREATE POST POPUP TEST FINISHED")
         }
         catch (e: Exception){
             printErrorMsg("createPostButtonTest", e.message)

@@ -11,33 +11,33 @@ class HomePageTest(private val driver: WebDriver, private val homePage: HomePage
 
     fun runAllTests(){
         printInfoMsg("HOME PAGE tests")
-        recommendedUserTest()
+        // recommendedUserTest()
         radarPostTest()
         printInfoMsg("HOME PAGE tests FINISHED")
     }
 
     private fun radarPostTest(){
-        printInfoMsg("\tRADAR POST tests")
+        printInfoMsg("RADAR POST tests")
         try{
             val userPopup = homePage.openRadarPostUserProfile()
             userPopup.closePopup()
-            printSuccessMsg("\topenRadarPostUserProfile")
+            printSuccessMsg("openRadarPostUserProfile")
 
             val userProfile = homePage.chooseRadarPost()
             userProfile.closePopup()
-            printSuccessMsg("\tchooseRadarPost")
+            printSuccessMsg("chooseRadarPost")
         }
         catch(e: Exception){
             printErrorMsg("radarPostTest", e.message)
         }
-        printInfoMsg("\tRADAR POST tests FINISHED")
+        printInfoMsg("RADAR POST tests FINISHED")
     }
 
     private fun recommendedUserTest() {
-        printInfoMsg("\tRECOMMENDED USER tests")
+        printInfoMsg("RECOMMENDED USER tests")
         openRecommendedUserProfileTest()
         exploreRecommendedTest()
-        printInfoMsg("\tRECOMMENDED USER tests FINISHED")
+        printInfoMsg("RECOMMENDED USER tests FINISHED")
     }
 
     private fun openRecommendedUserProfileTest(){
@@ -56,7 +56,7 @@ class HomePageTest(private val driver: WebDriver, private val homePage: HomePage
             usersList.subscribeToRecommendedUser()
             usersList.closeUserPopover(homePage.recommendationsListHeader,usersList.thirdRecommendedUser!!)
 
-            printSuccessMsg("\topenRecommendedUserProfileTest")
+            printSuccessMsg("openRecommendedUserProfileTest")
         }
         catch(e: Exception){
             printErrorMsg("openRecommendedUserProfileTest", e.message)
@@ -68,7 +68,7 @@ class HomePageTest(private val driver: WebDriver, private val homePage: HomePage
             homePage.recommendedUserList!!.exploreTumblr()
             waitForURLChange(driver, 10,"https://www.tumblr.com/explore/trending")
             driver.navigate().back()
-            printSuccessMsg("\texploreRecommendedTest")
+            printSuccessMsg("exploreRecommendedTest")
         }
         catch(e: Exception){
             printErrorMsg("exploreRecommendedTest", "incorrect url")

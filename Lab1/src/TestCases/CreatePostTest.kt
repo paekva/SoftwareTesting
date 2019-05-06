@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait
 class CreatePostTest(private val driver: WebDriver, private val header: Header, private val popup: CreatePostPopup) {
 
     fun runAllTests(){
-        printInfoMsg("\tCREATE POST MENU tests")
+        printInfoMsg("CREATE POST MENU tests")
 
         textPostOptionTest()
         photoPostOptionTest()

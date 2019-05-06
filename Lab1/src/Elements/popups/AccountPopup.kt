@@ -14,9 +14,12 @@ class AccountPopup(private val driver: WebDriver) {
     private var likes: WebElement? = null
 
     @FindBy(xpath = "//*[contains(@class, 'popover--account-popover')]/div/div/ul/li[1]/ul/li[2]/a")
-    private var settings: WebElement? = null
+    private var follow: WebElement? = null
 
     @FindBy(xpath = "//*[contains(@class, 'popover--account-popover')]/div/div/ul/li[1]/ul/li[3]/a")
+    private var settings: WebElement? = null
+
+    @FindBy(xpath = "//*[contains(@class, 'popover--account-popover')]/div/div/ul/li[1]/ul/li[4]/a")
     private var reference: WebElement? = null
 
     @FindBy(xpath = "//*[contains(@class, 'popover--account-popover')]/div/div/ul/li[2]/ul/li/ul/li/div[1]/a")
@@ -46,6 +49,10 @@ class AccountPopup(private val driver: WebDriver) {
 
     fun openLikesList() {
         likes!!.click()
+    }
+
+    fun openFollowList() {
+        follow!!.click()
     }
 
     fun openSettings() {

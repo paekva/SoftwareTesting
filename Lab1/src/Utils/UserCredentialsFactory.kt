@@ -5,6 +5,10 @@ class UserCredentialsFactory {
         return "paekva@yandex.ru"
     }
 
+    fun getNewCorrectEmail(): String {
+        return "paa@mail.ru"
+    }
+
     fun getUnregisteredEmail(): String {
         return "someEmail@yandex.ru"
     }
@@ -17,12 +21,24 @@ class UserCredentialsFactory {
         return "rfnz98grf"
     }
 
+    fun getNewCorrectPassword(): String {
+        return "qpwoe3RiJs+1"
+    }
+
     fun getIncorrectPassword(): String {
         return "12345"
     }
 
     fun getCorrectName(): String {
-        return "12Hjrf9"
+        return "Rkfldw1"
+    }
+
+    fun getCorrectAge(): String {
+        return "21"
+    }
+
+    fun getRestrictedSymbolsString(): String {
+        return "$5/*-)2"
     }
 
     fun getUsedByOtheUserName(): String {

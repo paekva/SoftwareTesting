@@ -8,7 +8,7 @@ class FooterMenuTest(private val driver: WebDriver) {
 
     private val footer: Footer? = Footer(driver)
     fun runAllTests(){
-        printInfoMsg("\tFOOTER tests")
+        printInfoMsg("FOOTER tests")
         aboutPageTest()
         appsPageTest()
         tumblrPageTest()
@@ -18,7 +18,7 @@ class FooterMenuTest(private val driver: WebDriver) {
         jobsPageTest()
         newPageTest()
         privacyPageTest()
-        printInfoMsg("\tFOOTER tests FINISHED")
+        printInfoMsg("FOOTER tests FINISHED")
     }
 
     private fun aboutPageTest(){

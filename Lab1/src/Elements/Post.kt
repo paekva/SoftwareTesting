@@ -2,6 +2,7 @@ package elements
 
 import elements.popups.*
 import Utils.pressEscKey
+import Utils.waitToBeClickable
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -25,8 +26,7 @@ abstract class Post(private val driver: WebDriver){
     fun openReplyPopup(): ReplyPopup {
         replyBtn!!.click()
 
-        waitForPopupToAppear("post-activity-popover")
-
+        waitToBeClickable(driver, 30, "text-input-container")
         return ReplyPopup(driver)
     }
 

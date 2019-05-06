@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait
 
 class ActivityPopupTest(private val driver: WebDriver, private val header: Header, private val popup: ActivityPopup) {
     fun runAllTests(){
-        printInfoMsg("\tACTIVITY POPUP tests")
+        printInfoMsg("ACTIVITY POPUP tests")
         allResultsTest()
         oneResultTest()
     }

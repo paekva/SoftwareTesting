@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
 
 class RegisterPage(private val driver: WebDriver){
 
@@ -20,23 +22,26 @@ class RegisterPage(private val driver: WebDriver){
     @FindBy(id="signup_forms_submit")
     private var submitBtn: WebElement? = null
 
+    @FindBy(id="signup_age")
+    private var age: WebElement? = null
+
+    @FindBy(id="signup_tos")
+    private var rules: WebElement? = null
+
+    @FindBy(className="recaptcha-checkbox-checkmark")
+    private var recapcha: WebElement? = null
+
     @FindBy(xpath = "//*[@id=\"signup_form_errors\"]/li")
     private val errorMsg: WebElement? = null
 
     init {
-        if (!driver.currentUrl.contains("register"))
+        if (!driver.currentUrl.contains("regist"))
             throw IllegalStateException("This is not the page you are expected")
 
         PageFactory.initElements(driver, this)
-        println("here 2")
-
-        driver.findElement(By.xpath("//*[@id=\"signup_forms_submit\"]")).click()
-        println("here 3")
     }
 
     fun fillInEmail(userEmail: String): RegisterPage{
-        println(email)
-        println("here 6")
         email!!.sendKeys("")
         email!!.sendKeys(userEmail)
 
@@ -44,8 +49,6 @@ class RegisterPage(private val driver: WebDriver){
     }
 
     fun fillInPassword(userPassword: String): RegisterPage{
-        println(password)
-        println("here 7")
         password!!.sendKeys("")
         password!!.sendKeys(userPassword)
 
@@ -53,21 +56,40 @@ class RegisterPage(private val driver: WebDriver){
     }
 
     fun fillInName(userName: String): RegisterPage{
-        println(name)
-        println("here 8")
         name!!.sendKeys("")
         name!!.sendKeys(userName)
 
         return this
     }
 
-    fun register(): HomePage {
-        println(submitBtn)
-        println("here 9")
+    fun fillInAge(ageStr: String): RegisterPage{
+        age!!.sendKeys("")
+        age!!.sendKeys(ageStr)
+
+        return this
+    }
+
+    fun checkInRules(): RegisterPage{
+        rules!!.click()
+
+        return this
+    }
+
+    fun forward(): RegisterPage {
         submitBtn!!.click()
 
-        println("here 10")
-        return HomePage(driver)
+        val wait = WebDriverWait(driver, 20)
+        wait.until<WebElement>(ExpectedConditions.elementToBeClickable(By.id("signup_age")))
+        return this
+    }
+
+    fun regist() {
+        submitBtn!!.click()
+    }
+
+    fun doRecapcha(): RegisterPage  {
+        recapcha!!.click()
+        return this
     }
 
     fun getError(): WebElement? {
