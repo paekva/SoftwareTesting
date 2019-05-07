@@ -13,15 +13,15 @@ class HeaderMenuTest(private val driver: WebDriver){
     fun runAllTests(){
         printInfoMsg("HEADER tests\n")
 
-        // createPostButtonTest()
-        accountButtonTest()
-        // activityButtonTest()
-        // messageButtonTest()
-        // inboxButtonTest()
-        // exploreButtonTest()
-        // dashboardButtonTest()
-        // searchFieldTest()
-        // logoButtonTest()
+        createPostButtonTest()
+        accountButtonTest()  // OK
+        activityButtonTest()
+        messageButtonTest()
+        inboxButtonTest()
+        exploreButtonTest()
+        dashboardButtonTest()
+        searchFieldTest()
+        logoButtonTest()
 
         printInfoMsg("\nHEADER tests FINISHED")
     }
@@ -69,13 +69,19 @@ class HeaderMenuTest(private val driver: WebDriver){
             val messagePopup = header.openMessagingPopup()
             MessagingPopupTests(driver, header, messagePopup)
                 .runAllTests()
-
             messagePopup.close()
-            printSuccessMsg("messageButtonTest")
+
+            dialogPopupTest(driver)
         }
         catch (e: Exception){
             printErrorMsg("messageButtonTest", e.message)
         }
+    }
+
+    private fun dialogPopupTest(driver: WebDriver){
+        printInfoMsg("DIALOG tests")
+        DialogPopupTests(driver).runAllTests()
+        printInfoMsg("DIALOG tests FINISHED")
     }
 
     // #3.5
@@ -98,13 +104,10 @@ class HeaderMenuTest(private val driver: WebDriver){
     // #3.6
     private fun accountButtonTest(){
         try{
-            printInfoMsg("ACCOUNT POPUP TEST")
             val accountPopup = header.openAccountPopup()
             AccountPopupTest(driver, header, accountPopup)
                 .runAllTests()
-
             accountPopup.close()
-            printInfoMsg("ACCOUNT POPUP TEST FINISHED")
         }
         catch (e: Exception){
             printErrorMsg("accountButtonTest", e.message)
@@ -114,14 +117,12 @@ class HeaderMenuTest(private val driver: WebDriver){
     // #3.7
     private fun createPostButtonTest(){
         try{
-            printInfoMsg("CREATE POST POPUP TEST")
             val createPostPopup = header.openCreatePostPopup()
 
             CreatePostTest(driver, header, createPostPopup)
                 .runAllTests()
 
             createPostPopup.close()
-            printInfoMsg("CREATE POST POPUP TEST FINISHED")
         }
         catch (e: Exception){
             printErrorMsg("createPostButtonTest", e.message)

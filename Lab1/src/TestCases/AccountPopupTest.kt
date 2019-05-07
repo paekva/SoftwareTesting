@@ -12,7 +12,8 @@ import org.openqa.selenium.WebDriver
 class AccountPopupTest(private val driver: WebDriver, private val header: Header, private val popup: AccountPopup){
 
     fun runAllTests(){
-        /*likesListTest()
+        printInfoMsg("ACCOUNT POPUP TEST")
+        likesListTest()
 
         header.openAccountPopup()
         followListTest()
@@ -32,7 +33,7 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
         header.openAccountPopup()
         readersListTest()
 
-        header.openAccountPopup()*/
+        header.openAccountPopup()
         activityTest()
 
         header.openAccountPopup()
@@ -41,6 +42,7 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
         header.openAccountPopup()
         appearanceSettingsTest()
 
+        printInfoMsg("ACCOUNT POPUP TEST FINISHED")
     }
 
     private fun likesListTest() {
@@ -57,20 +59,20 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
     private fun followListTest() {
         try{
             popup.openFollowList()
+            println(driver.currentUrl)
             waitForURLChange(driver, 20,  "https://www.tumblr.com/following")
             footerTests()
             printSuccessMsg("followListTest")
         }
         catch (e: Exception){
-            printErrorMsg("followListTest", "incorrect url - supposed to be on settings page")
+            printErrorMsg("followListTest", e.message)
         }
     }
 
     private fun settingsTest() {
         try{
             popup.openSettings()
-            waitForURLChange(driver, 20,  "https://www.tumblr.com/settings/account")
-            footerTests()
+            waitForURLChange(driver, 30,  "https://www.tumblr.com/settings/account")
             printSuccessMsg("settingsTest")
         }
         catch (e: Exception){
@@ -79,8 +81,8 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
     }
 
     private fun footerTests(){
-        val footerTest = FooterMenuTest(driver)
-        footerTest.runAllTests()
+        FooterMenuTest(driver)
+            .runAllTests()
     }
 
     private fun referenceTest() {
@@ -120,10 +122,8 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
     }
 
     private fun currentUserPostTest(){
-        printInfoMsg("CURRENT USER POST tests")
-
-        val postTest = PostTest(driver, CurrentUserPost(driver))
-        postTest.runCurrentUserPostTests()
+        PostTest(driver, CurrentUserPost(driver))
+            .runCurrentUserPostTests()
     }
 
     private fun readersListTest() {

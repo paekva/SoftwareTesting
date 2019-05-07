@@ -4,6 +4,7 @@ import elements.popups.AccountPopup
 import elements.popups.ActivityPopup
 import elements.popups.MessagingPopup
 import Utils.waitForPresence
+import Utils.waitToBeClickable
 import pages.ExplorePage
 import pages.HomePage
 import pages.InboxPage
@@ -98,7 +99,7 @@ class Header(private val driver: WebDriver){
     fun openAccountPopup() : AccountPopup {
         accountBtn!!.click()
 
-        waitForPopupToAppear()
+        waitToBeClickable(driver, 20, "logout")
 
         return AccountPopup(driver)
     }

@@ -14,7 +14,6 @@ class MessagingPopupTests(private val driver: WebDriver, private val header: Hea
         printInfoMsg("MESSAGES tests")
         cancelMessageTest()
         searchedRecipientMessageTest()
-        offeredRecipientMessageTest()
     }
 
     // #
@@ -32,21 +31,6 @@ class MessagingPopupTests(private val driver: WebDriver, private val header: Hea
         }
         catch(e: Exception){
             printErrorMsg("searchedRecipientMessageTest", e.message)
-        }
-    }
-
-    // #
-    private fun offeredRecipientMessageTest(){
-        try{
-            val result = popup.chooseOfferedRecipient()
-
-            result.closePopup()
-
-            header.openMessagingPopup()
-            printSuccessMsg("offeredRecipientMessageTest")
-        }
-        catch(e: Exception){
-            printErrorMsg("offeredRecipientMessageTest", e.message)
         }
     }
 

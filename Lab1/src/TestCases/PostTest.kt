@@ -11,10 +11,13 @@ import org.openqa.selenium.WebDriver
 class PostTest(private val driver: WebDriver, private val post: Post){
 
     fun runCurrentUserPostTests(){
+        printInfoMsg("\nCURRENT USER POST tests")
         testSharePopup()
         testReplyPopup()
         testSettingsChangeBtn(post as CurrentUserPost)
         //testReblogPopup()
+
+        printInfoMsg("\nCURRENT USER POST tests FINISHED")
     }
 
     fun runOtherUserPostTests(){
@@ -28,13 +31,13 @@ class PostTest(private val driver: WebDriver, private val post: Post){
     // #4.2
     private fun testSharePopup(){
         try{
-            printInfoMsg("POST test: SHARE POPUP test")
+            printInfoMsg("\nPOST test: SHARE POPUP test")
 
             val popup = post.openSharePopup()
             SharePopupTest(driver, post, popup)
                 .runAllTests()
 
-            printInfoMsg("POST test: SHARE POPUP test FINISHED")
+            printInfoMsg("\nPOST test: SHARE POPUP test FINISHED")
         }
         catch(e:Exception){
             printErrorMsg("testSharePopup",e.message)
@@ -44,14 +47,14 @@ class PostTest(private val driver: WebDriver, private val post: Post){
     // #4.3
     private fun testReplyPopup(){
         try{
-            printInfoMsg("POST test: REPLY POPUP test")
+            printInfoMsg("\nPOST test: REPLY POPUP test")
 
             val popup = post.openReplyPopup()
             ReplayPopupTest(driver, post, popup)
                 .runAllTests()
 
             post.closePopup()
-            printInfoMsg("POST test: REPLY POPUP test FINISHED")
+            printInfoMsg("\nPOST test: REPLY POPUP test FINISHED")
         }
         catch(e:Exception){
             printErrorMsg("testReplyPopup",e.message)
@@ -61,7 +64,7 @@ class PostTest(private val driver: WebDriver, private val post: Post){
     // #4.4
     private fun testReblogPopup(){
         try{
-            printInfoMsg("POST test: REBLOG POPUP test")
+            printInfoMsg("\nPOST test: REBLOG POPUP test")
             val replay = ReblogPopupTest(driver)
 
             post.openReblogPopup()
@@ -73,7 +76,7 @@ class PostTest(private val driver: WebDriver, private val post: Post){
             // replay.testReblogSubmit()
             post.closePopup()
 
-            printInfoMsg("POST test: REBLOG POPUP test FINISHED")
+            printInfoMsg("\nPOST test: REBLOG POPUP test FINISHED")
         }
         catch(e:Exception){
             printErrorMsg("testReblogPopup",e.message)

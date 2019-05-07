@@ -12,7 +12,7 @@ class FooterMenuTest(private val driver: WebDriver) {
         aboutPageTest()
         appsPageTest()
         tumblrPageTest()
-        helpPageTest()
+        // helpPageTest()
         developersPageTest()
         themesPageTest()
         jobsPageTest()
@@ -23,7 +23,8 @@ class FooterMenuTest(private val driver: WebDriver) {
 
     private fun aboutPageTest(){
         try{
-            footer!!.openAboutPage()
+            footer!!.getToFooter()
+            footer.openAboutPage()
             waitForURLChange(driver, 20, "https://www.tumblr.com/about")
             driver.navigate().back()
             printSuccessMsg("aboutPageTest")
@@ -35,7 +36,8 @@ class FooterMenuTest(private val driver: WebDriver) {
 
     private fun appsPageTest(){
         try{
-            footer!!.openAppsPage()
+            footer!!.getToFooter()
+            footer.openAppsPage()
             waitForURLChange(driver, 20, "https://www.tumblr.com/apps")
             driver.navigate().back()
             printSuccessMsg("appsPageTest")
@@ -47,7 +49,8 @@ class FooterMenuTest(private val driver: WebDriver) {
 
     private fun privacyPageTest(){
         try{
-            footer!!.openPrivacyPage()
+            footer!!.getToFooter()
+            footer.openPrivacyPage()
             waitForURLChange(driver, 20, "https://www.tumblr.com/policy/privacy")
             driver.navigate().back()
             printSuccessMsg("privacyPageTest")
@@ -59,7 +62,8 @@ class FooterMenuTest(private val driver: WebDriver) {
 
     private fun tumblrPageTest(){
         try{
-            footer!!.openTumblrPage()
+            footer!!.getToFooter()
+            footer.openTumblrPage()
             waitForURLChange(driver, 20, "https://www.tumblr.com/dashboard")
             driver.navigate().back()
             printSuccessMsg("tumblrPageTest")
@@ -71,7 +75,8 @@ class FooterMenuTest(private val driver: WebDriver) {
 
     private fun helpPageTest(){
         try{
-            footer!!.openHelpPage()
+            footer!!.getToFooter()
+            footer.openHelpPage()
             waitForURLChange(driver, 20, "https://www.tumblr.com/help")
             driver.navigate().back()
             printSuccessMsg("helpPageTest")
@@ -83,7 +88,8 @@ class FooterMenuTest(private val driver: WebDriver) {
 
     private fun developersPageTest(){
         try{
-            footer!!.openDevelopersPage()
+            footer!!.getToFooter()
+            footer.openDevelopersPage()
             waitForURLChange(driver, 20, "https://www.tumblr.com/developers")
             driver.navigate().back()
             printSuccessMsg("developersPageTest")
@@ -95,8 +101,9 @@ class FooterMenuTest(private val driver: WebDriver) {
 
     private fun themesPageTest(){
         try{
-            footer!!.openThemesPage()
-            waitForURLChange(driver, 20, "https://www.tumblr.com/themes")
+            footer!!.getToFooter()
+            footer.openThemesPage()
+            waitForURLChange(driver, 20, "https://www.tumblr.com/themes/")
             driver.navigate().back()
             printSuccessMsg("themesPageTest")
         }
@@ -107,7 +114,8 @@ class FooterMenuTest(private val driver: WebDriver) {
 
     private fun jobsPageTest(){
         try{
-            footer!!.openJobsPage()
+            footer!!.getToFooter()
+            footer.openJobsPage()
             waitForURLChange(driver, 20, "https://www.tumblr.com/jobs")
             driver.navigate().back()
             printSuccessMsg("jobsPageTest")
@@ -119,7 +127,8 @@ class FooterMenuTest(private val driver: WebDriver) {
 
     private fun newPageTest(){
         try{
-            footer!!.openNewPage()
+            footer!!.getToFooter()
+            footer.openNewPage()
             waitForURLChange(driver, 20, "https://www.tumblr.com/policy/en/terms-of-service")
             driver.navigate().back()
             printSuccessMsg("newPageTest")

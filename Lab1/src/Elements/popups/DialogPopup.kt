@@ -1,5 +1,7 @@
 package elements.popups
 
+import Utils.pressEscKey
+import Utils.waitToBeClickable
 import elements.UserFullProfile
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -7,7 +9,7 @@ import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
 
 class DialogPopup(private val driver: WebDriver) {
-    @FindBy(xpath = "//*[@class='popover--conversation-popover']/div/div[1]/div/div[1]/div[4]/div[1]/textarea")
+    @FindBy(xpath = "//*[@class='popover--conversation-popover']/div/div[1]/div[4]/div[1]/textarea")
     private val msgInputField: WebElement? = null
 
     @FindBy(xpath = "//*[@class='popover--conversation-popover']/div/div[1]/div/div[2]/div[1]/a")
@@ -43,6 +45,7 @@ class DialogPopup(private val driver: WebDriver) {
 
     fun seeAuthor(): UserFullProfile{
         author!!.click()
+        waitToBeClickable(driver,20, "text-input")
         return UserFullProfile(driver)
     }
 
@@ -53,6 +56,7 @@ class DialogPopup(private val driver: WebDriver) {
     }
 
     fun sendMsg(): DialogPopup{
+        println("this works too")
         sendBtn!!.click()
         return this
     }
@@ -61,18 +65,25 @@ class DialogPopup(private val driver: WebDriver) {
         return sendBtn!!.isEnabled
     }
 
-    fun attachGif(){
+    fun attachGif(): DialogPopup{
         attachGif!!.click()
+        return this
     }
 
-    fun attachPhoto(){
+    fun attachPhoto(): DialogPopup{
         attachPhoto!!.click()
+        return this
     }
 
-    fun attachSticker(){
+    fun attachSticker(): DialogPopup{
         attachSticker!!.click()
+        return this
     }
 
+    fun closeOptionPopup(): DialogPopup {
+        pressEscKey(driver)
+        return this
+    }
     fun minimizeDialog() : DialogPopup{
         minimizeBtn!!.click()
         return this
@@ -80,11 +91,13 @@ class DialogPopup(private val driver: WebDriver) {
 
     fun maximizeDialog(): DialogPopup{
         minimizedConversation!!.click()
+        waitToBeClickable(driver,20, "text-input")
         return this
     }
 
-    fun openSettings(){
+    fun openSettings(): DialogPopup{
         moreActionsBtn!!.click()
+        return this
     }
 
     fun closePopup(){

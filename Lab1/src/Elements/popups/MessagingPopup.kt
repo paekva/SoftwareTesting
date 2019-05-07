@@ -1,6 +1,7 @@
 package elements.popups
 
 import Utils.pressEscKey
+import Utils.waitToBeClickable
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
@@ -52,6 +53,8 @@ class MessagingPopup(private val driver: WebDriver) {
 
     fun chooseFoundRecipient() : DialogPopup {
         searchResultRecipient!!.click()
+
+        waitToBeClickable(driver, 20, "close")
         return DialogPopup(driver)
     }
 

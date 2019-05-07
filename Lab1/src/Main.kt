@@ -10,12 +10,10 @@ fun main(){
     printInfoMsg("Test execution has STARTED")
 
     // loginTests(driver)
-    registrationTests(driver)
+    // registrationTests(driver)
 
-    // preTestLogin(driver)
-    // headerTests(driver)
-
-    // dialogPopupTest(driver)
+    preTestLogin(driver)
+    headerTests(driver)
 
     printInfoMsg("Test execution has FINISHED")
     driver.close()
@@ -40,21 +38,6 @@ fun registrationTests(driver: ChromeDriver) {
 fun headerTests(driver: ChromeDriver) {
     val headerTest = HeaderMenuTest(driver)
     headerTest.runAllTests()
-}
-
-// TODO: finish
-fun dialogPopupTest(driver: ChromeDriver){
-    preTestLogin(driver)
-    val dialog = DialogPopupTests(driver)
-
-    printInfoMsg("DIALOG tests")
-    dialog.authorProfileTest()
-    dialog.minimizeDialogTest()
-    dialog.emptyInputTest()
-    dialog.correctInputTest()
-    dialog.sendGifTest()
-    dialog.sendStickerTest()
-    dialog.cancelOfSendStickerTest()
 }
 
 private fun preTestLogin(driver: ChromeDriver): HomePage {

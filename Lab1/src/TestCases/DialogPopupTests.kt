@@ -7,8 +7,17 @@ import org.openqa.selenium.WebDriver
 
 class DialogPopupTests(private val driver: WebDriver){
 
+    fun runAllTests(){
+        authorProfileTest()
+        minimizeDialogTest()
+        settingsTest()
+        emptyInputTest()
+        sendOptionsTest()
+        correctInputTest()
+    }
+
     // #
-    fun authorProfileTest(){
+    private fun authorProfileTest(){
         try{
             val header = Header(driver)
             val popup = header.openMessagingPopup()
@@ -18,19 +27,18 @@ class DialogPopupTests(private val driver: WebDriver){
                 .chooseFoundRecipient()
 
             val authorProfile = dialog.seeAuthor()
-            println("opened popup")
             authorProfile.closePopup()
 
             dialog.closePopup()
             printSuccessMsg("authorProfileTest")
         }
         catch(e: Exception){
-            printErrorMsg("searchedRecipientMessageTest", e.message)
+            printErrorMsg("authorProfileTest", e.message)
         }
     }
 
     // #
-    fun minimizeDialogTest(){
+    private fun minimizeDialogTest(){
         try{
             val header = Header(driver)
             val popup = header.openMessagingPopup()
@@ -51,8 +59,29 @@ class DialogPopupTests(private val driver: WebDriver){
         }
     }
 
+    private fun settingsTest(){
+        try{
+            val header = Header(driver)
+            val popup = header.openMessagingPopup()
+            val dialog = popup
+                .writeNewMsg()
+                .findRecipient("pesosina")
+                .chooseFoundRecipient()
+
+            dialog
+                .openSettings()
+                .closeOptionPopup()
+
+            dialog.closePopup()
+            printSuccessMsg("settingsTest")
+        }
+        catch(e: Exception){
+            printErrorMsg("settingsTest", e.message)
+        }
+    }
+
     // #
-    fun emptyInputTest(){
+    private fun emptyInputTest(){
         try{
             val header = Header(driver)
             val popup = header.openMessagingPopup()
@@ -62,7 +91,7 @@ class DialogPopupTests(private val driver: WebDriver){
                 .chooseFoundRecipient()
 
             dialog.inputMsg("")
-
+            println("this works")
             if(dialog.isSendButtonEnabled())
                 throw Exception("send btn supposed to be disabled if no msg exists")
 
@@ -75,7 +104,7 @@ class DialogPopupTests(private val driver: WebDriver){
     }
 
     // #
-    fun correctInputTest(){
+    private fun correctInputTest(){
         try{
             val header = Header(driver)
             val popup = header.openMessagingPopup()
@@ -100,38 +129,27 @@ class DialogPopupTests(private val driver: WebDriver){
     }
 
     // #
-    fun sendGifTest(){
+    private fun sendOptionsTest(){
         try{
-            throw Exception("FINISH TEST")
+            val header = Header(driver)
+            val popup = header.openMessagingPopup()
+            val dialog = popup
+                .writeNewMsg()
+                .findRecipient("pesosina")
+                .chooseFoundRecipient()
 
-            printSuccessMsg("sendGifTest")
+            dialog
+                .attachGif()
+                .closeOptionPopup()
+                .attachSticker()
+                .closeOptionPopup()
+
+            dialog.closePopup()
+            printSuccessMsg("sendOptionsTest")
         }
         catch(e: Exception){
-            printErrorMsg("sendGifTest", e.message)
+            printErrorMsg("sendOptionsTest", e.message)
         }
     }
 
-    // #
-    fun sendStickerTest(){
-        try{
-            throw Exception("FINISH TEST")
-
-            printSuccessMsg("sendStickerTest")
-        }
-        catch(e: Exception){
-            printErrorMsg("sendStickerTest", e.message)
-        }
-    }
-
-    // #
-    fun cancelOfSendStickerTest(){
-        try{
-            throw Exception("FINISH TEST")
-
-            printSuccessMsg("cancelOfSendStickerTest")
-        }
-        catch(e: Exception){
-            printErrorMsg("cancelOfSendStickerTest", e.message)
-        }
-    }
 }
