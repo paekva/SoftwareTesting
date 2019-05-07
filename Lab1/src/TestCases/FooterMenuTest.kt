@@ -12,12 +12,10 @@ class FooterMenuTest(private val driver: WebDriver) {
         aboutPageTest()
         appsPageTest()
         tumblrPageTest()
-        // helpPageTest()
         developersPageTest()
         themesPageTest()
         jobsPageTest()
-        newPageTest()
-        privacyPageTest()
+        termsOfServiceTest()
         printInfoMsg("FOOTER tests FINISHED")
     }
 
@@ -47,19 +45,6 @@ class FooterMenuTest(private val driver: WebDriver) {
         }
     }
 
-    private fun privacyPageTest(){
-        try{
-            footer!!.getToFooter()
-            footer.openPrivacyPage()
-            waitForURLChange(driver, 20, "https://www.tumblr.com/policy/privacy")
-            driver.navigate().back()
-            printSuccessMsg("privacyPageTest")
-        }
-        catch(e: Exception){
-            printErrorMsg("privacyPageTest", e.message)
-        }
-    }
-
     private fun tumblrPageTest(){
         try{
             footer!!.getToFooter()
@@ -70,19 +55,6 @@ class FooterMenuTest(private val driver: WebDriver) {
         }
         catch(e: Exception){
             printErrorMsg("tumblrPageTest", e.message)
-        }
-    }
-
-    private fun helpPageTest(){
-        try{
-            footer!!.getToFooter()
-            footer.openHelpPage()
-            waitForURLChange(driver, 20, "https://www.tumblr.com/help")
-            driver.navigate().back()
-            printSuccessMsg("helpPageTest")
-        }
-        catch(e: Exception){
-            printErrorMsg("helpPageTest", e.message)
         }
     }
 
@@ -125,16 +97,14 @@ class FooterMenuTest(private val driver: WebDriver) {
         }
     }
 
-    private fun newPageTest(){
+    private fun termsOfServiceTest(){
         try{
             footer!!.getToFooter()
             footer.openNewPage()
-            waitForURLChange(driver, 20, "https://www.tumblr.com/policy/en/terms-of-service")
-            driver.navigate().back()
-            printSuccessMsg("newPageTest")
+            printSuccessMsg("termsOfServiceTest")
         }
         catch(e: Exception){
-            printErrorMsg("newPageTest", e.message)
+            printErrorMsg("termsOfServiceTest", e.message)
         }
     }
 

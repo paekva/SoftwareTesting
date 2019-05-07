@@ -13,15 +13,15 @@ class HeaderMenuTest(private val driver: WebDriver){
     fun runAllTests(){
         printInfoMsg("HEADER tests\n")
 
-        createPostButtonTest()
+        // createPostButtonTest()
         accountButtonTest()  // OK
-        activityButtonTest()
-        messageButtonTest()
-        inboxButtonTest()
+        // activityButtonTest()
+        // messageButtonTest()
+        /*inboxButtonTest()
         exploreButtonTest()
         dashboardButtonTest()
         searchFieldTest()
-        logoButtonTest()
+        logoButtonTest()*/
 
         printInfoMsg("\nHEADER tests FINISHED")
     }
@@ -79,9 +79,7 @@ class HeaderMenuTest(private val driver: WebDriver){
     }
 
     private fun dialogPopupTest(driver: WebDriver){
-        printInfoMsg("DIALOG tests")
         DialogPopupTests(driver).runAllTests()
-        printInfoMsg("DIALOG tests FINISHED")
     }
 
     // #3.5

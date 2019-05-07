@@ -30,10 +30,10 @@ class Footer(private val driver: WebDriver){
     @FindBy(xpath = "//*[@class='l-footer']/ul/li[7]/a")
     private val jobs: WebElement? = null
 
-    @FindBy(xpath = "//*[@class='l-footer']/ul/li[3]/a")
+    @FindBy(xpath = "//*[@class='l-footer']/ul/li[8]/a")
     private val new: WebElement? = null
 
-    @FindBy(xpath = "//*[@class='l-footer']/ul/li[4]/a")
+    @FindBy(xpath = "//*[@class='l-footer']/ul/li[9]/a")
     private val privacy: WebElement? = null
 
     init {

@@ -14,6 +14,7 @@ class MessagingPopupTests(private val driver: WebDriver, private val header: Hea
         printInfoMsg("MESSAGES tests")
         cancelMessageTest()
         searchedRecipientMessageTest()
+        printInfoMsg("MESSAGES tests FINISHED")
     }
 
     // #

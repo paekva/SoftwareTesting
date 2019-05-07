@@ -15,9 +15,9 @@ class PostTest(private val driver: WebDriver, private val post: Post){
         testSharePopup()
         testReplyPopup()
         testSettingsChangeBtn(post as CurrentUserPost)
-        //testReblogPopup()
+        testReblogPopup()
 
-        printInfoMsg("\nCURRENT USER POST tests FINISHED")
+        printInfoMsg("\tCURRENT USER POST tests FINISHED")
     }
 
     fun runOtherUserPostTests(){
@@ -37,7 +37,7 @@ class PostTest(private val driver: WebDriver, private val post: Post){
             SharePopupTest(driver, post, popup)
                 .runAllTests()
 
-            printInfoMsg("\nPOST test: SHARE POPUP test FINISHED")
+            printInfoMsg("\tPOST test: SHARE POPUP test FINISHED")
         }
         catch(e:Exception){
             printErrorMsg("testSharePopup",e.message)
@@ -54,7 +54,7 @@ class PostTest(private val driver: WebDriver, private val post: Post){
                 .runAllTests()
 
             post.closePopup()
-            printInfoMsg("\nPOST test: REPLY POPUP test FINISHED")
+            printInfoMsg("\tPOST test: REPLY POPUP test FINISHED")
         }
         catch(e:Exception){
             printErrorMsg("testReplyPopup",e.message)
@@ -64,19 +64,9 @@ class PostTest(private val driver: WebDriver, private val post: Post){
     // #4.4
     private fun testReblogPopup(){
         try{
-            printInfoMsg("\nPOST test: REBLOG POPUP test")
-            val replay = ReblogPopupTest(driver)
-
             post.openReblogPopup()
-            replay.testAuthorLabel()
-            replay.testChangeFieldToHTMLFormat()
-            replay.testChangeFieldToTextFormat()
-            replay.testReblogPublicationSettings()
-            // replay.testReblogCancel()
-            // replay.testReblogSubmit()
+            ReblogPopupTest(driver).runAllTests()
             post.closePopup()
-
-            printInfoMsg("\nPOST test: REBLOG POPUP test FINISHED")
         }
         catch(e:Exception){
             printErrorMsg("testReblogPopup",e.message)

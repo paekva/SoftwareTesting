@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
+import org.openqa.selenium.support.ui.ExpectedCondition
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
 
 class ReblogPopup(private val driver: WebDriver){
 
@@ -17,7 +20,7 @@ class ReblogPopup(private val driver: WebDriver){
     @FindBy(xpath = "//*[contains(@class, 'post-settings')]")
     private var settingsBtn: WebElement? = null
 
-    @FindBy(xpath = "//*[contains(@class, 'post-form--footer')]")
+    @FindBy(xpath = "//*[contains(@class, 'post-form--bottom')]/div/div/div[1]/button")
     private var closeBtn: WebElement? = null
 
     @FindBy(xpath = "//*[@aria-label='Подпись']")
@@ -52,8 +55,9 @@ class ReblogPopup(private val driver: WebDriver){
     fun closePopup(){
         closeBtn!!.click()
 
-        val tmp = driver.findElement(By.xpath("//*[@id='dialog_0']/div/div/div[2]/button"))
-        tmp!!.click()
+        val wait = WebDriverWait(driver, 20)
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"dialog_0\"]/div/div/div[2]/button")))
+            .click()
     }
 
     fun reblog(){

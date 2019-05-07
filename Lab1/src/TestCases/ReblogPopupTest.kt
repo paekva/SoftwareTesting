@@ -2,6 +2,7 @@ package testCases
 
 import elements.popups.ReblogPopup
 import Utils.printErrorMsg
+import Utils.printInfoMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -10,8 +11,22 @@ import org.openqa.selenium.support.ui.WebDriverWait
 class ReblogPopupTest(private val driver: WebDriver){
     private var popup: ReblogPopup = ReblogPopup(driver)
 
+    fun runAllTests(){
+        printInfoMsg("\nPOST test: REBLOG POPUP test")
+        testAuthorLabel()
+        testChangeFieldToHTMLFormat()
+        testChangeFieldToTextFormat()
+        testReblogPublicationSettings()
+        testReblogCancel()
+        // replay.testReblogSubmit()
+        printInfoMsg("\tPOST test: REBLOG POPUP test FINISHED")
+    }
+
+    private fun closeAlert(){
+        driver.switchTo().alert().dismiss()
+    }
     // #4.4.1
-    fun testAuthorLabel(){
+    private fun testAuthorLabel(){
         try{
             popup.openAuthorLabel()
             popup.closeAuthorLabel()
@@ -23,7 +38,7 @@ class ReblogPopupTest(private val driver: WebDriver){
     }
 
     // #4.4.2
-    fun testChangeFieldToHTMLFormat(){
+    private fun testChangeFieldToHTMLFormat(){
         try{
             val settingsPopup = popup.openSettings()
             settingsPopup.chooseHTMLFormat()
@@ -40,7 +55,7 @@ class ReblogPopupTest(private val driver: WebDriver){
     }
 
     // #4.4.3
-    fun testChangeFieldToTextFormat(){
+    private fun testChangeFieldToTextFormat(){
         try{
             val settingsPopup = popup.openSettings()
             settingsPopup.chooseFormattedText()
@@ -57,14 +72,14 @@ class ReblogPopupTest(private val driver: WebDriver){
     }
 
     // #4.4.4
-    fun testReblogCancel(){
+    private fun testReblogCancel(){
         try{
             popup.fillInMsgField("Message")
             popup.closePopup()
 
-            val wait = WebDriverWait(driver, 30)
+            /*val wait = WebDriverWait(driver, 30)
             wait.until(ExpectedConditions.alertIsPresent())
-            driver.switchTo().alert().accept()
+            closeAlert()*/
 
             printSuccessMsg("testReblogCancel")
         }
@@ -74,7 +89,7 @@ class ReblogPopupTest(private val driver: WebDriver){
     }
 
     // #4.4.5
-    fun testReblogPublicationSettings(){
+    private fun testReblogPublicationSettings(){
         try{
             popup.openDropdown()
             popup.closeDropdown()
@@ -86,7 +101,7 @@ class ReblogPopupTest(private val driver: WebDriver){
     }
 
     // #4.4.6
-    fun testReblogSubmit(){
+    private fun testReblogSubmit(){
         try{
             popup.reblog()
             printSuccessMsg("testReblogSubmit")

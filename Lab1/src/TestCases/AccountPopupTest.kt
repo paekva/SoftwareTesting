@@ -13,7 +13,7 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
 
     fun runAllTests(){
         printInfoMsg("ACCOUNT POPUP TEST")
-        likesListTest()
+        /*likesListTest()
 
         header.openAccountPopup()
         followListTest()
@@ -22,7 +22,7 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
         settingsTest()
 
         header.openAccountPopup()
-        referenceTest()
+        referenceTest()*/
 
         header.openAccountPopup()
         usersProfileTest()
@@ -30,7 +30,9 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
         header.openAccountPopup()
         postsListTest()
 
+        println("here")
         header.openAccountPopup()
+        println("here")
         readersListTest()
 
         header.openAccountPopup()
@@ -59,7 +61,6 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
     private fun followListTest() {
         try{
             popup.openFollowList()
-            println(driver.currentUrl)
             waitForURLChange(driver, 20,  "https://www.tumblr.com/following")
             footerTests()
             printSuccessMsg("followListTest")

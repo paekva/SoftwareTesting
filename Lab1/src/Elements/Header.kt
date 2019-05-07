@@ -99,7 +99,7 @@ class Header(private val driver: WebDriver){
     fun openAccountPopup() : AccountPopup {
         accountBtn!!.click()
 
-        waitToBeClickable(driver, 20, "logout")
+        waitForPresence(driver, 30, "blog-list-item-anchor")
 
         return AccountPopup(driver)
     }

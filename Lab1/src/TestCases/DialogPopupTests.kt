@@ -2,18 +2,21 @@ package testCases
 
 import elements.Header
 import Utils.printErrorMsg
+import Utils.printInfoMsg
 import Utils.printSuccessMsg
 import org.openqa.selenium.WebDriver
 
 class DialogPopupTests(private val driver: WebDriver){
 
     fun runAllTests(){
+        printInfoMsg("DIALOG tests")
         authorProfileTest()
         minimizeDialogTest()
         settingsTest()
         emptyInputTest()
         sendOptionsTest()
         correctInputTest()
+        printInfoMsg("DIALOG tests FINISHED")
     }
 
     // #
@@ -91,7 +94,6 @@ class DialogPopupTests(private val driver: WebDriver){
                 .chooseFoundRecipient()
 
             dialog.inputMsg("")
-            println("this works")
             if(dialog.isSendButtonEnabled())
                 throw Exception("send btn supposed to be disabled if no msg exists")
 
@@ -116,9 +118,6 @@ class DialogPopupTests(private val driver: WebDriver){
             dialog
                 .inputMsg("Hello :)")
                 .sendMsg()
-
-            if(!dialog.isSendButtonEnabled())
-                throw Exception("send btn supposed to be enabled")
 
             dialog.closePopup()
             printSuccessMsg("correctInputTest")
