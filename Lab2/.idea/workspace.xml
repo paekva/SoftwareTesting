@@ -33,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommonWordsServiceTest.kt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CommonWordsServiceTest.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CommonWordsServiceTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="15" column="84" selection-start-line="15" selection-start-column="84" selection-end-line="15" selection-end-column="84" />
+            <state relative-caret-position="85">
+              <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
               <folding>
                 <element signature="e#0#74#0" expanded="true" />
               </folding>
@@ -45,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataBaseConnection.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DataBaseConnection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/DataBaseConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+            <state relative-caret-position="109">
+              <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,9 +87,9 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Main.kt" />
         <option value="$PROJECT_DIR$/src/database/Word.kt" />
-        <option value="$PROJECT_DIR$/src/CommonWordsServiceTest.kt" />
         <option value="$PROJECT_DIR$/src/CommonWordsService.kt" />
         <option value="$PROJECT_DIR$/src/database/DataBaseConnection.java" />
+        <option value="$PROJECT_DIR$/src/CommonWordsServiceTest.kt" />
       </list>
     </option>
   </component>
@@ -274,7 +274,7 @@
       <workItem from="1557037725342" duration="4266000" />
       <workItem from="1557465942722" duration="2172000" />
       <workItem from="1557493755302" duration="4087000" />
-      <workItem from="1557597402529" duration="6788000" />
+      <workItem from="1557597402529" duration="7133000" />
     </task>
     <servers />
   </component>
@@ -291,13 +291,21 @@
     <history-entry file="CommonWordsServiceTest - 2019.05.11 at 23h 10m 02s.xml">
       <configuration name="CommonWordsServiceTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CommonWordsServiceTest - 2019.05.11 at 23h 15m 39s.xml">
+      <configuration name="CommonWordsServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CommonWordsServiceTest - 2019.05.11 at 23h 16m 18s.xml">
+      <configuration name="CommonWordsServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CommonWordsServiceTest - 2019.05.11 at 23h 17m 33s.xml">
+      <configuration name="CommonWordsServiceTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17313000" />
+    <option name="totallyTimeSpent" value="17658000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -307,8 +315,8 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.46534654" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36468646" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.6947195" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
       <window_info anchor="right" id="Database" order="3" />
@@ -330,6 +338,18 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/database/DataBaseConnection.java</url>
+          <line>54</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.kt">
@@ -454,16 +474,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CommonWordsServiceTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="84" selection-start-line="15" selection-start-column="84" selection-end-line="15" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CommonWordsService.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -476,10 +486,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DataBaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+        <state relative-caret-position="109">
+          <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CommonWordsServiceTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
