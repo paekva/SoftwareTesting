@@ -15,6 +15,7 @@ class ActivityPopupTest(private val driver: WebDriver, private val header: Heade
         printInfoMsg("ACTIVITY POPUP tests")
         allResultsTest()
         oneResultTest()
+        printInfoMsg("ACTIVITY POPUP tests FINISHED")
     }
 
     private fun allResultsTest() {
@@ -48,7 +49,7 @@ class ActivityPopupTest(private val driver: WebDriver, private val header: Heade
     }
 
     private fun waitForCloseOfPopovers(){
-        val wait = WebDriverWait(driver, 60)
+        val wait = WebDriverWait(driver, 30)
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"activity_button\"]/a")))
     }
 }

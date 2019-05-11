@@ -2,6 +2,7 @@ package elements.popups
 
 import elements.UserFullProfile
 import Utils.pressEscKey
+import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
@@ -20,7 +21,8 @@ class ActivityPopup(private val driver: WebDriver) {
     init {
         PageFactory.initElements(driver, this)
 
-        val wait = WebDriverWait(driver, 10)
+        val wait = WebDriverWait(driver, 20)
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@class,'popover--activity-popover')]")))
         wait.until<WebElement>(ExpectedConditions.elementToBeClickable(seeAllBtn))
     }
 

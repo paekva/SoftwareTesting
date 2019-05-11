@@ -97,6 +97,7 @@ class Header(private val driver: WebDriver){
     }
 
     fun openAccountPopup() : AccountPopup {
+        driver.get("https://www.tumblr.com/dashboard")
         accountBtn!!.click()
 
         waitForPresence(driver, 30, "blog-list-item-anchor")
@@ -106,7 +107,6 @@ class Header(private val driver: WebDriver){
 
     fun openCreatePostPopup() : CreatePostPopup{
         createPostBtn!!.click()
-
         return CreatePostPopup(driver)
     }
 

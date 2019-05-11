@@ -2,6 +2,7 @@ package elements.popups
 
 import Utils.pressEscKey
 import Utils.waitToBeClickable
+import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
@@ -29,6 +30,7 @@ class MessagingPopup(private val driver: WebDriver) {
         PageFactory.initElements(driver, this)
 
         val wait = WebDriverWait(driver, 20)
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.className("messaging-inbox")))
         wait.until<WebElement>(ExpectedConditions.elementToBeClickable(newMsgBtn))
     }
 

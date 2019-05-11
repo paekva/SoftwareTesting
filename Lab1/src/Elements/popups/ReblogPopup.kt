@@ -40,8 +40,9 @@ class ReblogPopup(private val driver: WebDriver){
         PageFactory.initElements(driver, this)
     }
 
-    fun fillInMsgField(msg: String) {
+    fun fillInMsgField(msg: String) : ReblogPopup{
         textFormatField!!.sendKeys(msg)
+        return this
     }
 
     fun getTextFormatField(): WebElement?{
@@ -56,8 +57,7 @@ class ReblogPopup(private val driver: WebDriver){
         closeBtn!!.click()
 
         val wait = WebDriverWait(driver, 20)
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"dialog_0\"]/div/div/div[2]/button")))
-            .click()
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@text='Удалить']"))).click()
     }
 
     fun reblog(){
@@ -70,8 +70,9 @@ class ReblogPopup(private val driver: WebDriver){
         return ReblogSettingsPopup(driver)
     }
 
-    fun closeSettings() {
+    fun closeSettings() : ReblogPopup {
         settingsBtn!!.click()
+        return this
     }
 
     fun openDropdown(): ReblogDropdownPopup{

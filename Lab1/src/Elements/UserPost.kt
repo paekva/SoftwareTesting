@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.support.PageFactory
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
 
 class UserPost(private val driver: WebDriver): Post(driver){
     @FindBy(xpath="//*[contains(@class,'not_mine')]/div/div[2]/div/div[1]")
@@ -26,6 +28,8 @@ class UserPost(private val driver: WebDriver): Post(driver){
     }
 
     fun likePost() {
+        val wait = WebDriverWait(driver,20)
+        wait.until(ExpectedConditions.elementToBeClickable(likeBtn))
         likeBtn!!.click()
     }
 

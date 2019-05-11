@@ -55,7 +55,7 @@ class RegistTest(private val driver: WebDriver){
         driver.get(url)
         driver.findElement(By.xpath("//*[@id=\"signup_forms_submit\"]")).click()
 
-        val wait = WebDriverWait(driver, 20)
+        val wait = WebDriverWait(driver, 5)
         wait.until<WebElement>(ExpectedConditions.elementToBeClickable(By.id("signup_email")))
     }
 

@@ -25,7 +25,6 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
         printInfoMsg("CREATE POST POPUP test FINSHED")
     }
 
-    // #5.1
     private fun textPostOptionTest(){
         try{
             val result = popup.createTextPost()
@@ -41,7 +40,6 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
         }
     }
 
-    // #5.2
     private fun photoPostOptionTest(){
         try{
             val result = popup.createPhotoPost()
@@ -57,7 +55,6 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
         }
     }
 
-    // #5.3
     private fun quotePostOptionTest(){
         try{
             val result = popup.createQuotePost()
@@ -73,7 +70,7 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
         }
     }
 
-    // #5.4
+
     private fun linkPostOptionTest(){
         try{
             val result = popup.createLinkPost()
@@ -89,7 +86,6 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
         }
     }
 
-    // #5.5
     private fun chatPostOptionTest(){
         try{
             val result = popup.createChatPost()
@@ -105,7 +101,6 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
         }
     }
 
-    // #5.6
     private fun audioPostOptionTest(){
         try{
             val result = popup.createAudioPost()
@@ -121,7 +116,6 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
         }
     }
 
-    // #5.7
     private fun videoPostOptionTest(){
         try{
             val result = popup.createVideoPost()
@@ -138,7 +132,7 @@ class CreatePostTest(private val driver: WebDriver, private val header: Header, 
     }
 
     private fun waitForCloseOfPopovers(){
-        val wait = WebDriverWait(driver, 60)
+        val wait = WebDriverWait(driver, 10)
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@title='Создать пост']")))
     }
 

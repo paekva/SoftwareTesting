@@ -1,6 +1,11 @@
+import database.DataBaseConnection
+import database.Word
+
 class CommonWordsService {
 
-    fun getCommonWords(word: String): List<String>{
-        return emptyList<String>()
+    fun getCommonWords(word: Word): List<String>{
+        val dbc = DataBaseConnection()
+        dbc.connect()
+        return dbc.findSameRootWords(word)
     }
 }

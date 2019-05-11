@@ -11,7 +11,7 @@ class HomePageTest(private val driver: WebDriver, private val homePage: HomePage
 
     fun runAllTests(){
         printInfoMsg("HOME PAGE tests")
-        // recommendedUserTest()
+        recommendedPanelTest()
         radarPostTest()
         printInfoMsg("HOME PAGE tests FINISHED")
     }
@@ -33,40 +33,36 @@ class HomePageTest(private val driver: WebDriver, private val homePage: HomePage
         printInfoMsg("RADAR POST tests FINISHED")
     }
 
-    private fun recommendedUserTest() {
+    private fun recommendedPanelTest() {
         printInfoMsg("RECOMMENDED USER tests")
-        openRecommendedUserProfileTest()
+        recommendedUserTest()
         exploreRecommendedTest()
         printInfoMsg("RECOMMENDED USER tests FINISHED")
     }
 
-    private fun openRecommendedUserProfileTest(){
+    private fun recommendedUserTest(){
         try{
             val usersList = homePage.recommendedUserList
-
-            /*usersList!!.openRecommendedUserProfile(usersList.firstRecommendedUser!!)
-            usersList.closeUserPopover(homePage.recommendationsListHeader,usersList.thirdRecommendedUser!!)
-
-            usersList.openRecommendedUserProfile(usersList.secondRecommendedUser!!)
-            usersList.closeUserPopover(homePage.recommendationsListHeader,usersList.thirdRecommendedUser!!)*/
 
             usersList!!.openRecommendedUserProfile(usersList.thirdRecommendedUser!!)
             usersList.closeUserPopover(homePage.recommendationsListHeader,usersList.thirdRecommendedUser!!)
 
+            printSuccessMsg("openRecommendedUserProfileTest")
+
             usersList.subscribeToRecommendedUser()
             usersList.closeUserPopover(homePage.recommendationsListHeader,usersList.thirdRecommendedUser!!)
 
-            printSuccessMsg("openRecommendedUserProfileTest")
+            printSuccessMsg("openSubscribeToRecommendedUserTest")
         }
         catch(e: Exception){
-            printErrorMsg("openRecommendedUserProfileTest", e.message)
+            printErrorMsg("recommendedUserTest", e.message)
         }
     }
 
     private fun exploreRecommendedTest(){
         try{
             homePage.recommendedUserList!!.exploreTumblr()
-            waitForURLChange(driver, 10,"https://www.tumblr.com/explore/trending")
+            waitForURLChange(driver, 20,"https://www.tumblr.com/explore/trending")
             driver.navigate().back()
             printSuccessMsg("exploreRecommendedTest")
         }

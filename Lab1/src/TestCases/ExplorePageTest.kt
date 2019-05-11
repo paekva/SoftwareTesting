@@ -18,10 +18,8 @@ class ExplorePageTest(private val driver: WebDriver, private val explorePage: Ex
     }
 
     private fun recommendedPostTest(){
-        /*printInfoMsg("RECOMMENDED POST tests")
         PostTest(driver, explorePage.recommendedPost!!)
             .runOtherUserPostTests()
-        printInfoMsg("RECOMMENDED POST tests FINISHED")*/
     }
 
     private fun filterMenuTest(){
@@ -72,13 +70,8 @@ class ExplorePageTest(private val driver: WebDriver, private val explorePage: Ex
     private fun popularBlogsTest(){
         try{
             val usersList = explorePage.similarBlogsList
-            usersList!!.openRecommendedUserProfile(usersList.firstRecommendedUser!!)
-            usersList.closeUserPopover(explorePage.similarBlogsListHeader,usersList.thirdRecommendedUser!!)
 
-            usersList.openRecommendedUserProfile(usersList.secondRecommendedUser!!)
-            usersList.closeUserPopover(explorePage.similarBlogsListHeader,usersList.thirdRecommendedUser!!)
-
-            usersList.openRecommendedUserProfile(usersList.thirdRecommendedUser!!)
+            usersList!!.openRecommendedUserProfile(usersList.thirdRecommendedUser!!)
             usersList.closeUserPopover(explorePage.similarBlogsListHeader,usersList.thirdRecommendedUser!!)
 
             printSuccessMsg("popularBlogsTest")

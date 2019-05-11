@@ -13,26 +13,18 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
 
     fun runAllTests(){
         printInfoMsg("ACCOUNT POPUP TEST")
-        /*likesListTest()
-
-        header.openAccountPopup()
-        followListTest()
+        likesListTest()
 
         header.openAccountPopup()
         settingsTest()
 
         header.openAccountPopup()
-        referenceTest()*/
+        referenceTest()
 
         header.openAccountPopup()
         usersProfileTest()
 
         header.openAccountPopup()
-        postsListTest()
-
-        println("here")
-        header.openAccountPopup()
-        println("here")
         readersListTest()
 
         header.openAccountPopup()
@@ -43,6 +35,12 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
 
         header.openAccountPopup()
         appearanceSettingsTest()
+
+        header.openAccountPopup()
+        postsListTest()
+
+        header.openAccountPopup()
+        followListTest()
 
         printInfoMsg("ACCOUNT POPUP TEST FINISHED")
     }
@@ -114,7 +112,6 @@ class AccountPopupTest(private val driver: WebDriver, private val header: Header
             popup.openPostsList()
             waitForURLChange(driver, 20,  "https://www.tumblr.com/blog/katerinpaivol")
             currentUserPostTest()
-
             printSuccessMsg("postsListTest")
         }
         catch (e: Exception){

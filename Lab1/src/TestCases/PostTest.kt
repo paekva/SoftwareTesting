@@ -12,23 +12,23 @@ class PostTest(private val driver: WebDriver, private val post: Post){
 
     fun runCurrentUserPostTests(){
         printInfoMsg("\nCURRENT USER POST tests")
+
         testSharePopup()
         testReplyPopup()
-        testSettingsChangeBtn(post as CurrentUserPost)
+        testSettingsBtn(post as CurrentUserPost)
         testReblogPopup()
 
         printInfoMsg("\tCURRENT USER POST tests FINISHED")
     }
 
     fun runOtherUserPostTests(){
-        testSharePopup()
+        printInfoMsg("RECOMMENDED POST tests")
         testLikeBtn(post as UserPost)
         testAuthorPopup()
         testAuthorProfile()
-        //testReblogPopup()
+        printInfoMsg("RECOMMENDED POST tests FINISHED")
     }
 
-    // #4.2
     private fun testSharePopup(){
         try{
             printInfoMsg("\nPOST test: SHARE POPUP test")
@@ -44,7 +44,6 @@ class PostTest(private val driver: WebDriver, private val post: Post){
         }
     }
 
-    // #4.3
     private fun testReplyPopup(){
         try{
             printInfoMsg("\nPOST test: REPLY POPUP test")
@@ -61,7 +60,6 @@ class PostTest(private val driver: WebDriver, private val post: Post){
         }
     }
 
-    // #4.4
     private fun testReblogPopup(){
         try{
             post.openReblogPopup()
@@ -73,16 +71,9 @@ class PostTest(private val driver: WebDriver, private val post: Post){
         }
     }
 
-    // #4.5
     private fun testLikeBtn(post: UserPost){
         try{
             post.likePost()
-            /*if(!post.isPostLiked())
-                throw Exception("post should be liked")*/
-
-            post.likePost()
-            /*if(post.isPostLiked())
-                throw Exception("post should not be liked")*/
 
             printSuccessMsg("testLikeBtn")
         }
@@ -91,19 +82,12 @@ class PostTest(private val driver: WebDriver, private val post: Post){
         }
     }
 
-    // #4.6
-    private fun testSettingsChangeBtn(post: CurrentUserPost){
+    private fun testSettingsBtn(post: CurrentUserPost){
         try{
-            val settings = post.openSettingsPopup()
-            /*val reblogPopup = settings.openChangePopup()
+            post
+                .openSettingsPopup()
+                .delete()
 
-            post.closePopup()
-
-            val settings_delete = post.openSettingsPopup()
-            settings_delete.delete()
-            post.closePopup()*/
-
-            post.closeSettingsPopup()
             printSuccessMsg("testSettingsBtn")
         }
         catch(e:Exception){
@@ -111,7 +95,6 @@ class PostTest(private val driver: WebDriver, private val post: Post){
         }
     }
 
-    // #4.1.1
     private fun testAuthorPopup(){
         try{
             post.openAuthorPopup()
@@ -124,7 +107,6 @@ class PostTest(private val driver: WebDriver, private val post: Post){
         }
     }
 
-    // #4.1.3
     private fun testAuthorProfile(){
         try{
             post.openAuthorProfile()

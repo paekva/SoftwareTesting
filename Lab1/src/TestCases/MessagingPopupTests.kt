@@ -17,7 +17,6 @@ class MessagingPopupTests(private val driver: WebDriver, private val header: Hea
         printInfoMsg("MESSAGES tests FINISHED")
     }
 
-    // #
     private fun searchedRecipientMessageTest(){
         try{
             val result = popup
@@ -35,7 +34,6 @@ class MessagingPopupTests(private val driver: WebDriver, private val header: Hea
         }
     }
 
-    // #
     private fun cancelMessageTest(){
         try{
             popup

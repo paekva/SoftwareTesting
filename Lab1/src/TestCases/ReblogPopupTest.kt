@@ -4,7 +4,9 @@ import elements.popups.ReblogPopup
 import Utils.printErrorMsg
 import Utils.printInfoMsg
 import Utils.printSuccessMsg
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
@@ -17,14 +19,11 @@ class ReblogPopupTest(private val driver: WebDriver){
         testChangeFieldToHTMLFormat()
         testChangeFieldToTextFormat()
         testReblogPublicationSettings()
-        testReblogCancel()
-        // replay.testReblogSubmit()
+        // testReblogCancel()
+        testReblogSubmit()
         printInfoMsg("\tPOST test: REBLOG POPUP test FINISHED")
     }
 
-    private fun closeAlert(){
-        driver.switchTo().alert().dismiss()
-    }
     // #4.4.1
     private fun testAuthorLabel(){
         try{
@@ -77,10 +76,6 @@ class ReblogPopupTest(private val driver: WebDriver){
             popup.fillInMsgField("Message")
             popup.closePopup()
 
-            /*val wait = WebDriverWait(driver, 30)
-            wait.until(ExpectedConditions.alertIsPresent())
-            closeAlert()*/
-
             printSuccessMsg("testReblogCancel")
         }
         catch(e:Exception){
@@ -103,10 +98,17 @@ class ReblogPopupTest(private val driver: WebDriver){
     // #4.4.6
     private fun testReblogSubmit(){
         try{
-            popup.reblog()
+            popup
+                .fillInMsgField("Message")
+                .reblog()
+
+            val action = Actions(driver)
+            action.sendKeys(Keys.ENTER).perform()
+
             printSuccessMsg("testReblogSubmit")
         }
         catch(e:Exception){
+            driver.switchTo().alert().accept()
             printErrorMsg("testReblogSubmit",e.message)
         }
     }

@@ -13,20 +13,19 @@ class HeaderMenuTest(private val driver: WebDriver){
     fun runAllTests(){
         printInfoMsg("HEADER tests\n")
 
-        // createPostButtonTest()
-        accountButtonTest()  // OK
-        // activityButtonTest()
-        // messageButtonTest()
-        /*inboxButtonTest()
+        activityButtonTest()
+        messageButtonTest()
+        inboxButtonTest()
         exploreButtonTest()
         dashboardButtonTest()
         searchFieldTest()
-        logoButtonTest()*/
+        logoButtonTest()
+        createPostButtonTest()
+        accountButtonTest()
 
         printInfoMsg("\nHEADER tests FINISHED")
     }
 
-    // #3.1
     private fun dashboardButtonTest(){
         try{
             val homePage = header.goToHomePage()
@@ -37,7 +36,6 @@ class HeaderMenuTest(private val driver: WebDriver){
         }
     }
 
-    // #3.2
     private fun exploreButtonTest(){
         try{
             val explorePage = header.goToExplorePage()
@@ -48,7 +46,6 @@ class HeaderMenuTest(private val driver: WebDriver){
         }
     }
 
-    // #3.3
     private fun inboxButtonTest(){
         try{
             header.goToInboxPage()
@@ -63,7 +60,6 @@ class HeaderMenuTest(private val driver: WebDriver){
         }
     }
 
-    // #3.4
     private fun messageButtonTest(){
         try{
             val messagePopup = header.openMessagingPopup()
@@ -82,14 +78,12 @@ class HeaderMenuTest(private val driver: WebDriver){
         DialogPopupTests(driver).runAllTests()
     }
 
-    // #3.5
     private fun activityButtonTest(){
         try{
             val activityPopup = header.openActivityPopup()
 
-            /* TODO: not open as I don't have relevant data in account
             ActivityPopupTest(driver, header, activityPopup)
-                .runAllTests()*/
+                .runAllTests()
 
             activityPopup.close()
             printSuccessMsg("activityButtonTest")
@@ -99,7 +93,6 @@ class HeaderMenuTest(private val driver: WebDriver){
         }
     }
 
-    // #3.6
     private fun accountButtonTest(){
         try{
             val accountPopup = header.openAccountPopup()
@@ -127,7 +120,6 @@ class HeaderMenuTest(private val driver: WebDriver){
         }
     }
 
-    // #3.8
     private fun searchFieldTest(){
         try{
             val searchText = "searchText"
@@ -145,7 +137,6 @@ class HeaderMenuTest(private val driver: WebDriver){
         }
     }
 
-    // #3.8
     private fun logoButtonTest(){
         try{
             header.goToHomePageByLogo()

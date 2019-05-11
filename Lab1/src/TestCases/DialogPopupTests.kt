@@ -12,14 +12,12 @@ class DialogPopupTests(private val driver: WebDriver){
         printInfoMsg("DIALOG tests")
         authorProfileTest()
         minimizeDialogTest()
-        settingsTest()
         emptyInputTest()
         sendOptionsTest()
         correctInputTest()
         printInfoMsg("DIALOG tests FINISHED")
     }
 
-    // #
     private fun authorProfileTest(){
         try{
             val header = Header(driver)
@@ -40,7 +38,6 @@ class DialogPopupTests(private val driver: WebDriver){
         }
     }
 
-    // #
     private fun minimizeDialogTest(){
         try{
             val header = Header(driver)
@@ -62,28 +59,6 @@ class DialogPopupTests(private val driver: WebDriver){
         }
     }
 
-    private fun settingsTest(){
-        try{
-            val header = Header(driver)
-            val popup = header.openMessagingPopup()
-            val dialog = popup
-                .writeNewMsg()
-                .findRecipient("pesosina")
-                .chooseFoundRecipient()
-
-            dialog
-                .openSettings()
-                .closeOptionPopup()
-
-            dialog.closePopup()
-            printSuccessMsg("settingsTest")
-        }
-        catch(e: Exception){
-            printErrorMsg("settingsTest", e.message)
-        }
-    }
-
-    // #
     private fun emptyInputTest(){
         try{
             val header = Header(driver)
@@ -105,7 +80,6 @@ class DialogPopupTests(private val driver: WebDriver){
         }
     }
 
-    // #
     private fun correctInputTest(){
         try{
             val header = Header(driver)
@@ -127,7 +101,6 @@ class DialogPopupTests(private val driver: WebDriver){
         }
     }
 
-    // #
     private fun sendOptionsTest(){
         try{
             val header = Header(driver)

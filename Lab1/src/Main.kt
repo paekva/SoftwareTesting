@@ -9,8 +9,8 @@ fun main(){
     val driver = ChromeDriver()
     printInfoMsg("Test execution has STARTED")
 
-    // loginTests(driver)
-    // registrationTests(driver)
+    loginTests(driver)
+    registrationTests(driver)
 
     preTestLogin(driver)
     headerTests(driver)
@@ -29,6 +29,8 @@ fun loginTests(driver: ChromeDriver) {
     loginTest.loginWithIncorrectPassword()
     loginTest.loginWithEmptyPassword()
     loginTest.loginWithCorrectCredentials()
+
+    printInfoMsg("LOGIN tests FINISHED")
 }
 
 fun registrationTests(driver: ChromeDriver) {
@@ -36,8 +38,8 @@ fun registrationTests(driver: ChromeDriver) {
 }
 
 fun headerTests(driver: ChromeDriver) {
-    val headerTest = HeaderMenuTest(driver)
-    headerTest.runAllTests()
+    HeaderMenuTest(driver)
+        .runAllTests()
 }
 
 private fun preTestLogin(driver: ChromeDriver): HomePage {

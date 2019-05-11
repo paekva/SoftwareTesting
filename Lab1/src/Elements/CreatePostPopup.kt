@@ -40,7 +40,6 @@ class CreatePostPopup(private val driver: WebDriver){
     fun createTextPost(): OptionPopup {
         textOption!!.click()
         waitForPopupToAppear()
-
         return OptionPopup(driver)
     }
 
@@ -87,7 +86,7 @@ class CreatePostPopup(private val driver: WebDriver){
     }
 
     private fun waitForPopupToAppear(){
-        val wait = WebDriverWait(driver, 30)
+        val wait = WebDriverWait(driver, 20)
         wait.until<WebElement>(ExpectedConditions.presenceOfElementLocated(By.className("post-container")))
     }
 
