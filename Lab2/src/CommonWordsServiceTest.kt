@@ -13,6 +13,6 @@ class CommonWordsServiceTest {
 
     @Test
     fun `cw service returns list of results for input`() {
-        assertEquals(listOf("приехать", "уехать", "заехать"), cws.getCommonWords(Word("ехать", "ех")))
+        assertEquals(listOf<String>("приехать", "заехать", "уехать"), cws.getCommonWords(Word("ехать", "ех")))
     }
 }
