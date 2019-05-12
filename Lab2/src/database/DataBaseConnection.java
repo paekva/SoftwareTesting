@@ -1,7 +1,6 @@
 package database;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DataBaseConnection {
@@ -17,13 +16,42 @@ public class DataBaseConnection {
                 .getConnection(DB_URL, USER, PASS);
     }
 
+    private void insert(String SQL, List<String> args){
+        try{
+            PreparedStatement pstmt = connection.prepareStatement(SQL);
+            for(int i=0;i<args.size();i++){
+                pstmt.setString(i+1, args.get(i));
+            }
+
+            pstmt.executeUpdate();
+        }
+        catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private ResultSet select(String SQL, List<String> args){
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(SQL);
+            for(int i=0;i<args.size();i++){
+                pstmt.setString(i+1, args.get(i));
+            }
+
+            return pstmt.executeQuery();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
     public Word getWord(String word){
         Word result = null;
         String SQL = "SELECT * from words "
                 + "WHERE word = ? ";
         List<String> args = new ArrayList<>();
         args.add(word);
-        ResultSet rs = query(SQL, args);
+        ResultSet rs = select(SQL, args);
 
         try{
             if(rs == null)
@@ -52,7 +80,7 @@ public class DataBaseConnection {
             args.add(word.getRoot());
             args.add(word.getWord());
 
-            ResultSet rs = query(SQL, args);
+            ResultSet rs = select(SQL, args);
 
             while (rs.next()) {
                 strings.add(new Word( rs.getString("word"), rs.getString("root")));
@@ -81,40 +109,14 @@ public class DataBaseConnection {
     }
 
     public void addWord(Word word){
-        insert(word);
-    }
+        String st = "INSERT INTO words " + "(word, root, adddate, searched)"
+                + " VALUES (?, ?," + changeRepresentation( word.getDate().toString() ) +","+word.getSearched()+")";
 
-    private void insert(Word word){
-        try{
-            String st = "INSERT INTO words " + "(word, root, adddate, searched)"
-                    + " VALUES ("
-                    + changeRepresentation( word.getWord() )+","
-                    + changeRepresentation( word.getRoot() )+","
-                    + changeRepresentation( word.getDate().toString() )+","
-                    + word.getSearched()
-                    +")";
+        List<String> args = new ArrayList<>();
+        args.add(word.getWord());
+        args.add(word.getRoot());
 
-            Statement statement = connection.createStatement();
-            statement.executeUpdate(st);
-        }
-        catch (SQLException ex){
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    private ResultSet query(String SQL, List<String> args){
-        try {
-            PreparedStatement pstmt = connection.prepareStatement(SQL);
-            for(int i=0;i<args.size();i++){
-                pstmt.setString(i+1, args.get(i));
-            }
-            System.out.println(pstmt);
-            return pstmt.executeQuery();
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
-            return null;
-        }
+        insert(st, args);
     }
 
     private String changeRepresentation(String str){
