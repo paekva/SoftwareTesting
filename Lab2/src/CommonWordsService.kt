@@ -18,7 +18,19 @@ class CommonWordsService {
     }
 
     fun getWordInfo(word: String): Word {
-        println("hello")
         return dbc.getWord(word)
+    }
+
+    fun addWord(word: Word): Boolean{
+        val w = dbc.getWord(word.getWord())
+        println(w)
+        if(w != null){
+            println("hello")
+            return false
+        }
+
+        println("2")
+        dbc.addWord(word)
+        return true
     }
 }

@@ -1,6 +1,7 @@
 package database
 
 import java.util.*
+import kotlin.collections.ArrayList
 import java.sql.Date as SQLDate
 
 class Word(private val word: String, private val root: String){
