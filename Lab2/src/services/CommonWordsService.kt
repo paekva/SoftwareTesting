@@ -12,12 +12,4 @@ class CommonWordsService {
     fun getAllCommonRootWords(word: Word): List<Word>{
         return dbc.findSameRootWords(word)
     }
-
-    fun setPartOfSpeech(word: String, partOfSpeech: String){
-        dbc.changePartOfSpeech(word, partOfSpeech)
-    }
-
-    fun getWordInfo(word: String): Word {
-        return dbc.getWord(word)
-    }
 }

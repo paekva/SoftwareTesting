@@ -16,6 +16,21 @@ public class DataBaseConnection {
                 .getConnection(DB_URL, USER, PASS);
     }
 
+    public Boolean checkForWordInDictionary(Word word){
+        try{
+            String SQL = "SELECT * from words "
+                    + "WHERE word = ? ";
+            List<String> args = new ArrayList<>();
+            args.add(word.getWord());
+            ResultSet rs = select(SQL, args);
+            return rs.next();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
     private void insert(String SQL, List<String> args){
         try{
             PreparedStatement pstmt = connection.prepareStatement(SQL);
