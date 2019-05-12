@@ -5,7 +5,7 @@ import java.sql.Date as SQLDate
 
 class Word(private val word: String, private val root: String){
     private var date: SQLDate? = null
-    private val partOfSpeech: String? = null
+    private var partOfSpeech: String? = null
     private var searched: Int? = null
     private val etymlogyWord: String? = null
     private val etymlogyLang: String? = null
@@ -15,24 +15,31 @@ class Word(private val word: String, private val root: String){
         searched = 0
     }
 
+    constructor(word: String, root: String, partOfSp: String) : this(word, root){
+        partOfSpeech = partOfSp
+    }
+
     fun getWord(): String{
-        return "'$word'"
+        return word
     }
 
     fun getRoot(): String{
-        return "'$root'"
+        return root
     }
 
     fun getSearched(): Int{
         return searched!!
     }
 
-    fun getDate(): String{
-        return "'$date'"
+    fun getDate(): SQLDate{
+        return date!!
     }
 
     fun setDate(addDate: SQLDate){
         date = addDate
     }
 
+    fun getPartOfSpeech(): String{
+        return partOfSpeech!!
+    }
 }
