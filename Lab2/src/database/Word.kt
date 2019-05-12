@@ -4,14 +4,14 @@ import java.util.*
 import java.sql.Date as SQLDate
 
 class Word(private val word: String, private val root: String){
-    private var addTime: SQLDate? = null
+    private var date: SQLDate? = null
     private val partOfSpeech: String? = null
     private var searched: Int? = null
     private val etymlogyWord: String? = null
     private val etymlogyLang: String? = null
 
     init{
-        addTime = SQLDate(Date().time)
+        date = SQLDate(Date().time)
         searched = 0
     }
 
@@ -23,15 +23,16 @@ class Word(private val word: String, private val root: String){
         return "'$root'"
     }
 
-    fun getAddTime(): String{
-        return "'$addTime'"
-    }
-
-    fun setAddTime(date: SQLDate){
-        addTime = date
-    }
-
     fun getSearched(): Int{
         return searched!!
     }
+
+    fun getDate(): String{
+        return "'$date'"
+    }
+
+    fun setDate(addDate: SQLDate){
+        date = addDate
+    }
+
 }

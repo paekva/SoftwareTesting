@@ -12,7 +12,7 @@ public class DataBaseConnection {
 
     public void connect() throws SQLException {
         connection = DriverManager
-                        .getConnection(DB_URL, USER, PASS);
+                .getConnection(DB_URL, USER, PASS);
     }
 
     public void insert(Word word){

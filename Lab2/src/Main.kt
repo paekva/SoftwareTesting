@@ -6,4 +6,3 @@ fun main(){
     dbc.connect()
     dbc.findSameRootWords(Word("exaть", "ех"))
 }
-
