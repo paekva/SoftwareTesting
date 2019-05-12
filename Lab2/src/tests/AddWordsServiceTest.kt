@@ -13,7 +13,7 @@ class AddWordsServiceTest {
     @Test
     @Ignore
     fun `add a new word into the dictionary`() {
-        val newWord = Word("кровать", "кров")
+        val newWord = Word("парень", "пар")
         val success = aws.addWord(newWord)
         assertEquals(true, success)
     }

@@ -16,4 +16,13 @@ class WordSettingsService {
     fun getWordInfo(word: String): Word {
         return dbc.getWord(word)
     }
+
+    fun changeWordOrigin(word: Word, origin: String, originLanguage: String) : Boolean{
+        if( !dbc.checkForWordInDictionary(word) )
+            return false
+
+        dbc.changeOrigin(word.getWord(), origin, originLanguage)
+
+        return true
+    }
 }

@@ -126,6 +126,22 @@ public class DataBaseConnection {
         }
     }
 
+    public void changeOrigin(String word, String origin, String originLanguage){
+        String SQL = "UPDATE words "
+                + "SET origin = ?,"
+                + "origin_lang = ?"
+                + "WHERE word = ?";
+        try(PreparedStatement pstmt = connection.prepareStatement(SQL)) {
+            pstmt.setString(1, origin);
+            pstmt.setString(2, originLanguage);
+            pstmt.setString(3, word);
+            pstmt.executeUpdate();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void addWord(Word word){
         String st = "INSERT INTO words " + "(word, root, adddate, searched)"
                 + " VALUES (?, ?," + changeRepresentation( word.getDate().toString() ) +","+word.getSearched()+")";
