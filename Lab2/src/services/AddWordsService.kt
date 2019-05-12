@@ -22,4 +22,14 @@ class AddWordsService {
         words.forEach { word -> result = result && addWord(word) }
         return result
     }
+
+    fun addPhrase(word: Word, phrase: String): Boolean{
+        if(!dbc.checkForWordInDictionary(word))
+            return false
+
+        dbc.addPhrase(phrase)
+
+        // make connections of word and phrase
+        return true
+    }
 }

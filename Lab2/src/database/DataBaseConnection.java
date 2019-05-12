@@ -23,7 +23,10 @@ public class DataBaseConnection {
             List<String> args = new ArrayList<>();
             args.add(word.getWord());
             ResultSet rs = select(SQL, args);
-            return rs.next();
+
+            Boolean tmp = rs.next();
+            System.out.println("in dict "+tmp);
+            return tmp;
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -130,6 +133,16 @@ public class DataBaseConnection {
         List<String> args = new ArrayList<>();
         args.add(word.getWord());
         args.add(word.getRoot());
+
+        insert(st, args);
+    }
+
+    public void addPhrase(String phrase){
+        String st = "INSERT INTO phrases " + "(phrase)"
+                + " VALUES (?)";
+
+        List<String> args = new ArrayList<>();
+        args.add(phrase);
 
         insert(st, args);
     }
