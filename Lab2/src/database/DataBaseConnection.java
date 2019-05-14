@@ -3,7 +3,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataBaseConnection {
+public class DatabaseConnection {
 
     static final String DB_URL = "jdbc:postgresql://127.0.0.1:5432/dictionary";
     static final String USER = "postgres";
@@ -16,45 +16,28 @@ public class DataBaseConnection {
                 .getConnection(DB_URL, USER, PASS);
     }
 
-    public Boolean checkForWordInDictionary(Word word){
-        try{
-            String SQL = "SELECT * from words "
-                    + "WHERE word = ? ";
-            List<String> args = new ArrayList<>();
-            args.add(word.getWord());
-            ResultSet rs = select(SQL, args);
-
-            Boolean tmp = rs.next();
-            System.out.println("in dict "+tmp);
-            return tmp;
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        return false;
-    }
-
-    private void insert(String SQL, List<String> args){
+    void insert(String SQL, List<String> args){
         try{
             PreparedStatement pstmt = connection.prepareStatement(SQL);
             for(int i=0;i<args.size();i++){
                 pstmt.setString(i+1, args.get(i));
             }
-
             pstmt.executeUpdate();
         }
         catch (SQLException ex){
+            System.out.println("An error in insert:");
             System.out.println(ex.getMessage());
         }
     }
 
-    private ResultSet select(String SQL, List<String> args){
+    ResultSet select(String SQL, List<String> args){
         try {
             PreparedStatement pstmt = connection.prepareStatement(SQL);
             for(int i=0;i<args.size();i++){
                 pstmt.setString(i+1, args.get(i));
             }
 
+            System.out.println(pstmt);
             return pstmt.executeQuery();
         }
         catch(Exception e){
@@ -86,6 +69,32 @@ public class DataBaseConnection {
         return result;
     }
 
+    public List<String> getMeanings(String root) {
+        List<String> result = new ArrayList<>();
+        String SQL = "SELECT DISTINCT * FROM words "
+                + "WHERE root = ? ";
+        List<String> args = new ArrayList<>();
+        args.add(root);
+        ResultSet rs = select(SQL, args);
+
+        try{
+            if(rs == null){
+                System.out.println(rs);
+                return result;
+            }
+
+            while(rs.next()) {
+                result.add( getWord(rs).getMeaning() );
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return result;
+    }
+
+
     public List<Word> findSameRootWords(Word word)
     {
         List<Word> strings = new ArrayList<>();
@@ -101,7 +110,7 @@ public class DataBaseConnection {
             ResultSet rs = select(SQL, args);
 
             while (rs.next()) {
-                strings.add(new Word( rs.getString("word"), rs.getString("root")));
+                strings.add(new Word( rs.getString("word"), rs.getString("root"), ""));
             }
 
         }
@@ -142,17 +151,6 @@ public class DataBaseConnection {
         }
     }
 
-    public void addWord(Word word){
-        String st = "INSERT INTO words " + "(word, root, adddate, searched)"
-                + " VALUES (?, ?," + changeRepresentation( word.getDate().toString() ) +","+word.getSearched()+")";
-
-        List<String> args = new ArrayList<>();
-        args.add(word.getWord());
-        args.add(word.getRoot());
-
-        insert(st, args);
-    }
-
     public void addPhrase(String phrase){
         String st = "INSERT INTO phrases " + "(phrase)"
                 + " VALUES (?)";
@@ -168,7 +166,7 @@ public class DataBaseConnection {
     }
 
     private Word getWord(ResultSet rs){
-        String word="", root="", partOfSpeech="";
+        String word="", root="", meaning = "", partOfSpeech="";
         try{
             ResultSetMetaData rsMetaData = rs.getMetaData();
             int numberOfColumns = rsMetaData.getColumnCount();
@@ -183,10 +181,11 @@ public class DataBaseConnection {
 
             word = rs.getString("word");
             root = rs.getString("root");
+            meaning = rs.getString("meaning");
         }
         catch(Exception e){
             System.out.println(e.getMessage());
         }
-        return new Word(word, root, partOfSpeech);
+        return new Word(word, root, meaning, partOfSpeech);
     }
 }

@@ -1,8 +1,8 @@
-import database.DataBaseConnection
+import database.DatabaseConnection
 import database.Word
 
 fun main(){
-    val dbc = DataBaseConnection()
+    val dbc = DatabaseConnection()
     dbc.connect()
-    dbc.findSameRootWords(Word("exaть", "ех"))
+    dbc.findSameRootWords(Word("exaть", "ех", ""))
 }

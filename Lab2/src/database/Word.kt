@@ -1,24 +1,24 @@
 package database
 
 import java.util.*
-import kotlin.collections.ArrayList
 import java.sql.Date as SQLDate
 
-class Word(private val word: String, private val root: String){
+class Word(private val word: String, private val root: String, private val meaning: String){
     private var date: SQLDate? = null
-    private var partOfSpeech: String? = null
-    private var searched: Int? = null
-    private val etymlogyWord: String? = null
-    private val etymlogyLang: String? = null
+    private var partOfSpeech: String = ""
+    private var searched: Int = 0
+    private val origin: String = ""
+    private val originLang: String = ""
 
-    init{
-        date = SQLDate(Date().time)
-        searched = 0
-    }
-
-    constructor(word: String, root: String, partOfSp: String) : this(word, root){
+    constructor(word: String, root: String, meaning: String, partOfSp: String) : this(word, root, meaning){
         partOfSpeech = partOfSp
+        date = SQLDate(Date().time)
     }
+
+    constructor(word: String, root: String, meaning: String, adddate: SQLDate) : this(word, root, meaning){
+        date = adddate
+    }
+
 
     fun getWord(): String{
         return word
@@ -28,19 +28,27 @@ class Word(private val word: String, private val root: String){
         return root
     }
 
+    fun getMeaning(): String{
+        return meaning
+    }
+
     fun getSearched(): Int{
-        return searched!!
+        return searched
     }
 
     fun getDate(): SQLDate{
         return date!!
     }
 
-    fun setDate(addDate: SQLDate){
-        date = addDate
+    fun getOrigin(): String{
+        return origin
+    }
+
+    fun getOriginLang(): String{
+        return originLang
     }
 
     fun getPartOfSpeech(): String{
-        return partOfSpeech!!
+        return partOfSpeech
     }
 }

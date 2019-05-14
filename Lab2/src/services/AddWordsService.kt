@@ -1,19 +1,22 @@
 package services
 
-import database.DataBaseConnection
+import database.DatabaseConnection
+import database.DatabaseService
 import database.Word
 
 class AddWordsService {
 
-    private val dbc: DataBaseConnection = DataBaseConnection()
+    private val dbc: DatabaseConnection = DatabaseConnection()
+    private val dbs: DatabaseService = DatabaseService()
 
     init { dbc.connect() }
 
     fun addWord(word: Word) : Boolean{
-        if(dbc.checkForWordInDictionary(word))
+
+        if(dbs.checkForWordInDictionary(word))
             return false
 
-        dbc.addWord(word)
+        dbs.addWord(word)
         return true
     }
 
@@ -24,12 +27,16 @@ class AddWordsService {
     }
 
     fun addPhrase(word: Word, phrase: String): Boolean{
-        if(!dbc.checkForWordInDictionary(word))
+        if(!dbs.checkForWordInDictionary(word))
             return false
 
         dbc.addPhrase(phrase)
-
-        // make connections of word and phrase
         return true
+    }
+
+    fun getMeanings(root: String): List<String>{
+        val meanings = dbc.getMeanings(root)
+        meanings.forEach { word -> println(word) }
+        return meanings
     }
 }

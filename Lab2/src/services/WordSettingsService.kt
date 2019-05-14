@@ -1,11 +1,13 @@
 package services
 
-import database.DataBaseConnection
+import database.DatabaseConnection
+import database.DatabaseService
 import database.Word
 
 class WordSettingsService {
 
-    private val dbc: DataBaseConnection = DataBaseConnection()
+    private val dbc: DatabaseConnection = DatabaseConnection()
+    private val dbs: DatabaseService = DatabaseService()
 
     init { dbc.connect() }
 
@@ -18,7 +20,7 @@ class WordSettingsService {
     }
 
     fun changeWordOrigin(word: Word, origin: String, originLanguage: String) : Boolean{
-        if( !dbc.checkForWordInDictionary(word) )
+        if( !dbs.checkForWordInDictionary(word) )
             return false
 
         dbc.changeOrigin(word.getWord(), origin, originLanguage)
