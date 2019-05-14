@@ -1,5 +1,6 @@
 package database
 
+import java.sql.SQLException
 import java.util.ArrayList
 
 class DatabaseService {
@@ -34,5 +35,88 @@ class DatabaseService {
         args.add(word.getOriginLang())
 
         dbc.insert(st, args)
+    }
+
+    fun findSameRootWords(word: Word): List<Word> {
+        val strings = ArrayList<Word>()
+        try {
+            val sql = ("SELECT word, root from words "
+                    + "WHERE root = ? and meaning = ? "
+                    + "and not word = ?")
+
+            val args = ArrayList<String>()
+            args.add(word.getRoot())
+            args.add(word.getMeaning())
+            args.add(word.getWord())
+
+            val rs = dbc.select(sql, args)
+
+            while (rs!!.next()) {
+                strings.add(Word(rs.getString("word"), rs.getString("root"), ""))
+            }
+
+        } catch (ex: SQLException) {
+            println("Error in findSameRootWords: \n ${ex.message}")
+        }
+
+        return strings
+    }
+
+    fun getMeanings(root: String): List<String> {
+        val result = ArrayList<String>()
+        val sql = "SELECT DISTINCT meaning FROM words " + "WHERE root = ? "
+        val args = ArrayList<String>()
+        args.add(root)
+        val rs = dbc.select(sql, args)
+
+        try {
+            if (rs == null) {
+                return result
+            }
+
+            while (rs.next()) {
+                result.add(dbc.getWord(rs).getMeaning())
+            }
+        } catch (e: Exception) {
+            println("Error in getMeanings: \n ${e.message}")
+        }
+
+        return result
+    }
+
+    fun addPhrase(phrase: String) {
+        val st = ("INSERT INTO phrases " + "(phrase)"
+                + " VALUES (?)")
+
+        val args = ArrayList<String>()
+        args.add(phrase)
+
+        dbc.insert(st, args)
+    }
+
+    fun changePartOfSpeech(word: String, partOfSpeech: String) {
+        val sql = ("UPDATE words "
+                + "SET partofspeech = ? "
+                + "WHERE word = ?")
+
+        val args = ArrayList<String>()
+        args.add(partOfSpeech)
+        args.add(word)
+
+        dbc.insert(sql, args)
+    }
+
+    fun changeOrigin(word: String, origin: String, originLanguage: String) {
+        val sql = ("UPDATE words "
+                + "SET origin = ?,"
+                + "origin_lang = ?"
+                + "WHERE word = ?")
+
+        val args = ArrayList<String>()
+        args.add(origin)
+        args.add(originLanguage)
+        args.add(word)
+
+        dbc.insert(sql, args)
     }
 }

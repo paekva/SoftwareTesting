@@ -17,8 +17,8 @@ class CommonWordsServiceTest {
 
     @Test
     fun `cw service returns list of results for input`() {
-        val actual = cws.getAllCommonRootWords(Word("ехать", "ех", "")).map { el -> el.getWord() }
-        val expected = listOf("приехать", "уехать", "заехать")
+        val actual = cws.getAllCommonRootWords(Word("нос", "нос", "нос")).map { el -> el.getWord() }
+        val expected = listOf("носовой", "переносица")
         assertTrue(actual.containsAll(expected))
     }
 

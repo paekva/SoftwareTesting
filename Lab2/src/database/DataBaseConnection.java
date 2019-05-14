@@ -16,7 +16,7 @@ public class DatabaseConnection {
                 .getConnection(DB_URL, USER, PASS);
     }
 
-    void insert(String SQL, List<String> args){
+    public void insert(String SQL, List<String> args){
         try{
             PreparedStatement pstmt = connection.prepareStatement(SQL);
             for(int i=0;i<args.size();i++){
@@ -30,7 +30,7 @@ public class DatabaseConnection {
         }
     }
 
-    ResultSet select(String SQL, List<String> args){
+    public ResultSet select(String SQL, List<String> args){
         try {
             PreparedStatement pstmt = connection.prepareStatement(SQL);
             for(int i=0;i<args.size();i++){
@@ -69,121 +69,27 @@ public class DatabaseConnection {
         return result;
     }
 
-    public List<String> getMeanings(String root) {
-        List<String> result = new ArrayList<>();
-        String SQL = "SELECT DISTINCT * FROM words "
-                + "WHERE root = ? ";
-        List<String> args = new ArrayList<>();
-        args.add(root);
-        ResultSet rs = select(SQL, args);
-
-        try{
-            if(rs == null){
-                System.out.println(rs);
-                return result;
-            }
-
-            while(rs.next()) {
-                result.add( getWord(rs).getMeaning() );
-            }
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-        return result;
-    }
-
-
-    public List<Word> findSameRootWords(Word word)
-    {
-        List<Word> strings = new ArrayList<>();
-        try{
-            String SQL = "SELECT word, root from words "
-                    + "WHERE root = ? "
-                    + "and not word = ?";
-
-            List<String> args = new ArrayList<String>();
-            args.add(word.getRoot());
-            args.add(word.getWord());
-
-            ResultSet rs = select(SQL, args);
-
-            while (rs.next()) {
-                strings.add(new Word( rs.getString("word"), rs.getString("root"), ""));
-            }
-
-        }
-        catch (SQLException ex){
-            System.out.println(ex.getMessage());
-        }
-
-        return strings;
-    }
-
-    public void changePartOfSpeech(String word, String partOfSpeech){
-        String SQL = "UPDATE words "
-                + "SET partofspeech = ? "
-                + "WHERE word = ?";
-        try(PreparedStatement pstmt = connection.prepareStatement(SQL)) {
-                pstmt.setString(1, partOfSpeech);
-                pstmt.setString(2, word);
-                pstmt.executeUpdate();
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public void changeOrigin(String word, String origin, String originLanguage){
-        String SQL = "UPDATE words "
-                + "SET origin = ?,"
-                + "origin_lang = ?"
-                + "WHERE word = ?";
-        try(PreparedStatement pstmt = connection.prepareStatement(SQL)) {
-            pstmt.setString(1, origin);
-            pstmt.setString(2, originLanguage);
-            pstmt.setString(3, word);
-            pstmt.executeUpdate();
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public void addPhrase(String phrase){
-        String st = "INSERT INTO phrases " + "(phrase)"
-                + " VALUES (?)";
-
-        List<String> args = new ArrayList<>();
-        args.add(phrase);
-
-        insert(st, args);
-    }
-
-    private String changeRepresentation(String str){
-        return "\'"+str+"\'";
-    }
-
-    private Word getWord(ResultSet rs){
+    // TODO: исправить, что он ищет в колонках, не проверяя их наличие
+    Word getWord(ResultSet rs){
         String word="", root="", meaning = "", partOfSpeech="";
         try{
             ResultSetMetaData rsMetaData = rs.getMetaData();
             int numberOfColumns = rsMetaData.getColumnCount();
 
-            for (int i = 1; i < numberOfColumns + 1; i++) {
+            /*for (int i = 1; i < numberOfColumns + 1; i++) {
                 String columnName = rsMetaData.getColumnName(i);
 
                 if ("partofspeech".equals(columnName)) {
                     partOfSpeech = rs.getString("partofspeech");
                 }
-            }
+            }*/
 
             word = rs.getString("word");
             root = rs.getString("root");
             meaning = rs.getString("meaning");
         }
         catch(Exception e){
+            System.out.println("Error in getWord");
             System.out.println(e.getMessage());
         }
         return new Word(word, root, meaning, partOfSpeech);

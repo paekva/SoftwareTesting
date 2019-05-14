@@ -30,12 +30,12 @@ class AddWordsService {
         if(!dbs.checkForWordInDictionary(word))
             return false
 
-        dbc.addPhrase(phrase)
+        dbs.addPhrase(phrase)
         return true
     }
 
     fun getMeanings(root: String): List<String>{
-        val meanings = dbc.getMeanings(root)
+        val meanings = dbs.getMeanings(root)
         meanings.forEach { word -> println(word) }
         return meanings
     }

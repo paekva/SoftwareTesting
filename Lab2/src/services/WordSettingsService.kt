@@ -12,7 +12,7 @@ class WordSettingsService {
     init { dbc.connect() }
 
     fun setPartOfSpeech(word: String, partOfSpeech: String){
-        dbc.changePartOfSpeech(word, partOfSpeech)
+        dbs.changePartOfSpeech(word, partOfSpeech)
     }
 
     fun getWordInfo(word: String): Word {
@@ -23,7 +23,7 @@ class WordSettingsService {
         if( !dbs.checkForWordInDictionary(word) )
             return false
 
-        dbc.changeOrigin(word.getWord(), origin, originLanguage)
+        dbs.changeOrigin(word.getWord(), origin, originLanguage)
 
         return true
     }
