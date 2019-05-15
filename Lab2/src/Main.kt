@@ -2,12 +2,12 @@ import interactionHandlers.AddHandler
 import interactionHandlers.EditHandler
 import interactionHandlers.SearchHandler
 import services.UserInteractionService
-import services.commandHandler
 
-fun handlerMock (el:Int): Unit{
-    println("hello from option $el")
+fun handlerMock (): Unit{
+
 }
 
+typealias commandHandler = () -> Unit
 const val mainMsg = "0. завершение работы программы" +
         "\n1. поиск слов по введенному слову " +
         "\n2. добавление слов и предложений" +

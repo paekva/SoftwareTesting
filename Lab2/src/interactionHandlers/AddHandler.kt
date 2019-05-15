@@ -1,8 +1,8 @@
 package interactionHandlers
 
+import commandHandler
 import handlerMock
 import services.UserInteractionService
-import services.commandHandler
 
 class AddHandler {
     private val mainMsg = "0. возврат в главное меню " +
@@ -12,7 +12,7 @@ class AddHandler {
             "\n4. добавить предложение - пример к заданному слову"
 
 
-    fun begin(el: Int): Unit {
+    fun begin(): Unit {
         val uis = UserInteractionService()
         val availableCommandNumbers = 1..4
         val availableCommands = arrayOf<commandHandler>( ::handlerMock, ::handlerMock, ::handlerMock, ::handlerMock, ::handlerMock, ::handlerMock, ::handlerMock)

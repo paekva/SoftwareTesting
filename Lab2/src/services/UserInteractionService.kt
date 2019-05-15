@@ -1,13 +1,11 @@
 package services
 
+import commandHandler
 import database.Word
 import printErrorMsg
 import printInfoMsg
 import printSuccessMsg
 import java.util.*
-
-
-typealias commandHandler = (el: Int) -> Unit
 
 class UserInteractionService {
 
@@ -26,7 +24,7 @@ class UserInteractionService {
                 if(!commandInputField(answerCode, availableCommandNumbers))
                     throw Exception()
 
-                availableCommands[answerCode-1].invoke(answerCode)
+                availableCommands[answerCode-1].invoke()
             }
             catch(e: Exception){
                 printErrorMsg("Неверный ввод. Попробуйте снова!")
@@ -35,8 +33,28 @@ class UserInteractionService {
         }
     }
 
+    fun getUserInput(msg: String): String{
+        var answer = ""
+        val reader = Scanner(System.`in`)
+        printInfoMsg(msg)
+
+        while(answer == ""){
+            try{
+                answer = reader.next()
+
+                if(!textInputField(answer))
+                    throw Exception()
+            }
+            catch(e: Exception){
+                printErrorMsg("Неверный ввод. Попробуйте снова!")
+                answer = ""
+            }
+        }
+        return answer
+    }
+
     fun textInputField(value: String): Boolean{
-        return value.toLowerCase().matches("[a-z]+".toRegex())
+        return value.toLowerCase().matches("[а-я]+".toRegex())
     }
 
     fun commandInputField(value: Int, interval: IntRange): Boolean{
@@ -47,9 +65,14 @@ class UserInteractionService {
         return words.map { word -> word.getWord() }
     }
 
+    fun displayWords(words: List<Word>){
+        return words.forEach{ w -> println(w.getWord())}
+    }
+
     fun displayWordInfo(word: Word): String{
         return "СЛОВО ${word.getWord()}\n" +
                 "КОРЕНЬ ${word.getRoot()}\n" +
+                "ЗНАЧЕНИЯ ${word.getMeaning()}\n" +
                 "ДАТА ДОБАВЛЕНИЯ ${word.getDate()}\n" +
                 "ЧАСТЬ РЕЧИ ${word.getPartOfSpeech()}\n"
     }

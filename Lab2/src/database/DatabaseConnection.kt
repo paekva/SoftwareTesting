@@ -36,7 +36,7 @@ class DatabaseConnection {
                 pstmt.setString(i + 1, args[i])
             }
 
-            println(pstmt)
+            //println(pstmt)
             return pstmt.executeQuery()
         } catch (e: Exception) {
             println("Error in select:\n ${e.message}")
