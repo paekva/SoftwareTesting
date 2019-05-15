@@ -40,7 +40,7 @@ class DatabaseService {
     fun findSameRootWords(word: Word): List<Word> {
         val strings = ArrayList<Word>()
         try {
-            val sql = ("SELECT word, root from words "
+            val sql = ("SELECT * from words "
                     + "WHERE root = ? and meaning = ? "
                     + "and not word = ?")
 
@@ -52,7 +52,7 @@ class DatabaseService {
             val rs = dbc.select(sql, args)
 
             while (rs!!.next()) {
-                strings.add(Word(rs.getString("word"), rs.getString("root"), ""))
+                strings.add(dbc.getWord(rs))
             }
 
         } catch (ex: SQLException) {

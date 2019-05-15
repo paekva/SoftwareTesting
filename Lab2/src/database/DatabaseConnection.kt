@@ -1,9 +1,6 @@
 package database
 
-import java.sql.Connection
-import java.sql.DriverManager
-import java.sql.ResultSet
-import java.sql.SQLException
+import java.sql.*
 import java.util.ArrayList
 
 class DatabaseConnection {
@@ -53,6 +50,7 @@ class DatabaseConnection {
         var root = ""
         var meaning = ""
         var partOfSpeech = ""
+        var date: Date = Date(1)
         try {
             val rsMetaData = rs.metaData
             val numberOfColumns = rsMetaData.columnCount
@@ -66,10 +64,11 @@ class DatabaseConnection {
             if (receivedColumnNames.contains("root")) root = rs.getString("root")
             if (receivedColumnNames.contains("meaning")) meaning = rs.getString("meaning")
             if (receivedColumnNames.contains("partofspeech")) partOfSpeech = rs.getString("partofspeech")
+            if (receivedColumnNames.contains("adddate")) date = rs.getDate("adddate")
         } catch (e: Exception) {
             println("Error in getParticularWord: \n ${e.message}")
         }
 
-        return Word(word, root, meaning, partOfSpeech)
+        return Word(word, root, meaning, partOfSpeech, date)
     }
 }

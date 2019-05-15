@@ -20,6 +20,6 @@ class CommonWordsService {
     }
 
     fun groupBy(words: List<Word>, from: Date, to: Date) : List<Word>{
-        return words.filter { it.getDate() in from..to }
+        return words.filter { it.getDate().compareTo(from) >= 0  && it.getDate().compareTo(to) <= 0 }
     }
 }

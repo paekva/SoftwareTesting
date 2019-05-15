@@ -13,33 +13,36 @@ class AddWordsServiceTest {
     @Test
     @Ignore
     fun `add a new word into the dictionary`() {
-        val newWord = Word("краснеть", "крас", "красный", "существительное")
+        val newWord = Word("краснощекий", "крас", "красный", "существительное")
         val success = aws.addWord(newWord)
         assertEquals(true, success)
     }
 
     @Test
     fun `add existing word into the dictionary`() {
-        val newWord = Word("наехать", "ех", "")
+        val newWord = Word("красотка", "крас", "краса")
         val success = aws.addWord(newWord)
         assertEquals(false, success)
     }
 
     @Test
     fun `get meanings examples by root`() {
-        aws.getMeanings("нос")
+        aws.getMeanings("крас")
         // assertEquals(false, success)
     }
 
     @Test
     @Ignore
     fun `add group of common root words into the dictionary`() {
-        val group = arrayListOf<Word>(Word("думать", "дум", ""), Word("обдумать", "дум", ""))
+        val group = arrayListOf<Word>(
+            Word("краситель", "крас", "краска", "существительное"),
+            Word("раскраска", "крас", "краска", "существительное"))
         val success = aws.addGroupOfWords(group)
         assertEquals(true, success)
     }
 
     @Test
+    @Ignore //TODO: finish functionality properly
     fun `add pharse connected to word`() {
         val word = Word("наехать", "ех", "")
         val phrase = "Наеxaть на столб в темноте оказалось легко"

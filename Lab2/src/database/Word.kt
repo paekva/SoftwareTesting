@@ -10,15 +10,22 @@ class Word(private val word: String, private val root: String, private val meani
     private val origin: String = ""
     private val originLang: String = ""
 
+    init {
+        date = SQLDate(Date().time)
+    }
+
     constructor(word: String, root: String, meaning: String, partOfSp: String) : this(word, root, meaning){
         partOfSpeech = partOfSp
-        date = SQLDate(Date().time)
     }
 
     constructor(word: String, root: String, meaning: String, adddate: SQLDate) : this(word, root, meaning){
         date = adddate
     }
 
+    constructor(word: String, root: String, meaning: String, partOfSp: String, adddate: SQLDate) : this(word, root, meaning){
+        partOfSpeech = partOfSp
+        date = adddate
+    }
 
     fun getWord(): String{
         return word

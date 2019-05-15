@@ -5,6 +5,7 @@ import database.Word
 import org.junit.Test
 import org.junit.Assert.*
 import java.sql.Date
+import java.time.LocalDate
 
 class CommonWordsServiceTest {
 
@@ -24,28 +25,27 @@ class CommonWordsServiceTest {
 
     @Test
     fun `group by word length`() {
-        val words = cws.getAllCommonRootWords(Word("ехать", "ех", ""))
-        val actual = cws.groupBy(words, 6, 7).map { el -> el.getWord() }
-        val expected = listOf("наехать", "уехать", "заехать")
+        val words = cws.getAllCommonRootWords(Word("занос", "нос", "носить"))
+        val actual = cws.groupBy(words, 7, 8).map { el -> el.getWord() }
+        val expected = listOf("перенос", "обноски")
         assertTrue(actual.containsAll(expected))
     }
 
     @Test
     fun `group by partOfSpeech`() {
-        val words = cws.getAllCommonRootWords(Word("ехать", "ех", ""))
-        words.forEach { el -> print(el.getPartOfSpeech()) }
-        val actual = cws.groupBy(words, "глагол").map { el -> el.getWord() }
-        val expected = listOf("приехать")
-        print(actual)
-        actual.forEach { el -> print(el) }
-        //assertTrue(actual.containsAll(expected))
+        val words = cws.getAllCommonRootWords(Word("краснеть", "крас", "красный"))
+        val actual = cws.groupBy(words, "существительное").map { el -> el.getWord() }
+        val expected = listOf("краснощекий")
+        assertTrue(actual.containsAll(expected))
     }
 
     @Test
-    fun `group by word date`() {
-        val words = cws.getAllCommonRootWords(Word("ехать", "ех", ""))
-        val actual = cws.groupBy(words, Date(11, 5, 2019), Date(11, 5, 2019)).map { el -> el.getWord() }
-        //val expected = listOf("наехать", "уехать", "заехать")
-        //assertTrue(actual.containsAll(expected))
+    //TODO: fix dates
+    fun `group by word add date`() {
+        val words = cws.getAllCommonRootWords(Word("красотка", "крас", "краса"))
+        /*val actual = cws.groupBy(words, Date.parse("2019-05-14"),  Date.parse("2019-05-14")).map { el -> el.getWord() }
+        actual.forEach{ el -> println(el)}
+        val expected = listOf("красавица")
+        assertTrue(actual.containsAll(expected))*/
     }
 }
