@@ -5,11 +5,7 @@ import database.DatabaseService
 import database.Word
 
 class AddWordsService {
-
-    private val dbc: DatabaseConnection = DatabaseConnection()
     private val dbs: DatabaseService = DatabaseService()
-
-    init { dbc.connect() }
 
     fun addWord(word: Word) : Boolean{
 

@@ -6,17 +6,14 @@ import database.Word
 
 class WordSettingsService {
 
-    private val dbc: DatabaseConnection = DatabaseConnection()
     private val dbs: DatabaseService = DatabaseService()
-
-    init { dbc.connect() }
 
     fun setPartOfSpeech(word: String, partOfSpeech: String){
         dbs.changePartOfSpeech(word, partOfSpeech)
     }
 
-    fun getWordInfo(word: String): Word {
-        return dbc.getWord(word)
+    fun getWordInfo(word: String): Word? {
+        return dbs.getParticularWord(word)
     }
 
     fun changeWordOrigin(word: Word, origin: String, originLanguage: String) : Boolean{

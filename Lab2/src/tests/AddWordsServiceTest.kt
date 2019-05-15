@@ -13,7 +13,7 @@ class AddWordsServiceTest {
     @Test
     @Ignore
     fun `add a new word into the dictionary`() {
-        val newWord = Word("красавица", "крас", "краса", "существительное")
+        val newWord = Word("краснеть", "крас", "красный", "существительное")
         val success = aws.addWord(newWord)
         assertEquals(true, success)
     }
@@ -27,7 +27,7 @@ class AddWordsServiceTest {
 
     @Test
     fun `get meanings examples by root`() {
-        val success = aws.getMeanings("нос")
+        aws.getMeanings("нос")
         // assertEquals(false, success)
     }
 

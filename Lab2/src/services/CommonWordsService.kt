@@ -1,16 +1,11 @@
 package services
 
-import database.DatabaseConnection
 import database.DatabaseService
 import database.Word
 import java.sql.Date
 
 class CommonWordsService {
-
-    private val dbc: DatabaseConnection = DatabaseConnection()
     private val dbs: DatabaseService = DatabaseService()
-
-    init { dbc.connect() }
 
     fun getAllCommonRootWords(word: Word): List<Word>{
         return dbs.findSameRootWords(word)

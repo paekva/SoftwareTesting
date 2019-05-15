@@ -11,9 +11,9 @@ class WordSettingsServiceTest {
 
     @Test
     fun `add part of speech to a word`() {
-        wss.setPartOfSpeech("носить", "глагол")
-        val word = wss.getWordInfo("носить")
-        Assert.assertEquals("глагол", word.getPartOfSpeech())
+        wss.setPartOfSpeech("относить", "глагол")
+        val word = wss.getWordInfo("относить")
+        Assert.assertEquals("глагол", word!!.getPartOfSpeech())
     }
 
     @Test

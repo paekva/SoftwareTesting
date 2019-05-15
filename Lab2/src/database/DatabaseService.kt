@@ -119,4 +119,25 @@ class DatabaseService {
 
         dbc.insert(sql, args)
     }
+
+    fun getParticularWord(word: String): Word? {
+        var result: Word? = null
+        val sql = "SELECT * from words " + "WHERE word = ? "
+        val args = ArrayList<String>()
+        args.add(word)
+        val rs = dbc.select(sql, args)
+
+        try {
+            if (rs == null)
+                return result
+
+            while (rs.next()) {
+                result = dbc.getWord(rs)
+            }
+        } catch (e: Exception) {
+            println(e.message)
+        }
+
+        return result
+    }
 }
