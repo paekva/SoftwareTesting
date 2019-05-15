@@ -11,6 +11,10 @@ class CommonWordsService {
         return dbs.findSameRootWords(word)
     }
 
+    fun getAllOmonimRootWords(word: Word) : List<Word>{
+        return dbs.findOmonimRootWords(word)
+    }
+
     fun groupBy(words: List<Word>, partOfSpeech: String) : List<Word>{
         return words.filter { it.getPartOfSpeech() == partOfSpeech }
     }

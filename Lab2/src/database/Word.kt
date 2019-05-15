@@ -6,7 +6,6 @@ import java.sql.Date as SQLDate
 class Word(private val word: String, private val root: String, private val meaning: String){
     private var date: SQLDate? = null
     private var partOfSpeech: String = ""
-    private var searched: Int = 0
     private val origin: String = ""
     private val originLang: String = ""
 
@@ -37,10 +36,6 @@ class Word(private val word: String, private val root: String, private val meani
 
     fun getMeaning(): String{
         return meaning
-    }
-
-    fun getSearched(): Int{
-        return searched
     }
 
     fun getDate(): SQLDate{

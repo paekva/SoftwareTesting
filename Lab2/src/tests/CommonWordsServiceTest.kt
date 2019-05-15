@@ -17,9 +17,16 @@ class CommonWordsServiceTest {
     }
 
     @Test
-    fun `cw service returns list of results for input`() {
+    fun `getting list of common root words`() {
         val actual = cws.getAllCommonRootWords(Word("нос", "нос", "нос")).map { el -> el.getWord() }
         val expected = listOf("носовой", "переносица")
+        assertTrue(actual.containsAll(expected))
+    }
+
+    @Test
+    fun `getting list of omonim root words`() {
+        val actual = cws.getAllOmonimRootWords(Word("красавица", "крас", "краса")).map { el -> el.getWord() }
+        val expected = listOf("краснеть", "краснощекий", "краситель", "раскраска", "красотка")
         assertTrue(actual.containsAll(expected))
     }
 

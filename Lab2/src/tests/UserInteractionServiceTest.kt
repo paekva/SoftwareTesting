@@ -24,13 +24,13 @@ class UserInteractionServiceTest {
 
     @Test
     fun `command correct input check`() {
-        val correctInput = uis.commandInputField("3")
+        val correctInput = uis.commandInputField(3, 1..5)
         assertTrue(correctInput)
     }
 
     @Test
     fun `command incorrect input check`() {
-        val incorrectInput = uis.commandInputField("d")
+        val incorrectInput = uis.commandInputField(10, 1..5)
         assertFalse(incorrectInput)
     }
 

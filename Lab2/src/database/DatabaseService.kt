@@ -23,8 +23,8 @@ class DatabaseService {
     }
 
     fun addWord(word: Word) {
-        val st = ("INSERT INTO words " + "(word, root, meaning, adddate, searched, partofspeech, origin, origin_lang)"
-                + " VALUES (?, ?, ?, '"+word.getDate().toString()+"','"+word.getSearched().toString()+"', ?, ?, ?)")
+        val st = ("INSERT INTO words " + "(word, root, meaning, adddate, partofspeech, origin, origin_lang)"
+                + " VALUES (?, ?, ?, '"+word.getDate().toString()+"', ?, ?, ?)")
 
         val args = ArrayList<String>()
         args.add(word.getWord())
@@ -57,6 +57,30 @@ class DatabaseService {
 
         } catch (ex: SQLException) {
             println("Error in findSameRootWords: \n ${ex.message}")
+        }
+
+        return strings
+    }
+
+    fun findOmonimRootWords(word: Word): List<Word> {
+        val strings = ArrayList<Word>()
+        try {
+            val sql = ("SELECT * from words "
+                    + "WHERE root = ?"
+                    + "and not word = ?")
+
+            val args = ArrayList<String>()
+            args.add(word.getRoot())
+            args.add(word.getWord())
+
+            val rs = dbc.select(sql, args)
+
+            while (rs!!.next()) {
+                strings.add(dbc.getWord(rs))
+            }
+
+        } catch (ex: SQLException) {
+            println("Error in findOmonimRootWords: \n ${ex.message}")
         }
 
         return strings
