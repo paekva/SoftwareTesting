@@ -6,7 +6,7 @@ import services.CommonWordsService
 import services.UserInteractionService
 import services.WordSettingsService
 
-class SearchHandler {
+class SearchUI {
     private val mainMsg = "0. возврат в главное меню " +
             "\n1. найти однокоренные по введенному слову " +
             "\n2. найти слова с омонимичными корнями по введенному слову" +

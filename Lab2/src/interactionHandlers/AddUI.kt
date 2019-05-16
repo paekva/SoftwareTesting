@@ -13,7 +13,7 @@ import services.WordSettingsService
 import java.util.*
 import java.sql.Date as SQLDate
 
-class AddHandler {
+class AddUI {
     private val mainMsg = "0. возврат в главное меню " +
             "\n1. добавить слово" +
             "\n2. добавить группу однокоренных слов" +
