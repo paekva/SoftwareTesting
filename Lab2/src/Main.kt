@@ -1,5 +1,6 @@
 import interactionHandlers.AddUI
 import interactionHandlers.EditUI
+import interactionHandlers.FilterUI
 import interactionHandlers.SearchUI
 import services.UserInteractionService
 
@@ -20,9 +21,10 @@ fun main(){
     val search = SearchUI()::begin
     val add = AddUI()::begin
     val edit = EditUI()::begin
+    val filter = FilterUI()::begin
     val uis = UserInteractionService()
     val availableCommandNumbers = 1..5
-    val availableCommands = arrayOf<commandHandler>( search, add, edit, ::handlerMock, ::handlerMock)
+    val availableCommands = arrayOf<commandHandler>( search, add, edit, filter, ::handlerMock)
 
     printSuccessMsg("Вы находитесь в программе по поиску и редактированию однокоренных слов")
     uis.getUserCommand(availableCommandNumbers, availableCommands, mainMsg)

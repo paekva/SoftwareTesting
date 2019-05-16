@@ -30,21 +30,25 @@ class SearchUI {
         val wordList = cws.getAllCommonRootWords(input)
 
         if(wordList == null )
-            printErrorMsg("Данного слова нет в словаре. Попробуйте вернутся в главное меню и добавить это слово в словарь!")
-        else
+            printErrorMsg("Данного типа слов нет в словаре. Попробуйте вернутся в главное меню и добавить новые слова в словарь!")
+        else{
             uis.displayWords(wordList)
+            val state = State.instance
+            state.setLastResults(wordList)
+        }
     }
 
     private fun getOmonimRootWords(){
         val input = uis.getUserInput("Введите слово для поиска слов с омонимичными корнями", false)
 
         val wordList = cws.getAllOmonimRootWords(input)
-        if(wordList == null){
-            printErrorMsg("Данного слова нет в словаре. Попробуйте вернутся в главное меню и добавить это слово в словарь!")
-            return
+        if(wordList == null )
+            printErrorMsg("Данного типа слов нет в словаре. Попробуйте вернутся в главное меню и добавить новые слова в словарь!")
+        else{
+            uis.displayWords(wordList)
+            val state = State.instance
+            state.setLastResults(wordList)
         }
-
-        uis.displayWords(wordList)
     }
 
     private fun getFullWordInfo(){
