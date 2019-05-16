@@ -11,7 +11,7 @@ class SearchHandler {
             "\n1. найти однокоренные по введенному слову " +
             "\n2. найти слова с омонимичными корнями по введенному слову" +
             "\n3. найти полную информацию по введенному слову" +
-            "\n4. найти слова по введенному тегу"
+            "\n4. найти слова по введенному тегу\n"
 
     private val uis: UserInteractionService = UserInteractionService()
     private val cws: CommonWordsService = CommonWordsService()
@@ -25,7 +25,7 @@ class SearchHandler {
     }
 
     private fun getCommonRootWords(){
-        val input = uis.getUserInput("Введите слово для поиска однокоренных")
+        val input = uis.getUserInput("Введите слово для поиска однокоренных", false)
 
         val wordList = cws.getAllCommonRootWords(input)
 
@@ -36,7 +36,7 @@ class SearchHandler {
     }
 
     private fun getOmonimRootWords(){
-        val input = uis.getUserInput("Введите слово для поиска слов с омонимичными корнями")
+        val input = uis.getUserInput("Введите слово для поиска слов с омонимичными корнями", false)
 
         val wordList = cws.getAllOmonimRootWords(input)
         if(wordList == null){
@@ -48,7 +48,7 @@ class SearchHandler {
     }
 
     private fun getFullWordInfo(){
-        val input = uis.getUserInput("Введите слово для поиска слов с омонимичными корнями")
+        val input = uis.getUserInput("Введите слово для поиска слов с омонимичными корнями", false)
 
         val word = wss.getWordInfo(input)
         if(word == null){
@@ -60,6 +60,6 @@ class SearchHandler {
     }
 
     private fun getWordsByTags(){
-        val input = uis.getUserInput("Введите тег для поиска слов")
+        val input = uis.getUserInput("Введите тег для поиска слов", false)
     }
 }

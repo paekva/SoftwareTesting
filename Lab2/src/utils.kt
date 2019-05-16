@@ -7,5 +7,5 @@ fun printErrorMsg(msg: String){
 }
 
 fun printInfoMsg(msg: String?){
-    println("\u001B[36m $msg  \u001B[0m")
+    print("\u001B[36m $msg  \u001B[0m")
 }

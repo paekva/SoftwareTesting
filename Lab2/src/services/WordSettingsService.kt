@@ -22,4 +22,8 @@ class WordSettingsService {
 
         return dbs.changeOrigin(word.getWord(), origin, originLanguage)
     }
+
+    fun isWordInDictionary(word: String): Boolean{
+        return dbs.checkForWordInDictionary(Word(word, "", ""))
+    }
 }

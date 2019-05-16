@@ -33,17 +33,23 @@ class UserInteractionService {
         }
     }
 
-    fun getUserInput(msg: String): String{
+    fun getUserInput(msg: String, isOptional: Boolean): String{
         var answer = ""
         val reader = Scanner(System.`in`)
         printInfoMsg(msg)
 
         while(answer == ""){
             try{
-                answer = reader.next()
+                answer = reader.nextLine()
+
+                if(isOptional && answer.isEmpty())
+                    return ""
 
                 if(!textInputField(answer))
                     throw Exception()
+
+                if(answer.isNotEmpty())
+                    break
             }
             catch(e: Exception){
                 printErrorMsg("Неверный ввод. Попробуйте снова!")

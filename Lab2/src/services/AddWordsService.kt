@@ -32,7 +32,6 @@ class AddWordsService {
 
     fun getMeanings(root: String): List<String>{
         val meanings = dbs.getMeanings(root)
-        meanings.forEach { word -> println(word) }
         return meanings
     }
 }

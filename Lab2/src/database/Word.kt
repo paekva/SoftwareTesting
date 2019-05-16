@@ -6,8 +6,8 @@ import java.sql.Date as SQLDate
 data class Word(private val word: String, private val root: String, private val meaning: String){
     private var date: SQLDate? = null
     private var partOfSpeech: String = ""
-    private val origin: String = ""
-    private val originLang: String = ""
+    private var origin: String = ""
+    private var originLang: String = ""
 
     init {
         date = SQLDate(Date().time)
@@ -24,6 +24,13 @@ data class Word(private val word: String, private val root: String, private val 
     constructor(word: String, root: String, meaning: String, partOfSp: String, adddate: SQLDate) : this(word, root, meaning){
         partOfSpeech = partOfSp
         date = adddate
+    }
+
+    constructor(word: String, root: String, meaning: String, partOfSp: String, adddate: SQLDate, wordOrigin: String, originLanguage: String) : this(word, root, meaning){
+        partOfSpeech = partOfSp
+        date = adddate
+        origin = wordOrigin
+        originLang = originLanguage
     }
 
     fun getWord(): String{
