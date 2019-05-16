@@ -27,7 +27,7 @@ class AddUI {
     fun begin(): Unit {
         val uis = UserInteractionService()
         val availableCommandNumbers = 1..4
-        val availableCommands = arrayOf<commandHandler>( ::addNewWord, ::addNewWordGroup, ::handlerMock, ::handlerMock)
+        val availableCommands = arrayOf<commandHandler>( ::addNewWord, ::addNewWordGroup, ::addWordGroupToChoosenWord, ::handlerMock)
 
         uis.getUserCommand(availableCommandNumbers, availableCommands, mainMsg)
     }
@@ -64,6 +64,31 @@ class AddUI {
 
         val root = uis.getUserInput("* корень слова: ", false)
         val meaning = meaningInput(root)
+
+        val success = getMultipleWordsInput(root, meaning)
+        if(success) printSuccessMsg("добавление слов прошло успешно")
+        else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")
+    }
+
+    private fun addWordGroupToChoosenWord(){
+        printSuccessMsg("Введите слово, к которому добавляются однокоренные:")
+        printInfoMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)")
+        println()
+
+        val originalWordName = uis.getUserInput("* слова: ", false)
+        val originalWord = wss.getWordInfo(originalWordName)
+
+        if(originalWord == null){
+            printErrorMsg("Данного слова нет в словаре, добавьте его или выберите другое")
+            return
+        }
+
+        val success = getMultipleWordsInput(originalWord.getRoot(), originalWord.getMeaning())
+        if(success) printSuccessMsg("добавление слов прошло успешно")
+        else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")
+    }
+
+    private fun getMultipleWordsInput(root: String, meaning: String): Boolean{
         val reader = Scanner(System.`in`)
         val newWords = arrayListOf<Word>()
 
@@ -81,7 +106,7 @@ class AddUI {
             val isInDictionary = wss.isWordInDictionary(word)
             if(isInDictionary) {
                 printErrorMsg("Данное слово уже есть в словаре, попробуйте другую опцию программы!")
-                return
+                continue
             }
             val partOfSpeech = uis.getUserInput("часть речи: ", true)
             val origin = uis.getUserInput("слово, от которого оно произошло: ", true)
@@ -92,12 +117,8 @@ class AddUI {
             wordsNumber--
         }
 
-        val success = aws.addGroupOfWords(newWords)
-
-        if(success) printSuccessMsg("добавление слов прошло успешно")
-        else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")
+        return aws.addGroupOfWords(newWords)
     }
-
     private fun meaningInput(root: String): String{
         printInfoMsg("Вы можете выбрать значение слова из предложенных для данного корня или ввести новое:")
         println()
