@@ -23,6 +23,21 @@ class UserInteractionServiceTest {
     }
 
     @Test
+    fun `text huge input check`() {
+        val value = "ggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhj" +
+                "ghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgu" +
+                "ghvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggj" +
+                "hgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhj" +
+                "ghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgu" +
+                "ghvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggj" +
+                "hgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhj" +
+                "ghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgu" +
+                "ghvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhggjhgbjbhjghgjhgughvhdsw"
+        val incorrectInput = uis.textInputField(value)
+        assertFalse(incorrectInput)
+    }
+
+    @Test
     fun `command correct input check`() {
         val correctInput = uis.commandInputField(3, 1..5)
         assertTrue(correctInput)

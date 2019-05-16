@@ -130,7 +130,7 @@ class DatabaseService {
         dbc.insert(sql, args)
     }
 
-    fun changeOrigin(word: String, origin: String, originLanguage: String) {
+    fun changeOrigin(word: String, origin: String, originLanguage: String): Boolean {
         val sql = ("UPDATE words "
                 + "SET origin = ?,"
                 + "origin_lang = ?"
@@ -141,7 +141,7 @@ class DatabaseService {
         args.add(originLanguage)
         args.add(word)
 
-        dbc.insert(sql, args)
+        return dbc.insert(sql, args)
     }
 
     fun getParticularWord(word: String): Word? {

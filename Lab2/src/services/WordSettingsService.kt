@@ -20,8 +20,6 @@ class WordSettingsService {
         if( !dbs.checkForWordInDictionary(word) )
             return false
 
-        dbs.changeOrigin(word.getWord(), origin, originLanguage)
-
-        return true
+        return dbs.changeOrigin(word.getWord(), origin, originLanguage)
     }
 }

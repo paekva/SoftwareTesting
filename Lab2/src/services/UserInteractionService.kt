@@ -54,6 +54,7 @@ class UserInteractionService {
     }
 
     fun textInputField(value: String): Boolean{
+        if(value.length > 256) return false
         return value.toLowerCase().matches("[а-я]+".toRegex())
     }
 
@@ -69,11 +70,11 @@ class UserInteractionService {
         return words.forEach{ w -> println(w.getWord())}
     }
 
-    fun displayWordInfo(word: Word): String{
-        return "СЛОВО ${word.getWord()}\n" +
+    fun displayWordInfo(word: Word){
+        println("СЛОВО ${word.getWord()}\n" +
                 "КОРЕНЬ ${word.getRoot()}\n" +
                 "ЗНАЧЕНИЯ ${word.getMeaning()}\n" +
                 "ДАТА ДОБАВЛЕНИЯ ${word.getDate()}\n" +
-                "ЧАСТЬ РЕЧИ ${word.getPartOfSpeech()}\n"
+                "ЧАСТЬ РЕЧИ ${word.getPartOfSpeech()}\n")
     }
 }

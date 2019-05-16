@@ -5,14 +5,25 @@ import database.Word
 import java.sql.Date
 
 class CommonWordsService {
+
     private val dbs: DatabaseService = DatabaseService()
 
-    fun getAllCommonRootWords(word: Word): List<Word>{
-        return dbs.findSameRootWords(word)
+    fun getAllCommonRootWords(inputWord: String): List<Word>?{
+        val word = dbs.getParticularWord(inputWord)
+
+        if(word == null)
+            return null
+        else
+            return dbs.findSameRootWords(word)
     }
 
-    fun getAllOmonimRootWords(word: Word) : List<Word>{
-        return dbs.findOmonimRootWords(word)
+    fun getAllOmonimRootWords(wordInput: String) : List<Word>? {
+        val word = dbs.getParticularWord(wordInput)
+
+        if(word == null)
+            return null
+        else
+            return dbs.findOmonimRootWords(word)
     }
 
     fun groupBy(words: List<Word>, partOfSpeech: String) : List<Word>{

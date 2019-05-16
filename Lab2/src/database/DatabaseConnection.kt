@@ -16,7 +16,7 @@ class DatabaseConnection {
             .getConnection(DB_URL, USER, PASS)
     }
 
-    internal fun insert(SQL: String, args: List<String>) {
+    internal fun insert(SQL: String, args: List<String>): Boolean {
         try {
             val pstmt = connection!!.prepareStatement(SQL)
             for (i in args.indices) {
@@ -25,8 +25,9 @@ class DatabaseConnection {
             pstmt.executeUpdate()
         } catch (ex: SQLException) {
             println("An error in insert: \n ${ex.message}")
+            return false
         }
-
+        return true
     }
 
     internal fun select(SQL: String, args: List<String>): ResultSet? {

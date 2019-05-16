@@ -26,36 +26,31 @@ class SearchHandler {
 
     private fun getCommonRootWords(){
         val input = uis.getUserInput("Введите слово для поиска однокоренных")
-        val word = wss.getWordInfo(input)
 
-        if(word == null){
+        val wordList = cws.getAllCommonRootWords(input)
+
+        if(wordList == null )
             printErrorMsg("Данного слова нет в словаре. Попробуйте вернутся в главное меню и добавить это слово в словарь!")
-            return
-        }
-
-        val wordList = cws.getAllCommonRootWords(word)
-
-        uis.displayWords(wordList)
+        else
+            uis.displayWords(wordList)
     }
 
     private fun getOmonimRootWords(){
         val input = uis.getUserInput("Введите слово для поиска слов с омонимичными корнями")
-        val word = wss.getWordInfo(input)
 
-        if(word == null){
+        val wordList = cws.getAllOmonimRootWords(input)
+        if(wordList == null){
             printErrorMsg("Данного слова нет в словаре. Попробуйте вернутся в главное меню и добавить это слово в словарь!")
             return
         }
-
-        val wordList = cws.getAllOmonimRootWords(word)
 
         uis.displayWords(wordList)
     }
 
     private fun getFullWordInfo(){
         val input = uis.getUserInput("Введите слово для поиска слов с омонимичными корнями")
-        val word = wss.getWordInfo(input)
 
+        val word = wss.getWordInfo(input)
         if(word == null){
             printErrorMsg("Данного слова нет в словаре. Попробуйте вернутся в главное меню и добавить это слово в словарь!")
             return

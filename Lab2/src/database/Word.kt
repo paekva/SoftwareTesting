@@ -3,7 +3,7 @@ package database
 import java.util.*
 import java.sql.Date as SQLDate
 
-class Word(private val word: String, private val root: String, private val meaning: String){
+data class Word(private val word: String, private val root: String, private val meaning: String){
     private var date: SQLDate? = null
     private var partOfSpeech: String = ""
     private val origin: String = ""
