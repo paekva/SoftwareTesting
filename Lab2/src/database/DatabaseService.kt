@@ -118,7 +118,7 @@ class DatabaseService {
         dbc.insert(st, args)
     }
 
-    fun changePartOfSpeech(word: String, partOfSpeech: String) {
+    fun changePartOfSpeech(word: String, partOfSpeech: String): Boolean {
         val sql = ("UPDATE words "
                 + "SET partofspeech = ? "
                 + "WHERE word = ?")
@@ -127,17 +127,27 @@ class DatabaseService {
         args.add(partOfSpeech)
         args.add(word)
 
-        dbc.insert(sql, args)
+        return dbc.insert(sql, args)
     }
 
-    fun changeOrigin(word: String, origin: String, originLanguage: String): Boolean {
+    fun changeOrigin(word: String, origin: String): Boolean {
         val sql = ("UPDATE words "
-                + "SET origin = ?,"
-                + "origin_lang = ?"
+                + "SET origin = ?"
                 + "WHERE word = ?")
 
         val args = ArrayList<String>()
         args.add(origin)
+        args.add(word)
+
+        return dbc.insert(sql, args)
+    }
+
+    fun changeOriginLanguage(word: String, originLanguage: String): Boolean {
+        val sql = ("UPDATE words "
+                + "SET origin_lang = ?"
+                + "WHERE word = ?")
+
+        val args = ArrayList<String>()
         args.add(originLanguage)
         args.add(word)
 

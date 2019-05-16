@@ -2,6 +2,7 @@ package tests
 
 import database.Word
 import org.junit.Assert
+import org.junit.Ignore
 import org.junit.Test
 import services.WordSettingsService
 
@@ -18,13 +19,7 @@ class WordSettingsServiceTest {
 
     @Test
     fun `change origin of a word`() {
-        val success = wss.changeWordOrigin(Word("парень", "пар", ""), "паря", "украинский")
+        val success = wss.changeWordOrigin("парень", "паря")
         Assert.assertEquals(true, success)
-    }
-
-    @Test
-    fun `try to change origin of a word not in dictionary`() {
-        val success = wss.changeWordOrigin(Word("пар", "пар", ""), "паря", "украинский")
-        Assert.assertEquals(false, success)
     }
 }

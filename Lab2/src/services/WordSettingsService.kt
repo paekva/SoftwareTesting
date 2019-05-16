@@ -8,19 +8,20 @@ class WordSettingsService {
 
     private val dbs: DatabaseService = DatabaseService()
 
-    fun setPartOfSpeech(word: String, partOfSpeech: String){
-        dbs.changePartOfSpeech(word, partOfSpeech)
+    fun setPartOfSpeech(word: String, partOfSpeech: String): Boolean{
+        return dbs.changePartOfSpeech(word, partOfSpeech)
     }
 
     fun getWordInfo(word: String): Word? {
         return dbs.getParticularWord(word)
     }
 
-    fun changeWordOrigin(word: Word, origin: String, originLanguage: String) : Boolean{
-        if( !dbs.checkForWordInDictionary(word) )
-            return false
+    fun changeWordOrigin(word: String, origin: String) : Boolean{
+        return dbs.changeOrigin(word, origin)
+    }
 
-        return dbs.changeOrigin(word.getWord(), origin, originLanguage)
+    fun changeWordOriginLanguage(word: String, originLanguage: String) : Boolean{
+        return dbs.changeOriginLanguage(word, originLanguage)
     }
 
     fun isWordInDictionary(word: String): Boolean{

@@ -102,7 +102,7 @@ class AddUI {
         }
 
         while(wordsNumber>0){
-            val word = uis.getUserInput("* слово: ", false)
+            val word = uis.getUserInput("* слово $wordsNumber: ", false)
             val isInDictionary = wss.isWordInDictionary(word)
             if(isInDictionary) {
                 printErrorMsg("Данное слово уже есть в словаре, попробуйте другую опцию программы!")
@@ -120,29 +120,31 @@ class AddUI {
         return aws.addGroupOfWords(newWords)
     }
     private fun meaningInput(root: String): String{
-        printInfoMsg("Вы можете выбрать значение слова из предложенных для данного корня или ввести новое:")
-        println()
         val meaningsList = aws.getMeanings(root)
-
-        printInfoMsg("0. Выбрать новое значение")
-        println()
-        meaningsList.forEachIndexed { index, s -> printInfoMsg("${index+1}. $s\n")}
-
-
-        val reader = Scanner(System.`in`)
-        var isInputValid = false
         var inputCommand = 0
-        while(!isInputValid){
-            inputCommand = reader.nextInt()
-            isInputValid = uis.commandInputField(inputCommand, 0..meaningsList.size)
 
-            if(!isInputValid)
-                printErrorMsg("Неверный ввод, попробуйте еще раз")
+        if(meaningsList.isNotEmpty()){
+
+            printInfoMsg("Вы можете выбрать значение слова из предложенных для данного корня или ввести новое:")
+            println()
+            printInfoMsg("0. Выбрать новое значение")
+            println()
+            meaningsList.forEachIndexed { index, s -> printInfoMsg("${index+1}. $s\n")}
+
+            val reader = Scanner(System.`in`)
+            var isInputValid = false
+            while(!isInputValid){
+                inputCommand = reader.nextInt()
+                isInputValid = uis.commandInputField(inputCommand, 0..meaningsList.size)
+
+                if(!isInputValid)
+                    printErrorMsg("Неверный ввод, попробуйте еще раз")
+            }
+
         }
 
-
         if(inputCommand == 0){
-            return uis.getUserInput("* введите новое значение: ", false)
+            return uis.getUserInput("* введите значение: ", false)
         }
         return meaningsList[inputCommand-1]
     }

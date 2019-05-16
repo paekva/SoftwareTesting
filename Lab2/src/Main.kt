@@ -8,6 +8,7 @@ fun handlerMock (): Unit{
 }
 
 typealias commandHandler = () -> Unit
+typealias wordSettingChanger = (word: String, settingValue: String) -> Boolean
 const val mainMsg = "0. завершение работы программы" +
         "\n1. поиск слов по введенному слову " +
         "\n2. добавление слов и предложений" +
