@@ -27,7 +27,7 @@ class AddUI {
     fun begin(): Unit {
         val uis = UserInteractionService()
         val availableCommandNumbers = 1..4
-        val availableCommands = arrayOf<commandHandler>( ::addNewWord, ::handlerMock, ::handlerMock, ::handlerMock)
+        val availableCommands = arrayOf<commandHandler>( ::addNewWord, ::addNewWordGroup, ::handlerMock, ::handlerMock)
 
         uis.getUserCommand(availableCommandNumbers, availableCommands, mainMsg)
     }
@@ -55,6 +55,47 @@ class AddUI {
 
         if(success) printSuccessMsg("добавление слова $word прошло успешно")
         else printErrorMsg("произошла ошибка: слово $word не добавлено, попробуйте снова")
+    }
+
+    private fun addNewWordGroup(){
+        printSuccessMsg("Введите общую необходимую информацию по словам:")
+        printInfoMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)")
+        println()
+
+        val root = uis.getUserInput("* корень слова: ", false)
+        val meaning = meaningInput(root)
+        val reader = Scanner(System.`in`)
+        val newWords = arrayListOf<Word>()
+
+        printInfoMsg("Введите число слов, которое вы хотите добавить")
+        var wordsNumber = reader.nextInt()
+
+        while(wordsNumber<1){
+            wordsNumber = reader.nextInt()
+            if(wordsNumber<1)
+                printErrorMsg("Неверный ввод, попробуйте еще раз")
+        }
+
+        while(wordsNumber>0){
+            val word = uis.getUserInput("* слово: ", false)
+            val isInDictionary = wss.isWordInDictionary(word)
+            if(isInDictionary) {
+                printErrorMsg("Данное слово уже есть в словаре, попробуйте другую опцию программы!")
+                return
+            }
+            val partOfSpeech = uis.getUserInput("часть речи: ", true)
+            val origin = uis.getUserInput("слово, от которого оно произошло: ", true)
+            val originLang = uis.getUserInput("язык происхождения: ",true)
+
+            val newWord = Word(word, root, meaning, partOfSpeech, SQLDate(Date().time), origin, originLang)
+            newWords.add(newWord)
+            wordsNumber--
+        }
+
+        val success = aws.addGroupOfWords(newWords)
+
+        if(success) printSuccessMsg("добавление слов прошло успешно")
+        else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")
     }
 
     private fun meaningInput(root: String): String{
