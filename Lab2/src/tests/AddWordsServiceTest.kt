@@ -27,7 +27,7 @@ class AddWordsServiceTest {
 
     @Test
     fun `get meanings examples by root`() {
-        aws.getMeanings("крас")
+        // val meaning = sls.menuWithDatabaseOptions(root, sls::getAvailableMeanings)
         // assertEquals(false, success)
     }
 

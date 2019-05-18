@@ -29,9 +29,4 @@ class AddWordsService {
         dbs.addPhrase(phrase)
         return true
     }
-
-    fun getMeanings(root: String): List<String>{
-        val meanings = dbs.getMeanings(root)
-        return meanings
-    }
 }

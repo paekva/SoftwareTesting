@@ -1,13 +1,13 @@
 package interactionHandlers
 
 import commandHandler
-import database.DatabaseService
 import database.Word
 import handlerMock
 import printErrorMsg
 import printInfoMsg
 import printSuccessMsg
 import services.AddWordsService
+import services.SelectionListService
 import services.UserInteractionService
 import services.WordSettingsService
 import java.util.*
@@ -23,6 +23,7 @@ class AddHandler {
     private val uis: UserInteractionService = UserInteractionService()
     private val wss: WordSettingsService = WordSettingsService()
     private val aws: AddWordsService = AddWordsService()
+    private val sls: SelectionListService = SelectionListService()
 
     fun begin(): Unit {
         val uis = UserInteractionService()
@@ -45,7 +46,9 @@ class AddHandler {
         }
 
         val root = uis.getUserInput("* корень слова: ", false)
-        val meaning = meaningInput(root)
+
+        val meaning = sls.menuWithDatabaseOptions(root, sls::getAvailableMeanings)
+
         val partOfSpeech = uis.getUserInput("часть речи: ", true)
         val origin = uis.getUserInput("слово, от которого оно произошло: ", true)
         val originLang = uis.getUserInput("язык происхождения: ",true)
@@ -63,7 +66,8 @@ class AddHandler {
         println()
 
         val root = uis.getUserInput("* корень слова: ", false)
-        val meaning = meaningInput(root)
+
+        val meaning = sls.menuWithDatabaseOptions(root, sls::getAvailableMeanings)
 
         val success = getMultipleWordsInput(root, meaning)
         if(success) printSuccessMsg("добавление слов прошло успешно")
@@ -146,35 +150,7 @@ class AddHandler {
 
         return aws.addGroupOfWords(newWords)
     }
-    private fun meaningInput(root: String): String{
-        val meaningsList = aws.getMeanings(root)
-        var inputCommand = 0
 
-        if(meaningsList.isNotEmpty()){
-
-            printInfoMsg("Вы можете выбрать значение слова из предложенных для данного корня или ввести новое:")
-            println()
-            printInfoMsg("0. Выбрать новое значение")
-            println()
-            meaningsList.forEachIndexed { index, s -> printInfoMsg("${index+1}. $s\n")}
-
-            val reader = Scanner(System.`in`)
-            var isInputValid = false
-            while(!isInputValid){
-                inputCommand = reader.nextInt()
-                isInputValid = uis.commandInputField(inputCommand, 0..meaningsList.size)
-
-                if(!isInputValid)
-                    printErrorMsg("Неверный ввод, попробуйте еще раз")
-            }
-
-        }
-
-        if(inputCommand == 0){
-            return uis.getUserInput("* введите значение: ", false)
-        }
-        return meaningsList[inputCommand-1]
-    }
     private fun getNumberOfWordsForInput(msg: String): Int {
         val reader = Scanner(System.`in`)
         printInfoMsg(msg)

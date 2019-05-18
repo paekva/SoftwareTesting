@@ -3,9 +3,11 @@ package interactionHandlers
 import handlerMock
 import services.UserInteractionService
 import commandHandler
+import getSelectionLists
 import printErrorMsg
 import printInfoMsg
 import printSuccessMsg
+import services.SelectionListService
 import services.WordSettingsService
 import wordSettingChanger
 
@@ -18,6 +20,7 @@ class EditHandler {
 
     private val uis: UserInteractionService = UserInteractionService()
     private val wss: WordSettingsService = WordSettingsService()
+    private val sls: SelectionListService = SelectionListService()
 
     fun begin(): Unit {
         val uis = UserInteractionService()
@@ -29,22 +32,23 @@ class EditHandler {
 
     private fun setWordPartOfSpeech(){
         val function = wss::setPartOfSpeech
-        changingWordSettings("часть речи", function)
+        val selection = sls::getAvailablePartsOfSpeech
+        changingWordSettings("часть речи", function, selection)
     }
 
     private fun setWordOrigin(){
         val function = wss::changeWordOrigin
-        changingWordSettings("слово, от которого образовано исходное, ", function)
+        changingWordSettings("слово, от которого образовано исходное, ", function, ::handleMock)
     }
 
     private fun setWordOriginLanguage(){
         val function = wss::changeWordOriginLanguage
-        changingWordSettings("язык происхождения ", function)
+        val selection = sls::getAvailableOriginLanguage
+        changingWordSettings("язык происхождения ", function, selection)
     }
 
-    private fun changingWordSettings(setting: String, function: wordSettingChanger){
-        printSuccessMsg("Введите слово и новое значение для $setting:")
-        printInfoMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)")
+    private fun changingWordSettings(setting: String, function: wordSettingChanger, selectionListGetter: getSelectionLists){
+        printSuccessMsg("Установка нового значения для $setting:")
         println()
 
         val wordInput = uis.getUserInput("* слово: ", false)
@@ -55,10 +59,14 @@ class EditHandler {
             return
         }
 
-        val partOfSpeech = uis.getUserInput("* $setting: ", false)
-        val success = function.invoke(wordInput, partOfSpeech)
+        val newSetting =  sls.menuWithDatabaseOptions("", selectionListGetter)
+        val success = function.invoke(wordInput, newSetting)
 
         if(success) printSuccessMsg("успешно получилось изменить $setting у слова")
         else printErrorMsg("произошла ошибка: изменить $setting не удалось")
+    }
+
+    private fun handleMock(root: String):List<String>{
+        return arrayListOf()
     }
 }

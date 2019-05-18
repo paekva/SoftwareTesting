@@ -108,28 +108,6 @@ class DatabaseService {
         return strings
     }
 
-    fun getMeanings(root: String): List<String> {
-        val result = ArrayList<String>()
-        val sql = "SELECT DISTINCT meaning FROM words " + "WHERE root = ? "
-        val args = ArrayList<String>()
-        args.add(root)
-        val rs = dbc.select(sql, args)
-
-        try {
-            if (rs == null) {
-                return result
-            }
-
-            while (rs.next()) {
-                result.add(dbc.getWord(rs).getMeaning())
-            }
-        } catch (e: Exception) {
-            println("Error in getMeanings: \n ${e.message}")
-        }
-
-        return result
-    }
-
     fun addPhrase(phrase: String) {
         val st = ("INSERT INTO phrases " + "(phrase)"
                 + " VALUES (?)")
