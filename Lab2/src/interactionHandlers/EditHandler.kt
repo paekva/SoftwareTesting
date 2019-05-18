@@ -9,7 +9,7 @@ import printSuccessMsg
 import services.WordSettingsService
 import wordSettingChanger
 
-class EditUI {
+class EditHandler {
     private val mainMsg = "0. возврат в главное меню " +
             "\n1. задать слову часть речи" +
             "\n2. задать слову то слово, от которого произошло (этимология)" +

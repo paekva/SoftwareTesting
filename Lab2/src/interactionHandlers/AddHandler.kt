@@ -13,12 +13,12 @@ import services.WordSettingsService
 import java.util.*
 import java.sql.Date as SQLDate
 
-class AddUI {
+class AddHandler {
     private val mainMsg = "0. возврат в главное меню " +
             "\n1. добавить слово" +
             "\n2. добавить группу однокоренных слов" +
             "\n3. добавить группу слов, однокоренных к заданному" +
-            "\n4. добавить предложение - пример к заданному слову\n"
+            "\n4. добавить предложение - пример к словам из словаря\n"
 
     private val uis: UserInteractionService = UserInteractionService()
     private val wss: WordSettingsService = WordSettingsService()
@@ -27,7 +27,7 @@ class AddUI {
     fun begin(): Unit {
         val uis = UserInteractionService()
         val availableCommandNumbers = 1..4
-        val availableCommands = arrayOf<commandHandler>( ::addNewWord, ::addNewWordGroup, ::addWordGroupToChoosenWord, ::handlerMock)
+        val availableCommands = arrayOf<commandHandler>( ::addNewWord, ::addNewWordGroup, ::addWordGroupToChoosenWord, ::addNewSentenceExample)
 
         uis.getUserCommand(availableCommandNumbers, availableCommands, mainMsg)
     }
@@ -88,18 +88,45 @@ class AddUI {
         else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")
     }
 
+    private fun addNewSentenceExample(){
+        printSuccessMsg("Введите необходимую информацию:")
+        printInfoMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)")
+        println()
+
+        val sentence = uis.getUserInput("* предложение: ", false)
+        println(sentence)
+        var wordsNumber = getNumberOfWordsForInput("Введите число слов, к которым вы хотите привязать данное предложение")
+        val words = arrayListOf<String>()
+
+        while(wordsNumber>0) {
+            val word = uis.getUserInput("* слово $wordsNumber: ", false)
+            val isInDictionary = wss.isWordInDictionary(word)
+            if(isInDictionary) continue
+
+            printErrorMsg("Данного слова нет в словаре")
+            val msg = "Вы можете: \n" +
+                    "0. отменить добавление предложения\n" +
+                    "1. добавить это слово в словарь\n" +
+                    "2. ввести другое слово\n"
+            val availableCommandNumbers = 1..2
+            val availableCommands = arrayOf<commandHandler>( ::addNewWord, ::handlerMock)
+            val answerCode = uis.getUserCommand(availableCommandNumbers, availableCommands, msg)
+
+            if(answerCode == 0) return
+            if(answerCode == 2) continue
+
+            words.add(word)
+            wordsNumber--
+        }
+
+        /*if(success) printSuccessMsg("добавление слов прошло успешно")
+        else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")*/
+    }
+
     private fun getMultipleWordsInput(root: String, meaning: String): Boolean{
-        val reader = Scanner(System.`in`)
         val newWords = arrayListOf<Word>()
 
-        printInfoMsg("Введите число слов, которое вы хотите добавить")
-        var wordsNumber = reader.nextInt()
-
-        while(wordsNumber<1){
-            wordsNumber = reader.nextInt()
-            if(wordsNumber<1)
-                printErrorMsg("Неверный ввод, попробуйте еще раз")
-        }
+        var wordsNumber = getNumberOfWordsForInput("Введите число слов, которое вы хотите добавить")
 
         while(wordsNumber>0){
             val word = uis.getUserInput("* слово $wordsNumber: ", false)
@@ -147,5 +174,17 @@ class AddUI {
             return uis.getUserInput("* введите значение: ", false)
         }
         return meaningsList[inputCommand-1]
+    }
+    private fun getNumberOfWordsForInput(msg: String): Int {
+        val reader = Scanner(System.`in`)
+        printInfoMsg(msg)
+
+        var wordsNumber = reader.nextInt()
+        while(wordsNumber<1){
+            wordsNumber = reader.nextInt()
+            if(wordsNumber<1)
+                printErrorMsg("Неверный ввод, попробуйте еще раз")
+        }
+        return wordsNumber
     }
 }

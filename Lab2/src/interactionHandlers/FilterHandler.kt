@@ -10,9 +10,10 @@ import printSuccessMsg
 import services.WordSettingsService
 import wordSettingChanger
 
-class FilterUI {
+class FilterHandler {
     private val mainMsg = "0. возврат в главное меню " +
-            "\n1. фильтр по части речи" /*+
+            "\n1. фильтр по части речи"+
+            "\n2. фильтр по длине слова\n" /*+
             "\n2. задать слову то слово, от которого произошло (этимология)" +
             "\n3. задать слову его язык происхождения" +
             "\n4. задать слову теги\n"*/

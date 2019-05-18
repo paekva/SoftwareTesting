@@ -26,6 +26,15 @@ class CommonWordsService {
             return dbs.findOmonimRootWords(word)
     }
 
+    fun getAllWordsByRoot(wordInput: String) : List<Word>? {
+        val word = Word("", wordInput, "")
+        return dbs.findOmonimRootWords(word)
+    }
+
+    fun getAllWordsByPartOfSpeech(partOfSpeech: String) : List<Word>? {
+        return dbs.findWordsByPartOfSpeech(partOfSpeech)
+    }
+
     fun groupBy(words: List<Word>, partOfSpeech: String) : List<Word>{
         return words.filter { it.getPartOfSpeech() == partOfSpeech }
     }

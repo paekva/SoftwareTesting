@@ -9,7 +9,7 @@ import java.util.*
 
 class UserInteractionService {
 
-    fun getUserCommand(availableCommandNumbers: IntRange, availableCommands: Array<commandHandler>, commandList: String){
+    fun getUserCommand(availableCommandNumbers: IntRange, availableCommands: Array<commandHandler>, commandList: String): Int{
         var answerCode = 1
         val reader = Scanner(System.`in`)
 
@@ -31,6 +31,8 @@ class UserInteractionService {
                 answerCode = 1
             }
         }
+
+        return answerCode
     }
 
     fun getUserInput(msg: String, isOptional: Boolean): String{
@@ -61,7 +63,12 @@ class UserInteractionService {
 
     fun textInputField(value: String): Boolean{
         if(value.length > 256) return false
-        return value.toLowerCase().matches("[а-я]+".toRegex())
+        return value.toLowerCase().matches("[а-яА-Я|\\s|:|\\-]+".toRegex())
+    }
+
+    fun numberInputField(value: String): Boolean{
+        if(value.length > 256) return false
+        return value.toLowerCase().matches("[0-1]+".toRegex())
     }
 
     fun commandInputField(value: Int, interval: IntRange): Boolean{
@@ -79,8 +86,11 @@ class UserInteractionService {
     fun displayWordInfo(word: Word){
         println("СЛОВО ${word.getWord()}\n" +
                 "КОРЕНЬ ${word.getRoot()}\n" +
-                "ЗНАЧЕНИЯ ${word.getMeaning()}\n" +
-                "ДАТА ДОБАВЛЕНИЯ ${word.getDate()}\n" +
-                "ЧАСТЬ РЕЧИ ${word.getPartOfSpeech()}\n")
+                "ЗНАЧЕНИЕ ${word.getMeaning()}\n" +
+                "ЧАСТЬ РЕЧИ ${word.getPartOfSpeech()}\n"+
+                "ДАТА ДОБАВЛЕНИЯ ${word.getDate()}\n"+
+                "СЛОВО, ОТ КОТОРОГО ОБРАЗОВАНО: ${word.getOrigin()}\n"+
+                "ЯЗЫК ПРОИСХОЖДЕНИЯ: ${word.getOriginLang()}\n"+
+                "ДЛИНА СЛОВА ${word.getWord().length}\n")
     }
 }

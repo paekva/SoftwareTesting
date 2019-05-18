@@ -1,7 +1,7 @@
-import interactionHandlers.AddUI
-import interactionHandlers.EditUI
-import interactionHandlers.FilterUI
-import interactionHandlers.SearchUI
+import interactionHandlers.AddHandler
+import interactionHandlers.EditHandler
+import interactionHandlers.FilterHandler
+import interactionHandlers.SearchHandler
 import services.UserInteractionService
 
 fun handlerMock (): Unit{
@@ -18,10 +18,10 @@ const val mainMsg = "0. завершение работы программы" +
         "\n5. повторить одно из ранее выбранных действий\n"
 
 fun main(){
-    val search = SearchUI()::begin
-    val add = AddUI()::begin
-    val edit = EditUI()::begin
-    val filter = FilterUI()::begin
+    val search = SearchHandler()::begin
+    val add = AddHandler()::begin
+    val edit = EditHandler()::begin
+    val filter = FilterHandler()::begin
     val uis = UserInteractionService()
     val availableCommandNumbers = 1..5
     val availableCommands = arrayOf<commandHandler>( search, add, edit, filter, ::handlerMock)

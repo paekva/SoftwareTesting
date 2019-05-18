@@ -86,6 +86,28 @@ class DatabaseService {
         return strings
     }
 
+    fun findWordsByPartOfSpeech(partOfSpeech: String): List<Word> {
+        val strings = ArrayList<Word>()
+        try {
+            val sql = ("SELECT * from words "
+                    + "WHERE partofspeech = ?")
+
+            val args = ArrayList<String>()
+            args.add(partOfSpeech)
+
+            val rs = dbc.select(sql, args)
+
+            while (rs!!.next()) {
+                strings.add(dbc.getWord(rs))
+            }
+
+        } catch (ex: SQLException) {
+            println("Error in findWordsByPartOfSpeech: \n ${ex.message}")
+        }
+
+        return strings
+    }
+
     fun getMeanings(root: String): List<String> {
         val result = ArrayList<String>()
         val sql = "SELECT DISTINCT meaning FROM words " + "WHERE root = ? "
@@ -169,7 +191,7 @@ class DatabaseService {
                 result = dbc.getWord(rs)
             }
         } catch (e: Exception) {
-            println(e.message)
+            // println(e.message)
         }
 
         return result
