@@ -37,8 +37,12 @@ class AddHandler {
         printSuccessMsg("Введите слово и всю необходимую информацию по нему:")
         printInfoMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)")
         println()
+        printInfoMsg("Чтобы прервать ввод нового слова, введите на любом шаге q. Внесенные вами изменения не сохранятся")
+        println()
 
         val word = uis.getUserInput("* слово: ", false)
+        if(word=="q") return
+
         val isInDictionary = wss.isWordInDictionary(word)
         if(isInDictionary) {
             printErrorMsg("Данное слово уже есть в словаре, попробуйте другую опцию программы!")
@@ -46,12 +50,20 @@ class AddHandler {
         }
 
         val root = uis.getUserInput("* корень слова: ", false)
+        if(root=="q") return
 
+        printInfoMsg("значение слова: ")
         val meaning = sls.menuWithDatabaseOptions(root, sls::getAvailableMeanings)
+        if(meaning=="q") return
 
         val partOfSpeech = uis.getUserInput("часть речи: ", true)
+        if(partOfSpeech=="q") return
+
         val origin = uis.getUserInput("слово, от которого оно произошло: ", true)
+        if(origin=="q") return
+
         val originLang = uis.getUserInput("язык происхождения: ",true)
+        if(originLang=="q") return
 
         val newWord = Word(word, root, meaning, partOfSpeech, SQLDate(Date().time), origin, originLang)
         val success = aws.addWord(newWord)

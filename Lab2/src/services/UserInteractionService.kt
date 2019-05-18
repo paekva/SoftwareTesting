@@ -47,6 +47,9 @@ class UserInteractionService {
                 if(isOptional && answer.isEmpty())
                     return ""
 
+                if(wayOut(answer))
+                    return answer
+
                 if(!textInputField(answer))
                     throw Exception()
 
@@ -64,6 +67,10 @@ class UserInteractionService {
     fun textInputField(value: String): Boolean{
         if(value.length > 256) return false
         return value.toLowerCase().matches("[а-яА-Я|\\s|:|\\-]+".toRegex())
+    }
+
+    fun wayOut(value: String): Boolean{
+        return value.toLowerCase().matches("q".toRegex())
     }
 
     fun numberInputField(value: String): Boolean{
