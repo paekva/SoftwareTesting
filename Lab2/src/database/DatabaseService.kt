@@ -118,6 +118,17 @@ class DatabaseService {
         dbc.insert(st, args)
     }
 
+    fun addExample(word: String, phrase: String) {
+        val st = ("INSERT INTO examples " + "(word, phrase)"
+                + " VALUES (?, ?)")
+
+        val args = ArrayList<String>()
+        args.add(word)
+        args.add(phrase)
+
+        dbc.insert(st, args)
+    }
+
     fun changePartOfSpeech(word: String, partOfSpeech: String): Boolean {
         val sql = ("UPDATE words "
                 + "SET partofspeech = ? "

@@ -24,6 +24,7 @@ class UserInteractionService {
                 if(!commandInputField(answerCode, availableCommandNumbers))
                     throw Exception()
 
+
                 availableCommands[answerCode-1].invoke()
             }
             catch(e: Exception){
@@ -71,11 +72,6 @@ class UserInteractionService {
 
     fun wayOut(value: String): Boolean{
         return value.toLowerCase().matches("q".toRegex())
-    }
-
-    fun numberInputField(value: String): Boolean{
-        if(value.length > 256) return false
-        return value.toLowerCase().matches("[0-1]+".toRegex())
     }
 
     fun commandInputField(value: Int, interval: IntRange): Boolean{

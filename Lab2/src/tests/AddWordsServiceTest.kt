@@ -44,9 +44,9 @@ class AddWordsServiceTest {
     @Test
     @Ignore //TODO: finish add phrase properly
     fun `add pharse connected to word`() {
-        val word = Word("наехать", "ех", "")
+        /*val word = Word("наехать", "ех", "")
         val phrase = "Наеxaть на столб в темноте оказалось легко"
         val success = aws.addPhrase(word, phrase)
-        assertEquals(true, success)
+        assertEquals(true, success)*/
     }
 }

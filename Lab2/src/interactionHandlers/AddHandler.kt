@@ -110,14 +110,16 @@ class AddHandler {
         println()
 
         val sentence = uis.getUserInput("* предложение: ", false)
-        println(sentence)
         var wordsNumber = getNumberOfWordsForInput("Введите число слов, к которым вы хотите привязать данное предложение")
         val words = arrayListOf<String>()
 
         while(wordsNumber>0) {
             val word = uis.getUserInput("* слово $wordsNumber: ", false)
             val isInDictionary = wss.isWordInDictionary(word)
-            if(isInDictionary) continue
+            if(isInDictionary) {
+                wordsNumber--
+                continue
+            }
 
             printErrorMsg("Данного слова нет в словаре")
             val msg = "Вы можете: \n" +
@@ -135,8 +137,9 @@ class AddHandler {
             wordsNumber--
         }
 
-        /*if(success) printSuccessMsg("добавление слов прошло успешно")
-        else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")*/
+        val success = aws.addPhrase(words, sentence)
+        if(success) printSuccessMsg("добавление слов прошло успешно")
+        else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")
     }
 
     private fun getMultipleWordsInput(root: String, meaning: String): Boolean{
