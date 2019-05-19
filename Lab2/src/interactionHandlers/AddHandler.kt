@@ -6,31 +6,23 @@ import handlerMock
 import printErrorMsg
 import printInfoMsg
 import printSuccessMsg
-import services.AddWordsService
-import services.SelectionListService
-import services.UserInteractionService
-import services.WordSettingsService
+import services.*
 import java.util.*
 import java.sql.Date as SQLDate
 
 class AddHandler {
-    private val mainMsg = "0. возврат в главное меню " +
-            "\n1. добавить слово" +
-            "\n2. добавить группу однокоренных слов" +
-            "\n3. добавить группу слов, однокоренных к заданному" +
-            "\n4. добавить предложение - пример к словам из словаря\n"
-
     private val uis: UserInteractionService = UserInteractionService()
     private val wss: WordSettingsService = WordSettingsService()
     private val aws: AddWordsService = AddWordsService()
     private val sls: SelectionListService = SelectionListService()
+    private val msg = MessagingService.instance
 
     fun begin(): Unit {
         val uis = UserInteractionService()
         val availableCommandNumbers = 1..4
         val availableCommands = arrayOf<commandHandler>( ::addNewWord, ::addNewWordGroup, ::addWordGroupToChoosenWord, ::addNewSentenceExample)
 
-        uis.getUserCommand(availableCommandNumbers, availableCommands, mainMsg)
+        uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getAddMenuMsg())
     }
 
     private fun addNewWord(){

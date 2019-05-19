@@ -5,22 +5,14 @@ import handlerMock
 import services.UserInteractionService
 import commandHandler
 import printErrorMsg
-import printInfoMsg
 import printSuccessMsg
-import services.WordSettingsService
-import wordSettingChanger
+import services.MessagingService
 
 class FilterHandler {
-    private val mainMsg = "0. возврат в главное меню " +
-            "\n1. фильтр по части речи"+
-            "\n2. фильтр по длине слова\n" /*+
-            "\n2. задать слову то слово, от которого произошло (этимология)" +
-            "\n3. задать слову его язык происхождения" +
-            "\n4. задать слову теги\n"*/
-
     private val uis: UserInteractionService = UserInteractionService()
     private val cws: CommonWordsService = CommonWordsService()
     private val state = State.instance
+    private val msg = MessagingService.instance
 
     fun begin(): Unit {
         val uis = UserInteractionService()
@@ -32,7 +24,7 @@ class FilterHandler {
         if(state.getLastResults().isEmpty())
             printErrorMsg("Вами еще не было сделано ни одного поискового запроса. Сортировка не может быть выполнена")
         else
-            uis.getUserCommand(availableCommandNumbers, availableCommands, mainMsg)
+            uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getFilterMenuMsg())
     }
 
     private fun filterByPartOfSpeech(){

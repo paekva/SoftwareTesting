@@ -7,27 +7,23 @@ import getSelectionLists
 import printErrorMsg
 import printInfoMsg
 import printSuccessMsg
+import services.MessagingService
 import services.SelectionListService
 import services.WordSettingsService
 import wordSettingChanger
 
 class EditHandler {
-    private val mainMsg = "0. возврат в главное меню " +
-            "\n1. задать слову часть речи" +
-            "\n2. задать слову то слово, от которого произошло (этимология)" +
-            "\n3. задать слову его язык происхождения" +
-            "\n4. задать слову теги\n"
-
     private val uis: UserInteractionService = UserInteractionService()
     private val wss: WordSettingsService = WordSettingsService()
     private val sls: SelectionListService = SelectionListService()
+    private val msg = MessagingService.instance
 
     fun begin(): Unit {
         val uis = UserInteractionService()
         val availableCommandNumbers = 1..4
         val availableCommands = arrayOf<commandHandler>( ::setWordPartOfSpeech, ::setWordOrigin, ::setWordOriginLanguage, ::handlerMock)
 
-        uis.getUserCommand(availableCommandNumbers, availableCommands, mainMsg)
+        uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getEditMenuMsg())
     }
 
     private fun setWordPartOfSpeech(){

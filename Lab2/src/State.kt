@@ -1,6 +1,6 @@
 import database.Word
 
-public class State private constructor() {
+class State private constructor() {
     private object Holder { val INSTANCE = State() }
     companion object {
         val instance: State by lazy { Holder.INSTANCE }

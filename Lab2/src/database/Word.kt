@@ -4,31 +4,27 @@ import java.util.*
 import java.sql.Date as SQLDate
 
 data class Word(private val word: String, private val root: String, private val meaning: String){
-    private var date: SQLDate? = null
+    private var date: SQLDate = SQLDate(Date().time)
     private var partOfSpeech: String = ""
     private var origin: String = ""
     private var originLang: String = ""
-
-    init {
-        date = SQLDate(Date().time)
-    }
 
     constructor(word: String, root: String, meaning: String, partOfSp: String) : this(word, root, meaning){
         partOfSpeech = partOfSp
     }
 
-    constructor(word: String, root: String, meaning: String, adddate: SQLDate) : this(word, root, meaning){
-        date = adddate
+    constructor(word: String, root: String, meaning: String, addDate: SQLDate) : this(word, root, meaning){
+        date = addDate
     }
 
-    constructor(word: String, root: String, meaning: String, partOfSp: String, adddate: SQLDate) : this(word, root, meaning){
+    constructor(word: String, root: String, meaning: String, partOfSp: String, addDate: SQLDate) : this(word, root, meaning){
         partOfSpeech = partOfSp
-        date = adddate
+        date = addDate
     }
 
-    constructor(word: String, root: String, meaning: String, partOfSp: String, adddate: SQLDate, wordOrigin: String, originLanguage: String) : this(word, root, meaning){
+    constructor(word: String, root: String, meaning: String, partOfSp: String, addDate: SQLDate, wordOrigin: String, originLanguage: String) : this(word, root, meaning){
         partOfSpeech = partOfSp
-        date = adddate
+        date = addDate
         origin = wordOrigin
         originLang = originLanguage
     }

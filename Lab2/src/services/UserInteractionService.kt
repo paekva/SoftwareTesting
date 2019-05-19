@@ -18,7 +18,7 @@ class UserInteractionService {
             printInfoMsg(commandList)
 
             try{
-                answerCode = reader.nextInt()
+                answerCode = reader.nextLine().toInt()
 
                 if(answerCode == 0) break
                 if(!commandInputField(answerCode, availableCommandNumbers))
@@ -70,7 +70,7 @@ class UserInteractionService {
         return value.toLowerCase().matches("[а-яА-Я|\\s|:|\\-]+".toRegex())
     }
 
-    fun wayOut(value: String): Boolean{
+    private fun wayOut(value: String): Boolean{
         return value.toLowerCase().matches("q".toRegex())
     }
 
