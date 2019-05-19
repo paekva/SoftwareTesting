@@ -45,4 +45,10 @@ class MessagingService  private constructor() {
                 "\n3. задать слову его язык происхождения" +
                 "\n4. задать слову теги\n"
     }
+
+    fun getPhraseMenuMsg():String{
+        return  "0. отменить добавление предложения\n" +
+                "1. добавить это слово в словарь\n" +
+                "2. ввести другое слово\n"
+    }
 }

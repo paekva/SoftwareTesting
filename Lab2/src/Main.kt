@@ -21,7 +21,7 @@ fun main(){
 
     val availableCommandNumbers = 0..5
     val availableCommands = arrayOf<commandHandler>( search, add, edit, filter )
-    printSuccessMsg("Вы находитесь в программе по поиску и редактированию однокоренных слов")
+    printMainMsg("Вы находитесь в программе по поиску и редактированию однокоренных слов")
 
     var answerCode = -1
     while(answerCode != 0)

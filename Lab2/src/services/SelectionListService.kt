@@ -2,8 +2,7 @@ package services
 
 import database.DatabaseConnection
 import getSelectionLists
-import printErrorMsg
-import printInfoMsg
+import printSecondaryMsg
 import java.util.*
 
 class SelectionListService {
@@ -13,16 +12,16 @@ class SelectionListService {
 
     init { dbc.connect() }
 
-    fun menuWithDatabaseOptions(root: String, selectionListGetter: getSelectionLists): String{
+    fun menuWithDatabaseOptions(root: String, selectionListGetter: getSelectionLists, msg: String): String{
         val selectionList = selectionListGetter.invoke(root)
         var inputCommand = 0
 
         if(selectionList.isNotEmpty() && selectionList[0] != ""){
-            printInfoMsg("Вы можете выбрать значение из предложенных или ввести новое:\n")
+            printSecondaryMsg("Вы можете выбрать $msg из предложенных или ввести новое:\n")
 
             var menuMsg = "0. Выбрать новое значение\n"
             selectionList.forEachIndexed { index, s -> menuMsg +="${index+1}. $s\n" }
-            printInfoMsg(menuMsg)
+            printSecondaryMsg(menuMsg)
 
             inputCommand = uis.getCommandNumber(0..selectionList.size)
         }

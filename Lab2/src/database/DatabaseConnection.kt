@@ -22,6 +22,7 @@ internal class DatabaseConnection {
             for (i in args.indices) {
                 statement.setString(i + 1, args[i])
             }
+            println(statement)
             statement.executeUpdate()
         } catch (ex: SQLException) {
             println("An error in insert: \n ${ex.message}")

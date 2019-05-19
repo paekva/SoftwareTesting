@@ -5,8 +5,7 @@ import services.UserInteractionService
 import commandHandler
 import getSelectionLists
 import printErrorMsg
-import printInfoMsg
-import printSuccessMsg
+import printMainMsg
 import services.MessagingService
 import services.SelectionListService
 import services.WordSettingsService
@@ -45,7 +44,7 @@ class EditHandler {
     }
 
     private fun changingWordSettings(setting: String, function: wordSettingChanger, selectionListGetter: getSelectionLists){
-        printSuccessMsg("Установка нового значения для $setting:")
+        printMainMsg("Установка нового значения для $setting:")
         println()
 
         val wordInput = uis.getUserInput("* слово: ", false)
@@ -56,10 +55,10 @@ class EditHandler {
             return
         }
 
-        val newSetting =  sls.menuWithDatabaseOptions("", selectionListGetter)
+        val newSetting =  sls.menuWithDatabaseOptions("", selectionListGetter, setting)
         val success = function.invoke(wordInput, newSetting)
 
-        if(success) printSuccessMsg("успешно получилось изменить $setting у слова")
+        if(success) printMainMsg("успешно получилось изменить $setting у слова")
         else printErrorMsg("произошла ошибка: изменить $setting не удалось")
     }
 

@@ -4,8 +4,8 @@ import commandHandler
 import database.Word
 import handlerMock
 import printErrorMsg
-import printInfoMsg
-import printSuccessMsg
+import printSecondaryMsg
+import printMainMsg
 import services.*
 import java.util.*
 import java.sql.Date as SQLDate
@@ -17,22 +17,20 @@ class AddHandler {
     private val sls: SelectionListService = SelectionListService()
     private val msg = MessagingService.instance
 
-    fun begin(): Unit {
+    fun begin() {
         val uis = UserInteractionService()
         val availableCommandNumbers = 0..4
-        val availableCommands = arrayOf<commandHandler>( ::addNewWord, ::addNewWordGroup, ::addWordGroupToChoosenWord, ::addNewSentenceExample)
+        val availableCommands = arrayOf<commandHandler>( ::addWord, ::addMultipleWords, ::addMultipleWordsToInputWord, ::addPhrase)
 
         var answerCode = -1
         while(answerCode != 0)
             answerCode = uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getAddMenuMsg())
     }
 
-    private fun addNewWord(){
-        printSuccessMsg("Введите слово и всю необходимую информацию по нему:")
-        printInfoMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)")
-        println()
-        printInfoMsg("Чтобы прервать ввод нового слова, введите на любом шаге q. Внесенные вами изменения не сохранятся")
-        println()
+    private fun addWord(){
+        printMainMsg("Введите слово и всю необходимую информацию по нему")
+        printSecondaryMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)\n" +
+                "Чтобы прервать ввод нового слова, введите на любом шаге q. Внесенные вами изменения не сохранятся\n")
 
         val word = uis.getUserInput("* слово: ", false)
         if(word=="q") return
@@ -46,8 +44,7 @@ class AddHandler {
         val root = uis.getUserInput("* корень слова: ", false)
         if(root=="q") return
 
-        printInfoMsg("значение слова: ")
-        val meaning = sls.menuWithDatabaseOptions(root, sls::getAvailableMeanings)
+        val meaning = sls.menuWithDatabaseOptions(root, sls::getAvailableMeanings, "значение слова")
         if(meaning=="q") return
 
         val partOfSpeech = uis.getUserInput("часть речи: ", true)
@@ -62,28 +59,25 @@ class AddHandler {
         val newWord = Word(word, root, meaning, partOfSpeech, SQLDate(Date().time), origin, originLang)
         val success = aws.addWord(newWord)
 
-        if(success) printSuccessMsg("добавление слова $word прошло успешно")
+        if(success) printMainMsg("добавление слова $word прошло успешно")
         else printErrorMsg("произошла ошибка: слово $word не добавлено, попробуйте снова")
     }
 
-    private fun addNewWordGroup(){
-        printSuccessMsg("Введите общую необходимую информацию по словам:")
-        printInfoMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)")
-        println()
+    private fun addMultipleWords(){
+        printMainMsg("Введите общую необходимую информацию по словам:")
+        printSecondaryMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)\n")
 
         val root = uis.getUserInput("* корень слова: ", false)
-
-        val meaning = sls.menuWithDatabaseOptions(root, sls::getAvailableMeanings)
-
+        val meaning = sls.menuWithDatabaseOptions(root, sls::getAvailableMeanings, "значение слова")
         val success = getMultipleWordsInput(root, meaning)
-        if(success) printSuccessMsg("добавление слов прошло успешно")
+        
+        if(success) printMainMsg("добавление слов прошло успешно")
         else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")
     }
 
-    private fun addWordGroupToChoosenWord(){
-        printSuccessMsg("Введите слово, к которому добавляются однокоренные:")
-        printInfoMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)")
-        println()
+    private fun addMultipleWordsToInputWord(){
+        printMainMsg("Введите слово, к которому добавляются однокоренные:")
+        printSecondaryMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)\n")
 
         val originalWordName = uis.getUserInput("* слова: ", false)
         val originalWord = wss.getWordInfo(originalWordName)
@@ -94,14 +88,13 @@ class AddHandler {
         }
 
         val success = getMultipleWordsInput(originalWord.getRoot(), originalWord.getMeaning())
-        if(success) printSuccessMsg("добавление слов прошло успешно")
+        if(success) printMainMsg("добавление слов прошло успешно")
         else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")
     }
 
-    private fun addNewSentenceExample(){
-        printSuccessMsg("Введите необходимую информацию:")
-        printInfoMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)")
-        println()
+    private fun addPhrase(){
+        printMainMsg("Введите необходимую информацию:")
+        printSecondaryMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)\n")
 
         val sentence = uis.getUserInput("* предложение: ", false)
         var wordsNumber = uis.getNaturalNumber("Введите число слов, к которым вы хотите привязать данное предложение")
@@ -110,29 +103,24 @@ class AddHandler {
         while(wordsNumber>0) {
             val word = uis.getUserInput("* слово $wordsNumber: ", false)
             val isInDictionary = wss.isWordInDictionary(word)
-            if(isInDictionary) {
-                wordsNumber--
-                continue
+            if(!isInDictionary) {
+                printErrorMsg("Данного слова нет в словаре")
+
+                printSecondaryMsg("Вы можете:\n")
+                val availableCommandNumbers = 0..2
+                val availableCommands = arrayOf<commandHandler>( ::addWord, ::handlerMock)
+                val answerCode = uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getPhraseMenuMsg())
+
+                if(answerCode == 0) return
+                if(answerCode == 2) continue
             }
-
-            printErrorMsg("Данного слова нет в словаре")
-            val msg = "Вы можете: \n" +
-                    "0. отменить добавление предложения\n" +
-                    "1. добавить это слово в словарь\n" +
-                    "2. ввести другое слово\n"
-            val availableCommandNumbers = 1..2
-            val availableCommands = arrayOf<commandHandler>( ::addNewWord, ::handlerMock)
-            val answerCode = uis.getUserCommand(availableCommandNumbers, availableCommands, msg)
-
-            if(answerCode == 0) return
-            if(answerCode == 2) continue
 
             words.add(word)
             wordsNumber--
         }
 
         val success = aws.addPhrase(words, sentence)
-        if(success) printSuccessMsg("добавление слов прошло успешно")
+        if(success) printMainMsg("добавление слов прошло успешно")
         else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")
     }
 

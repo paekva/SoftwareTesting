@@ -3,15 +3,15 @@ package services
 import commandHandler
 import database.Word
 import printErrorMsg
-import printInfoMsg
-import printSuccessMsg
+import printSecondaryMsg
+import printMainMsg
 import java.util.*
 
 class UserInteractionService {
 
     fun getUserCommand(availableCommandNumbers: IntRange, commandList: Array<commandHandler>, menuMsg: String): Int{
-        printSuccessMsg("\nВозможные действия (введите нужную цифру для продожения): ")
-        printInfoMsg(menuMsg)
+        printMainMsg("Возможные действия (введите нужную цифру для продожения):")
+        printSecondaryMsg(menuMsg)
 
         val answerCode = getCommandNumber(availableCommandNumbers)
         println()
@@ -45,7 +45,7 @@ class UserInteractionService {
     fun getUserInput(msg: String, isOptional: Boolean): String{
         var answer = ""
         val reader = Scanner(System.`in`)
-        printInfoMsg(msg)
+        printSecondaryMsg(msg)
 
         while(answer == ""){
             try{
@@ -106,7 +106,7 @@ class UserInteractionService {
     fun getNaturalNumber(msg: String): Int {
         val reader = Scanner(System.`in`)
         var wordsNumber = 0
-        printInfoMsg(msg)
+        printSecondaryMsg(msg)
 
         while(wordsNumber<1){
             try{

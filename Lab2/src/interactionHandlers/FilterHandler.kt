@@ -5,7 +5,7 @@ import handlerMock
 import services.UserInteractionService
 import commandHandler
 import printErrorMsg
-import printSuccessMsg
+import printMainMsg
 import services.MessagingService
 
 class FilterHandler {
@@ -19,7 +19,7 @@ class FilterHandler {
         val availableCommandNumbers = 0..1
         val availableCommands = arrayOf<commandHandler>( ::filterByPartOfSpeech, ::handlerMock, ::handlerMock, ::handlerMock)
 
-        printSuccessMsg("В данном разделе вы можете отфильтровать последние результаты поиска по различным категориям")
+        printMainMsg("В данном разделе вы можете отфильтровать последние результаты поиска по различным категориям")
 
         if(state.getLastResults().isEmpty())
             printErrorMsg("Вами еще не было сделано ни одного поискового запроса. Сортировка не может быть выполнена")
@@ -31,7 +31,7 @@ class FilterHandler {
     }
 
     private fun filterByPartOfSpeech(){
-        printSuccessMsg("Фильтрация по части речи")
+        printMainMsg("Фильтрация по части речи")
         println()
 
         val partOfSpeech = uis.getUserInput("* часть речи: ", false)
