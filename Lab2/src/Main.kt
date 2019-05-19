@@ -5,7 +5,7 @@ import interactionHandlers.SearchHandler
 import services.MessagingService
 import services.UserInteractionService
 
-fun handlerMock (): Unit{}
+fun handlerMock(){}
 typealias commandHandler = () -> Unit
 typealias wordSettingChanger = (word: String, settingValue: String) -> Boolean
 typealias getSelectionLists = (root: String) -> List<String>

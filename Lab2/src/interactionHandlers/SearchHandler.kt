@@ -14,9 +14,9 @@ class SearchHandler {
     private val msg = MessagingService.instance
 
     fun begin(): Unit {
-        val availableCommandNumbers = 0..5
+        val availableCommandNumbers = 0..6
         val availableCommands = arrayOf<commandHandler>( ::getCommonRootWords, ::getOmonimRootWords,
-            ::getAllWordsByRoot, ::getAllWordsByPartOfSpeech, ::getFullWordInfo)
+            ::getAllWordsByRoot, ::getAllWordsByPartOfSpeech, ::getAllPhrasesByWord, ::getFullWordInfo)
 
         var answerCode = -1
         while(answerCode != 0)
@@ -86,5 +86,16 @@ class SearchHandler {
         }
 
         uis.displayWordInfo(word)
+    }
+
+    private fun getAllPhrasesByWord(){
+        val input = uis.getUserInput("Введите слово для поиска фраз-примеров: ", false)
+
+        val phraseList = cws.getAllPhrasesByWord(input)
+        if(phraseList.isNullOrEmpty())
+            printErrorMsg("Для данного слова нет примеров в словаре. Попробуйте вернутся в главное меню и добавить новые предложения-примеры в словарь!")
+        else{
+            uis.displayPhrases(phraseList)
+        }
     }
 }

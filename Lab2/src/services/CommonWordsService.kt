@@ -2,11 +2,13 @@ package services
 
 import database.DatabaseService
 import database.Word
+import printErrorMsg
 import java.sql.Date
 
 class CommonWordsService {
 
     private val dbs: DatabaseService = DatabaseService()
+    private val wss: WordSettingsService = WordSettingsService()
 
     fun getAllCommonRootWords(inputWord: String): List<Word>?{
         val word = dbs.getParticularWord(inputWord)
@@ -24,6 +26,15 @@ class CommonWordsService {
             return null
         else
             return dbs.findOmonimRootWords(word)
+    }
+
+    fun getAllPhrasesByWord(wordInput: String) : List<String>? {
+        if(!wss.isWordInDictionary(wordInput)){
+            printErrorMsg("Данного слова нет в словаре")
+            return null
+        }
+
+        return dbs.findPhrasesByWord(wordInput)
     }
 
     fun getAllWordsByRoot(wordInput: String) : List<Word>? {

@@ -103,6 +103,10 @@ class UserInteractionService {
                 "ДЛИНА СЛОВА ${word.getWord().length}\n")
     }
 
+    fun displayPhrases(phrases: List<String>){
+        phrases.forEach { phrase -> println(phrase) }
+    }
+
     fun getNaturalNumber(msg: String): Int {
         val reader = Scanner(System.`in`)
         var wordsNumber = 0

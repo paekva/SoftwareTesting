@@ -108,6 +108,28 @@ class DatabaseService {
         return strings
     }
 
+    fun findPhrasesByWord(word: String): List<String>{
+        val strings = arrayListOf<String>()
+        try {
+            val sql = ("SELECT phrase from examples "
+                    + "WHERE word = ?")
+
+            val args = ArrayList<String>()
+            args.add(word)
+
+            val rs = dbc.select(sql, args)
+
+            while (rs!!.next()) {
+                strings.add(rs.getString("phrase"))
+            }
+
+        } catch (ex: SQLException) {
+            println("Error in findPhrasesByWord: \n ${ex.message}")
+        }
+
+        return strings
+    }
+
     fun addPhrase(phrase: String) {
         val st = ("INSERT INTO phrases " + "(phrase)"
                 + " VALUES (?)")
