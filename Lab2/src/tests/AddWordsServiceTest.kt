@@ -5,10 +5,14 @@ import org.junit.Assert.assertEquals
 import org.junit.Ignore
 import org.junit.Test
 import services.AddWordsService
+import services.CommonWordsService
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class AddWordsServiceTest {
 
     private val aws: AddWordsService = AddWordsService()
+    private val cws: CommonWordsService = CommonWordsService()
 
     @Test
     @Ignore
@@ -19,22 +23,16 @@ class AddWordsServiceTest {
     }
 
     @Test
-    fun `add existing word into the dictionary`() {
+    fun `add an existing word into the dictionary`() {
         val newWord = Word("красотка", "крас", "краса")
         val success = aws.addWord(newWord)
         assertEquals(false, success)
     }
 
     @Test
-    fun `get meanings examples by root`() {
-        // val meaning = sls.menuWithDatabaseOptions(root, sls::getAvailableMeanings)
-        // assertEquals(false, success)
-    }
-
-    @Test
     @Ignore
     fun `add group of common root words into the dictionary`() {
-        val group = arrayListOf<Word>(
+        val group = arrayListOf(
             Word("краситель", "крас", "краска", "существительное"),
             Word("раскраска", "крас", "краска", "существительное"))
         val success = aws.addGroupOfWords(group)
@@ -42,11 +40,24 @@ class AddWordsServiceTest {
     }
 
     @Test
-    @Ignore //TODO: finish add phrase properly
+    @Ignore
     fun `add pharse connected to word`() {
-        /*val word = Word("наехать", "ех", "")
-        val phrase = "Наеxaть на столб в темноте оказалось легко"
-        val success = aws.addPhrase(word, phrase)
-        assertEquals(true, success)*/
+        val words = arrayListOf("раскраска", "больница")
+        val phrase = "Я принес раскраску в больницу"
+        aws.addPhrase(words, phrase)
+
+        val actualFirst = cws.getAllPhrasesByWord("раскраска")
+        assertTrue(actualFirst!!.contains(phrase))
+
+        val actualSecond = cws.getAllPhrasesByWord("больница")
+        assertTrue(actualSecond!!.contains(phrase))
+    }
+
+    @Test
+    fun `add already added pharse`() {
+        val words = arrayListOf("раскраска", "больница")
+        val phrase = "Я принес раскраску в больницу"
+        val success = aws.addPhrase(words, phrase)
+        assertFalse(success)
     }
 }

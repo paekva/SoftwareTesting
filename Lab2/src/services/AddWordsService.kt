@@ -22,6 +22,9 @@ class AddWordsService {
     }
 
     fun addPhrase(words: List<String>, phrase: String): Boolean{
+        if(dbs.checkForPhraseInDictionary(phrase))
+            return false
+
         dbs.addPhrase(phrase)
 
         words.forEach { w -> if(wss.isWordInDictionary(w)) dbs.addExample(w, phrase) }

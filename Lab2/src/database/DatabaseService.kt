@@ -22,6 +22,20 @@ class DatabaseService {
         return false
     }
 
+    fun checkForPhraseInDictionary(phrase: String): Boolean {
+        try {
+            val sql = "SELECT * from phrases " + "WHERE phrase = ? "
+            val args = ArrayList<String>()
+            args.add(phrase)
+
+            val rs = dbc.select(sql, args)
+            return rs!!.next()
+        } catch (e: Exception) {
+            println("An error in checkForPhraseInDictionary: \n ${e.message}")
+        }
+        return false
+    }
+
     fun addWord(word: Word) {
         val st = ("INSERT INTO words " + "(word, root, meaning, adddate, partofspeech, origin, origin_lang)"
                 + " VALUES (?, ?, ?, '"+word.getDate().toString()+"', ?, ?, ?)")

@@ -97,6 +97,12 @@ class AddHandler {
         printSecondaryMsg("Вы можете пропустить необязательные к заполнению поля (обязательные поля помечены звездочкой *)\n")
 
         val sentence = uis.getUserInput("* предложение: ", false)
+
+        if(wss.isPhraseInDictionary(sentence)){
+            printErrorMsg("Данная фраза уже существует в словаре. Попробйте другую опцию программы")
+            return
+        }
+
         var wordsNumber = uis.getNaturalNumber("Введите число слов, к которым вы хотите привязать данное предложение")
         val words = arrayListOf<String>()
 
@@ -120,8 +126,8 @@ class AddHandler {
         }
 
         val success = aws.addPhrase(words, sentence)
-        if(success) printMainMsg("добавление слов прошло успешно")
-        else printErrorMsg("произошла ошибка: некоторые слова не были добавлены")
+        if(success) printMainMsg("добавление фразы прошло успешно")
+        else printErrorMsg("произошла ошибка: фраза не была добавлена")
     }
 
     private fun getMultipleWordsInput(root: String, meaning: String): Boolean{
@@ -136,6 +142,7 @@ class AddHandler {
                 printErrorMsg("Данное слово уже есть в словаре, попробуйте другую опцию программы!")
                 continue
             }
+
             val partOfSpeech = uis.getUserInput("часть речи: ", true)
             val origin = uis.getUserInput("слово, от которого оно произошло: ", true)
             val originLang = uis.getUserInput("язык происхождения: ",true)

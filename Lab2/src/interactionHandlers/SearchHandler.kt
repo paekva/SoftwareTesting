@@ -91,11 +91,13 @@ class SearchHandler {
     private fun getAllPhrasesByWord(){
         val input = uis.getUserInput("Введите слово для поиска фраз-примеров: ", false)
 
-        val phraseList = cws.getAllPhrasesByWord(input)
-        if(phraseList.isNullOrEmpty())
-            printErrorMsg("Для данного слова нет примеров в словаре. Попробуйте вернутся в главное меню и добавить новые предложения-примеры в словарь!")
-        else{
-            uis.displayPhrases(phraseList)
+        when(val phraseList = cws.getAllPhrasesByWord(input)){
+            null ->
+                printErrorMsg("Данного слова нет в словаре")
+            arrayListOf<String>() ->
+                printErrorMsg("Для данного слова нет примеров в словаре. Попробуйте вернутся в главное меню и добавить новые предложения-примеры в словарь!")
+            else ->
+                uis.displayPhrases(phraseList)
         }
     }
 }

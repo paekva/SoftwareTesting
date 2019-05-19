@@ -29,10 +29,8 @@ class CommonWordsService {
     }
 
     fun getAllPhrasesByWord(wordInput: String) : List<String>? {
-        if(!wss.isWordInDictionary(wordInput)){
-            printErrorMsg("Данного слова нет в словаре")
+        if(!wss.isWordInDictionary(wordInput))
             return null
-        }
 
         return dbs.findPhrasesByWord(wordInput)
     }
@@ -47,14 +45,16 @@ class CommonWordsService {
     }
 
     fun groupBy(words: List<Word>, partOfSpeech: String) : List<Word>{
+        if(words.isNullOrEmpty())
+            return arrayListOf()
+
         return words.filter { it.getPartOfSpeech() == partOfSpeech }
     }
 
     fun groupBy(words: List<Word>, from: Int, to: Int) : List<Word>{
-        return words.filter { it.getWord().length in from..to }
-    }
+        if(words.isNullOrEmpty())
+            return arrayListOf()
 
-    fun groupBy(words: List<Word>, from: Date, to: Date) : List<Word>{
-        return words.filter { it.getDate().compareTo(from) >= 0  && it.getDate().compareTo(to) <= 0 }
+        return words.filter { it.getWord().length in from..to }
     }
 }

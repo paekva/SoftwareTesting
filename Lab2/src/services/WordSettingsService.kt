@@ -27,4 +27,8 @@ class WordSettingsService {
     fun isWordInDictionary(word: String): Boolean{
         return dbs.checkForWordInDictionary(Word(word, "", ""))
     }
+
+    fun isPhraseInDictionary(phrase: String): Boolean{
+        return dbs.checkForPhraseInDictionary(phrase)
+    }
 }
