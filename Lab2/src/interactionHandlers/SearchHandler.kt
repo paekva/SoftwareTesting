@@ -14,11 +14,13 @@ class SearchHandler {
     private val msg = MessagingService.instance
 
     fun begin(): Unit {
-        val availableCommandNumbers = 1..5
+        val availableCommandNumbers = 0..5
         val availableCommands = arrayOf<commandHandler>( ::getCommonRootWords, ::getOmonimRootWords,
             ::getAllWordsByRoot, ::getAllWordsByPartOfSpeech, ::getFullWordInfo)
 
-        uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getSearchMenuMsg())
+        var answerCode = -1
+        while(answerCode != 0)
+            answerCode = uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getSearchMenuMsg())
     }
 
     private fun getCommonRootWords(){

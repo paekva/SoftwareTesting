@@ -19,11 +19,12 @@ class EditHandler {
     private val msg = MessagingService.instance
 
     fun begin(): Unit {
-        val uis = UserInteractionService()
-        val availableCommandNumbers = 1..4
+        val availableCommandNumbers = 0..4
         val availableCommands = arrayOf<commandHandler>( ::setWordPartOfSpeech, ::setWordOrigin, ::setWordOriginLanguage, ::handlerMock)
 
-        uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getEditMenuMsg())
+        var answerCode = -1
+        while(answerCode != 0)
+            answerCode = uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getEditMenuMsg())
     }
 
     private fun setWordPartOfSpeech(){

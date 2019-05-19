@@ -19,10 +19,12 @@ class AddHandler {
 
     fun begin(): Unit {
         val uis = UserInteractionService()
-        val availableCommandNumbers = 1..4
+        val availableCommandNumbers = 0..4
         val availableCommands = arrayOf<commandHandler>( ::addNewWord, ::addNewWordGroup, ::addWordGroupToChoosenWord, ::addNewSentenceExample)
 
-        uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getAddMenuMsg())
+        var answerCode = -1
+        while(answerCode != 0)
+            answerCode = uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getAddMenuMsg())
     }
 
     private fun addNewWord(){
@@ -102,7 +104,7 @@ class AddHandler {
         println()
 
         val sentence = uis.getUserInput("* предложение: ", false)
-        var wordsNumber = getNumberOfWordsForInput("Введите число слов, к которым вы хотите привязать данное предложение")
+        var wordsNumber = uis.getNaturalNumber("Введите число слов, к которым вы хотите привязать данное предложение")
         val words = arrayListOf<String>()
 
         while(wordsNumber>0) {
@@ -137,7 +139,7 @@ class AddHandler {
     private fun getMultipleWordsInput(root: String, meaning: String): Boolean{
         val newWords = arrayListOf<Word>()
 
-        var wordsNumber = getNumberOfWordsForInput("Введите число слов, которое вы хотите добавить")
+        var wordsNumber = uis.getNaturalNumber("Введите число слов, которое вы хотите добавить")
 
         while(wordsNumber>0){
             val word = uis.getUserInput("* слово $wordsNumber: ", false)
@@ -156,18 +158,5 @@ class AddHandler {
         }
 
         return aws.addGroupOfWords(newWords)
-    }
-
-    private fun getNumberOfWordsForInput(msg: String): Int {
-        val reader = Scanner(System.`in`)
-        printInfoMsg(msg)
-
-        var wordsNumber = reader.nextInt()
-        while(wordsNumber<1){
-            wordsNumber = reader.nextInt()
-            if(wordsNumber<1)
-                printErrorMsg("Неверный ввод, попробуйте еще раз")
-        }
-        return wordsNumber
     }
 }

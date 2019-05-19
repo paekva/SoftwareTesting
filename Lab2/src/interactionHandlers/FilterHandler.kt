@@ -16,15 +16,18 @@ class FilterHandler {
 
     fun begin(): Unit {
         val uis = UserInteractionService()
-        val availableCommandNumbers = 1..1
+        val availableCommandNumbers = 0..1
         val availableCommands = arrayOf<commandHandler>( ::filterByPartOfSpeech, ::handlerMock, ::handlerMock, ::handlerMock)
 
         printSuccessMsg("В данном разделе вы можете отфильтровать последние результаты поиска по различным категориям")
 
         if(state.getLastResults().isEmpty())
             printErrorMsg("Вами еще не было сделано ни одного поискового запроса. Сортировка не может быть выполнена")
-        else
-            uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getFilterMenuMsg())
+        else {
+            var answerCode = -1
+            while(answerCode != 0)
+                answerCode = uis.getUserCommand(availableCommandNumbers, availableCommands, msg.getFilterMenuMsg())
+        }
     }
 
     private fun filterByPartOfSpeech(){

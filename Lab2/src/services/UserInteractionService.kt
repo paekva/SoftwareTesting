@@ -9,27 +9,33 @@ import java.util.*
 
 class UserInteractionService {
 
-    fun getUserCommand(availableCommandNumbers: IntRange, availableCommands: Array<commandHandler>, commandList: String): Int{
-        var answerCode = 1
+    fun getUserCommand(availableCommandNumbers: IntRange, commandList: Array<commandHandler>, menuMsg: String): Int{
+        printSuccessMsg("\nВозможные действия (введите нужную цифру для продожения): ")
+        printInfoMsg(menuMsg)
+
+        val answerCode = getCommandNumber(availableCommandNumbers)
+        println()
+
+        if(answerCode != 0)
+            commandList[answerCode-1].invoke()
+
+        return answerCode
+    }
+
+    fun getCommandNumber(availableCommandNumbers: IntRange): Int{
         val reader = Scanner(System.`in`)
+        var answerCode = -1
 
-        while(answerCode != 0){
-            printSuccessMsg("\nВозможные действия (введите нужную цифру для продожения): ")
-            printInfoMsg(commandList)
-
+        while(answerCode < 0){
             try{
                 answerCode = reader.nextLine().toInt()
 
-                if(answerCode == 0) break
                 if(!commandInputField(answerCode, availableCommandNumbers))
                     throw Exception()
-
-
-                availableCommands[answerCode-1].invoke()
             }
             catch(e: Exception){
                 printErrorMsg("Неверный ввод. Попробуйте снова!")
-                answerCode = 1
+                answerCode = -1
             }
         }
 
@@ -95,5 +101,24 @@ class UserInteractionService {
                 "СЛОВО, ОТ КОТОРОГО ОБРАЗОВАНО: ${word.getOrigin()}\n"+
                 "ЯЗЫК ПРОИСХОЖДЕНИЯ: ${word.getOriginLang()}\n"+
                 "ДЛИНА СЛОВА ${word.getWord().length}\n")
+    }
+
+    fun getNaturalNumber(msg: String): Int {
+        val reader = Scanner(System.`in`)
+        var wordsNumber = 0
+        printInfoMsg(msg)
+
+        while(wordsNumber<1){
+            try{
+                wordsNumber = reader.nextLine().toInt()
+                if(wordsNumber<1)
+                    throw Exception()
+            }
+            catch(e: Exception){
+                printErrorMsg("Неверный ввод, попробуйте еще раз")
+                wordsNumber = 0
+            }
+        }
+        return wordsNumber
     }
 }

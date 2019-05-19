@@ -17,31 +17,18 @@ class SelectionListService {
         val selectionList = selectionListGetter.invoke(root)
         var inputCommand = 0
 
-        printInfoMsg("Вы можете выбрать значение из предложенных или ввести новое:")
-        println()
-
         if(selectionList.isNotEmpty() && selectionList[0] != ""){
-            printInfoMsg("0. Выбрать новое значение")
-            println()
-            selectionList.forEachIndexed { index, s -> printInfoMsg("${index+1}. $s\n")}
+            printInfoMsg("Вы можете выбрать значение из предложенных или ввести новое:\n")
 
-            val reader = Scanner(System.`in`)
-            var isInputValid = false
-            while(!isInputValid){
-                inputCommand = reader.nextInt()
-                isInputValid = uis.commandInputField(inputCommand, 0..selectionList.size)
+            var menuMsg = "0. Выбрать новое значение\n"
+            selectionList.forEachIndexed { index, s -> menuMsg +="${index+1}. $s\n" }
+            printInfoMsg(menuMsg)
 
-                if(!isInputValid)
-                    printErrorMsg("Неверный ввод, попробуйте еще раз")
-            }
-        }
-        else {
-            printInfoMsg("Для данного значения нет списка предложенных")
-            println()
+            inputCommand = uis.getCommandNumber(0..selectionList.size)
         }
 
         if(inputCommand == 0)
-            return uis.getUserInput("* введите значение: ", false)
+            return uis.getUserInput("* введите новое значение: ", false)
 
         return selectionList[inputCommand-1]
     }

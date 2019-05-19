@@ -1,5 +1,5 @@
 fun printSuccessMsg(msg: String){
-    println("\u001B[32m$msg\u001B[0m ")
+    print("\u001B[32m$msg\u001B[0m ")
 }
 
 fun printErrorMsg(msg: String){

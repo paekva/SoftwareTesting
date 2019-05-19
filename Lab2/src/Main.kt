@@ -19,9 +19,11 @@ fun main(){
     val uis = UserInteractionService()
     val ms = MessagingService.instance
 
-    val availableCommandNumbers = 1..5
-    val availableCommands = arrayOf<commandHandler>( search, add, edit, filter)
-
+    val availableCommandNumbers = 0..5
+    val availableCommands = arrayOf<commandHandler>( search, add, edit, filter )
     printSuccessMsg("Вы находитесь в программе по поиску и редактированию однокоренных слов")
-    uis.getUserCommand(availableCommandNumbers, availableCommands, ms.getMainMenuMsg())
+
+    var answerCode = -1
+    while(answerCode != 0)
+        answerCode = uis.getUserCommand(availableCommandNumbers, availableCommands, ms.getMainMenuMsg())
 }
