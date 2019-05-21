@@ -1,6 +1,5 @@
 package services
 
-import database.DatabaseConnection
 import database.DatabaseService
 import database.Word
 
