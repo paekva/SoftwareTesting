@@ -71,7 +71,7 @@ class CommonWordsServiceTest {
     @Test
     fun `getting list of words for selected part of speech`() {
         val actual = cws.getAllWordsByPartOfSpeech("глагол")!!.map{ el -> el.getWord()}
-        val expected = arrayListOf("красоваться", "одомашнить")
+        val expected = arrayListOf("красоваться", "одомашнить", "краснеть")
         assertEquals(expected, actual)
     }
 

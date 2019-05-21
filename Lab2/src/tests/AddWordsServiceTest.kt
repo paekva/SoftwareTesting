@@ -15,7 +15,8 @@ import org.junit.runners.Suite
 @RunWith(Suite::class)
 @Suite.SuiteClasses(CommonWordsServiceTest::class,
     SelectionListServiceTest::class,
-    WordSettingsServiceTest::class)
+    WordSettingsServiceTest::class,
+    DatabaseServiceTest::class)
 class AddWordsServiceTest {
 
     private val aws: AddWordsService = AddWordsService()

@@ -17,16 +17,16 @@ class DatabaseServiceTest {
 
     @Test
     fun `getting list of common root words`() {
-        val actual = dbs.findSameRootWords(Word("нос", "нос", "нос")).map { el -> el.getWord() }
-        val expected = listOf("носовой", "переносица")
+        val actual = dbs.findSameRootWords(Word("краснощекий", "крас", "красный")).map { el -> el.getWord() }
+        val expected = listOf("краснеть")
         Assert.assertTrue(actual.containsAll(expected))
     }
 
     @Test
     fun `add part of speech to a word`() {
-        dbs.changePartOfSpeech("переносица", "существительное")
-        val word = dbs.getParticularWord("переносица")
-        Assert.assertEquals("существительное", word!!.getPartOfSpeech())
+        dbs.changePartOfSpeech("краснеть", "глагол")
+        val word = dbs.getParticularWord("краснеть")
+        Assert.assertEquals("глагол", word!!.getPartOfSpeech())
     }
 
     @Test
