@@ -76,10 +76,6 @@ class UserInteractionService {
         return value.toLowerCase().matches("[а-яА-Я|\\s|:|\\-]+".toRegex())
     }
 
-    private fun wayOut(value: String): Boolean{
-        return value.toLowerCase().matches("q".toRegex())
-    }
-
     fun commandInputField(value: Int, interval: IntRange): Boolean{
         return value in interval
     }
@@ -124,5 +120,9 @@ class UserInteractionService {
             }
         }
         return wordsNumber
+    }
+
+    private fun wayOut(value: String): Boolean{
+        return value.toLowerCase().matches("q".toRegex())
     }
 }

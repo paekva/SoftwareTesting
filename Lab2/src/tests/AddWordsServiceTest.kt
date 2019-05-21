@@ -8,7 +8,14 @@ import services.AddWordsService
 import services.CommonWordsService
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import org.junit.runner.RunWith
+import org.junit.runners.Suite
 
+
+@RunWith(Suite::class)
+@Suite.SuiteClasses(CommonWordsServiceTest::class,
+    SelectionListServiceTest::class,
+    WordSettingsServiceTest::class)
 class AddWordsServiceTest {
 
     private val aws: AddWordsService = AddWordsService()

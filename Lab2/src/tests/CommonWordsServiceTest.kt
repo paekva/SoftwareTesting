@@ -59,7 +59,7 @@ class CommonWordsServiceTest {
     fun `getting list of words for selected root`() {
         val actual = cws.getAllWordsByRoot("боль")!!.map { el -> el.getWord() }
         val expected = arrayListOf("боль", "больница", "больной", "больничный")
-        assertEquals(expected, actual)
+        assertTrue(actual.containsAll(expected))
     }
 
     @Test
